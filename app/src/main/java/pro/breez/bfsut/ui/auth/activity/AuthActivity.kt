@@ -1,12 +1,16 @@
 package pro.breez.bfsut.ui.auth.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import pro.breez.bfsut.R
+import android.view.LayoutInflater
+import pro.breez.bfsut.base.BaseActivity
+import pro.breez.bfsut.databinding.ActivityAuthBinding
 
-class AuthActivity : AppCompatActivity() {
+class AuthActivity : BaseActivity<ActivityAuthBinding>() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
     }
+
+    override fun inflateLayout(layoutInflater: LayoutInflater) =
+        ActivityAuthBinding.inflate(layoutInflater)
 }

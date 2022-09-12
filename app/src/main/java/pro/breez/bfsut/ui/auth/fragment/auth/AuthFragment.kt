@@ -9,7 +9,13 @@ class AuthFragment : BaseFragment<FragmentAuthBinding, AuthViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
+    }
 
+    private fun initViews() {
+        binding.enterBtn.setOnClickListener {
+
+        }
     }
 
 }

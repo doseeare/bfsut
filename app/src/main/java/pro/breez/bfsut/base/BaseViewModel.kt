@@ -2,12 +2,11 @@ package pro.breez.bfsut.base
 
 import android.content.Intent
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import pro.breez.bfsut.helper.SingleLiveEvent
 import pro.breez.bfsut.model.navigation.ActivityTransaction
-import pro.breez.bfsut.util.LifecycleEvent
+import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.util.alert.LoadingViewParams
 import pro.breez.bfsut.util.alert.snackbar.SnackbarNotificationBuilderInterface
 import pro.breez.bfsut.util.permission.PermissionCheckerBuilder

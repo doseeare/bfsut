@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RegistrationEditText">
+        <attr name="title" format="string" />
+        <attr name="hint" format="string" />
+        <attr name="error" format="string" />
+        <attr name="is_password" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="BaseMaterialButtonView">
+        <attr name="setBackgroundMaterialButton" format="reference|color" />
+        <attr name="textColor" format="reference" />
+        <attr name="textSize" format="float" />
+    </declare-styleable>
+</resources>
