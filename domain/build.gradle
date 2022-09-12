@@ -1,0 +1,27 @@
+plugins {
+    id 'kotlin'
+    id 'kotlin-kapt'
+    id 'java-library'
+}
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+kapt {
+    correctErrorTypes true
+}
+
+dependencies {
+    def domainImpl = rootProject.ext.domainImpl
+    def domainKapt = rootProject.ext.domainKapt
+
+    for (itemLib in domainImpl) {
+        implementation itemLib.value
+    }
+
+    for (itemKapt in domainKapt){
+        compileOnly itemKapt.value
+    }
+
+}
