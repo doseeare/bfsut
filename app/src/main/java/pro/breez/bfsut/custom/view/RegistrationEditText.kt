@@ -5,6 +5,7 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.LayoutRegistrationEdittextBinding
@@ -34,12 +35,23 @@ class RegistrationEditText(context: Context, attributeSet: AttributeSet?, defSty
             }
         }
 
+    var text: String
+        set(value) {
+            binding.edittext.setText(value)
+        }
+        get() {
+            return binding.edittext.text.toString()
+        }
+
+    val editText: EditText
+        get() = binding.edittext
+
     var showError: Boolean = false
         set(value) {
             field = value
             val errorBorderBg =
-                if (value) R.drawable.bg_auth_edittext_default
-                else R.drawable.bg_auth_edittext_error
+                if (value) R.drawable.bg_auth_edittext_error
+                else R.drawable.bg_auth_edittext_default
             binding.border.setBackgroundResource(errorBorderBg)
             binding.error.setGoneIfFalse(value)
         }

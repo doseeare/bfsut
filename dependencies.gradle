@@ -2,7 +2,7 @@ ext {
     //library versions
     retrofit_ver = "2.6.2"
     gson_ver = "2.8.5"
-    logging_ver = "3.14.0"
+    logging_ver = "4.9.0"
     gson_converter_ver = "2.1.0"
     glide_ver = "4.10.0"
     nav_ver = "2.1.0"

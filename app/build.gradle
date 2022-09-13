@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId "pro.breez.bfsut"
-        minSdk 21
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -35,7 +35,15 @@ android {
     buildFeatures {
         viewBinding true
     }
+    buildTypes {
+        debug {
+            buildConfigField "String", "BASE_URL", "\"https://agents.bf.kg/api/\""
+        }
 
+        release {
+            buildConfigField "String", "BASE_URL", "\"https://agents.bf.kg/api/\""
+        }
+    }
 }
 
 kapt {

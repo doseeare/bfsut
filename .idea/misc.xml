@@ -3,19 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="0.12596703666330306" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.22" />
         <entry key="app/src/main/res/drawable/bg_auth_edittext.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/bg_auth_edittext_default.xml" value="0.107" />
+        <entry key="app/src/main/res/drawable/bg_auth_edittext_error.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/bg_base_button.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/bg_secondery_button.xml" value="0.107" />
+        <entry key="app/src/main/res/drawable/bg_snackbar_error.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/bg_splash.xml" value="0.22" />
+        <entry key="app/src/main/res/drawable/default_snackbar_background.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/ic_password_hide.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/ic_password_show.xml" value="0.181" />
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.36354166666666665" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/custom_snackbar.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/layout_registration_edittext.xml" value="0.2560240963855422" />
+        <entry key="app/src/main/res/layout/layout_registration_edittext.xml" value="0.2351313969571231" />
+        <entry key="app/src/main/res/layout/view_progress.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.36354166666666665" />
       </map>
     </option>

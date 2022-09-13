@@ -2,11 +2,14 @@ package pro.breez.bfsut.ui.auth.fragment.splash
 
 import android.os.CountDownTimer
 import androidx.lifecycle.LifecycleOwner
+import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.model.navigation.FragmentTransaction
+import javax.inject.Inject
 
-class SplashViewModel : BaseViewModel() {
+@HiltViewModel
+class SplashViewModel @Inject constructor() : BaseViewModel() {
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
@@ -20,7 +23,7 @@ class SplashViewModel : BaseViewModel() {
             }
 
             override fun onFinish() {
-                navigateToFragment.postValue(FragmentTransaction(navigationId = R.id.nav_auth))
+                navigateToFragment.startEvent(FragmentTransaction(navigationId = R.id.splash_to_auth))
             }
         }
         timer.start()

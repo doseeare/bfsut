@@ -11,4 +11,5 @@
     <string name="welcome">Добро \nпожаловать!</string>
     <string name="enter">Войти</string>
     <string name="create_password">Нет пароля? Создать</string>
+    <string name="userFriendly_errorMessage">Что-то пошло не так</string>
 </resources>

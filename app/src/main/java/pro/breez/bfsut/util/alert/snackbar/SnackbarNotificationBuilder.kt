@@ -1,6 +1,6 @@
-/*
 package pro.breez.bfsut.util.alert.snackbar
 
+import android.annotation.SuppressLint
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +11,8 @@ import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import pro.breez.bfsut.R
+import pro.breez.bfsut.databinding.CustomSnackbarBinding
+import pro.breez.bfsut.model.SnackBarMessageOptions
 
 class SnackbarNotificationBuilder :
     SnackbarNotificationBuilderInterface {
@@ -127,6 +129,7 @@ class SnackbarNotificationBuilder :
         layout.setPadding(0, 0, 0, 0)
     }
 
+    @SuppressLint("RestrictedApi")
     private fun setPaddings(layout: Snackbar.SnackbarLayout) {
         val params = (layout.layoutParams as? FrameLayout.LayoutParams)
         params?.gravity = Gravity.TOP
@@ -138,4 +141,4 @@ class SnackbarNotificationBuilder :
         )
         params?.let { layout.layoutParams = it }
     }
-}*/
+}

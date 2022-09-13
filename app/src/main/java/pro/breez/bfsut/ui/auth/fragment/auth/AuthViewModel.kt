@@ -1,9 +1,37 @@
 package pro.breez.bfsut.ui.auth.fragment.auth
 
+import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.base.BaseViewModel
+import pro.breez.bfsut.helper.SingleLiveEvent
+import pro.breez.bfsut.model.SnackBarMessageOptions
+import pro.breez.domain.interactor.AuthUseCase
+import pro.breez.domain.model.input.AuthModelIn
+import javax.inject.Inject
 
-class AuthViewModel : BaseViewModel() {
-    fun enterButtonClicked() {
+@HiltViewModel
+class AuthViewModel @Inject constructor(
+    private val authUC: AuthUseCase
+) : BaseViewModel() {
+
+    val fieldsError = SingleLiveEvent<Nothing>()
+
+    fun login(authFields: Pair<String?, String?>) {
+        val isFieldsEmpty = authFields.first.isNullOrEmpty() && authFields.second.isNullOrEmpty()
+        if (isFieldsEmpty) {
+            val snackBarBuilder = snackBarBuilder.apply {
+                fromOptions(SnackBarMessageOptions.AUTH_FIELDS_ERROR)
+                fieldsError.call()
+            }
+            showSnackBar(snackBarBuilder)
+            return
+        }
+        showLoadingView()
+        authUC.execute(viewModelScope, AuthModelIn(authFields.first!!, authFields.second!!)) {
+            handleResult(it) {
+
+            }
+        }
 
     }
 }

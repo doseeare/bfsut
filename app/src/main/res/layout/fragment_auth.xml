@@ -48,6 +48,7 @@
             app:hint="Ваш пароль"
             app:is_password="true"
             app:title="Пароль" />
+
     </LinearLayout>
 
     <Button
