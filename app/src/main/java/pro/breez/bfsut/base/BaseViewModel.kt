@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.annotation.CallSuper
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,14 +14,15 @@ import pro.breez.bfsut.helper.SingleLiveEvent
 import pro.breez.bfsut.model.SnackBarMessageOptions
 import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.bfsut.model.navigation.FragmentTransaction
+import pro.breez.bfsut.util.alert.DialogBuilder
 import pro.breez.bfsut.util.alert.LoadingViewParams
+import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilder
 import pro.breez.bfsut.util.alert.snackbar.SnackbarNotificationBuilder
 import pro.breez.bfsut.util.alert.snackbar.SnackbarNotificationBuilderInterface
 import pro.breez.bfsut.util.permission.PermissionCheckerBuilder
 import pro.breez.domain.exception.ConnectionLostException
 import pro.breez.domain.interactor.base.CompletableResult
 import pro.breez.domain.interactor.base.Result
-import pro.breez.mobimarket.utility.alert.DialogBuilder
 
 open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
     val setToast = SingleLiveEvent<Pair<String, Boolean>>()
@@ -31,7 +31,7 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
     val dialogBuilderEvent = SingleLiveEvent<DialogBuilder>()
     val permissionCheckerEvent = SingleLiveEvent<PermissionCheckerBuilder>()
     val showBottomSheetFragment = SingleLiveEvent<BottomSheetDialogFragment>()
-    val showDialogFragment = SingleLiveEvent<DialogFragment>()
+    val showSelectorDialog = SingleLiveEvent<SelectorDialogBuilder>()
     val navigateToFragment = SingleLiveEvent<FragmentTransaction>()
     val navigateToActivity = SingleLiveEvent<ActivityTransaction>()
     val handleIntent = SingleLiveEvent<Intent>()
@@ -50,7 +50,7 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
     fun onCoroutinesFailed(
         throwable: Throwable,
         defaultErrorMessage: String = getString(R.string.userFriendly_errorMessage),
-        @DrawableRes iconDrawable: Int? = R.drawable.ic_app_title
+        @DrawableRes iconDrawable: Int? = null
     ) {
         throwable.printStackTrace()
         if (showConnectionLostExceptionIfNeeded(throwable)) return
@@ -64,6 +64,7 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
             setBackground(R.drawable.bg_snackbar_error)
             if (icon != null) setLeftIcon(icon)
             setMessage(message)
+            setMessageColor(R.color.white)
         }
         showSnackBar(snackbar)
     }

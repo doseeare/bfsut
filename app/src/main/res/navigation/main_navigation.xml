@@ -9,17 +9,37 @@
         android:id="@+id/navigation_home"
         android:name="pro.breez.bfsut.ui.main.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/main_activity_to_add_credit"
+            app:destination="@id/nav_main_activity"
+            app:popUpTo="@id/navigation_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="pro.breez.bfsut.ui.main.dashboard.DashboardFragment"
+        android:name="pro.breez.bfsut.ui.main.log.LogFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="pro.breez.bfsut.ui.main.notifications.NotificationsFragment"
+        android:name="pro.breez.bfsut.ui.main.credit.CreditsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_credit_add"
+        android:name="pro.breez.bfsut.ui.main.add.CreditAddFragment"
+        android:label="Заявка на кредит"
+        tools:layout="@layout/fragment_credit_add" />
+
+    <activity
+        android:id="@+id/nav_main_activity"
+        android:name="pro.breez.bfsut.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main">
+
+
+    </activity>
 </navigation>

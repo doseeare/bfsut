@@ -5,6 +5,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import pro.breez.data.cache.DataPreference
 import pro.breez.data.rest.api.AuthApi
+import pro.breez.data.rest.api.MainApi
+import pro.breez.data.utility.adapter.HeaderInterceptor
 import pro.breez.data.utility.adapter.ResultCallAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -27,13 +29,8 @@ class RestClientImpl @Inject constructor(
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
         val okHttpClient = OkHttpClient.Builder()
+         //   .addInterceptor(HeaderInterceptor(dataPref))
             .addInterceptor(httpLoggingInterceptor)
-            .addInterceptor {
-                it.proceed(
-                    it.request().newBuilder()
-                        .addHeader("Authorization", "Bearer ${dataPref.token}").build()
-                )
-            }
             .readTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
             .connectTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
             .build()
@@ -51,5 +48,8 @@ class RestClientImpl @Inject constructor(
 
     override val authApi: AuthApi
         get() = retrofit.create(AuthApi::class.java)
+
+    override val mainApi: MainApi
+        get() = retrofit.create(MainApi::class.java)
 
 }

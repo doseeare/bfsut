@@ -4,7 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 /*
 import pro.breez.mobimarket.model.AlternativeAlertOptions
-import pro.breez.mobimarket.utility.alert.DialogBuilder
+import pro.breez.bfsut.util.alert.DialogBuilder
 
 interface AlternativeDialogBuilder:DialogBuilder {
     fun setTitle(title: String): AlternativeDialogBuilder

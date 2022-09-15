@@ -3,25 +3,56 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="0.22" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.2" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/bg_add_main.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/bg_auth_edittext.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/bg_auth_edittext_default.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/bg_auth_edittext_error.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/bg_base_button.xml" value="0.107" />
+        <entry key="app/src/main/res/drawable/bg_bottomnav.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/bg_credit.xml" value="0.126" />
+        <entry key="app/src/main/res/drawable/bg_main_bottom_nav.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/bg_secondery_button.xml" value="0.107" />
+        <entry key="app/src/main/res/drawable/bg_select_btn.xml" value="0.139" />
         <entry key="app/src/main/res/drawable/bg_snackbar_error.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/bg_splash.xml" value="0.22" />
+        <entry key="app/src/main/res/drawable/bg_tab.xml" value="0.126" />
         <entry key="app/src/main/res/drawable/default_snackbar_background.xml" value="0.107" />
+        <entry key="app/src/main/res/drawable/ic_app_title.xml" value="0.126" />
+        <entry key="app/src/main/res/drawable/ic_credit.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/ic_credit_request.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/ic_fab_plus.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/ic_home_selected.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/ic_milk.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/ic_milk_small.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/ic_password_hide.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/ic_password_show.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/selector_ic_credit.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/selector_ic_home.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/selector_ic_log.xml" value="0.1145" />
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.36354166666666665" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="app/src/main/res/layout/custom_snackbar.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/dialog_item_selector.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.14" />
+        <entry key="app/src/main/res/layout/fragment_credit_add.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.22735507246376813" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22735507246376813" />
+        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.22735507246376813" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/layout_registration_edittext.xml" value="0.2351313969571231" />
+        <entry key="app/src/main/res/layout/item_credit.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/item_selector.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/layout_add_credit_edittext.xml" value="0.22735507246376813" />
+        <entry key="app/src/main/res/layout/layout_add_menu.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/layout_registration_edittext.xml" value="0.22" />
         <entry key="app/src/main/res/layout/view_progress.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.36354166666666665" />
+        <entry key="app/src/main/res/menu/menu_main_add.xml" value="0.2" />
       </map>
     </option>
   </component>

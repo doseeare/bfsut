@@ -1,0 +1,47 @@
+package pro.breez.data.rest.api
+
+import pro.breez.domain.interactor.base.Result
+import pro.breez.domain.model.input.CreditModelIn
+import pro.breez.domain.model.output.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.POST
+
+interface MainApi {
+    @GET("v1/farmers")
+    fun getFarmers(
+        @Header("Authorization") token: String,
+    ): Result<List<FarmersModelOut>>
+
+    @GET("v1/mfsys/loan_products")
+    fun getProduct(
+        @Header("Authorization") token: String,
+    ): Result<List<ProductsModelOut>>
+
+    @GET("v1/mfsys/loan_categories")
+    fun getCategory(
+        @Header("Authorization") token: String,
+    ): Result<List<CategoryModelOut>>
+
+    @GET("v1/mfsys/loan_categories")
+    fun getDate(
+        @Header("Authorization") token: String,
+    ): Result<List<CategoryModelOut>>
+
+    @GET("v1/mfsys/loan_purposes")
+    fun getGoal(
+        @Header("Authorization") token: String,
+    ): Result<List<GoalModelOut>>
+
+    @GET("v1/credit/")
+    fun getCredits(
+        @Header("Authorization") token: String,
+    ): Result<List<CreditLogModelOut>>
+
+    @POST("v1/credit/")
+    fun postCredit(
+        @Header("Authorization") token: String,
+        @Body body : CreditModelIn
+    ): Result<CreditModelOut>
+}

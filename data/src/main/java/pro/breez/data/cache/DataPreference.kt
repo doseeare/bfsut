@@ -22,9 +22,9 @@ class DataPreference @Inject constructor(@ApplicationContext context: Context) {
         editor.apply()
     }
 
-    var token: String?
+    var token: String
         get() = preferences.getString("token", "")!!
         set(value) = preferences.edit {
-            it.putString("token", value)
+            it.putString("token", "Token $value")
         }
 }

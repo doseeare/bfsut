@@ -1,4 +1,4 @@
-package pro.breez.mobimarket.utility.alert
+package pro.breez.bfsut.util.alert
 
 import android.content.Context
 import androidx.annotation.StringRes

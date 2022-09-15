@@ -82,6 +82,18 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
                     false -> hideLoading()
                 }
             }
+
+            vm.showSelectorDialog.observe(viewLifecycleOwner) { builder ->
+                builder.showDialog(requireContext())
+            }
+        }
+    }
+
+    protected fun hideOrShowBottomNavigation(shouldHide: Boolean) {
+        if (shouldHide) {
+            (activity as? BaseActivity<*>)?.hideBottomNavigation()
+        } else {
+            (activity as? BaseActivity<*>)?.showBottomNavigation()
         }
     }
 

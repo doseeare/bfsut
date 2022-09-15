@@ -51,7 +51,7 @@
 
     </LinearLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/enter_btn"
         android:layout_width="match_parent"
         android:layout_height="46dp"
@@ -62,7 +62,7 @@
         android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@id/create_password" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/create_password"
         android:layout_width="match_parent"
         android:layout_height="36dp"

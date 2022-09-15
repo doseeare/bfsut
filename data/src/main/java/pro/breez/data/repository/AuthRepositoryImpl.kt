@@ -14,8 +14,9 @@ class AuthRepositoryImpl(
 
     override fun authUser(authBody: AuthModelIn): Result<AuthModelOut> {
         return restClient.authApi.authUser(authBody).apply {
-            dataPreference.token = out()?.access_token
+            performOnSuccess {
+                dataPreference.token = it.access_token
+            }
         }
     }
-
 }

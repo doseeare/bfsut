@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="RegistrationEditText">
+    <declare-styleable name="CustomEditText">
         <attr name="title" format="string" />
         <attr name="hint" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="RegistrationEditText" parent="CustomEditText">
+        <attr name="title" />
+        <attr name="hint" />
         <attr name="error" format="string" />
         <attr name="is_password" format="boolean" />
+    </declare-styleable>
+
+
+    <declare-styleable name="AddCreditEditText" parent="CustomEditText">
+        <attr name="title" />
+        <attr name="hint" />
+        <attr name="helper" format="string" />
+        <attr name="type" format="string" />
+    </declare-styleable>
+
+
+    <declare-styleable name="AddMenuView">
+        <attr name="icon" format="reference" />
+        <attr name="label" format="string" />
     </declare-styleable>
 
     <declare-styleable name="BaseMaterialButtonView">

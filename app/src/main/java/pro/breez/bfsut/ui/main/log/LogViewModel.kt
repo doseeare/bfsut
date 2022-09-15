@@ -1,11 +1,10 @@
-package pro.breez.bfsut.ui.main.dashboard
+package pro.breez.bfsut.ui.main.log
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import pro.breez.bfsut.base.BaseViewModel
 
-class DashboardViewModel : BaseViewModel() {
+class LogViewModel : BaseViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"

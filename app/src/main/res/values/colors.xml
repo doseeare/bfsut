@@ -7,10 +7,13 @@
     <color name="teal_700">#FF3E07</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gray_selected">#D1D1D1</color>
     <color name="text_bold_color">#0A0811</color>
     <color name="text_main_color">#787B8C</color>
     <color name="background_view_progress">#40000000</color>
     <color name="error_color">#FF4646</color>
     <color name="pattern_bg_color">#F5F5F5</color>
     <color name="bg_default_color">#BEC7D1</color>
+    <color name="black_text_color">#0A0811</color>
+
 </resources>

@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.viewbinding.ViewBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import pro.breez.bfsut.R
 import pro.breez.bfsut.exception.NavigationInitializationException
 import pro.breez.bfsut.model.navigation.ActivityTransaction
@@ -54,6 +56,17 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         if (activityTransaction.replace) {
             finish()
         }
+    }
+
+    fun hideBottomNavigation() {
+        val bottomNavigationBar = findViewById<CardView>(R.id.custom_nav) ?: return
+        bottomNavigationBar.animate().translationY(bottomNavigationBar.height.toFloat())
+            .setDuration(500).start()
+    }
+
+    fun showBottomNavigation() {
+        val bottomNavigationBar = findViewById<CardView>(R.id.custom_nav) ?: return
+        bottomNavigationBar.animate().translationY(0f).setDuration(500).start()
     }
 
     private fun initializeNavController(): NavController {

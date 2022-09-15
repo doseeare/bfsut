@@ -4,4 +4,5 @@ import pro.breez.data.rest.api.*
 
 interface RestClient {
     val authApi: AuthApi
+    val mainApi : MainApi
 }

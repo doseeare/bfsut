@@ -9,7 +9,7 @@ enum class SnackBarMessageOptions(
     val message: String,
     @DrawableRes val backgroundId: Int = R.drawable.ic_notifications_black_24dp,
     @ColorRes val messageTextColor: Int = R.color.white,
-    @DrawableRes val closeIcon: Int = R.drawable.ic_home_black_24dp,
+    @DrawableRes val closeIcon: Int = R.drawable.ic_home,
     val hideLeftSpace: Boolean = false
 ) {
 

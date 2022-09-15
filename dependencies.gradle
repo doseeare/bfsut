@@ -18,7 +18,9 @@ ext {
     javaxAnnotationVersion = '1.0'
     javaxInjectVersion = '1'
     viewBindingDelegeteVersion = "1.5.6"
-
+    sdpVer = '1.1.0'
+    sspVer = '1.1.0'
+    oneAdapterVer = '2.1.1'
 
     //library links
     presentationImpl = [
@@ -39,6 +41,9 @@ ext {
             coroutinesAndroid  : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_ver",
             livedata           : "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_ver",
             googleError : "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
+            sdp : "com.intuit.sdp:sdp-android:$sdpVer",
+            ssp : "com.intuit.ssp:ssp-android:$sspVer",
+            oneAdapter : "com.github.idanatz:OneAdapter:$oneAdapterVer",
     ]
 
     presentationKapt = [

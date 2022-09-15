@@ -2,7 +2,7 @@ package pro.breez.bfsut.util.alert.radio.select
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
-import pro.breez.mobimarket.utility.alert.DialogBuilder
+import pro.breez.bfsut.util.alert.DialogBuilder
 
 class RadioSelectDialogBuilderImpl : RadioSelectDialogBuilder {
     private var onSelect: ((Int) -> Unit)? = null
