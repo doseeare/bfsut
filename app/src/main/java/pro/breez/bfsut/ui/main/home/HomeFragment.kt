@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentHomeBinding
+import pro.breez.bfsut.ui.main.home.adapter.FarmersAdapter
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
@@ -13,11 +14,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         viewModel.hello.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
         }
+        initViews()
     }
 
-    override fun onResume() {
-        super.onResume()
-        hideOrShowBottomNavigation(false)
+    private fun initViews() {
+        binding.farmersRv.adapter = FarmersAdapter(viewModel.farmers.take(8) as ArrayList)
     }
 
 }

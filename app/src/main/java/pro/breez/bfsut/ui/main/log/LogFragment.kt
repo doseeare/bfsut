@@ -12,9 +12,5 @@ class LogFragment : BaseFragment<FragmentDashboardBinding, LogViewModel>() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        hideOrShowBottomNavigation(false)
-    }
 
 }

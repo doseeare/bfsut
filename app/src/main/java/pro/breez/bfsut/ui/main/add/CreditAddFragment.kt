@@ -12,7 +12,6 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        hideOrShowBottomNavigation(true)
         initViews()
         initObserver()
     }
@@ -33,6 +32,7 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
         dateLV.observe(viewLifecycleOwner) {
             binding.date.text = it.second
         }
+
     }
 
     private fun initViews() = with(binding) {

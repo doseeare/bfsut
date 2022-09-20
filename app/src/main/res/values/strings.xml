@@ -17,4 +17,6 @@
     <string name="send">Отправить</string>
     <string name="search">Поиск</string>
     <string name="select">Выбрать</string>
+    <string name="change_password">Изменить пароль</string>
+    <string name="need_to_check">Нужно обойти:</string>
 </resources>

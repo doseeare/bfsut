@@ -17,13 +17,9 @@ class CreditsFragment : BaseFragment<FragmentNotificationsBinding, CreditsViewMo
 
     private fun initViews() {
         viewModel.creditsLV.observe(viewLifecycleOwner) {
-            val adapter = CreditsAdapter(it)
+            val adapter = CreditsAdapter(it as ArrayList)
             binding.creditRv.adapter = adapter
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        hideOrShowBottomNavigation(false)
-    }
 }

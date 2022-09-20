@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
+    android:layout_marginHorizontal="@dimen/default_margins"
+    android:layout_marginTop="8dp"
     android:background="@drawable/bg_item_credit">
 
     <TextView
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
         android:text="28.25.51"
-        android:textColor="#5D5A70"
+        android:textColor="@color/text_gray_purple_color"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

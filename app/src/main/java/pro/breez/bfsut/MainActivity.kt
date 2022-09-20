@@ -3,6 +3,7 @@ package pro.breez.bfsut
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,11 +21,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             field = value
             if (value) {
                 binding.addMenu.visibility = View.VISIBLE
-                binding.fabBtn.foreground = getDrawable(R.drawable.bg_add_close)
-            }
-            else {
+                binding.fabBtn.foreground =
+                    ContextCompat.getDrawable(this, R.drawable.bg_add_close)
+            } else {
                 binding.addMenu.visibility = View.GONE
-                binding.fabBtn.foreground = getDrawable(R.drawable.bg_add_main)
+                binding.fabBtn.foreground =
+                    ContextCompat.getDrawable(this, R.drawable.bg_add_main)
             }
         }
 

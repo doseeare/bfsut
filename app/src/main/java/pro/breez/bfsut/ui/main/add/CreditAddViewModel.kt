@@ -32,11 +32,6 @@ open class CreditAddViewModel @Inject constructor(
     val dateOfPayment = SingleLiveEvent<String>()
     val sum = SingleLiveEvent<String>()
 
-    override fun onCreate(owner: LifecycleOwner) {
-        super.onCreate(owner)
-
-    }
-
     fun sendBtnClicked() {
         val postCreditBody = CreditModelIn(
             amount = sum.value!!,
@@ -105,6 +100,7 @@ open class CreditAddViewModel @Inject constructor(
 
     }
 
+    //todo поменять на список из сервара, когда будет
     fun dateClicked() {
         val list = ArrayList<Pair<String, String>>()
         list.add("1" to "3 месяца")

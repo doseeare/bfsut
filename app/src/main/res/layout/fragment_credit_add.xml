@@ -25,7 +25,7 @@
             android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:padding="@dimen/default_margins"
             android:text="Заявка на кредит"
             android:textColor="@color/black_text_color"
             android:textSize="21sp"
@@ -44,14 +44,14 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/default_margins"
         app:layout_constraintBottom_toTopOf="@id/send_btn"
         app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginHorizontal="16dp"
+            android:layout_marginHorizontal="@dimen/default_margins"
             android:layout_marginVertical="8dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -176,7 +176,7 @@
         android:id="@+id/send_btn"
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginHorizontal="@dimen/default_margins"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/bg_base_button"

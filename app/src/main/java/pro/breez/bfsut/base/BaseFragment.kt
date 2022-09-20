@@ -14,9 +14,13 @@ import androidx.viewbinding.ViewBinding
 import pro.breez.bfsut.R
 import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.bfsut.model.navigation.FragmentTransaction
+import pro.breez.bfsut.ui.main.credit.CreditsFragment
+import pro.breez.bfsut.ui.main.home.HomeFragment
+import pro.breez.bfsut.ui.main.log.LogFragment
 import java.lang.reflect.ParameterizedType
 
-abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
+abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
+    Fragment() {
 
     private var _binding: VB? = null
     protected val binding: VB get() = _binding!!
@@ -46,8 +50,18 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
         setupLoadingView()
     }
 
+    override fun onResume() {
+        super.onResume()
+        when (this) {
+            is HomeFragment,
+            is LogFragment,
+            is CreditsFragment -> hideOrShowBottomNavigation(false)
+            else -> hideOrShowBottomNavigation(true)
+        }
+    }
+
     private fun setupLoadingView() {
-        val view = LayoutInflater.from(context).inflate(R.layout.view_progress, (view as ViewGroup))
+        val view = LayoutInflater.from(context).inflate(R.layout.view_progress, (view as ViewGroup), false)
 
         loadingView = view.findViewById(R.id.progress_overlay)
         textViewLoadingMessage = view.findViewById(R.id.textView_progressMessage)
@@ -89,7 +103,8 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
         }
     }
 
-    protected fun hideOrShowBottomNavigation(shouldHide: Boolean) {
+    private fun hideOrShowBottomNavigation(shouldHide: Boolean?) {
+        if (shouldHide == null) return
         if (shouldHide) {
             (activity as? BaseActivity<*>)?.hideBottomNavigation()
         } else {

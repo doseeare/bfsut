@@ -15,7 +15,6 @@ class AddMenuView(context: Context, attributeSet: AttributeSet?, defStyle: Int) 
     private val binding =
         LayoutAddMenuBinding.inflate(LayoutInflater.from(context), this, true)
 
-
     init {
         attributeSet?.let {
             val attr =
