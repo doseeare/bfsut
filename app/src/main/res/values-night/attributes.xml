@@ -18,7 +18,10 @@
         <attr name="title" />
         <attr name="hint" />
         <attr name="helper" format="string" />
-        <attr name="type" format="string" />
+        <attr name="type">
+            <flag name="field" value="0" />
+            <flag name="drop" value="1" />
+        </attr>
     </declare-styleable>
 
 
@@ -30,6 +33,10 @@
     <declare-styleable name="AddMenuView">
         <attr name="icon" format="reference" />
         <attr name="label" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="Toolbar">
+        <attr name="toolbarLabel" format="string" />
     </declare-styleable>
 
     <declare-styleable name="ButtonDrawableView">

@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseFragment
-import pro.breez.bfsut.databinding.FragmentNotificationsBinding
+import pro.breez.bfsut.databinding.FragmentCreditsBinding
 import pro.breez.bfsut.ui.main.credit.adapter.CreditsAdapter
 
 @AndroidEntryPoint
-class CreditsFragment : BaseFragment<FragmentNotificationsBinding, CreditsViewModel>() {
+class CreditsFragment : BaseFragment<FragmentCreditsBinding, CreditsViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

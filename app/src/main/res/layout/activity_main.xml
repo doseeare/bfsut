@@ -47,6 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margins"
+        android:elevation="@dimen/default_margins"
         android:visibility="gone"
         app:cardCornerRadius="@dimen/default_margins"
         app:layout_constraintBottom_toTopOf="@id/custom_nav">
@@ -61,7 +62,7 @@
                 android:id="@+id/add_milk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/ic_milk_p"
+                app:icon="@drawable/ic_milk_icon"
                 app:label="Сбор молока" />
 
             <pro.breez.bfsut.custom.view.AddMenuView

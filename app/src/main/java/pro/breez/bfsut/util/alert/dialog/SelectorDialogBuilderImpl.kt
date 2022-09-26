@@ -6,7 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import pro.breez.bfsut.databinding.DialogItemSelectorBinding
-import pro.breez.bfsut.ui.main.add.adapter.SelectorItemAdapter
+import pro.breez.bfsut.ui.main.add_credit.adapter.SelectorItemAdapter
 
 class SelectorDialogBuilderImpl(
     private val list: List<Pair<String, String>>,

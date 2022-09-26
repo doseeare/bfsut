@@ -3,10 +3,7 @@ package pro.breez.data.rest.api
 import pro.breez.domain.interactor.base.Result
 import pro.breez.domain.model.input.CreditModelIn
 import pro.breez.domain.model.output.*
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface MainApi {
     @GET("v1/farmers")
@@ -14,9 +11,10 @@ interface MainApi {
         @Header("Authorization") token: String,
     ): Result<List<FarmersModelOut>>
 
-    @GET("v1/mfsys/loan_products")
+    @POST("v1/mfsys/loan_products")
     fun getProduct(
         @Header("Authorization") token: String,
+        @Query("purpose_id") id: String
     ): Result<List<ProductsModelOut>>
 
     @GET("v1/mfsys/loan_categories")
@@ -42,6 +40,6 @@ interface MainApi {
     @POST("v1/credit/")
     fun postCredit(
         @Header("Authorization") token: String,
-        @Body body : CreditModelIn
+        @Body body: CreditModelIn
     ): Result<CreditModelOut>
 }

@@ -14,23 +14,34 @@
             android:id="@+id/main_activity_to_add_credit"
             app:destination="@id/nav_main_activity"
             app:popUpTo="@id/navigation_home" />
+
+        <action
+            android:id="@+id/home_fragment_to_all_farmers"
+            app:destination="@id/navigation_all_farmers"
+            app:popUpTo="@id/navigation_home" />
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_log"
         android:name="pro.breez.bfsut.ui.main.log.LogFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:label="@string/title_log"
+        tools:layout="@layout/fragment_log" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_all_farmers"
+        android:name="pro.breez.bfsut.ui.main.all_farmers.AllFarmersFragment"
+        android:label="Мои фермеры"
+        tools:layout="@layout/fragment_all_farmers" />
+
+    <fragment
+        android:id="@+id/navigation_credits"
         android:name="pro.breez.bfsut.ui.main.credit.CreditsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:label="@string/title_credits"
+        tools:layout="@layout/fragment_credits" />
 
     <fragment
         android:id="@+id/navigation_credit_add"
-        android:name="pro.breez.bfsut.ui.main.add.CreditAddFragment"
+        android:name="pro.breez.bfsut.ui.main.add_credit.CreditAddFragment"
         android:label="Заявка на кредит"
         tools:layout="@layout/fragment_credit_add" />
 
@@ -39,7 +50,6 @@
         android:name="pro.breez.bfsut.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main">
-
 
     </activity>
 </navigation>

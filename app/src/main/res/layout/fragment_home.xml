@@ -147,12 +147,13 @@
                     tools:listitem="@layout/item_farmer_need_to_check" />
 
                 <TextView
+                    android:id="@+id/show_more_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="@dimen/default_margins"
-                    android:text="Показать еще"
-                    android:textColor="@color/text_gray_purple_color"
+                    android:text="@string/show_more"
+                    android:textColor="@color/text_bold_color"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -172,7 +173,7 @@
             app:drawable_end="@drawable/ic_red_right_arrow"
             app:layout_constraintBottom_toBottomOf="parent"
             app:text="Все фермеры"
-            app:text_color="@color/text_gray_purple_color"
+            app:text_color="@color/text_bold_color"
             app:text_size="18"
             app:text_style="bold" />
 

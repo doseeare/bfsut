@@ -1,7 +1,9 @@
 package pro.breez.bfsut.base
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -10,10 +12,12 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.delay
 import pro.breez.bfsut.R
 import pro.breez.bfsut.exception.NavigationInitializationException
 import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.bfsut.model.navigation.FragmentTransaction
+import java.lang.Thread.sleep
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
@@ -62,11 +66,13 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         val bottomNavigationBar = findViewById<CardView>(R.id.custom_nav) ?: return
         bottomNavigationBar.animate().translationY(bottomNavigationBar.height.toFloat())
             .setDuration(500).start()
+        bottomNavigationBar.visibility = View.GONE
     }
 
     fun showBottomNavigation() {
         val bottomNavigationBar = findViewById<CardView>(R.id.custom_nav) ?: return
         bottomNavigationBar.animate().translationY(0f).setDuration(500).start()
+        bottomNavigationBar.visibility = View.VISIBLE
     }
 
     private fun initializeNavController(): NavController {

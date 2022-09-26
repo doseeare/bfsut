@@ -1,6 +1,5 @@
-package pro.breez.bfsut.ui.main.add
+package pro.breez.bfsut.ui.main.add_credit
 
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
@@ -36,12 +35,13 @@ open class CreditAddViewModel @Inject constructor(
         val postCreditBody = CreditModelIn(
             amount = sum.value!!,
             category = categoryLV.value!!.first.toInt(),
-            customerID = farmerLV.value!!.first,
-            datePay = 0,
+            customer = farmerLV.value!!.first,
+            date_pay = 0,
             period = 0,
-            productBankID = productLV.value!!.first.toInt(),
-            purposeComment = commentOfGoal.value!!,
-            purposeID = goalLV.value!!.first.toInt()
+            product_bank = productLV.value!!.first.toInt(),
+            purpose_comment = commentOfGoal.value!!,
+            purpose = goalLV.value!!.first.toInt(),
+            date_disburse_plan = dateOfPayment.value!!
         )
         postCreditUseCase.execute(viewModelScope, postCreditBody) {
             handleResult(it) {
@@ -65,7 +65,7 @@ open class CreditAddViewModel @Inject constructor(
 
     fun productClicked() {
         showLoadingView()
-        productUseCase.execute(viewModelScope) {
+        productUseCase.execute(viewModelScope, goalLV.value?.first) {
             handleResult(it) { list ->
                 val selector = SelectorDialogBuilderImpl(list) { selectedProduct ->
                     productLV.postValue(selectedProduct)

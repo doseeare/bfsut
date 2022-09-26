@@ -7,10 +7,10 @@ import javax.inject.Inject
 
 class ProductUseCase @Inject constructor(
     private val mainRepository: MainRepository
-) : UseCase<List<Pair<String, String>>, Void>() {
+) : UseCase<List<Pair<String, String>>, String>() {
 
-    override suspend fun doOnBackground(params: Void?): Result<List<Pair<String, String>>> {
-        return mainRepository.getProduct()
+    override suspend fun doOnBackground(params: String?): Result<List<Pair<String, String>>> {
+        return mainRepository.getProduct(params!!)
     }
 
 }

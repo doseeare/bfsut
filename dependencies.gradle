@@ -44,6 +44,8 @@ ext {
             sdp : "com.intuit.sdp:sdp-android:$sdpVer",
             ssp : "com.intuit.ssp:ssp-android:$sspVer",
             oneAdapter : "com.github.idanatz:OneAdapter:$oneAdapterVer",
+            smartTabLayout : "com.ogaclejapan.smarttablayout:library:2.0.0@aar",
+            smartTabLayoutUtil : "com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar"
     ]
 
     presentationKapt = [

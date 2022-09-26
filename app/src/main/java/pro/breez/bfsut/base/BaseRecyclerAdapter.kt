@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
-abstract class GenericRecyclerAdapter<VB : ViewBinding, M>(var items: ArrayList<M>) :
+abstract class BaseRecyclerAdapter<VB : ViewBinding, M>(var items: ArrayList<M>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val type = (javaClass.genericSuperclass as ParameterizedType)

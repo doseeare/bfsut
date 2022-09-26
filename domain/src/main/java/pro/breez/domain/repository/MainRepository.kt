@@ -7,7 +7,7 @@ import pro.breez.domain.model.output.CreditModelOut
 
 interface MainRepository {
     fun getFarmers(): Result<List<Pair<String, String>>>
-    fun getProduct(): Result<List<Pair<String, String>>>
+    fun getProduct(id : String): Result<List<Pair<String, String>>>
     fun getCategory(): Result<List<Pair<String, String>>>
     fun getDate(): Result<List<Pair<String, String>>>
     fun getGoal(): Result<List<Pair<String, String>>>

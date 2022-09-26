@@ -1,4 +1,4 @@
-package pro.breez.bfsut.ui.main.add.adapter
+package pro.breez.bfsut.ui.main.add_credit.adapter
 
 import android.view.LayoutInflater
 import android.view.View

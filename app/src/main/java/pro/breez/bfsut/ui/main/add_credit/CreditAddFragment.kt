@@ -1,4 +1,4 @@
-package pro.breez.bfsut.ui.main.add
+package pro.breez.bfsut.ui.main.add_credit
 
 import android.os.Bundle
 import android.view.View
@@ -32,11 +32,10 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
         dateLV.observe(viewLifecycleOwner) {
             binding.date.text = it.second
         }
-
     }
 
     private fun initViews() = with(binding) {
-        toolbarBackBtn.setOnClickListener {
+        toolbar.setOnBackClickListener {
             viewModel.popBackStack.startEvent(R.id.navigation_home)
         }
         farmer.onClicked = {

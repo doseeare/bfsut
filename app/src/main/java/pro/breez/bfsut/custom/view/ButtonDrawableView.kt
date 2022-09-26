@@ -17,24 +17,13 @@ class ButtonDrawableView(context: Context, attributeSet: AttributeSet?, defStyle
     private val binding =
         LayoutButtonDrawableBinding.inflate(LayoutInflater.from(context), this, true)
 
-    /*    <attr name="text" format="string" />
-        <attr name="drawable_end" format="reference" />
-        <attr name="drawable_start" format="reference" />
-        <attr name="button_background" format="reference" />
-        <attr name="text_color" format="reference" />
-        <attr name="text_size" format="dimension" />
-        <attr name="text_style" format="dimension">
-        <flag name="normal" value="0" />
-        <flag name="bold" value="1" />
-        <flag name="italic" value="2" />*/
-
-    var onClicked: (() -> Unit)? = null
+    fun setOnClickListener(block: () -> Unit) {
+        binding.rootLayout.setOnClickListener {
+            block.invoke()
+        }
+    }
 
     init {
-        binding.rootLayout.setOnClickListener {
-            onClicked?.invoke()
-        }
-
         attributeSet?.let {
             val attr =
                 context.obtainStyledAttributes(attributeSet, R.styleable.ButtonDrawableView)

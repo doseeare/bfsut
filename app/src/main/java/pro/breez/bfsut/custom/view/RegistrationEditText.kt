@@ -66,7 +66,7 @@ class RegistrationEditText(context: Context, attributeSet: AttributeSet?, defSty
             }
 
             attr.getString(R.styleable.RegistrationEditText_title)?.let {
-                binding.title.text = it
+                binding.titleTv.text = it
             }
 
             attr.getString(R.styleable.RegistrationEditText_error)?.let {

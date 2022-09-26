@@ -43,7 +43,7 @@ class AddCreditEditText(context: Context, attributeSet: AttributeSet?, defStyle:
             }
 
             attr.getString(R.styleable.AddCreditEditText_title)?.let {
-                binding.title.setText(it)
+                binding.titleTv.setText(it)
             }
 
             attr.getString(R.styleable.AddCreditEditText_helper)?.let {
@@ -51,12 +51,12 @@ class AddCreditEditText(context: Context, attributeSet: AttributeSet?, defStyle:
                 binding.helper.text = it
             }
 
-            attr.getString(R.styleable.AddCreditEditText_type).let {
+            attr.getInt(R.styleable.AddCreditEditText_type, 0).let {
                 when (it) {
-                    "field" -> {
+                    0 -> {
                         binding.rootButton.visibility = View.GONE
                     }
-                    "drop" -> {
+                    1 -> {
                         binding.edittext.isEnabled = false
                         binding.dropImg.visibility = View.VISIBLE
                         binding.rootButton.visibility = View.VISIBLE

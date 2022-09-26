@@ -21,8 +21,8 @@ class MainRepositoryImpl(
         }
     }
 
-    override fun getProduct(): Result<List<Pair<String, String>>> {
-        return restClient.mainApi.getProduct(dataPreference.token).map {
+    override fun getProduct(id: String): Result<List<Pair<String, String>>> {
+        return restClient.mainApi.getProduct(dataPreference.token, id).map {
             it.map { product ->
                 product.id.toString() to product.name
             }
@@ -48,7 +48,7 @@ class MainRepositoryImpl(
     override fun getGoal(): Result<List<Pair<String, String>>> {
         return restClient.mainApi.getGoal(dataPreference.token).map {
             it.map { goal ->
-                goal.id.toString() to goal.name
+                goal.mfsys_id to goal.name
             }
         }
     }
@@ -57,7 +57,7 @@ class MainRepositoryImpl(
         return restClient.mainApi.getCredits(dataPreference.token)
     }
 
-    override fun postCredit(body : CreditModelIn): Result<CreditModelOut> {
+    override fun postCredit(body: CreditModelIn): Result<CreditModelOut> {
         return restClient.mainApi.postCredit(dataPreference.token, body)
     }
 }

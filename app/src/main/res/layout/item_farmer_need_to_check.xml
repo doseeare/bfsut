@@ -21,9 +21,10 @@
 
     <ImageView
         android:id="@+id/milk_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
         android:layout_margin="@dimen/default_margins"
+        android:src="@drawable/ic_add_milk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

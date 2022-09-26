@@ -17,6 +17,9 @@ import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.ui.main.credit.CreditsFragment
 import pro.breez.bfsut.ui.main.home.HomeFragment
 import pro.breez.bfsut.ui.main.log.LogFragment
+import pro.breez.bfsut.ui.main.log.pager.active.ActiveLogFragment
+import pro.breez.bfsut.ui.main.log.pager.all.AllLogFragment
+import pro.breez.bfsut.ui.main.log.pager.calculated.CalculatedLogFragment
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
@@ -53,6 +56,9 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
     override fun onResume() {
         super.onResume()
         when (this) {
+            is ActiveLogFragment,
+            is CalculatedLogFragment,
+            is AllLogFragment,
             is HomeFragment,
             is LogFragment,
             is CreditsFragment -> hideOrShowBottomNavigation(false)
@@ -61,7 +67,12 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
     }
 
     private fun setupLoadingView() {
-        val view = LayoutInflater.from(context).inflate(R.layout.view_progress, (view as ViewGroup), false)
+        val view = LayoutInflater
+            .from(context)
+            .inflate(
+                R.layout.view_progress,
+                (view as ViewGroup), false
+            )
 
         loadingView = view.findViewById(R.id.progress_overlay)
         textViewLoadingMessage = view.findViewById(R.id.textView_progressMessage)

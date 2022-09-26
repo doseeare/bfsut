@@ -10,7 +10,7 @@
         android:layout_width="18dp"
         android:layout_marginEnd="6dp"
         android:layout_height="18dp"
-        tools:src="@drawable/ic_milk"
+        tools:src="@drawable/ic_add_milk"
         app:layout_constraintBottom_toBottomOf="@id/label"
         app:layout_constraintEnd_toStartOf="@id/label"
         app:layout_constraintTop_toTopOf="@id/label" />
