@@ -14,11 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bfsut">
         <activity
-            android:name=".ui.auth.activity.AuthActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.auth.activity.AuthActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:label="@string/app_name">

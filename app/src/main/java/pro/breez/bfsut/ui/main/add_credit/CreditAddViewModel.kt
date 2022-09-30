@@ -8,6 +8,10 @@ import pro.breez.bfsut.helper.SingleLiveEvent
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilderImpl
 import pro.breez.domain.interactor.*
 import pro.breez.domain.model.input.CreditModelIn
+import pro.breez.domain.model.output.CategoryModelOut
+import pro.breez.domain.model.output.FarmersModelOut
+import pro.breez.domain.model.output.GoalModelOut
+import pro.breez.domain.model.output.ProductsModelOut
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,27 +25,31 @@ open class CreditAddViewModel @Inject constructor(
 
 ) : BaseViewModel() {
 
-    val farmerLV = SingleLiveEvent<Pair<String, String>>()
-    val productLV = SingleLiveEvent<Pair<String, String>>()
-    val categoryLV = SingleLiveEvent<Pair<String, String>>()
-    val goalLV = SingleLiveEvent<Pair<String, String>>()
+    val farmerLV = SingleLiveEvent<FarmersModelOut>()
+    val productLV = SingleLiveEvent<ProductsModelOut>()
+    val categoryLV = SingleLiveEvent<CategoryModelOut>()
+    val goalLV = SingleLiveEvent<GoalModelOut>()
     val dateLV = SingleLiveEvent<Pair<String, String>>()
 
     val commentOfGoal = SingleLiveEvent<String>()
     val dateOfPayment = SingleLiveEvent<String>()
     val sum = SingleLiveEvent<String>()
 
-    fun sendBtnClicked() {
+    fun sendBtnClicked(fieldsNotEmpty: Boolean) {
+        if (!fieldsNotEmpty) {
+            showErrorSnackbar("Заполните все поля"); return
+        }
+
         val postCreditBody = CreditModelIn(
             amount = sum.value!!,
-            category = categoryLV.value!!.first.toInt(),
-            customer = farmerLV.value!!.first,
-            date_pay = 0,
-            period = 0,
-            product_bank = productLV.value!!.first.toInt(),
+            category = categoryLV.value!!.id,
+            customer = farmerLV.value!!.id,
+            date_pay = dateOfPayment.value!!.toInt(),
+            period = 12,
+            product_bank = productLV.value!!.id,
             purpose_comment = commentOfGoal.value!!,
-            purpose = goalLV.value!!.first.toInt(),
-            date_disburse_plan = dateOfPayment.value!!
+            purpose = goalLV.value!!.id,
+            date_disburse_plan = "2022-09-27" //поменять когда подключат
         )
         postCreditUseCase.execute(viewModelScope, postCreditBody) {
             handleResult(it) {
@@ -54,7 +62,9 @@ open class CreditAddViewModel @Inject constructor(
         showLoadingView()
         farmersUseCase.execute(viewModelScope) {
             handleResult(it) { list ->
-                val selector = SelectorDialogBuilderImpl(list) { selectedFarmer ->
+                val textFieldList =
+                    list.map { "${it.first_name} ${it.father_name} ${it.last_name}" }
+                val selector = SelectorDialogBuilderImpl(list, textFieldList) { selectedFarmer ->
                     farmerLV.postValue(selectedFarmer)
                 }
                 showSelectorDialog.startEvent(selector)
@@ -65,9 +75,11 @@ open class CreditAddViewModel @Inject constructor(
 
     fun productClicked() {
         showLoadingView()
-        productUseCase.execute(viewModelScope, goalLV.value?.first) {
+        productUseCase.execute(viewModelScope, goalLV.value?.mfsys_id) {
             handleResult(it) { list ->
-                val selector = SelectorDialogBuilderImpl(list) { selectedProduct ->
+                val textFieldList =
+                    list.map { it.name }
+                val selector = SelectorDialogBuilderImpl(list, textFieldList) { selectedProduct ->
                     productLV.postValue(selectedProduct)
                 }
                 showSelectorDialog.startEvent(selector)
@@ -79,7 +91,9 @@ open class CreditAddViewModel @Inject constructor(
         showLoadingView()
         goalUseCase.execute(viewModelScope) {
             handleResult(it) { list ->
-                val selector = SelectorDialogBuilderImpl(list) { selectedProduct ->
+                val textFieldList =
+                    list.map { it.name }
+                val selector = SelectorDialogBuilderImpl(list, textFieldList) { selectedProduct ->
                     goalLV.postValue(selectedProduct)
                 }
                 showSelectorDialog.startEvent(selector)
@@ -91,7 +105,10 @@ open class CreditAddViewModel @Inject constructor(
         showLoadingView()
         categoryUseCase.execute(viewModelScope) {
             handleResult(it) { list ->
-                val selector = SelectorDialogBuilderImpl(list) { selectedProduct ->
+                val textFieldList =
+                    list.map { it.name }
+                val selector = SelectorDialogBuilderImpl(list, textFieldList) { selectedProduct ->
+
                     categoryLV.postValue(selectedProduct)
                 }
                 showSelectorDialog.startEvent(selector)
@@ -107,7 +124,9 @@ open class CreditAddViewModel @Inject constructor(
         list.add("1" to "6 месяцев")
         list.add("1" to "9 месяцев")
         list.add("1" to "12 месяцев")
-        val selector = SelectorDialogBuilderImpl(list) { selectedProduct ->
+
+        val textField = list.map { it.second }
+        val selector = SelectorDialogBuilderImpl(list, textField) { selectedProduct ->
             dateLV.postValue(selectedProduct)
         }
         showSelectorDialog.startEvent(selector)

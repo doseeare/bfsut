@@ -28,6 +28,9 @@ class AddCreditEditText(context: Context, attributeSet: AttributeSet?, defStyle:
             return binding.edittext.text.toString()
         }
 
+    val isFieldEmpty :Boolean
+        get() = binding.edittext.text.isNullOrEmpty()
+
     var onTextChanged: (String) -> Unit = { }
 
     init {

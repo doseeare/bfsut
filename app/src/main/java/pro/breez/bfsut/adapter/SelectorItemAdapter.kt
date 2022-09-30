@@ -1,4 +1,4 @@
-package pro.breez.bfsut.ui.main.add_credit.adapter
+package pro.breez.bfsut.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,13 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.ItemSelectorBinding
 
-class SelectorItemAdapter(
-    private var itemList: List<Pair<String, String>>,
+class SelectorItemAdapter<T>(
+    private var itemList: List<T>,
+    private val textField: List<String>,
     private val activeBtn: () -> Unit
 ) :
-    RecyclerView.Adapter<SelectorItemAdapter.SelectorViewHolder>() {
+    RecyclerView.Adapter<SelectorItemAdapter<T>.SelectorViewHolder>() {
     private var lastCheckedPos = -1
-    private var selectedItem: Pair<String, String>? = null
+    private var selectedItem: T? = null
         set(value) {
             field = value
             activeBtn.invoke()
@@ -38,9 +39,9 @@ class SelectorItemAdapter(
 
     inner class SelectorViewHolder(private val binding: ItemSelectorBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Pair<String, String>, position: Int) {
+        fun bind(item: T, position: Int) {
             binding.apply {
-                nameTv.text = item.second
+                nameTv.text = textField[position]
                 root.setSelect(lastCheckedPos == position, position)
                 root.setOnClickListener {
                     val copyLastPos = lastCheckedPos

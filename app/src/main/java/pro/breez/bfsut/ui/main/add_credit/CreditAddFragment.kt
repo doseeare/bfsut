@@ -18,16 +18,16 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
 
     private fun initObserver() = with(viewModel) {
         farmerLV.observe(viewLifecycleOwner) {
-            binding.farmer.text = it.second
+            binding.farmer.text = "${it.first_name} ${it.father_name} ${it.last_name}"
         }
         productLV.observe(viewLifecycleOwner) {
-            binding.product.text = it.second
+            binding.product.text = it.name
         }
         categoryLV.observe(viewLifecycleOwner) {
-            binding.category.text = it.second
+            binding.category.text = it.name
         }
         goalLV.observe(viewLifecycleOwner) {
-            binding.goal.text = it.second
+            binding.goal.text = it.name
         }
         dateLV.observe(viewLifecycleOwner) {
             binding.date.text = it.second
@@ -55,7 +55,7 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
         }
 
         sendBtn.setOnClickListener {
-            viewModel.sendBtnClicked()
+            viewModel.sendBtnClicked(fieldsNotEmpty())
         }
 
         commentsOfGoal.onTextChanged = {
@@ -67,5 +67,22 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
         sum.onTextChanged = {
             viewModel.sum.postEvent(it)
         }
+    }
+
+    private fun fieldsNotEmpty(): Boolean {
+        val fields = listOf(
+            binding.farmer,
+            binding.goal,
+            binding.commentsOfGoal,
+            binding.product,
+            binding.category,
+            binding.date,
+            binding.dateOfPayment,
+            binding.sum
+        )
+        for (field in fields) {
+            if (field.isFieldEmpty) return false
+        }
+        return true
     }
 }

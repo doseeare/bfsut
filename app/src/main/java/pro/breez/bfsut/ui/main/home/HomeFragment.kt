@@ -6,7 +6,7 @@ import android.widget.Toast
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentHomeBinding
-import pro.breez.bfsut.ui.main.home.adapter.FarmersAdapter
+import pro.breez.bfsut.adapter.FarmersAdapter
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {

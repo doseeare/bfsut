@@ -7,9 +7,9 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentLogBinding
-import pro.breez.bfsut.ui.main.log.pager.active.ActiveLogFragment
-import pro.breez.bfsut.ui.main.log.pager.all.AllLogFragment
-import pro.breez.bfsut.ui.main.log.pager.calculated.CalculatedLogFragment
+import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
+import pro.breez.bfsut.ui.main.all_logs.AllLogFragment
+import pro.breez.bfsut.ui.main.paid_logs.PaidLogsFragment
 
 class LogFragment : BaseFragment<FragmentLogBinding, LogViewModel>() {
 
@@ -44,7 +44,7 @@ class LogFragment : BaseFragment<FragmentLogBinding, LogViewModel>() {
     private fun createTabs(): FragmentPagerItems {
         val creator = FragmentPagerItems.with(requireContext())
         creator.add("Активные", ActiveLogFragment::class.java)
-        creator.add("Рассчитано", CalculatedLogFragment::class.java)
+        creator.add("Рассчитано", PaidLogsFragment::class.java)
         creator.add("Все", AllLogFragment::class.java)
         return creator.create()
     }

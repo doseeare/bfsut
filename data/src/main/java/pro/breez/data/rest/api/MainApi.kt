@@ -22,6 +22,7 @@ interface MainApi {
         @Header("Authorization") token: String,
     ): Result<List<CategoryModelOut>>
 
+    //todo не работает, не используется.
     @GET("v1/mfsys/loan_categories")
     fun getDate(
         @Header("Authorization") token: String,
@@ -42,4 +43,12 @@ interface MainApi {
         @Header("Authorization") token: String,
         @Body body: CreditModelIn
     ): Result<CreditModelOut>
+
+    @GET("v1/journal/")
+    fun getActiveLogs(
+        @Header("Authorization") token: String,
+        @Query("status") status: String
+    ): Result<List<LogsModelOut>>
+
+
 }

@@ -7,10 +7,12 @@ import dagger.hilt.components.SingletonComponent
 import pro.breez.bfsut.BuildConfig.BASE_URL
 import pro.breez.data.cache.DataPreference
 import pro.breez.data.repository.AuthRepositoryImpl
+import pro.breez.data.repository.LogsRepositoryImpl
 import pro.breez.data.repository.MainRepositoryImpl
 import pro.breez.data.rest.RestClient
 import pro.breez.data.rest.RestClientImpl
 import pro.breez.domain.repository.AuthRepository
+import pro.breez.domain.repository.LogsRepository
 import pro.breez.domain.repository.MainRepository
 import javax.inject.Singleton
 
@@ -40,6 +42,14 @@ class SingletonModule {
         dataPref: DataPreference
     ): MainRepository {
         return MainRepositoryImpl(restClient, dataPref)
+    }
+
+    @Provides
+    fun provideLogsRepository(
+        restClient: RestClient,
+        dataPref: DataPreference
+    ): LogsRepository {
+        return LogsRepositoryImpl(restClient, dataPref)
     }
 
 }

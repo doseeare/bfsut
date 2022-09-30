@@ -5,7 +5,7 @@ import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentAllFarmersBinding
-import pro.breez.bfsut.ui.main.all_farmers.adapter.AllFarmerAdapter
+import pro.breez.bfsut.adapter.AllFarmerAdapter
 
 
 @AndroidEntryPoint

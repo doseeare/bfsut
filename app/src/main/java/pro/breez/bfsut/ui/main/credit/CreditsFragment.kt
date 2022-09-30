@@ -5,7 +5,7 @@ import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentCreditsBinding
-import pro.breez.bfsut.ui.main.credit.adapter.CreditsAdapter
+import pro.breez.bfsut.adapter.CreditsAdapter
 
 @AndroidEntryPoint
 class CreditsFragment : BaseFragment<FragmentCreditsBinding, CreditsViewModel>() {

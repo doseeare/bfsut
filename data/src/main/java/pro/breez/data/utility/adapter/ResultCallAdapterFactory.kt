@@ -48,11 +48,11 @@ class ResultCallAdapterFactory private constructor() : CallAdapter.Factory() {
 
     private class ResultCallAdapter<T>(
         private val responseType: Type
-    ) : CallAdapter<T, pro.breez.domain.interactor.base.Result<T>> {
+    ) : CallAdapter<T, Result<T>> {
 
         override fun responseType(): Type = responseType
 
-        override fun adapt(call: Call<T>): pro.breez.domain.interactor.base.Result<T> {
+        override fun adapt(call: Call<T>): Result<T> {
             val urlBuilder = "https://clients1.google.com/generate_204".toHttpUrlOrNull()!!
             val request = Request.Builder()
             request.url(urlBuilder)
@@ -77,7 +77,7 @@ class ResultCallAdapterFactory private constructor() : CallAdapter.Factory() {
                                         ErrorsResponse::class.java
                                     )
 
-                                    pro.breez.domain.interactor.base.Result.Exception(
+                                    Result.Exception(
                                         HttpException(
                                             response.code(),
                                             error.data[0].message
@@ -90,14 +90,14 @@ class ResultCallAdapterFactory private constructor() : CallAdapter.Factory() {
                                     )
 
                                     if (response.code() == 401) {
-                                        pro.breez.domain.interactor.base.Result.Exception(
+                                        Result.Exception(
                                             UnauthorizedError(
                                                 response.code(),
                                                 error.data.message
                                             )
                                         )
                                     } else
-                                        pro.breez.domain.interactor.base.Result.Exception(
+                                        Result.Exception(
                                             HttpException(
                                                 response.code(),
                                                 error.data.message
@@ -107,13 +107,13 @@ class ResultCallAdapterFactory private constructor() : CallAdapter.Factory() {
                             }
                         }
                     } catch (throwable: Throwable) {
-                        pro.breez.domain.interactor.base.Result.Exception(throwable)
+                        Result.Exception(throwable)
                     }
                 } else {
-                    pro.breez.domain.interactor.base.Result.Exception(ConnectionLostException())
+                    Result.Exception(ConnectionLostException())
                 }
             } catch (throwable: Throwable) {
-                return pro.breez.domain.interactor.base.Result.Exception(ConnectionLostException())
+                return Result.Exception(ConnectionLostException())
             }
         }
     }

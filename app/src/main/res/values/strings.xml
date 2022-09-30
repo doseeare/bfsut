@@ -22,4 +22,6 @@
     <string name="show_more">Показать еще</string>
     <string name="my_farmer">Мои фермеры</string>
     <string name="milk_collection">Сборы молока</string>
+    <string name="choose_logs">Выберите записи сбора молока</string>
+    <string name="make_calculate">Произвести расчет</string>
 </resources>

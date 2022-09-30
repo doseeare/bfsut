@@ -4,22 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.annotation.IdRes
-import androidx.annotation.StringRes
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.createViewModelLazy
 import androidx.viewbinding.ViewBinding
-import pro.breez.bfsut.R
-import pro.breez.bfsut.model.navigation.ActivityTransaction
-import pro.breez.bfsut.model.navigation.FragmentTransaction
-import pro.breez.bfsut.ui.main.credit.CreditsFragment
-import pro.breez.bfsut.ui.main.home.HomeFragment
-import pro.breez.bfsut.ui.main.log.LogFragment
-import pro.breez.bfsut.ui.main.log.pager.active.ActiveLogFragment
-import pro.breez.bfsut.ui.main.log.pager.all.AllLogFragment
-import pro.breez.bfsut.ui.main.log.pager.calculated.CalculatedLogFragment
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseContainerFragment<VB : ViewBinding> :

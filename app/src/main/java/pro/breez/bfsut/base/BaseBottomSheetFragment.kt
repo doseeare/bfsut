@@ -11,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.createViewModelLazy
 import androidx.viewbinding.ViewBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import pro.breez.bfsut.R
 import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.bfsut.model.navigation.FragmentTransaction
@@ -22,8 +23,8 @@ import pro.breez.bfsut.ui.main.all_logs.AllLogFragment
 import pro.breez.bfsut.ui.main.paid_logs.PaidLogsFragment
 import java.lang.reflect.ParameterizedType
 
-abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
-    Fragment() {
+abstract class BaseBottomSheetFragment<VB : ViewBinding, VM : BaseViewModel> :
+    BottomSheetDialogFragment() {
 
     private var _binding: VB? = null
     protected val binding: VB get() = _binding!!
@@ -51,19 +52,6 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupLoadingView()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        when (this) {
-            is ActiveLogFragment,
-            is PaidLogsFragment,
-            is AllLogFragment,
-            is HomeFragment,
-            is LogFragment,
-            is CreditsFragment -> hideOrShowBottomNavigation(false)
-            else -> hideOrShowBottomNavigation(true)
-        }
     }
 
     private fun setupLoadingView() {

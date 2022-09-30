@@ -1,4 +1,4 @@
-package pro.breez.bfsut.ui.main.log.pager.all
+package pro.breez.bfsut.ui.main.all_logs
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.base.BaseViewModel

@@ -7,13 +7,13 @@ import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseRecyclerAdapter<VB : ViewBinding, M>(var items: ArrayList<M>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    RecyclerView.Adapter<BaseViewHolder<VB>>() {
 
     private val type = (javaClass.genericSuperclass as ParameterizedType)
     private val classVB = type.actualTypeArguments[0] as Class<VB>
     private lateinit var binding: VB
 
-    abstract fun bind(item: M, binding: VB)
+    abstract fun bind(item: M, binding : VB, position: Int)
 
     fun update(items: ArrayList<M>) {
         this.items = items
@@ -22,18 +22,18 @@ abstract class BaseRecyclerAdapter<VB : ViewBinding, M>(var items: ArrayList<M>)
 
     override fun getItemCount(): Int = items.count()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<VB> {
         binding =
             inflateMethod.invoke(null, LayoutInflater.from(parent.context), parent, false) as VB
-        return ViewHolder(binding)
+        return BaseViewHolder(binding)
     }
 
     fun getListPosition(position: Int): M {
         return items[position]
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        bind(items[position], binding)
+    override fun onBindViewHolder(holder: BaseViewHolder<VB>, position: Int) {
+        bind(items[position], holder.binding, position)
     }
 
     private val inflateMethod = classVB.getMethod(
@@ -44,6 +44,5 @@ abstract class BaseRecyclerAdapter<VB : ViewBinding, M>(var items: ArrayList<M>)
     )
 }
 
-class ViewHolder(binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {
-
+class BaseViewHolder<VB : ViewBinding>(val binding: VB) : RecyclerView.ViewHolder(binding.root) {
 }
