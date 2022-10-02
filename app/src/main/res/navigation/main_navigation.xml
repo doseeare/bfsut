@@ -53,7 +53,7 @@
 
     <fragment
         android:id="@+id/calculate_active_logs"
-        android:name="pro.breez.bfsut.ui.main.active_logs.CalculateActiveLogsFragment"
+        android:name="pro.breez.bfsut.ui.main.active_logs.calculate.CalculateActiveLogsFragment"
         android:label="Сбор молока"
         tools:layout="@layout/fragment_calculate_active_logs" />
 

@@ -1,4 +1,4 @@
-package pro.breez.bfsut.ui.main.active_logs
+package pro.breez.bfsut.ui.main.active_logs.calculate
 
 import android.os.Bundle
 import android.view.View
