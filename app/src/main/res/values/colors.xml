@@ -16,4 +16,5 @@
     <color name="bg_default_color">#BEC7D1</color>
     <color name="black_text_color">#0A0811</color>
     <color name="text_gray_purple_color">#5D5A70</color>
+    <color name="dark_blue">#292F68</color>
 </resources>

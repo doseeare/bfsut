@@ -4,9 +4,13 @@ import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
 import androidx.annotation.IdRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -14,6 +18,7 @@ import androidx.viewbinding.ViewBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.delay
 import pro.breez.bfsut.R
+import pro.breez.bfsut.databinding.ViewProgressBinding
 import pro.breez.bfsut.exception.NavigationInitializationException
 import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.bfsut.model.navigation.FragmentTransaction
@@ -26,11 +31,14 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     protected val binding: VB get() = _binding!!
 
     protected val navigation: NavController by lazy { initializeNavController() }
+    private var loadingView: ConstraintLayout? = null
+    private var textViewLoadingMessage: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = inflateLayout(layoutInflater)
         setContentView(binding.root)
+        setupLoadingView()
     }
 
     override fun onDestroy() {
@@ -42,6 +50,30 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     fun popBackStack(@IdRes navigationId: Int, inclusive: Boolean = false) {
         navigation.popBackStack(navigationId, inclusive)
+    }
+
+    fun showLoading(@StringRes resourceId: Int) {
+        loadingView?.let { loadingView ->
+            loadingView.visibility = View.VISIBLE
+            textViewLoadingMessage?.let {
+                it.text = getString(resourceId)
+            }
+        }
+    }
+
+    fun hideLoading() {
+        loadingView?.let {
+            it.visibility = View.GONE
+        }
+    }
+
+    private fun setupLoadingView() {
+        val view = ViewProgressBinding.inflate(
+            layoutInflater,
+            window.decorView.rootView as ViewGroup?, true
+        )
+        loadingView = view.progressOverlay
+        textViewLoadingMessage = view.textViewProgressMessage
     }
 
     fun navigateToFragment(fragmentTransaction: FragmentTransaction) {

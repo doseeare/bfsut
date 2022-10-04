@@ -11,6 +11,8 @@ import pro.breez.bfsut.databinding.FragmentActiveLogBinding
 @AndroidEntryPoint
 class ActiveLogFragment : BaseFragment<FragmentActiveLogBinding, ActiveLogViewModel>() {
 
+    private var logSelected = false
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
@@ -20,7 +22,7 @@ class ActiveLogFragment : BaseFragment<FragmentActiveLogBinding, ActiveLogViewMo
         viewModel.activeLogsLV.observe(viewLifecycleOwner) {
             val adapter = ActiveLogAdapter(it,
                 itemClicked = { item ->
-                    viewModel.itemClicked()
+                    viewModel.itemClicked(item)
                 },
                 checkBoxChanged = { item, selected ->
                     viewModel.checkBoxChanged(item, selected)
@@ -36,19 +38,26 @@ class ActiveLogFragment : BaseFragment<FragmentActiveLogBinding, ActiveLogViewMo
             binding.activeLogRv.adapter = adapter
         }
 
+        binding.bottomInfoBar.setOnClickListener {
+            if (logSelected)
+                viewModel.calculateLogs()
+        }
+
         viewModel.selectedLogsPriceInfoLV.observe(viewLifecycleOwner) {
             if (it.first == 0 && it.second == 0) {
                 binding.bottomInfoBar.setBackgroundResource(R.drawable.bg_bottom_info_bar_disabled)
                 binding.infoTitleTv.text = getString(R.string.choose_logs)
                 binding.infoLiterTv.visibility = View.GONE
                 binding.infoPriceTv.visibility = View.GONE
-            }else{
+                logSelected = false
+            } else {
                 binding.bottomInfoBar.setBackgroundResource(R.drawable.bg_bottom_info_bar)
                 binding.infoTitleTv.text = getString(R.string.make_calculate)
                 binding.infoLiterTv.visibility = View.VISIBLE
                 binding.infoPriceTv.visibility = View.VISIBLE
                 binding.infoLiterTv.text = "${it.first}л"
                 binding.infoPriceTv.text = "${it.second} сом"
+                logSelected = true
             }
         }
     }

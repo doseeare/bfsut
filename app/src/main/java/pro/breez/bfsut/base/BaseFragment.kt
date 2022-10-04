@@ -4,21 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.createViewModelLazy
 import androidx.viewbinding.ViewBinding
-import pro.breez.bfsut.R
 import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.bfsut.model.navigation.FragmentTransaction
+import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
+import pro.breez.bfsut.ui.main.all_logs.AllLogFragment
 import pro.breez.bfsut.ui.main.credit.CreditsFragment
 import pro.breez.bfsut.ui.main.home.HomeFragment
 import pro.breez.bfsut.ui.main.log.LogFragment
-import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
-import pro.breez.bfsut.ui.main.all_logs.AllLogFragment
 import pro.breez.bfsut.ui.main.paid_logs.PaidLogsFragment
 import java.lang.reflect.ParameterizedType
 
@@ -33,25 +30,26 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
     private val classVB = type.actualTypeArguments[0] as Class<VB>
     private val classVM = type.actualTypeArguments[1] as Class<VM>
 
-    private var loadingView: ConstraintLayout? = null
-    private var textViewLoadingMessage: TextView? = null
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = inflateMethod.invoke(null, layoutInflater, container, false) as VB
-        viewModel = createViewModelLazy(classVM.kotlin, { viewModelStore }).value
-        lifecycle.addObserver(viewModel)
-        setupBaseViewModel()
         return _binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupLoadingView()
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = createViewModelLazy(classVM.kotlin, { viewModelStore }).value
+        lifecycle.addObserver(viewModel)
+        setupBaseViewModel()
+    }
+
 
     override fun onResume() {
         super.onResume()
@@ -66,50 +64,47 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
         }
     }
 
-    private fun setupLoadingView() {
-        val view = LayoutInflater
-            .from(context)
-            .inflate(
-                R.layout.view_progress,
-                (view as ViewGroup), false
-            )
-
-        loadingView = view.findViewById(R.id.progress_overlay)
-        textViewLoadingMessage = view.findViewById(R.id.textView_progressMessage)
-    }
-
     private fun setupBaseViewModel() {
         viewModel.let { vm ->
-            vm.navigateToFragment.observe(viewLifecycleOwner) {
+            vm.navigateToFragment.observe(this) {
                 navigateToFragment(it)
             }
 
-            vm.navigateToActivity.observe(viewLifecycleOwner) {
+            vm.navigateToActivity.observe(this) {
                 navigateToActivity(it)
             }
 
-            vm.popBackStack.observe(viewLifecycleOwner) {
+            vm.popBackStack.observe(this) {
                 popBackStack(it)
             }
-            vm.showBottomSheetFragment.observe(viewLifecycleOwner) { fragment ->
+            vm.showBottomSheetFragment.observe(this) { fragment ->
                 fragment.show(childFragmentManager, fragment.tag)
             }
 
-            vm.showSnackBar.observe(viewLifecycleOwner) { builder ->
+            vm.showSnackBar.observe(this) { builder ->
                 builder.create(requireView()).show()
             }
 
             vm.getStringResource = { stringId, params -> getString(stringId, params) }
 
-            vm.showLoadingView.observe(viewLifecycleOwner) { params ->
+            vm.showLoadingView.observe(this) { params ->
                 when (params.isVisible) {
                     true -> showLoading(params.text)
                     false -> hideLoading()
                 }
             }
 
-            vm.showSelectorDialog.observe(viewLifecycleOwner) { builder ->
+            vm.showSelectorDialog.observe(this) { builder ->
                 builder.showDialog(requireContext())
+            }
+            vm.requiredArguments = { requireArguments() }
+
+            vm.showAlertDialog.observe(this) {
+                it.create(requireContext())
+            }
+
+            vm.showQuestionDialog.observe(this){
+                it.show(childFragmentManager, "QuestionDialog")
             }
         }
     }
@@ -124,18 +119,11 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
     }
 
     private fun showLoading(@StringRes resourceId: Int) {
-        loadingView?.let { loadingView ->
-            loadingView.visibility = View.VISIBLE
-            textViewLoadingMessage?.let {
-                it.text = getString(resourceId)
-            }
-        }
+        (activity as? BaseActivity<*>)?.showLoading(resourceId)
     }
 
     private fun hideLoading() {
-        loadingView?.let {
-            it.visibility = View.GONE
-        }
+        (activity as? BaseActivity<*>)?.hideLoading()
     }
 
     override fun onDestroy() {

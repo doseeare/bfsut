@@ -1,5 +1,7 @@
 package pro.breez.domain.model.output
 
+import java.io.Serializable
+
 data class LogsModelOut(
     val id: String,
     val agent: Int,
@@ -11,4 +13,4 @@ data class LogsModelOut(
     val overall: String,
     val status: String,
     var isSelected: Boolean = false
-)
+): Serializable

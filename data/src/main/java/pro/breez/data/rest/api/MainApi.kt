@@ -1,6 +1,7 @@
 package pro.breez.data.rest.api
 
 import pro.breez.domain.interactor.base.Result
+import pro.breez.domain.model.input.CalculateActiveLogsIn
 import pro.breez.domain.model.input.CreditModelIn
 import pro.breez.domain.model.output.*
 import retrofit2.http.*
@@ -45,10 +46,20 @@ interface MainApi {
     ): Result<CreditModelOut>
 
     @GET("v1/journal/")
-    fun getActiveLogs(
+    fun getLogs(
         @Header("Authorization") token: String,
         @Query("status") status: String
     ): Result<List<LogsModelOut>>
 
-
+    @POST("v1/journal/{id}/calculate")
+    fun calculateLog(
+        @Header("Authorization") token: String,
+        @Path("id") status: String
+    ): Result<String>
+    
+    @POST("v1/journal/calculate_list")
+    fun calculateLogs(
+        @Header("Authorization") token: String,
+        @Body body: CalculateActiveLogsIn
+    ): Result<String>
 }

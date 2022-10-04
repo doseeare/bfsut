@@ -1,6 +1,7 @@
 package pro.breez.bfsut.base
 
 import android.content.Intent
+import android.os.Bundle
 import androidx.annotation.CallSuper
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -16,6 +17,8 @@ import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.util.alert.DialogBuilder
 import pro.breez.bfsut.util.alert.LoadingViewParams
+import pro.breez.bfsut.util.alert.QuestionDialog
+import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilder
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilder
 import pro.breez.bfsut.util.alert.snackbar.SnackbarNotificationBuilder
 import pro.breez.bfsut.util.alert.snackbar.SnackbarNotificationBuilderInterface
@@ -32,6 +35,8 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
     val permissionCheckerEvent = SingleLiveEvent<PermissionCheckerBuilder>()
     val showBottomSheetFragment = SingleLiveEvent<BottomSheetDialogFragment>()
     val showSelectorDialog = SingleLiveEvent<SelectorDialogBuilder>()
+    val showAlertDialog = SingleLiveEvent<AlertDialogBuilder>()
+    val showQuestionDialog = SingleLiveEvent<QuestionDialog>()
     val navigateToFragment = SingleLiveEvent<FragmentTransaction>()
     val navigateToActivity = SingleLiveEvent<ActivityTransaction>()
     val handleIntent = SingleLiveEvent<Intent>()
@@ -42,6 +47,7 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
 
     val snackBarBuilder = SnackbarNotificationBuilder()
     lateinit var getStringResource: (Int, Array<out Any?>?) -> String
+    lateinit var requiredArguments: () -> Bundle
 
     fun showSnackBar(builderInterface: SnackbarNotificationBuilderInterface) {
         showSnackBar.startEvent(builderInterface)

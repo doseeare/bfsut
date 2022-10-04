@@ -34,25 +34,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/status_tv"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/status_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_active_span"
-            android:paddingLeft="6sp"
-            android:text="активный"
-            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@id/toolbar_title"
             app:layout_constraintStart_toStartOf="@id/toolbar_title"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_title" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar_title">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp"
+                android:paddingLeft="6sp"
+                android:text="активный"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="@dimen/default_margins"
             android:background="#E2E4E9"
-            app:layout_constraintTop_toBottomOf="@id/status_tv" />
+            app:layout_constraintTop_toBottomOf="@id/status_container" />
 
         <ImageView
             android:id="@+id/delete_btn"
@@ -73,12 +84,13 @@
         android:layout_margin="@dimen/default_margins"
         android:text="Сбор молока у \n Акылбека Асанова"
         android:textColor="@color/text_bold_color"
-        android:textSize="30sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
 
     <LinearLayout
+        android:id="@+id/fields_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -114,7 +126,8 @@
                 android:maxLines="1"
                 android:text="4л"
                 android:textColor="@color/text_bold_color"
-                android:textSize="30sp"
+                android:textSize="36sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/day_title_tv"
@@ -142,7 +155,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/edittext"
+                android:id="@+id/evening_et"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/default_margins"
@@ -152,7 +165,8 @@
                 android:maxLines="1"
                 android:text="4л"
                 android:textColor="@color/text_bold_color"
-                android:textSize="30sp"
+                android:textSize="36sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/evening_title_tv"
@@ -175,12 +189,48 @@
 
     </LinearLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/milk_price_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margins"
+        android:background="@drawable/bg_price_of_liter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fields_container">
+
+        <ImageView
+            android:id="@+id/milk_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_milk"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/milk_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="100 сом \n за литр"
+            android:textColor="@color/dark_blue"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/milk_img"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
+        android:id="@+id/total_amount_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margins"
         android:textColor="@color/text_bold_color"
-        android:textSize="26sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/calculate_btn"
         app:layout_constraintStart_toStartOf="parent"
@@ -199,7 +249,6 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/calculate_btn"
         android:layout_width="match_parent"
@@ -210,6 +259,7 @@
         android:text="Рассчитать"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/save_changes_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
