@@ -1,6 +1,5 @@
 package pro.breez.bfsut.ui.main.active_logs
 
-import android.os.Bundle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -13,7 +12,7 @@ import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
 import pro.breez.domain.interactor.ActiveLogsUseCase
 import pro.breez.domain.interactor.CalculateActiveLogsUseCase
-import pro.breez.domain.model.output.LogsModelOut
+import pro.breez.domain.model.output.LogsModel
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,9 +21,9 @@ class ActiveLogViewModel @Inject constructor(
     private val calculateActiveLogs: CalculateActiveLogsUseCase
 ) : BaseViewModel() {
 
-    private val selectedLogsLV = MutableLiveData<ArrayList<LogsModelOut>>()
+    private val selectedLogsLV = MutableLiveData<ArrayList<LogsModel>>()
 
-    val activeLogsLV = MutableLiveData<ArrayList<LogsModelOut>>()
+    val activeLogsLV = MutableLiveData<ArrayList<LogsModel>>()
     val selectedLogsPriceInfoLV = MutableLiveData<Pair<Int, Int>>()
 
     override fun onCreate(owner: LifecycleOwner) {
@@ -41,16 +40,16 @@ class ActiveLogViewModel @Inject constructor(
     private fun getActiveLogs() {
         activeLogsUseCase.execute(viewModelScope) {
             handleResult(it) {
-                activeLogsLV.postValue(it as ArrayList<LogsModelOut>)
+                activeLogsLV.postValue(it as ArrayList<LogsModel>)
             }
         }
     }
 
-    fun checkBoxChanged(item: LogsModelOut, isSelected: Boolean) {
+    fun checkBoxChanged(item: LogsModel, isSelected: Boolean) {
         val currentSelectedList = if (selectedLogsLV.value == null) {
             arrayListOf()
         } else {
-            ArrayList<LogsModelOut>(selectedLogsLV.value!!)
+            ArrayList<LogsModel>(selectedLogsLV.value!!)
         }
         if (isSelected) {
             currentSelectedList.add(item)
@@ -68,7 +67,6 @@ class ActiveLogViewModel @Inject constructor(
                 selectedLogsLV.postValue(arrayListOf())
             }
         }
-
     }
 
     //todo изменить overall на int, после обновы сервера
@@ -84,7 +82,7 @@ class ActiveLogViewModel @Inject constructor(
         }
     }
 
-    fun itemClicked(item: LogsModelOut) {
+    fun itemClicked(item: LogsModel) {
         val args = LogFragmentDirections.logFragmentToCalculateActiveLog(item).arguments
         navigateToFragment.startEvent(
             FragmentTransaction(

@@ -10,6 +10,7 @@ import pro.breez.bfsut.databinding.FragmentLogBinding
 import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
 import pro.breez.bfsut.ui.main.all_logs.AllLogFragment
 import pro.breez.bfsut.ui.main.paid_logs.PaidLogsFragment
+import pro.breez.bfsut.util.alert.OnPageSelectedListener
 
 class LogFragment : BaseFragment<FragmentLogBinding, LogViewModel>() {
 
@@ -33,9 +34,15 @@ class LogFragment : BaseFragment<FragmentLogBinding, LogViewModel>() {
             }
 
             override fun onPageSelected(position: Int) {
+                val fragment =
+                    pagerAdapter.getPage(position)
+                if (fragment != null) {
+                    (fragment as OnPageSelectedListener).onPageSelected()
+                }
             }
 
             override fun onPageScrollStateChanged(state: Int) {
+
             }
 
         })

@@ -7,9 +7,10 @@ import pro.breez.bfsut.R
 import pro.breez.bfsut.adapter.ActiveLogAdapter
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentActiveLogBinding
+import pro.breez.bfsut.util.alert.OnPageSelectedListener
 
 @AndroidEntryPoint
-class ActiveLogFragment : BaseFragment<FragmentActiveLogBinding, ActiveLogViewModel>() {
+class ActiveLogFragment : BaseFragment<FragmentActiveLogBinding, ActiveLogViewModel>(), OnPageSelectedListener {
 
     private var logSelected = false
 
@@ -60,6 +61,10 @@ class ActiveLogFragment : BaseFragment<FragmentActiveLogBinding, ActiveLogViewMo
                 logSelected = true
             }
         }
+    }
+
+    override fun onPageSelected() {
+
     }
 
 }

@@ -1,8 +1,9 @@
 package pro.breez.data.entity.response
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-data class AuthResponse(
+class AuthResponse(
     @SerializedName("access_token")
-    val accessToken: String
-)
+    val token: String
+): Serializable

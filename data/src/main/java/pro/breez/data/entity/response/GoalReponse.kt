@@ -1,8 +1,8 @@
-package pro.breez.domain.model.output
+package pro.breez.data.entity.response
 
 import java.io.Serializable
 
-data class ProductsModelOut(
+data class GoalReponse(
     val id: Int,
     val mfsys_id: String,
     val name: String,

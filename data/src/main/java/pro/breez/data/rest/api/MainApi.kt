@@ -10,53 +10,65 @@ interface MainApi {
     @GET("v1/farmers")
     fun getFarmers(
         @Header("Authorization") token: String,
-    ): Result<List<FarmersModelOut>>
+    ): Result<List<FarmersModel>>
 
     @POST("v1/mfsys/loan_products")
     fun getProduct(
         @Header("Authorization") token: String,
         @Query("purpose_id") id: String
-    ): Result<List<ProductsModelOut>>
+    ): Result<List<ProductsModel>>
 
     @GET("v1/mfsys/loan_categories")
     fun getCategory(
         @Header("Authorization") token: String,
-    ): Result<List<CategoryModelOut>>
+    ): Result<List<CategoryModel>>
 
     //todo не работает, не используется.
     @GET("v1/mfsys/loan_categories")
     fun getDate(
         @Header("Authorization") token: String,
-    ): Result<List<CategoryModelOut>>
+    ): Result<List<CategoryModel>>
 
     @GET("v1/mfsys/loan_purposes")
     fun getGoal(
         @Header("Authorization") token: String,
-    ): Result<List<GoalModelOut>>
+    ): Result<List<GoalModel>>
 
     @GET("v1/credit/")
     fun getCredits(
         @Header("Authorization") token: String,
-    ): Result<List<CreditLogModelOut>>
+    ): Result<List<CreditLogModel>>
 
     @POST("v1/credit/")
     fun postCredit(
         @Header("Authorization") token: String,
         @Body body: CreditModelIn
-    ): Result<CreditModelOut>
+    ): Result<CreditModel>
 
     @GET("v1/journal/")
     fun getLogs(
         @Header("Authorization") token: String,
         @Query("status") status: String
-    ): Result<List<LogsModelOut>>
+    ): Result<List<LogsModel>>
+
+
+    @GET("v1/journal/paid")
+    fun getPaidLogs(
+        @Header("Authorization") token: String,
+    ): Result<List<PaidLogModel>>
+
+    @GET("v1/journal/paid-card")
+    fun getPaidLogDetail(
+        @Header("Authorization") token: String,
+        @Query("receipt_id") id: String
+    ): Result<List<PaidLogsDetailModel>>
 
     @POST("v1/journal/{id}/calculate")
     fun calculateLog(
         @Header("Authorization") token: String,
         @Path("id") status: String
     ): Result<String>
-    
+
     @POST("v1/journal/calculate_list")
     fun calculateLogs(
         @Header("Authorization") token: String,

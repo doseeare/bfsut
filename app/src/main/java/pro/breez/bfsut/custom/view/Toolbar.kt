@@ -31,4 +31,8 @@ class Toolbar(context: Context, attributeSet: AttributeSet?, defStyle: Int) :
             }
         }
     }
+
+    fun setTitle (title : String){
+        binding.toolbarTitle.text = title
+    }
 }

@@ -3,20 +3,20 @@ package pro.breez.bfsut.adapter
 import android.util.Log
 import pro.breez.bfsut.base.BaseRecyclerAdapter
 import pro.breez.bfsut.databinding.ItemActiveLogBinding
-import pro.breez.domain.model.output.LogsModelOut
+import pro.breez.domain.model.output.LogsModel
 
 class ActiveLogAdapter(
-    private val itemList: ArrayList<LogsModelOut>,
-    private val itemClicked: (LogsModelOut) -> Unit,
-    private val checkBoxChanged: (item: LogsModelOut, isSelected: Boolean) -> Unit,
+    private val itemList: ArrayList<LogsModel>,
+    private val itemClicked: (LogsModel) -> Unit,
+    private val checkBoxChanged: (item: LogsModel, isSelected: Boolean) -> Unit,
     private val eachCheckBoxChanged: (areSelected: Boolean) -> Unit
 ) :
-    BaseRecyclerAdapter<ItemActiveLogBinding, LogsModelOut>(itemList) {
+    BaseRecyclerAdapter<ItemActiveLogBinding, LogsModel>(itemList) {
 
     private var select: Boolean = false
 
     override fun bind(
-        item: LogsModelOut,
+        item: LogsModel,
         binding: ItemActiveLogBinding,
         position: Int
     ) {

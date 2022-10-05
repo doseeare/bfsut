@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.AndroidEntryPoint
+import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentCalculateActiveLogsBinding
 
@@ -22,6 +23,9 @@ class CalculateActiveLogsFragment :
             binding.calculateBtn.setOnClickListener { _ ->
                 viewModel.calculateLog(it.id)
             }
+        }
+        binding.toolbarBackBtn.setOnClickListener {
+            viewModel.popBackStack.startEvent(R.id.navigation_log)
         }
     }
 

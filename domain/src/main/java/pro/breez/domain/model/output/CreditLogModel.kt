@@ -2,7 +2,7 @@ package pro.breez.domain.model.output
 
 import java.io.Serializable
 
-data class CreditLogModelOut(
+data class CreditLogModel(
     val amount: String,
     val branch: Any,
     val category: Int,

@@ -30,7 +30,10 @@
             android:id="@+id/log_fragment_to_calculate_active_log"
             app:destination="@id/calculate_active_logs"
             app:popUpTo="@id/navigation_log" />
-
+        <action
+            android:id="@+id/log_fragment_to_paid_detail_log"
+            app:destination="@id/navigation_log_detail"
+            app:popUpTo="@id/navigation_log" />
     </fragment>
 
     <fragment
@@ -52,13 +55,23 @@
         tools:layout="@layout/fragment_credit_add" />
 
     <fragment
+        android:id="@+id/navigation_log_detail"
+        android:name="pro.breez.bfsut.ui.main.paid_logs_detail.PaidLogsDetailFragment"
+        android:label="Рассчитанна за"
+        tools:layout="@layout/fragment_paid_logs_detail">
+        <argument
+            android:name="log"
+            app:argType="pro.breez.domain.model.output.PaidLogModel" />
+    </fragment>
+
+    <fragment
         android:id="@+id/calculate_active_logs"
         android:name="pro.breez.bfsut.ui.main.active_logs.calculate.CalculateActiveLogsFragment"
         android:label="Сбор молока"
         tools:layout="@layout/fragment_calculate_active_logs">
         <argument
             android:name="active_logs"
-            app:argType="pro.breez.domain.model.output.LogsModelOut" />
+            app:argType="pro.breez.domain.model.output.LogsModel" />
     </fragment>
 
     <activity

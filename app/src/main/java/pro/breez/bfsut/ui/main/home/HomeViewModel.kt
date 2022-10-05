@@ -6,12 +6,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.model.navigation.FragmentTransaction
-import pro.breez.domain.model.output.FarmersCheckModelOut
+import pro.breez.domain.model.output.FarmersCheckModel
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor() : BaseViewModel() {
-    val farmersLV = MutableLiveData<ArrayList<FarmersCheckModelOut>>()
+    val farmersLV = MutableLiveData<ArrayList<FarmersCheckModel>>()
     var showMore = false
         set(value) {
             if (value)
@@ -23,7 +23,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
 
     val hello = MutableLiveData<String>()
 
-    val farmers = ArrayList<FarmersCheckModelOut>()
+    val farmers = ArrayList<FarmersCheckModel>()
 
     fun showAll() {
         navigateToFragment.startEvent(FragmentTransaction(R.id.home_fragment_to_all_farmers))
@@ -32,7 +32,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
         for (i in 0..20) {
-            farmers.add(FarmersCheckModelOut("Садыр Жапаров"))
+            farmers.add(FarmersCheckModel("Садыр Жапаров"))
         }
     }
 

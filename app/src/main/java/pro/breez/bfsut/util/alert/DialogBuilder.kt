@@ -4,8 +4,6 @@ import android.content.Context
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 
-
-
 interface DialogBuilder {
     fun setTitle(@StringRes title: Int): DialogBuilder
     fun setMessage(@StringRes message: Int): DialogBuilder

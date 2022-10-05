@@ -1,8 +1,8 @@
-package pro.breez.domain.model.output
+package pro.breez.data.entity.response
 
 import java.io.Serializable
 
-class FarmersModelOut(
+class FarmersResponse(
     val id: String,
     val father_name: String,
     val first_name: String,

@@ -67,7 +67,7 @@
         <entry key="app/src/main/res/layout/custom_snackbar.xml" value="0.2" />
         <entry key="app/src/main/res/layout/custom_tab_layout.xml" value="0.2" />
         <entry key="app/src/main/res/layout/dialog_item_selector.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/fragment_active_log.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/fragment_active_log.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_all_farmers.xml" value="0.182129115006413" />
         <entry key="app/src/main/res/layout/fragment_all_log.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.14" />
@@ -83,12 +83,16 @@
         <entry key="app/src/main/res/layout/fragment_log.xml" value="0.182129115006413" />
         <entry key="app/src/main/res/layout/fragment_log_container.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.22735507246376813" />
+        <entry key="app/src/main/res/layout/fragment_paid_log.xml" value="0.2984181274048739" />
+        <entry key="app/src/main/res/layout/fragment_paid_logs_detail.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_question_dialog.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_active_log.xml" value="0.12" />
         <entry key="app/src/main/res/layout/item_all_farmers.xml" value="0.22083333333333333" />
         <entry key="app/src/main/res/layout/item_credit.xml" value="0.2" />
         <entry key="app/src/main/res/layout/item_farmer_need_to_check.xml" value="0.2984181274048739" />
+        <entry key="app/src/main/res/layout/item_paid_logs.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_paid_logs_detail.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_selector.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_add_credit_edittext.xml" value="0.33" />
         <entry key="app/src/main/res/layout/layout_add_menu.xml" value="0.67" />

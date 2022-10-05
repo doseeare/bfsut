@@ -2,6 +2,6 @@ package pro.breez.domain.model.output
 
 import java.io.Serializable
 
-class AuthModelOut(
-    val access_token: String
+data class CreditModel(
+    val message: String
 ): Serializable

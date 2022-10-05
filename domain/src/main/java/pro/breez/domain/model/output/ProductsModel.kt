@@ -2,7 +2,7 @@ package pro.breez.domain.model.output
 
 import java.io.Serializable
 
-data class CategoryModelOut(
+data class ProductsModel(
     val id: Int,
     val mfsys_id: String,
     val name: String,

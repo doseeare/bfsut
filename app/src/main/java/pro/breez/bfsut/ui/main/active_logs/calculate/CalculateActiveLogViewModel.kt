@@ -8,16 +8,16 @@ import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
 import pro.breez.domain.interactor.CalculateActiveLogUseCase
-import pro.breez.domain.model.output.LogsModelOut
+import pro.breez.domain.model.output.LogsModel
 import javax.inject.Inject
 
 @HiltViewModel
 class CalculateActiveLogViewModel @Inject constructor(
     private val calculateUc: CalculateActiveLogUseCase
 ) : BaseViewModel() {
-    val currentLogLV = MutableLiveData<LogsModelOut>()
+    val currentLogLV = MutableLiveData<LogsModel>()
 
-    private val activeLog: LogsModelOut by lazy {
+    private val activeLog: LogsModel by lazy {
         CalculateActiveLogsFragmentArgs.fromBundle(requiredArguments()).activeLogs
     }
 
@@ -29,7 +29,6 @@ class CalculateActiveLogViewModel @Inject constructor(
     fun calculateLog(id: String) {
         showLoadingView()
         calculateUc.execute(viewModelScope, id) {
-            showSelectorDialog
             handleResult(it) {
                 val dialog = AlertDialogBuilderImpl()
                 dialog.setIcon(R.drawable.ic_alert)

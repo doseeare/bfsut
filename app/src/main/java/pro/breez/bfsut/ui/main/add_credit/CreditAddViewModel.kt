@@ -8,10 +8,10 @@ import pro.breez.bfsut.helper.SingleLiveEvent
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilderImpl
 import pro.breez.domain.interactor.*
 import pro.breez.domain.model.input.CreditModelIn
-import pro.breez.domain.model.output.CategoryModelOut
-import pro.breez.domain.model.output.FarmersModelOut
-import pro.breez.domain.model.output.GoalModelOut
-import pro.breez.domain.model.output.ProductsModelOut
+import pro.breez.domain.model.output.CategoryModel
+import pro.breez.domain.model.output.FarmersModel
+import pro.breez.domain.model.output.GoalModel
+import pro.breez.domain.model.output.ProductsModel
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,10 +25,10 @@ open class CreditAddViewModel @Inject constructor(
 
 ) : BaseViewModel() {
 
-    val farmerLV = SingleLiveEvent<FarmersModelOut>()
-    val productLV = SingleLiveEvent<ProductsModelOut>()
-    val categoryLV = SingleLiveEvent<CategoryModelOut>()
-    val goalLV = SingleLiveEvent<GoalModelOut>()
+    val farmerLV = SingleLiveEvent<FarmersModel>()
+    val productLV = SingleLiveEvent<ProductsModel>()
+    val categoryLV = SingleLiveEvent<CategoryModel>()
+    val goalLV = SingleLiveEvent<GoalModel>()
     val dateLV = SingleLiveEvent<Pair<String, String>>()
 
     val commentOfGoal = SingleLiveEvent<String>()
