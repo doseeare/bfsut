@@ -1,4 +1,4 @@
-package pro.breez.bfsut.ui.main.paid_logs_detail
+package pro.breez.bfsut.ui.main.paid_logs.detail
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData

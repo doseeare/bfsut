@@ -28,5 +28,4 @@ class CalculateActiveLogsFragment :
             viewModel.popBackStack.startEvent(R.id.navigation_log)
         }
     }
-
 }

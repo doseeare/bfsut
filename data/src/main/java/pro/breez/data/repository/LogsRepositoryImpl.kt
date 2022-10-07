@@ -15,7 +15,7 @@ class LogsRepositoryImpl(
 ) : LogsRepository {
 
     override fun getActiveLogs(): Result<List<LogsModel>> {
-        return restClient.mainApi.getLogs(dataPreference.token, "active")
+        return restClient.mainApi.getActiveLogs(dataPreference.token, "active")
     }
 
     override fun getPaidLogs(): Result<List<PaidLogModel>> {
@@ -27,7 +27,7 @@ class LogsRepositoryImpl(
     }
 
     override fun getAllLogs(): Result<List<LogsModel>> {
-        return restClient.mainApi.getLogs(dataPreference.token, "")
+        return restClient.mainApi.getAllLogs(dataPreference.token)
     }
 
     override fun calculateActiveLog(id: String): Result<String> {

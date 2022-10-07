@@ -36,8 +36,6 @@ class ActiveLogAdapter(
                     itemList[position].isSelected = b
                     checkBoxChanged.invoke(item, b)
                     validateCheckBoxes()
-                    Log.d("LISTSIZE", "itemList size: ${itemList.size} ")
-                    Log.d("LISTSIZE", "itemList: ${itemList} ")
                 }
             }
         }

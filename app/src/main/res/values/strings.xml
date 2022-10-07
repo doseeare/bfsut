@@ -25,4 +25,5 @@
     <string name="choose_logs">Выберите записи сбора молока</string>
     <string name="make_calculate">Произвести расчет</string>
     <string name="total">Итого:</string>
+    <string name="calculate">Рассчитать</string>
 </resources>

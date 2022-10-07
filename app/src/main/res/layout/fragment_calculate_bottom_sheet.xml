@@ -1,9 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.main.active_logs.calculate.CalculateBottomSheetFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/status_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margins"
+        android:background="@drawable/bg_active_span"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/status_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="активный" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/post_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margins"
+        android:textColor="@color/text_bold_color"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="26.05.2022" />
+
+    <TextView
+        android:id="@+id/name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:paddingHorizontal="@dimen/default_margins"
+        android:textColor="@color/text_bold_color"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/post_date_tv"
+        tools:text="Акылбек Асанов" />
+
+    <LinearLayout
+        android:id="@+id/time_info_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/name_tv">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margins"
+            android:text="Утром"
+            android:textColor="@color/error_color"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/day_liters_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margins"
+            android:textColor="@color/text_bold_color"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            tools:text="6л" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margins"
+            android:layout_marginTop="12dp"
+            android:text="Вечером"
+            android:textColor="@color/text_bold_color"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/evening_liters_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margins"
+            android:textColor="@color/text_bold_color"
+            android:textSize="60sp"
+            android:textStyle="bold"
+            tools:text="6л" />
+    </LinearLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/milk_price_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_margins"
+        android:background="@drawable/bg_price_of_liter"
+        app:layout_constraintBottom_toBottomOf="@id/total_sum_tv"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/milk_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_milk"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/milk_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textColor="@color/dark_blue"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/milk_img"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="100 сом \n за литр" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginHorizontal="@dimen/default_margins"
+        android:layout_marginTop="@dimen/default_margins"
+        android:background="@color/gray_selected"
+        app:layout_constraintBottom_toTopOf="@id/total_tv"
+        app:layout_constraintTop_toBottomOf="@id/time_info_container" />
+
+    <TextView
+        android:id="@+id/total_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margins"
+        android:text="Итого:"
+        android:textColor="@color/gray_text"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/total_sum_tv"
+        app:layout_constraintStart_toStartOf="@id/total_sum_tv"
+        app:layout_constraintTop_toBottomOf="@id/divider" />
+
+    <TextView
+        android:id="@+id/calc_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_bold_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/total_sum_tv"
+        app:layout_constraintStart_toStartOf="@id/total_sum_tv"
+        tools:text="Рассчитано 20.20.2022" />
+
+    <TextView
+        android:id="@+id/total_sum_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margins"
+        android:layout_marginBottom="24dp"
+        android:textColor="@color/text_bold_color"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/calc_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="600л" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/calc_btn"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginHorizontal="@dimen/default_margins"
+        android:layout_marginBottom="@dimen/default_margins"
+        android:background="@drawable/bg_black_button"
+        android:text="@string/calculate"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

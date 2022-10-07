@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/default_margins"
+    android:layout_marginVertical="8dp"
+    android:background="@drawable/bg_item_log">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/status_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margins"
+        android:background="@drawable/bg_active_span"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/status_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="активный" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margins"
+        android:layout_marginStart="@dimen/default_margins"
+        android:textColor="@color/text_gray_purple_color"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="29.09.2001" />
+
+    <TextView
+        android:id="@+id/name_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_margins"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/date_tv"
+        app:layout_constraintTop_toBottomOf="@id/date_tv"
+        tools:text="Акыл Акылов" />
+
+    <TextView
+        android:id="@+id/day_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="утром"
+        android:textColor="@color/error_color"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/name_tv"
+        app:layout_constraintTop_toBottomOf="@id/name_tv" />
+
+    <TextView
+        android:id="@+id/night_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:text="вечером"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/day_title_tv"
+        app:layout_constraintTop_toBottomOf="@id/name_tv" />
+
+    <TextView
+        android:id="@+id/day_liters_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5л"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/day_title_tv"
+        app:layout_constraintTop_toBottomOf="@id/day_title_tv" />
+
+    <TextView
+        android:id="@+id/night_liters_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_margins"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/night_title_tv"
+        app:layout_constraintTop_toBottomOf="@id/night_title_tv"
+        tools:text="5л" />
+
+    <TextView
+        android:id="@+id/price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_margins"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/night_liters_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="900с" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

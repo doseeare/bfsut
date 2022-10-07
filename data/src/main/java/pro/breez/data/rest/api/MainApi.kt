@@ -46,9 +46,14 @@ interface MainApi {
     ): Result<CreditModel>
 
     @GET("v1/journal/")
-    fun getLogs(
+    fun getActiveLogs(
         @Header("Authorization") token: String,
         @Query("status") status: String
+    ): Result<List<LogsModel>>
+
+    @GET("v1/journal/")
+    fun getAllLogs(
+        @Header("Authorization") token: String,
     ): Result<List<LogsModel>>
 
 

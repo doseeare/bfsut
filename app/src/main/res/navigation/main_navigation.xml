@@ -56,7 +56,7 @@
 
     <fragment
         android:id="@+id/navigation_log_detail"
-        android:name="pro.breez.bfsut.ui.main.paid_logs_detail.PaidLogsDetailFragment"
+        android:name="pro.breez.bfsut.ui.main.paid_logs.detail.PaidLogsDetailFragment"
         android:label="Рассчитанна за"
         tools:layout="@layout/fragment_paid_logs_detail">
         <argument
