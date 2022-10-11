@@ -1,6 +1,6 @@
 package pro.breez.domain.model.input
 
-data class CreditModelIn(
+data class CreditBody(
     val amount: String,
     val category: Int,
     val customer: String,

@@ -46,6 +46,7 @@ ext {
             oneAdapter         : "com.github.idanatz:OneAdapter:$oneAdapterVer",
             smartTabLayout     : "com.ogaclejapan.smarttablayout:library:2.0.0@aar",
             smartTabLayoutUtil : "com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar",
+            smartBottomSheet : "com.github.andrefrsousa:SuperBottomSheet:2.0.0"
     ]
 
     presentationKapt = [

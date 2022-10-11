@@ -3,7 +3,7 @@ package pro.breez.data.repository
 import pro.breez.data.cache.DataPreference
 import pro.breez.data.rest.RestClient
 import pro.breez.domain.interactor.base.Result
-import pro.breez.domain.model.input.CreditModelIn
+import pro.breez.domain.model.input.CreditBody
 import pro.breez.domain.model.output.*
 import pro.breez.domain.repository.MainRepository
 
@@ -41,7 +41,7 @@ class MainRepositoryImpl(
         return restClient.mainApi.getCredits(dataPreference.token)
     }
 
-    override fun postCredit(body: CreditModelIn): Result<CreditModel> {
+    override fun postCredit(body: CreditBody): Result<CreditModel> {
         return restClient.mainApi.postCredit(dataPreference.token, body)
     }
 }

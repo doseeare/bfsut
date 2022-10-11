@@ -73,7 +73,7 @@
         <entry key="app/src/main/res/layout/fragment_all_farmers.xml" value="0.182129115006413" />
         <entry key="app/src/main/res/layout/fragment_all_log.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.14" />
-        <entry key="app/src/main/res/layout/fragment_calculate_active_logs.xml" value="0.17" />
+        <entry key="app/src/main/res/layout/fragment_calculate_active_logs.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_calculate_bottom_sheet.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_credit_add.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_credits.xml" value="0.2984181274048739" />

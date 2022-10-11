@@ -1,8 +1,9 @@
 package pro.breez.data.rest.api
 
 import pro.breez.domain.interactor.base.Result
-import pro.breez.domain.model.input.CalculateActiveLogsIn
-import pro.breez.domain.model.input.CreditModelIn
+import pro.breez.domain.model.input.CalculateActiveBody
+import pro.breez.domain.model.input.CreditBody
+import pro.breez.domain.model.input.MilkChangesBody
 import pro.breez.domain.model.output.*
 import retrofit2.http.*
 
@@ -42,7 +43,7 @@ interface MainApi {
     @POST("v1/credit/")
     fun postCredit(
         @Header("Authorization") token: String,
-        @Body body: CreditModelIn
+        @Body body: CreditBody
     ): Result<CreditModel>
 
     @GET("v1/journal/")
@@ -77,6 +78,13 @@ interface MainApi {
     @POST("v1/journal/calculate_list")
     fun calculateLogs(
         @Header("Authorization") token: String,
-        @Body body: CalculateActiveLogsIn
+        @Body body: CalculateActiveBody
     ): Result<String>
+
+    @PATCH("v1/journal/")
+    fun saveMilkChanges(
+        @Header("Authorization") token: String,
+        @Query("report_id") id: String,
+        @Body body: MilkChangesBody
+    ): Result<MilkModel>
 }

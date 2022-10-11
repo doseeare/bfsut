@@ -1,19 +1,21 @@
 package pro.breez.bfsut.ui.main.active_logs.calculate
 
-import android.app.Dialog
-import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseBottomSheetFragment
 import pro.breez.bfsut.databinding.FragmentCalculateBottomSheetBinding
+import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
+import pro.breez.bfsut.ui.main.all_logs.AllLogFragment
 import pro.breez.domain.model.output.LogsModel
 
 
 @AndroidEntryPoint
 class CalculateBottomSheetFragment :
     BaseBottomSheetFragment<FragmentCalculateBottomSheetBinding, CalculateLogViewModel>() {
+
+    val dismissLiveData = MutableLiveData<Unit>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,18 +26,18 @@ class CalculateBottomSheetFragment :
     }
 
     private fun initViews() = with(binding) {
-        viewModel.log?.let {
-            nameTv.text = it.farmer_name
-            postDateTv.text = it.date
-            dayLitersTv.text = "${it.morning}л"
-            eveningLitersTv.text = "${it.evening}л"
-            totalSumTv.text = "${it.overall}с"
-            milkPriceTv.text = "${it.milk_price} сом\n за литр"
+        viewModel.log?.let { log ->
+            nameTv.text = log.farmer_name
+            postDateTv.text = log.date
+            dayLitersTv.text = "${log.morning}л"
+            eveningLitersTv.text = "${log.evening}л"
+            totalSumTv.text = "${log.overall}с"
+            milkPriceTv.text = "${log.milk_price} сом\n за литр"
 
             var statusTitle = ""
             var statusBg = 0
 
-            when (it.status) {
+            when (log.status) {
                 "active" -> {
                     statusTitle = "Активный"
                     statusBg = pro.breez.bfsut.R.drawable.bg_active_span
@@ -46,12 +48,32 @@ class CalculateBottomSheetFragment :
                     statusTitle = "Рассчитан"
                     statusBg = pro.breez.bfsut.R.drawable.bg_paid_span
                     totalTv.visibility = View.INVISIBLE
+                    calcBtn.visibility = View.GONE
                     calcDateTv.visibility = View.VISIBLE
+                    calcDateTv.text = "Рассчитано ${log.paid_date}"
+                }
+            }
+            calcBtn.setOnClickListener {
+                viewModel.calculateLog(log.id) {
+                    dismiss()
+                    when (val parentFragment = parentFragment) {
+                        is AllLogFragment -> {
+                            parentFragment.onPageSelected()
+                        }
+                        is ActiveLogFragment -> {
+                            parentFragment.onPageSelected()
+                        }
+                    }
                 }
             }
             statusTv.text = statusTitle
             statusContainer.setBackgroundResource(statusBg)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        dismissLiveData.postValue(Unit)
     }
 
     override fun getTheme(): Int {

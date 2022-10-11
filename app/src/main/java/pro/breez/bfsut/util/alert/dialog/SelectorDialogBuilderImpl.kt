@@ -5,14 +5,19 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
+import androidx.core.widget.doOnTextChanged
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import pro.breez.bfsut.adapter.SelectorItemAdapter
 import pro.breez.bfsut.databinding.DialogItemSelectorBinding
 
-class SelectorDialogBuilderImpl<T>(
-    private val list: List<T>,
-    private val textFiledList: List<String>,
-    private val result: (T) -> Unit
-) : SelectorDialogBuilder {
+class SelectorDialogBuilderImpl<T> : SelectorDialogBuilder<T> {
+    private var vmScope: CoroutineScope? = null
+    private var list: List<T>? = null
+    private var result: ((T) -> Unit)? = null
+
+    private lateinit var searchResult: (List<T>) -> Unit
+    private var searchByVal = ""
 
     override fun showDialog(
         context: Context
@@ -23,15 +28,61 @@ class SelectorDialogBuilderImpl<T>(
             val binding = DialogItemSelectorBinding.inflate(inflater)
             setContentView(binding.root)
             window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            val adapter = SelectorItemAdapter<T>(list, textFiledList) {
+            val adapter = SelectorItemAdapter(list!!, searchByVal) {
                 binding.selectBtn.isEnabled = true
+            }
+            setFilter(binding)
+            searchResult = {
+                adapter.update(it)
             }
             binding.itemRv.adapter = adapter
             binding.selectBtn.setOnClickListener {
-                result.invoke(adapter.getSelectedItem())
+                result?.invoke(adapter.getSelectedItem())
                 dismiss()
             }
             show()
         }
     }
+
+    private fun setFilter(
+        binding: DialogItemSelectorBinding,
+    ) {
+        binding.search.doOnTextChanged { text, start, before, count ->
+            vmScope?.launch {
+                val filterResult = filter(searchByVal, text.toString().lowercase())
+                searchResult.invoke(filterResult)
+            }
+        }
+    }
+
+    private fun filter(searchByVal: String, searchKey: String): List<T> {
+        val arrayList = ArrayList<T>()
+        list?.forEach {
+            val field = it!!::class.java.getDeclaredField(searchByVal)
+            field.isAccessible = true
+            val fieldValue = (field.get(it) as String).lowercase()
+            field.isAccessible = false
+            if (fieldValue.contains(searchKey)) {
+                arrayList.add(it)
+            }
+        }
+        return arrayList
+    }
+
+    override fun setVmScope(scope: CoroutineScope) {
+        vmScope = scope
+    }
+
+    override fun setList(list: List<T>) {
+        this.list = list
+    }
+
+    override fun setSearchByVal(value: String) {
+        searchByVal = value
+    }
+
+    override fun setResultListener(result: (T) -> Unit) {
+        this.result = result
+    }
+
 }

@@ -10,7 +10,7 @@ import pro.breez.bfsut.databinding.ItemSelectorBinding
 
 class SelectorItemAdapter<T>(
     private var itemList: List<T>,
-    private val textField: List<String>,
+    private val valueName: String,
     private val activeBtn: () -> Unit
 ) :
     RecyclerView.Adapter<SelectorItemAdapter<T>.SelectorViewHolder>() {
@@ -35,13 +35,21 @@ class SelectorItemAdapter<T>(
         return itemList.size
     }
 
+    fun update(list: List<T>) {
+        this.itemList = list
+        notifyDataSetChanged()
+    }
+
     fun getSelectedItem() = selectedItem!!
 
     inner class SelectorViewHolder(private val binding: ItemSelectorBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: T, position: Int) {
             binding.apply {
-                nameTv.text = textField[position]
+                val value = item!!::class.java.getDeclaredField(valueName)
+                value.isAccessible = true
+                nameTv.text = value.get(item) as String
+                value.isAccessible = false
                 root.setSelect(lastCheckedPos == position, position)
                 root.setOnClickListener {
                     val copyLastPos = lastCheckedPos

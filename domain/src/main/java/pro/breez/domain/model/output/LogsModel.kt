@@ -12,5 +12,6 @@ data class LogsModel(
     val morning: Int,
     val overall: String,
     val status: String,
-    var isSelected: Boolean = false
-): Serializable
+    var isSelected: Boolean = false,
+    var paid_date: String? = null
+) : Serializable

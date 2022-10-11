@@ -9,6 +9,7 @@ import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.ui.main.active_logs.calculate.CalculateBottomSheetFragment
 import pro.breez.bfsut.ui.main.log.LogFragmentDirections
+import pro.breez.bfsut.util.DateUtil
 import pro.breez.domain.interactor.base.AllLogsUseCase
 import pro.breez.domain.model.output.LogsModel
 import javax.inject.Inject
@@ -38,10 +39,22 @@ class AllLogViewModel @Inject constructor(
         val args = LogFragmentDirections.logFragmentToCalculateActiveLog(item).arguments
         when (item.status) {
             "active" -> {
-                navigateToFragment.startEvent(FragmentTransaction(R.id.calculate_active_logs, args))
+                if (DateUtil.isToday(item.date))
+                    navigateToFragment.startEvent(
+                        FragmentTransaction(
+                            R.id.calculate_active_logs,
+                            args
+                        )
+                    )
+                else showBottomSheetFragment.startEvent(
+                    CalculateBottomSheetFragment.newInstance(
+                        item
+                    )
+                )
             }
             "paid" -> {
-                showBottomSheetFragment.startEvent(CalculateBottomSheetFragment.newInstance(item))
+                val bottomSheet = CalculateBottomSheetFragment.newInstance(item)
+                showBottomSheetFragment.startEvent(bottomSheet)
             }
             else -> {
                 return

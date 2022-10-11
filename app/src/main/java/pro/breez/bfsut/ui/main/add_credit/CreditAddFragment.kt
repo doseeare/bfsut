@@ -50,9 +50,9 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
         category.onClicked = {
             viewModel.categoryClicked()
         }
-        date.onClicked = {
+   /*     date.onClicked = {
             viewModel.dateClicked()
-        }
+        }*/
 
         sendBtn.setOnClickListener {
             viewModel.sendBtnClicked(fieldsNotEmpty())

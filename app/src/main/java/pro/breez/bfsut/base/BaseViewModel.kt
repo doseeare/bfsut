@@ -8,6 +8,7 @@ import androidx.annotation.StringRes
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import pro.breez.bfsut.R
 import pro.breez.bfsut.exception.ErrorMessageFactory
@@ -33,8 +34,8 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
     val showLoadingView = MutableLiveData<LoadingViewParams>()
     val dialogBuilderEvent = SingleLiveEvent<DialogBuilder>()
     val permissionCheckerEvent = SingleLiveEvent<PermissionCheckerBuilder>()
-    val showBottomSheetFragment = SingleLiveEvent<BottomSheetDialogFragment>()
-    val showSelectorDialog = SingleLiveEvent<SelectorDialogBuilder>()
+    val showBottomSheetFragment = SingleLiveEvent<SuperBottomSheetFragment>()
+    val showSelectorDialog = SingleLiveEvent<SelectorDialogBuilder<*>>()
     val showAlertDialog = SingleLiveEvent<AlertDialogBuilder>()
     val showQuestionDialog = SingleLiveEvent<QuestionDialog>()
     val navigateToFragment = SingleLiveEvent<FragmentTransaction>()

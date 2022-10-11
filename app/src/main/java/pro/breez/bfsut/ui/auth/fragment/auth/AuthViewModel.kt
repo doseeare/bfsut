@@ -8,7 +8,7 @@ import pro.breez.bfsut.helper.SingleLiveEvent
 import pro.breez.bfsut.model.SnackBarMessageOptions
 import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.domain.interactor.AuthUseCase
-import pro.breez.domain.model.input.AuthModelIn
+import pro.breez.domain.model.input.AuthBody
 import javax.inject.Inject
 
 @HiltViewModel
@@ -29,7 +29,7 @@ class AuthViewModel @Inject constructor(
             return
         }
         showLoadingView()
-        authUC.execute(viewModelScope, AuthModelIn(authFields.first!!, authFields.second!!)) {
+        authUC.execute(viewModelScope, AuthBody(authFields.first!!, authFields.second!!)) {
             handleResult(it) {
                 navigateToActivity.startEvent(ActivityTransaction(R.id.auth_fragment_to_main_activity))
             }

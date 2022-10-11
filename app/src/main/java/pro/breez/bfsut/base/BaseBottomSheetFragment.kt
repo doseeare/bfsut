@@ -11,6 +11,7 @@ import androidx.annotation.StringRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.createViewModelLazy
 import androidx.viewbinding.ViewBinding
+import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import pro.breez.bfsut.R
 import pro.breez.bfsut.model.navigation.ActivityTransaction
@@ -18,7 +19,7 @@ import pro.breez.bfsut.model.navigation.FragmentTransaction
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseBottomSheetFragment<VB : ViewBinding, VM : BaseViewModel> :
-    BottomSheetDialogFragment() {
+    SuperBottomSheetFragment() {
 
     private var _binding: VB? = null
     protected val binding: VB get() = _binding!!
@@ -36,11 +37,20 @@ abstract class BaseBottomSheetFragment<VB : ViewBinding, VM : BaseViewModel> :
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
         _binding = inflateMethod.invoke(null, layoutInflater, container, false) as VB
         viewModel = createViewModelLazy(classVM.kotlin, { viewModelStore }).value
         lifecycle.addObserver(viewModel)
         setupBaseViewModel()
         return _binding!!.root
+    }
+
+    override fun getExpandedHeight(): Int {
+        return  ViewGroup.LayoutParams.WRAP_CONTENT
+    }
+
+    override fun isSheetAlwaysExpanded(): Boolean {
+        return true
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -62,36 +72,45 @@ abstract class BaseBottomSheetFragment<VB : ViewBinding, VM : BaseViewModel> :
 
     private fun setupBaseViewModel() {
         viewModel.let { vm ->
-            vm.navigateToFragment.observe(viewLifecycleOwner) {
+            vm.navigateToFragment.observe(this) {
                 navigateToFragment(it)
             }
 
-            vm.navigateToActivity.observe(viewLifecycleOwner) {
+            vm.navigateToActivity.observe(this) {
                 navigateToActivity(it)
             }
 
-            vm.popBackStack.observe(viewLifecycleOwner) {
+            vm.popBackStack.observe(this) {
                 popBackStack(it)
             }
-            vm.showBottomSheetFragment.observe(viewLifecycleOwner) { fragment ->
+            vm.showBottomSheetFragment.observe(this) { fragment ->
                 fragment.show(childFragmentManager, fragment.tag)
             }
 
-            vm.showSnackBar.observe(viewLifecycleOwner) { builder ->
+            vm.showSnackBar.observe(this) { builder ->
                 builder.create(requireView()).show()
             }
 
             vm.getStringResource = { stringId, params -> getString(stringId, params) }
 
-            vm.showLoadingView.observe(viewLifecycleOwner) { params ->
+            vm.showLoadingView.observe(this) { params ->
                 when (params.isVisible) {
                     true -> showLoading(params.text)
                     false -> hideLoading()
                 }
             }
 
-            vm.showSelectorDialog.observe(viewLifecycleOwner) { builder ->
+            vm.showSelectorDialog.observe(this) { builder ->
                 builder.showDialog(requireContext())
+            }
+            vm.requiredArguments = { requireArguments() }
+
+            vm.showAlertDialog.observe(this) {
+                it.create(requireContext())
+            }
+
+            vm.showQuestionDialog.observe(this){
+                it.show(childFragmentManager, "QuestionDialog")
             }
         }
     }
@@ -106,18 +125,11 @@ abstract class BaseBottomSheetFragment<VB : ViewBinding, VM : BaseViewModel> :
     }
 
     private fun showLoading(@StringRes resourceId: Int) {
-        loadingView?.let { loadingView ->
-            loadingView.visibility = View.VISIBLE
-            textViewLoadingMessage?.let {
-                it.text = getString(resourceId)
-            }
-        }
+        (activity as? BaseActivity<*>)?.showLoading(resourceId)
     }
 
     private fun hideLoading() {
-        loadingView?.let {
-            it.visibility = View.GONE
-        }
+        (activity as? BaseActivity<*>)?.hideLoading()
     }
 
     override fun onDestroy() {

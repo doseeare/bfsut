@@ -13,9 +13,9 @@ import javax.inject.Inject
 class CalculateLogViewModel @Inject constructor(
     private val calculateUc: CalculateActiveLogUseCase
 ) : BaseViewModel() {
-    var log : LogsModel? = null
+    var log: LogsModel? = null
 
-    fun calculateLog(id: String) {
+    fun calculateLog(id: String, block: () -> Unit) {
         showLoadingView()
         calculateUc.execute(viewModelScope, id) {
             handleResult(it) {
@@ -24,7 +24,7 @@ class CalculateLogViewModel @Inject constructor(
                 dialog.setTitle("Рассчет был произведен")
                 dialog.setSubTitle("Отличная работа")
                 dialog.setDismissListener {
-                    popBackStack.startEvent(R.id.navigation_log)
+                    block.invoke()
                 }
                 showAlertDialog.startEvent(dialog)
             }

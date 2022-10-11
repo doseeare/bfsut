@@ -2,7 +2,6 @@ package pro.breez.bfsut.ui.main.active_logs.calculate
 
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
@@ -22,6 +21,11 @@ class CalculateActiveLogsFragment :
             binding.totalAmountTv.text = "Итого: ${it.overall} сом"
             binding.calculateBtn.setOnClickListener { _ ->
                 viewModel.calculateLog(it.id)
+            }
+            binding.saveChangesBtn.setOnClickListener { _ ->
+                val evening = binding.eveningEt.text.toString()
+                val morning = binding.dayEt.text.toString()
+                viewModel.saveChanges(it, morning, evening)
             }
         }
         binding.toolbarBackBtn.setOnClickListener {

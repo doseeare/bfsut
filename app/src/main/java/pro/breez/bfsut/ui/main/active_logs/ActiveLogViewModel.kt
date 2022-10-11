@@ -7,7 +7,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.model.navigation.FragmentTransaction
+import pro.breez.bfsut.ui.main.active_logs.calculate.CalculateBottomSheetFragment
 import pro.breez.bfsut.ui.main.log.LogFragmentDirections
+import pro.breez.bfsut.util.DateUtil
 import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
 import pro.breez.domain.interactor.ActiveLogsUseCase
@@ -37,7 +39,7 @@ class ActiveLogViewModel @Inject constructor(
         getActiveLogs()
     }
 
-    private fun getActiveLogs() {
+    fun getActiveLogs() {
         activeLogsUseCase.execute(viewModelScope) {
             handleResult(it) {
                 activeLogsLV.postValue(it as ArrayList<LogsModel>)
@@ -84,12 +86,20 @@ class ActiveLogViewModel @Inject constructor(
 
     fun itemClicked(item: LogsModel) {
         val args = LogFragmentDirections.logFragmentToCalculateActiveLog(item).arguments
-        navigateToFragment.startEvent(
-            FragmentTransaction(
-                R.id.log_fragment_to_calculate_active_log,
-                args
+        if (DateUtil.isToday(item.date)) {
+            navigateToFragment.startEvent(
+                FragmentTransaction(
+                    R.id.log_fragment_to_calculate_active_log,
+                    args
+                )
             )
-        )
+        } else {
+            showBottomSheetFragment.startEvent(
+                CalculateBottomSheetFragment.newInstance(
+                    item
+                )
+            )
+        }
     }
 
     fun calculateLogs() {

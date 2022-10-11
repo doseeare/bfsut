@@ -64,7 +64,7 @@ class ActiveLogFragment : BaseFragment<FragmentActiveLogBinding, ActiveLogViewMo
     }
 
     override fun onPageSelected() {
-
+        viewModel.getActiveLogs()
     }
 
 }
