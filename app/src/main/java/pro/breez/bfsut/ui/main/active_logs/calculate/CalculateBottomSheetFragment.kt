@@ -8,6 +8,7 @@ import pro.breez.bfsut.base.BaseBottomSheetFragment
 import pro.breez.bfsut.databinding.FragmentCalculateBottomSheetBinding
 import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
 import pro.breez.bfsut.ui.main.all_logs.AllLogFragment
+import pro.breez.bfsut.util.setOnClickOnceListener
 import pro.breez.domain.model.output.LogsModel
 
 
@@ -53,7 +54,7 @@ class CalculateBottomSheetFragment :
                     calcDateTv.text = "Рассчитано ${log.paid_date}"
                 }
             }
-            calcBtn.setOnClickListener {
+            calcBtn.setOnClickOnceListener {
                 viewModel.calculateLog(log.id) {
                     dismiss()
                     when (val parentFragment = parentFragment) {

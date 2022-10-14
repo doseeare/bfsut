@@ -16,20 +16,20 @@ class LogsRepositoryImpl(
     private val dataPreference: DataPreference
 ) : LogsRepository {
 
-    override fun getActiveLogs(): Result<List<LogsModel>> {
-        return restClient.mainApi.getActiveLogs(dataPreference.token, "active")
+    override fun getActiveLogs(queries: Map<String, String>): Result<List<LogsModel>> {
+        return restClient.mainApi.getActiveLogs(dataPreference.token, queries)
     }
 
-    override fun getPaidLogs(): Result<List<PaidLogModel>> {
-        return restClient.mainApi.getPaidLogs(dataPreference.token)
+    override fun getPaidLogs(queries: Map<String, String>): Result<List<PaidLogModel>> {
+        return restClient.mainApi.getPaidLogs(dataPreference.token, queries)
     }
 
-    override fun getPaidLogDetail(id : String): Result<List<PaidLogsDetailModel>> {
+    override fun getPaidLogDetail(id: String): Result<List<PaidLogsDetailModel>> {
         return restClient.mainApi.getPaidLogDetail(dataPreference.token, id)
     }
 
-    override fun getAllLogs(): Result<List<LogsModel>> {
-        return restClient.mainApi.getAllLogs(dataPreference.token)
+    override fun getAllLogs(queries: Map<String, String>): Result<List<LogsModel>> {
+        return restClient.mainApi.getAllLogs(dataPreference.token, queries)
     }
 
     override fun calculateActiveLog(id: String): Result<String> {

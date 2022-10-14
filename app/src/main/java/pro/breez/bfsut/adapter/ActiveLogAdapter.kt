@@ -1,8 +1,8 @@
 package pro.breez.bfsut.adapter
 
-import android.util.Log
 import pro.breez.bfsut.base.BaseRecyclerAdapter
 import pro.breez.bfsut.databinding.ItemActiveLogBinding
+import pro.breez.bfsut.util.setOnClickOnceListener
 import pro.breez.domain.model.output.LogsModel
 
 class ActiveLogAdapter(
@@ -28,7 +28,7 @@ class ActiveLogAdapter(
             priceTv.text = "${item.overall}с"
             itemList[position].isSelected = select
             checkbox.isChecked = select
-            container.setOnClickListener {
+            container.setOnClickOnceListener {
                 itemClicked.invoke(item)
             }
             checkbox.setOnCheckedChangeListener { compBtn, b ->

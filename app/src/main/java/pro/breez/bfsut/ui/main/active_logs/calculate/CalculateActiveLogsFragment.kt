@@ -6,6 +6,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentCalculateActiveLogsBinding
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 @AndroidEntryPoint
 class CalculateActiveLogsFragment :
@@ -19,17 +20,17 @@ class CalculateActiveLogsFragment :
             binding.eveningEt.setText("${it.morning} л")
             binding.milkPriceTv.text = "${it.milk_price} сом\nза литр"
             binding.totalAmountTv.text = "Итого: ${it.overall} сом"
-            binding.calculateBtn.setOnClickListener { _ ->
+            binding.calculateBtn.setOnClickOnceListener { _ ->
                 viewModel.calculateLog(it.id)
             }
-            binding.saveChangesBtn.setOnClickListener { _ ->
+            binding.saveChangesBtn.setOnClickOnceListener { _ ->
                 val evening = binding.eveningEt.text.toString()
                 val morning = binding.dayEt.text.toString()
                 viewModel.saveChanges(it, morning, evening)
             }
         }
-        binding.toolbarBackBtn.setOnClickListener {
-            viewModel.popBackStack.startEvent(R.id.navigation_log)
+        binding.toolbarBackBtn.setOnClickOnceListener {
+            requireActivity().onBackPressed()
         }
     }
 }

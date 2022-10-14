@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.annotation.CallSuper
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -37,7 +38,7 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
     val showBottomSheetFragment = SingleLiveEvent<SuperBottomSheetFragment>()
     val showSelectorDialog = SingleLiveEvent<SelectorDialogBuilder<*>>()
     val showAlertDialog = SingleLiveEvent<AlertDialogBuilder>()
-    val showQuestionDialog = SingleLiveEvent<QuestionDialog>()
+    val showDialogFragment = SingleLiveEvent<DialogFragment>()
     val navigateToFragment = SingleLiveEvent<FragmentTransaction>()
     val navigateToActivity = SingleLiveEvent<ActivityTransaction>()
     val handleIntent = SingleLiveEvent<Intent>()

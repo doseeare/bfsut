@@ -6,6 +6,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentCreditAddBinding
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 @AndroidEntryPoint
 class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewModel>() {
@@ -18,7 +19,7 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
 
     private fun initObserver() = with(viewModel) {
         farmerLV.observe(viewLifecycleOwner) {
-            binding.farmer.text = "${it.first_name} ${it.father_name} ${it.last_name}"
+            binding.farmer.text = it.full_name
         }
         productLV.observe(viewLifecycleOwner) {
             binding.product.text = it.name
@@ -36,7 +37,7 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
 
     private fun initViews() = with(binding) {
         toolbar.setOnBackClickListener {
-            viewModel.popBackStack.startEvent(R.id.navigation_home)
+            requireActivity().onBackPressed()
         }
         farmer.onClicked = {
             viewModel.farmerClicked()
@@ -54,7 +55,7 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
             viewModel.dateClicked()
         }*/
 
-        sendBtn.setOnClickListener {
+        sendBtn.setOnClickOnceListener {
             viewModel.sendBtnClicked(fieldsNotEmpty())
         }
 

@@ -6,6 +6,7 @@ import androidx.core.widget.doOnTextChanged
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentAuthBinding
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 @AndroidEntryPoint
 class AuthFragment : BaseFragment<FragmentAuthBinding, AuthViewModel>() {
@@ -16,7 +17,7 @@ class AuthFragment : BaseFragment<FragmentAuthBinding, AuthViewModel>() {
     }
 
     private fun initViews() = with(binding) {
-        binding.enterBtn.setOnClickListener {
+        binding.enterBtn.setOnClickOnceListener {
             val login = loginEt.text
             val password = passwordEt.text
             viewModel.login(login to password)

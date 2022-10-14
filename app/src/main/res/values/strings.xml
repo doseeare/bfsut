@@ -26,4 +26,6 @@
     <string name="make_calculate">Произвести расчет</string>
     <string name="total">Итого:</string>
     <string name="calculate">Рассчитать</string>
+    <string name="accept">Принять</string>
+    <string name="not_found">Ничего не найдено</string>
 </resources>

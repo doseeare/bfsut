@@ -103,12 +103,12 @@ class AlternativeDialogBuilderImpl : AlternativeDialogBuilder {
         alertDialog.setCancelable(isCancelable)
         alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        binding.buttonPositive.setOnClickListener {
+        binding.buttonPositive.setOnSingleClickListener {
             onPositiveClicked?.invoke()
             alertDialog.dismiss()
         }
 
-        binding.textViewNegativeButton.setOnClickListener {
+        binding.textViewNegativeButton.setOnSingleClickListener {
             onNegativeClicked?.invoke()
             alertDialog.dismiss()
         }

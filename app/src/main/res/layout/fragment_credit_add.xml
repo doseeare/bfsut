@@ -29,7 +29,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-            <pro.breez.bfsut.custom.view.AddCreditEditText
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/farmer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
                 android:textSize="66sp"
                 android:textStyle="bold" />
 
-            <pro.breez.bfsut.custom.view.AddCreditEditText
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/goal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                 app:title="Цель"
                 app:type="drop" />
 
-            <pro.breez.bfsut.custom.view.AddCreditEditText
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/comments_of_goal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
                 app:title="Комментарий к цели"
                 app:type="field" />
 
-            <pro.breez.bfsut.custom.view.AddCreditEditText
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/product"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                 app:title="Продукт"
                 app:type="drop" />
 
-            <pro.breez.bfsut.custom.view.AddCreditEditText
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
                 app:title="Категория"
                 app:type="drop" />
 
-            <pro.breez.bfsut.custom.view.AddCreditEditText
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
                 app:title="Срок"
                 app:type="drop" />
 
-            <pro.breez.bfsut.custom.view.AddCreditEditText
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/date_of_payment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
                 app:title="День для выплат"
                 app:type="field" />
 
-            <pro.breez.bfsut.custom.view.AddCreditEditText
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/sum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -151,7 +151,7 @@
         android:layout_marginHorizontal="@dimen/default_margins"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/bg_base_button"
+        android:background="@drawable/selector_default_button"
         android:text="@string/send"
         android:textAllCaps="false"
         android:textColor="@color/white"

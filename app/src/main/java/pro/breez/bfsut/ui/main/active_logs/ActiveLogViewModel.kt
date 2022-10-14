@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
+import pro.breez.bfsut.model.FilterResult
 import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.ui.main.active_logs.calculate.CalculateBottomSheetFragment
 import pro.breez.bfsut.ui.main.log.LogFragmentDirections
@@ -22,11 +23,11 @@ class ActiveLogViewModel @Inject constructor(
     private val activeLogsUseCase: ActiveLogsUseCase,
     private val calculateActiveLogs: CalculateActiveLogsUseCase
 ) : BaseViewModel() {
-
     private val selectedLogsLV = MutableLiveData<ArrayList<LogsModel>>()
-
     val activeLogsLV = MutableLiveData<ArrayList<LogsModel>>()
     val selectedLogsPriceInfoLV = MutableLiveData<Pair<Int, Int>>()
+
+    var filterResult: FilterResult? = null
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
@@ -40,7 +41,7 @@ class ActiveLogViewModel @Inject constructor(
     }
 
     fun getActiveLogs() {
-        activeLogsUseCase.execute(viewModelScope) {
+        activeLogsUseCase.execute(viewModelScope, filterResult?.toBody()) {
             handleResult(it) {
                 activeLogsLV.postValue(it as ArrayList<LogsModel>)
             }
@@ -89,7 +90,7 @@ class ActiveLogViewModel @Inject constructor(
         if (DateUtil.isToday(item.date)) {
             navigateToFragment.startEvent(
                 FragmentTransaction(
-                    R.id.log_fragment_to_calculate_active_log,
+                    R.id.calculate_active_logs,
                     args
                 )
             )
@@ -131,6 +132,6 @@ class ActiveLogViewModel @Inject constructor(
                 }
             }
         }
-        showQuestionDialog.startEvent(dialog)
+        showDialogFragment.startEvent(dialog)
     }
 }

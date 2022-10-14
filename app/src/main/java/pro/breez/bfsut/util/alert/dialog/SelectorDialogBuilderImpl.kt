@@ -5,11 +5,13 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
+import android.view.View
 import androidx.core.widget.doOnTextChanged
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import pro.breez.bfsut.adapter.SelectorItemAdapter
 import pro.breez.bfsut.databinding.DialogItemSelectorBinding
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 class SelectorDialogBuilderImpl<T> : SelectorDialogBuilder<T> {
     private var vmScope: CoroutineScope? = null
@@ -28,19 +30,32 @@ class SelectorDialogBuilderImpl<T> : SelectorDialogBuilder<T> {
             val binding = DialogItemSelectorBinding.inflate(inflater)
             setContentView(binding.root)
             window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            checkList(binding, list!!)
             val adapter = SelectorItemAdapter(list!!, searchByVal) {
                 binding.selectBtn.isEnabled = true
             }
             setFilter(binding)
             searchResult = {
+                checkList(binding, it)
                 adapter.update(it)
             }
             binding.itemRv.adapter = adapter
-            binding.selectBtn.setOnClickListener {
+            binding.selectBtn.setOnClickOnceListener {
                 result?.invoke(adapter.getSelectedItem())
                 dismiss()
             }
             show()
+        }
+    }
+
+    private fun checkList(binding: DialogItemSelectorBinding, list: List<T>) {
+        if (list.isEmpty()) {
+            binding.notFoundView.visibility = View.VISIBLE
+            binding.itemRv.visibility = View.GONE
+            binding.selectBtn.isEnabled = false
+        } else {
+            binding.notFoundView.visibility = View.GONE
+            binding.itemRv.visibility = View.VISIBLE
         }
     }
 

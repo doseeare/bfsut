@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
+import pro.breez.bfsut.model.FilterResult
 import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.ui.main.active_logs.calculate.CalculateBottomSheetFragment
 import pro.breez.bfsut.ui.main.log.LogFragmentDirections
@@ -20,6 +21,7 @@ class AllLogViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     val allLogsLV = MutableLiveData<ArrayList<LogsModel>>()
+    var filterResult: FilterResult? = null
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
@@ -28,7 +30,7 @@ class AllLogViewModel @Inject constructor(
 
     fun getAllLogs() {
         showLoadingView()
-        allLogsUC.execute(viewModelScope) {
+        allLogsUC.execute(viewModelScope, filterResult?.toBody()) {
             handleResult(it) {
                 allLogsLV.postValue(it as ArrayList<LogsModel>)
             }

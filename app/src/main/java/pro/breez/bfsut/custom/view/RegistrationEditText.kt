@@ -10,6 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.LayoutRegistrationEdittextBinding
 import pro.breez.bfsut.util.setGoneIfFalse
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 class RegistrationEditText(context: Context, attributeSet: AttributeSet?, defStyle: Int) :
     ConstraintLayout(context, attributeSet, defStyle) {
@@ -50,8 +51,8 @@ class RegistrationEditText(context: Context, attributeSet: AttributeSet?, defSty
         set(value) {
             field = value
             val errorBorderBg =
-                if (value) R.drawable.bg_auth_edittext_error
-                else R.drawable.bg_auth_edittext_default
+                if (value) R.drawable.bg_shape_red_corners
+                else R.drawable.bg_shape_gray_corners
             binding.border.setBackgroundResource(errorBorderBg)
             binding.error.setGoneIfFalse(value)
         }
@@ -77,7 +78,7 @@ class RegistrationEditText(context: Context, attributeSet: AttributeSet?, defSty
                 if (it) {
                     passwordToggleOn = true
                     binding.passwordToggle.visibility = VISIBLE
-                    binding.passwordToggle.setOnClickListener {
+                    binding.passwordToggle.setOnClickOnceListener {
                         passwordToggleOn = !passwordToggleOn
                         binding.passwordToggle.setImageResource(passwordToggleSrc)
                     }

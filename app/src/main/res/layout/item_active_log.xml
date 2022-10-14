@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
-    android:background="@drawable/bg_item_log">
+    android:background="@drawable/bg_rounded_shape_light">
 
     <CheckBox
         android:id="@+id/checkbox"
-        android:layout_width="76dp"
-        android:layout_height="76dp"
-        android:padding="@dimen/default_margins"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:button="@null"
+        android:layout_margin="@dimen/default_margins"
+        android:background="?android:attr/listChoiceIndicatorMultiple"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,6 +33,7 @@
         android:id="@+id/name_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="@dimen/default_margins"
         android:text="Акыл Акылов"
         android:textColor="@color/black"
@@ -57,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
-        android:text="ночью"
+        android:text="вечером"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/day_title_tv"

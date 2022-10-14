@@ -1,6 +1,5 @@
 package pro.breez.bfsut.base
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.createViewModelLazy
 import androidx.viewbinding.ViewBinding
 import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import pro.breez.bfsut.R
 import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.bfsut.model.navigation.FragmentTransaction
@@ -109,7 +107,7 @@ abstract class BaseBottomSheetFragment<VB : ViewBinding, VM : BaseViewModel> :
                 it.create(requireContext())
             }
 
-            vm.showQuestionDialog.observe(this){
+            vm.showDialogFragment.observe(this){
                 it.show(childFragmentManager, "QuestionDialog")
             }
         }

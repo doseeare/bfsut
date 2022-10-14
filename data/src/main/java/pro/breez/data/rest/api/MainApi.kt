@@ -49,18 +49,20 @@ interface MainApi {
     @GET("v1/journal/")
     fun getActiveLogs(
         @Header("Authorization") token: String,
-        @Query("status") status: String
+        @QueryMap queries: Map<String, String>
     ): Result<List<LogsModel>>
 
     @GET("v1/journal/")
     fun getAllLogs(
         @Header("Authorization") token: String,
+        @QueryMap queries: Map<String, String>
     ): Result<List<LogsModel>>
 
 
     @GET("v1/journal/paid")
     fun getPaidLogs(
         @Header("Authorization") token: String,
+        @QueryMap queries: Map<String, String>
     ): Result<List<PaidLogModel>>
 
     @GET("v1/journal/paid-card")

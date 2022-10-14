@@ -75,7 +75,7 @@ class NotificationDialogBuilderImpl : NotificationDialogBuilder {
         alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         alertDialog.setCancelable(isCancelable)
 
-        binding.buttonSubmit.setOnClickListener {
+        binding.buttonSubmit.setOnSingleClickListener {
             onPositiveClicked?.invoke()
             alertDialog.dismiss()
         }

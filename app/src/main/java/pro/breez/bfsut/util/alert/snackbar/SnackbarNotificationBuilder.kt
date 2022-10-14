@@ -13,6 +13,7 @@ import com.google.android.material.snackbar.Snackbar
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.CustomSnackbarBinding
 import pro.breez.bfsut.model.SnackBarMessageOptions
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 class SnackbarNotificationBuilder :
     SnackbarNotificationBuilderInterface {
@@ -107,7 +108,7 @@ class SnackbarNotificationBuilder :
             binding.imageViewClose.apply {
                 visibility = View.VISIBLE
                 setImageResource(it)
-                setOnClickListener {
+                setOnClickOnceListener {
                     snackbar.dismiss()
                 }
             }

@@ -11,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseActivity
 import pro.breez.bfsut.databinding.ActivityMainBinding
 import pro.breez.bfsut.model.navigation.FragmentTransaction
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 
 @AndroidEntryPoint
@@ -42,11 +43,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         val navController = findNavController(R.id.nav_host)
         navView.setupWithNavController(navController)
 
-        binding.fabBtn.setOnClickListener {
+        binding.fabBtn.setOnClickOnceListener {
             fabSelected = !fabSelected
         }
 
-        binding.addCredit.setOnClickListener {
+        binding.addCredit.setOnClickOnceListener {
             fabSelected = false
             navigateToFragment(FragmentTransaction(R.id.navigation_credit_add))
         }

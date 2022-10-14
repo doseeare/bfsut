@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.LayoutToolbarBinding
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 class Toolbar(context: Context, attributeSet: AttributeSet?, defStyle: Int) :
     ConstraintLayout(context, attributeSet, defStyle) {
@@ -16,7 +17,7 @@ class Toolbar(context: Context, attributeSet: AttributeSet?, defStyle: Int) :
         LayoutToolbarBinding.inflate(LayoutInflater.from(context), this, true)
 
     fun setOnBackClickListener(block: () -> Unit) {
-        binding.toolbarBackBtn.setOnClickListener {
+        binding.toolbarBackBtn.setOnClickOnceListener {
             block.invoke()
         }
     }
@@ -32,7 +33,7 @@ class Toolbar(context: Context, attributeSet: AttributeSet?, defStyle: Int) :
         }
     }
 
-    fun setTitle (title : String){
+    fun setTitle (title : String?){
         binding.toolbarTitle.text = title
     }
 }

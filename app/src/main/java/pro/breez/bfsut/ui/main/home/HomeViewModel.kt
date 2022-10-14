@@ -32,7 +32,7 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
         for (i in 0..20) {
-            farmers.add(FarmersCheckModel("Садыр Жапаров"))
+            farmers.add(FarmersCheckModel("Райым Маткасымов"))
         }
     }
 

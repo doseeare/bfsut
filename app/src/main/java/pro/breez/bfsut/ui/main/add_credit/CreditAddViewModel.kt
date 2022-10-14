@@ -65,7 +65,7 @@ open class CreditAddViewModel @Inject constructor(
                 val selector = SelectorDialogBuilderImpl<FarmersModel>()
                 selector.setList(list)
                 selector.setVmScope(viewModelScope)
-                selector.setSearchByVal(FarmersModel::first_name.name)
+                selector.setSearchByVal(FarmersModel::full_name.name)
                 selector.setResultListener {
                     farmerLV.postValue(it)
                 }

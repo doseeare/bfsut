@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.LayoutButtonDrawableBinding
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 class ButtonDrawableView(context: Context, attributeSet: AttributeSet?, defStyle: Int) :
     ConstraintLayout(context, attributeSet, defStyle) {
@@ -18,7 +19,7 @@ class ButtonDrawableView(context: Context, attributeSet: AttributeSet?, defStyle
         LayoutButtonDrawableBinding.inflate(LayoutInflater.from(context), this, true)
 
     fun setOnClickListener(block: () -> Unit) {
-        binding.rootLayout.setOnClickListener {
+        binding.rootLayout.setOnClickOnceListener {
             block.invoke()
         }
     }
@@ -37,9 +38,12 @@ class ButtonDrawableView(context: Context, attributeSet: AttributeSet?, defStyle
             attr.getResourceId(R.styleable.ButtonDrawableView_drawable_start, 0).let {
                 binding.drawableStartImg.setImageResource(it)
             }
-            attr.getResourceId(R.styleable.ButtonDrawableView_text_color, 0).let {
-                binding.titleTv.setTextColor(it)
-            }
+/*
+            attr.getResourceId(R.styleable.ButtonDrawableView_text_color, R.color.text_bold_color)
+                .let {
+                    binding.titleTv.setTextColor(it)
+                }
+*/
 
             attr.getInt(R.styleable.ButtonDrawableView_text_style, 0).let {
                 when (it) {

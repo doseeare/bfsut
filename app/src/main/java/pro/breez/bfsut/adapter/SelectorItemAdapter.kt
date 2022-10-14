@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.ItemSelectorBinding
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 class SelectorItemAdapter<T>(
     private var itemList: List<T>,
@@ -51,7 +52,7 @@ class SelectorItemAdapter<T>(
                 nameTv.text = value.get(item) as String
                 value.isAccessible = false
                 root.setSelect(lastCheckedPos == position, position)
-                root.setOnClickListener {
+                root.setOnClickOnceListener {
                     val copyLastPos = lastCheckedPos
                     lastCheckedPos = position
                     notifyItemChanged(position)

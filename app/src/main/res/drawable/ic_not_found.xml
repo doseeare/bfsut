@@ -1,0 +1,39 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="184dp"
+    android:height="184dp"
+    android:viewportWidth="184"
+    android:viewportHeight="184">
+    <group>
+        <clip-path android:pathData="M0,0h184v184h-184z" />
+        <path
+            android:fillColor="#ffffff"
+            android:pathData="M92,182.82C142.16,182.82 182.82,142.16 182.82,92C182.82,41.84 142.16,1.18 92,1.18C41.84,1.18 1.18,41.84 1.18,92C1.18,142.16 41.84,182.82 92,182.82Z"
+            android:strokeWidth="1.26027"
+            android:strokeColor="#F7F7F7"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <path
+            android:fillColor="#FF3E07"
+            android:pathData="M97.63,130.16L92.5,139.99L87.36,130.16L92.5,121.73L97.63,130.16Z"
+            android:strokeWidth="6.85018"
+            android:strokeColor="#FF3E07" />
+        <path
+            android:fillColor="#FF3E07"
+            android:pathData="M81.21,62.16L70.76,68.73L73.31,56.65L82.83,51.41L81.21,62.16Z"
+            android:strokeWidth="6.85018"
+            android:strokeColor="#FF3E07" />
+        <path
+            android:fillColor="#FF3E07"
+            android:pathData="M106.94,91.11L93.59,101.85L99.04,85.6L111.05,76.79L106.94,91.11Z"
+            android:strokeWidth="6.85018"
+            android:strokeColor="#FF3E07" />
+        <path
+            android:fillColor="#FF3E07"
+            android:pathData="M104.12,51.55L109.72,61.24L99.12,57.66L94.67,48.92L104.12,51.55Z"
+            android:strokeWidth="6.85018"
+            android:strokeColor="#FF3E07" />
+        <group>
+            <clip-path android:pathData="M-87.47,-71.27l829.88,129.71l-6.41,40.98l-829.88,-129.71zM-92.81,-37.11l829.88,129.71l-6.41,40.98l-829.88,-129.71zM-98.15,-2.96l829.88,129.71l-6.41,40.98l-829.88,-129.71zM-103.49,31.19l829.88,129.71l-6.41,40.98l-829.88,-129.71zM-108.72,64.67l829.88,129.71l-6.41,40.98l-829.88,-129.71zM-114.01,98.53l829.88,129.71l-6.41,40.98l-829.88,-129.71zM-119.31,132.39l829.88,129.71l-6.41,40.98l-829.88,-129.71z" />
+        </group>
+    </group>
+</vector>

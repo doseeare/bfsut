@@ -1,6 +1,5 @@
 package pro.breez.bfsut.base
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,14 +14,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.viewbinding.ViewBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.coroutines.delay
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.ViewProgressBinding
 import pro.breez.bfsut.exception.NavigationInitializationException
 import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.bfsut.model.navigation.FragmentTransaction
-import java.lang.Thread.sleep
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 

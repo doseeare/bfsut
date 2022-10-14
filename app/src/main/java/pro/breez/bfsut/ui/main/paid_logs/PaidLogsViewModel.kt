@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
+import pro.breez.bfsut.model.FilterResult
 import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.ui.main.log.LogFragmentDirections
 import pro.breez.domain.interactor.PaidLogsUseCase
@@ -18,6 +19,7 @@ class PaidLogsViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     val paidLogsLV = MutableLiveData<ArrayList<PaidLogModel>>()
+    var filterResult : FilterResult? = null
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
@@ -25,7 +27,7 @@ class PaidLogsViewModel @Inject constructor(
     }
 
     fun getPaidLogs() {
-        paidLogsUC.execute(viewModelScope) {
+        paidLogsUC.execute(viewModelScope, filterResult?.toBody()) {
             handleResult(it) {
                 paidLogsLV.postValue(it as ArrayList)
             }

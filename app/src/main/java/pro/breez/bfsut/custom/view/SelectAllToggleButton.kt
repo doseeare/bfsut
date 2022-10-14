@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.SelectAllToggleLayoutBinding
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 class SelectAllToggleButton(context: Context, attributeSet: AttributeSet?, defStyle: Int) :
     ConstraintLayout(context, attributeSet, defStyle) {
@@ -18,7 +19,7 @@ class SelectAllToggleButton(context: Context, attributeSet: AttributeSet?, defSt
    private var selectAll = false
 
     fun setToggleCheckedListener(block: (checked: Boolean) -> Unit) {
-        binding.invisibleBtn.setOnClickListener {
+        binding.invisibleBtn.setOnClickOnceListener {
             setChanges(selectAll)
             block.invoke(selectAll)
         }

@@ -6,6 +6,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.adapter.AllLogsAdapter
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentAllLogBinding
+import pro.breez.bfsut.model.FilterResult
+import pro.breez.bfsut.ui.main.filter_result.FilterResultFragment
 import pro.breez.bfsut.util.alert.OnPageSelectedListener
 
 @AndroidEntryPoint
@@ -15,6 +17,14 @@ class AllLogFragment : BaseFragment<FragmentAllLogBinding, AllLogViewModel>(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        initArgs()
+    }
+
+    private fun initArgs() {
+        val arg = requireArguments().getSerializable(FilterResultFragment.BUNDLE_KEY)
+        if (arg != null) {
+            viewModel.filterResult = arg as FilterResult
+        }
     }
 
     private fun initViews() {

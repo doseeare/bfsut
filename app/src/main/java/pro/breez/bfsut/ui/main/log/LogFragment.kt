@@ -11,12 +11,20 @@ import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
 import pro.breez.bfsut.ui.main.all_logs.AllLogFragment
 import pro.breez.bfsut.ui.main.paid_logs.PaidLogsFragment
 import pro.breez.bfsut.util.alert.OnPageSelectedListener
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 class LogFragment : BaseFragment<FragmentLogBinding, LogViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpTabLayout()
+        initViews()
+    }
+
+    private fun initViews() {
+        binding.filterBtn.setOnClickOnceListener {
+            viewModel.filterClicked()
+        }
     }
 
     private fun setUpTabLayout() {

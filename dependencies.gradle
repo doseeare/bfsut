@@ -34,7 +34,7 @@ ext {
             hilt               : "com.google.dagger:hilt-android:$hilt_ver",
             navigationFragment : "androidx.navigation:navigation-fragment-ktx:$nav_ver",
             navigationUi       : "androidx.navigation:navigation-ui-ktx:$nav_ver",
-          //  navArgs            : "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_ver",
+            //  navArgs            : "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_ver",
             lifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:$lifecycle_extensions_ver",
             loggingInterceptor : "com.squareup.okhttp3:logging-interceptor:$logging_ver",
             coroutinesCore     : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_ver",
@@ -46,7 +46,8 @@ ext {
             oneAdapter         : "com.github.idanatz:OneAdapter:$oneAdapterVer",
             smartTabLayout     : "com.ogaclejapan.smarttablayout:library:2.0.0@aar",
             smartTabLayoutUtil : "com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar",
-            smartBottomSheet : "com.github.andrefrsousa:SuperBottomSheet:2.0.0"
+            smartBottomSheet   : "com.github.andrefrsousa:SuperBottomSheet:2.0.0",
+            customRadioButtons : "nl.bryanderidder:themed-toggle-button-group:1.4.1"
     ]
 
     presentationKapt = [

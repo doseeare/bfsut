@@ -7,6 +7,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentHomeBinding
 import pro.breez.bfsut.adapter.FarmersAdapter
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
@@ -22,7 +23,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private fun initViews() {
         val adapter = FarmersAdapter(viewModel.farmers.take(8) as ArrayList)
-        binding.showMoreBtn.setOnClickListener {
+        binding.showMoreBtn.setOnClickOnceListener {
             if (showMore) {
                 binding.showMoreBtn.text = "Скрыть"
                 adapter.update(viewModel.farmers.take(12) as ArrayList)
@@ -34,7 +35,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         }
         binding.farmersRv.adapter = adapter
 
-        binding.showAllBtn.setOnClickListener {
+        binding.showAllBtn.setOnClickOnceListener {
             viewModel.showAll()
         }
     }
