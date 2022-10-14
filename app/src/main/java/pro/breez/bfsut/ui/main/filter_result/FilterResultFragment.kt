@@ -43,6 +43,9 @@ class FilterResultFragment : BaseFragment<FragmentFilterResultBinding, FilterRes
         }
         binding.toolbar.setTitle("Результаты по:")
         binding.resultTitleTv.text = strBuilder.toString()
+        binding.toolbar.setOnBackClickListener {
+            requireActivity().onBackPressed()
+        }
         val pagerAdapter = FragmentPagerItemAdapter(
             childFragmentManager, createTabs()
         )
