@@ -47,7 +47,9 @@ ext {
             smartTabLayout     : "com.ogaclejapan.smarttablayout:library:2.0.0@aar",
             smartTabLayoutUtil : "com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar",
             smartBottomSheet   : "com.github.andrefrsousa:SuperBottomSheet:2.0.0",
-            customRadioButtons : "nl.bryanderidder:themed-toggle-button-group:1.4.1"
+            customRadioButtons : "nl.bryanderidder:themed-toggle-button-group:1.4.1",
+            editTextMask       : "com.github.RedMadRobot:input-mask-android:6.1.0",
+            broadCast          : "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
     ]
 
     presentationKapt = [
@@ -69,14 +71,14 @@ ext {
             coroutinesCore    : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_ver",
             coroutinesAndroid : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_ver",
             googleError       : "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
-
+            broadCast          : "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
     ]
 
     domainImpl = [
             coroutinesCore: "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_ver",
             javaxInject   : "javax.inject:javax.inject:${javaxInjectVersion}",
             googleError   : "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
-
+            broadCast          : "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
     ]
 
     domainKapt = [

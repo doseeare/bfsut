@@ -41,4 +41,10 @@ object DateUtil {
             toMillis = range.second
         )
     }
+
+    @SuppressLint("SimpleDateFormat")
+    fun toDate(millis: Long): String {
+        val dateFormat = SimpleDateFormat("dd.MM.yyyy")
+        return dateFormat.format(Date(millis))
+    }
 }

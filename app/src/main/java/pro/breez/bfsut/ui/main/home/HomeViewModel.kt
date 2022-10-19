@@ -6,6 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.model.navigation.FragmentTransaction
+import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.domain.model.output.FarmersCheckModel
 import javax.inject.Inject
 
@@ -21,12 +22,21 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
             field = !value
         }
 
-    val hello = MutableLiveData<String>()
 
     val farmers = ArrayList<FarmersCheckModel>()
 
     fun showAll() {
         navigateToFragment.startEvent(FragmentTransaction(R.id.home_fragment_to_all_farmers))
+    }
+
+    fun logOut(block: () -> Unit) {
+        val dialog = QuestionDialog().apply {
+            setTitle("Хотите выйти?")
+            onPositiveBtnClicked {
+                block.invoke()
+            }
+        }
+        showDialogFragment.startEvent(dialog)
     }
 
     override fun onCreate(owner: LifecycleOwner) {

@@ -89,4 +89,40 @@ interface MainApi {
         @Query("report_id") id: String,
         @Body body: MilkChangesBody
     ): Result<MilkModel>
+
+    @GET("v1/mfsys/nationality")
+    fun getNationality(
+        @Header("Authorization") token: String,
+    ): Result<List<MfSysModel>>
+
+    @GET("v1/mfsys/document_types")
+    fun getDocTypes(
+        @Header("Authorization") token: String,
+    ): Result<List<MfSysModel>>
+
+    @GET("v1/mfsys/document_issue")
+    fun getDocIssue(
+        @Header("Authorization") token: String,
+    ): Result<List<MfSysModel>>
+
+    @GET("v1/mfsys/countries")
+    fun getArea(
+        @Header("Authorization") token: String,
+    ): Result<List<MfSysModel>>
+
+    @GET("v1/mfsys/states")
+    fun getCountries(
+        @Header("Authorization") token: String,
+    ): Result<List<MfSysModel>>
+
+    @GET("v1/mfsys/regions")
+    fun getRegions(
+        @Header("Authorization") token: String,
+        @Query("country_id") area_id: String
+    ): Result<List<MfSysModel>>
+
+    @GET("v1/mfsys/educations")
+    fun getEducations(
+        @Header("Authorization") token: String,
+    ): Result<List<MfSysModel>>
 }

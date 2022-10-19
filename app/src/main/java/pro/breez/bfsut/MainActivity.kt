@@ -17,7 +17,7 @@ import pro.breez.bfsut.util.setOnClickOnceListener
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    private var fabSelected: Boolean = false
+    var fabSelected: Boolean = false
         set(value) {
             field = value
             if (value) {
@@ -45,6 +45,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         binding.fabBtn.setOnClickOnceListener {
             fabSelected = !fabSelected
+        }
+
+        binding.addFarmer.setOnClickOnceListener {
+            fabSelected = false
+            navigateToFragment(FragmentTransaction(R.id.navigation_farmer_add))
         }
 
         binding.addCredit.setOnClickOnceListener {

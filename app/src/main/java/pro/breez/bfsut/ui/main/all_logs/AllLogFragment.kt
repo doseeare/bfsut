@@ -9,6 +9,7 @@ import pro.breez.bfsut.databinding.FragmentAllLogBinding
 import pro.breez.bfsut.model.FilterResult
 import pro.breez.bfsut.ui.main.filter_result.FilterResultFragment
 import pro.breez.bfsut.util.alert.OnPageSelectedListener
+import pro.breez.domain.model.output.LogsModel
 
 @AndroidEntryPoint
 class AllLogFragment : BaseFragment<FragmentAllLogBinding, AllLogViewModel>(),
@@ -34,6 +35,17 @@ class AllLogFragment : BaseFragment<FragmentAllLogBinding, AllLogViewModel>(),
         viewModel.allLogsLV.observe(viewLifecycleOwner) {
             binding.allLogsRv.adapter = adapter
             adapter.update(it)
+            checkList(it)
+        }
+    }
+
+    private fun checkList(list: List<LogsModel>) {
+        if (list.isEmpty()) {
+            binding.notFoundView.visibility = View.VISIBLE
+            binding.allLogsRv.visibility = View.GONE
+        } else {
+            binding.notFoundView.visibility = View.GONE
+            binding.allLogsRv.visibility = View.VISIBLE
         }
     }
 

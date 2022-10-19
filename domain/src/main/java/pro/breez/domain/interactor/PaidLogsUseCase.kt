@@ -14,7 +14,7 @@ class PaidLogsUseCase @Inject constructor(
     override suspend fun doOnBackground(params: FilterBody?): Result<List<PaidLogModel>> {
         val queries = HashMap<String, String>()
         params?.let { body ->
-            body.date?.let { queries.put("date", it) }
+            body.date?.let { queries.put("paid_date", it) }
             body.rangeAfter?.let { queries.put("range_after", it) }
             body.rangeBefore?.let { queries.put("range_before", it) }
         }

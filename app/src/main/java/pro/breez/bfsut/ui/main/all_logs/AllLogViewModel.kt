@@ -29,7 +29,6 @@ class AllLogViewModel @Inject constructor(
     }
 
     fun getAllLogs() {
-        showLoadingView()
         allLogsUC.execute(viewModelScope, filterResult?.toBody()) {
             handleResult(it) {
                 allLogsLV.postValue(it as ArrayList<LogsModel>)

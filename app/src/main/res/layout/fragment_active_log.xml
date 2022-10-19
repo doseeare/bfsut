@@ -10,6 +10,7 @@
         android:id="@+id/select_all_toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_margin="@dimen/default_margins"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,6 +27,32 @@
         app:layout_constraintBottom_toTopOf="@id/divider"
         app:layout_constraintTop_toBottomOf="@id/select_all_toggle"
         tools:listitem="@layout/item_active_log" />
+
+    <LinearLayout
+        android:id="@+id/not_found_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_not_found" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margins"
+            android:text="@string/not_found"
+            android:textColor="@color/text_bold_color"
+            android:textSize="21sp" />
+    </LinearLayout>
+
 
     <View
         android:id="@+id/divider"
@@ -62,28 +89,27 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/default_margins"
             android:layout_marginBottom="8dp"
-            tools:text="600 сом"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/info_liter_tv" />
+            app:layout_constraintTop_toBottomOf="@id/info_liter_tv"
+            tools:text="600 сом" />
 
         <TextView
             android:id="@+id/info_liter_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:visibility="gone"
             android:layout_marginEnd="@dimen/default_margins"
-            tools:text="6 л"
             android:textColor="@color/white"
             android:textSize="16sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/info_price_tv"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="6 л" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

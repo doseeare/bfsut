@@ -1,16 +1,22 @@
 package pro.breez.bfsut.base
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Lifecycle
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.viewbinding.ViewBinding
@@ -19,6 +25,8 @@ import pro.breez.bfsut.databinding.ViewProgressBinding
 import pro.breez.bfsut.exception.NavigationInitializationException
 import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.bfsut.model.navigation.FragmentTransaction
+import pro.breez.bfsut.ui.auth.activity.AuthActivity
+import pro.breez.data.utility.adapter.TokenAuthenticator
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
@@ -35,11 +43,28 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         _binding = inflateLayout(layoutInflater)
         setContentView(binding.root)
         setupLoadingView()
+        setupBroadcast()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun setupBroadcast() {
+        val logoutReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                Toast.makeText(
+                    this@BaseActivity,
+                    "Пройдите авторизацию",
+                    Toast.LENGTH_SHORT
+                ).show()
+                startActivity(Intent(context, AuthActivity::class.java))
+                finish()
+            }
+        }
+        LocalBroadcastManager.getInstance(this)
+            .registerReceiver(logoutReceiver, IntentFilter(TokenAuthenticator.LOG_OUT))
     }
 
     abstract fun inflateLayout(layoutInflater: LayoutInflater): VB

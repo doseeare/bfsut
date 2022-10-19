@@ -9,6 +9,7 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.createViewModelLazy
 import androidx.viewbinding.ViewBinding
+import pro.breez.bfsut.MainActivity
 import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
@@ -64,6 +65,15 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        when (this) {
+            is HomeFragment,
+            is LogFragment,
+            is CreditsFragment -> (requireActivity() as MainActivity).fabSelected = false
+        }
+    }
+
     private fun setupBaseViewModel() {
         viewModel.let { vm ->
             vm.navigateToFragment.observe(this) {
@@ -103,7 +113,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
                 it.create(requireContext())
             }
 
-            vm.showDialogFragment.observe(this){
+            vm.showDialogFragment.observe(this) {
                 it.show(childFragmentManager, "QuestionDialog")
             }
         }

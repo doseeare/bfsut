@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.add_farmer.AddFarmerFragment">
+
+    <pro.breez.bfsut.custom.view.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/default_margins"
+        app:layout_constraintBottom_toTopOf="@id/accept_btn"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/default_margins"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                android:text="@string/personal_data"
+                android:textColor="@color/text_bold_color"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/name_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Введите имя"
+                app:title="Имя *"
+                app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/last_name_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:hint="Введите фамилию"
+                app:title="Фамилия *"
+                app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/surname_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:hint="Введите отчество"
+                app:title="Отчество"
+                app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/birthday_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:hint="Выберите дату"
+                app:icon_end="@drawable/ic_calendar"
+                app:title="Дата рождение *"
+                app:type="drop" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/nation_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:hint="Введите национальность"
+                app:title="Национальность *"
+                app:type="drop" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/citizen_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:hint="Выберите вариант"
+                app:title="Гражданство *"
+                app:type="drop" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                android:text="@string/sex"
+                android:textColor="@color/text_bold_color"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                android:orientation="horizontal">
+
+                <pro.breez.bfsut.custom.view.SelectableButton
+                    android:id="@+id/gender_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    app:button_image="@drawable/ic_gender_male"
+                    app:button_text="Мужской" />
+
+                <pro.breez.bfsut.custom.view.SelectableButton
+                    android:id="@+id/gender_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    app:button_image="@drawable/ic_gender_female"
+                    app:button_text="Женский" />
+
+            </LinearLayout>
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/phone_number_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:hint="+996 ___ ___ ___"
+                app:title="Моб. телефон *"
+                app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/phone_number_more_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:hint="+996 ___ ___ ___"
+                app:title="Моб. телефон (доп)"
+                app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/phone_number_comfort_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:hint="Номер в удобном формате"
+                app:title="Моб. телефон (доп)"
+                app:type="field" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                android:text="@string/passport_data"
+                android:textColor="@color/text_bold_color"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/inn_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Введите ИНН"
+                app:title="ИНН *"
+                app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/type_doc_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Выберите тип документа"
+                app:title="Тип документа *"
+                app:type="drop" />
+
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/series_doc_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Выберите серию документа"
+                app:title="Серия *"
+                app:type="drop" />
+
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/number_doc_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Выберите номер документа"
+                app:title="Номер документа *"
+                app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/issue_doc_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Выберите учреждение"
+                app:title="Кем выдан *"
+                app:type="drop" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/when_doc_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Выберите дату"
+                app:icon_end="@drawable/ic_calendar"
+                app:title="Когда выдан *"
+                app:type="drop" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                android:text="@string/location_on_doc"
+                android:textColor="@color/text_bold_color"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/country_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Страна нахождение"
+                app:title="Страна *"
+                app:type="drop" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/area_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Выберите область"
+                app:title="Область *"
+                app:type="drop" />
+
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/region_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Выберите свой регион/город"
+                app:title="Регион/Город *"
+                app:type="drop" />
+
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/village_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Выберите место"
+                app:title="Населенный пункт/село *"
+                app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/street_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Выберите улицу"
+                app:title="Улица"
+                app:type="field" />
+
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/house_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Введите номер дома"
+                app:title="Дом *"
+                app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/apartment_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Введите номер квартиры"
+                app:title="Квартира"
+                app:type="field" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                android:text="@string/fact_location_question"
+                android:textColor="@color/text_bold_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/actual_location_no"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_selectable_button"
+                    android:text="@string/no"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_bold_color"
+                    android:textSize="16sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/actual_location_yes"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_selectable_button"
+                    android:text="@string/yes"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_bold_color"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/actual_location_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margins"
+                    android:text="@string/fact_location"
+                    android:textColor="@color/text_bold_color"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                    android:id="@+id/actual_country_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margins"
+                    app:hint="Страна нахождение"
+                    app:title="Страна *"
+                    app:type="drop" />
+
+                <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                    android:id="@+id/actual_area_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margins"
+                    app:hint="Выберите область"
+                    app:title="Область *"
+                    app:type="drop" />
+
+
+                <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                    android:id="@+id/actual_region_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margins"
+                    app:hint="Выберите свой регион/город"
+                    app:title="Регион/Город *"
+                    app:type="drop" />
+
+
+                <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                    android:id="@+id/actual_village_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margins"
+                    app:hint="Выберите место"
+                    app:title="Населенный пункт/село"
+                    app:type="field" />
+
+                <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                    android:id="@+id/actual_street_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margins"
+                    app:hint="Выберите улицу"
+                    app:title="Улица *"
+                    app:type="field" />
+
+
+                <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                    android:id="@+id/actual_house_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margins"
+                    app:hint="Введите номер дома"
+                    app:title="Дом *"
+                    app:type="field" />
+
+                <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                    android:id="@+id/actual_apartment_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margins"
+                    app:hint="Введите номер квартиры"
+                    app:title="Квартира"
+                    app:type="field" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                android:text="Семья"
+                android:textColor="@color/text_bold_color"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                android:text="@string/familty_status"
+                android:textColor="@color/text_bold_color"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                android:orientation="horizontal">
+
+                <pro.breez.bfsut.custom.view.SelectableButton
+                    android:id="@+id/married_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    app:button_image="@drawable/ic_married"
+                    app:button_text="Замужем/Женат" />
+
+                <pro.breez.bfsut.custom.view.SelectableButton
+                    android:id="@+id/single_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    app:button_image="@drawable/ic_not_married"
+                    app:button_text="Не состою в браке" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                android:orientation="horizontal">
+
+                <pro.breez.bfsut.custom.view.SelectableButton
+                    android:id="@+id/widower_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    app:button_image="@drawable/ic_widower"
+                    app:button_text="Вдовец/Вдова" />
+
+                <pro.breez.bfsut.custom.view.SelectableButton
+                    android:id="@+id/divorced_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    app:button_image="@drawable/ic_divorced"
+                    app:button_text="В разводе" />
+
+            </LinearLayout>
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/name_partner_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:hint="Введите ФИО"
+                android:visibility="gone"
+                app:title="ФИО супруги (а) *"
+                app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/family_members_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:hint="Выберите количество"
+                android:visibility="gone"
+                app:title="Члены семьи *"
+                app:type="field" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                android:text="@string/education"
+                android:textColor="@color/text_bold_color"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/education_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Степень образования"
+                app:title="Степень *"
+                app:type="drop" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                android:text="@string/job"
+                android:textColor="@color/text_bold_color"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/job_company_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Название места работы"
+                app:title="Место работы *"
+                app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/job_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Ваша должность"
+                app:title="Должность *"
+                app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/job_address_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Введите адрес работы"
+                app:title="Рабочий адрес *"
+                app:type="field" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/accept_btn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="@dimen/default_margins"
+        android:layout_marginBottom="@dimen/default_margins"
+        android:background="@drawable/selector_default_button"
+        android:text="@string/create"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

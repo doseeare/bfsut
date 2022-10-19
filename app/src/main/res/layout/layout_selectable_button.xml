@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="136dp"
+    android:background="@drawable/bg_shape_selectable_button">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_selectable_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="13dp"
+        android:textColor="@color/text_bold_color"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="Мужской" />
+
+    <ImageView
+        android:id="@+id/icon_img"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_margin="@dimen/default_margins"
+        android:src="@drawable/ic_gender_male"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/indicator_img"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_margin="@dimen/default_margins"
+        android:src="@drawable/ic_chooser"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

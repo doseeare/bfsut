@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doOnTextChanged
 import pro.breez.bfsut.R
@@ -35,10 +36,21 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
             return binding.edittext
         }
 
+    val imageView: ImageView
+        get() {
+            return binding.dropImg
+        }
+
     val isFieldEmpty: Boolean
         get() = binding.edittext.text.isNullOrEmpty()
 
     var onTextChanged: (String) -> Unit = { }
+
+    fun setOnClickListener(block: () -> Unit) {
+        binding.rootButton.setOnClickOnceListener {
+            block.invoke()
+        }
+    }
 
     init {
         binding.edittext.doOnTextChanged { text, start, before, count ->
@@ -61,10 +73,18 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
                 binding.helper.text = it
             }
 
+            attr.getResourceId(R.styleable.CustomDropDownEditText_icon_end, R.drawable.ic_drop)
+                .let {
+                    binding.dropImg.setImageResource(it)
+                }
+
             attr.getInt(R.styleable.CustomDropDownEditText_type, 0).let {
                 when (it) {
                     0 -> {
-                        binding.rootButton.visibility = View.GONE
+                        binding.rootButton.visibility = View.INVISIBLE
+                        binding.rootButton.setOnClickOnceListener {
+                            binding.edittext.requestFocus()
+                        }
                     }
                     1 -> {
                         binding.edittext.isEnabled = false

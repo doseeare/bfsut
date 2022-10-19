@@ -1,12 +1,14 @@
 package pro.breez.bfsut.ui.main.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import dagger.hilt.android.AndroidEntryPoint
+import pro.breez.bfsut.adapter.FarmersAdapter
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentHomeBinding
-import pro.breez.bfsut.adapter.FarmersAdapter
+import pro.breez.bfsut.ui.auth.activity.AuthActivity
 import pro.breez.bfsut.util.setOnClickOnceListener
 
 @AndroidEntryPoint
@@ -15,10 +17,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.hello.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-        }
         initViews()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        print("dsa")
     }
 
     private fun initViews() {
@@ -32,6 +36,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 adapter.update(viewModel.farmers.take(8) as ArrayList)
             }
             showMore = !showMore
+        }
+        binding.logoutBtn.setOnClickOnceListener {
+            viewModel.logOut {
+                startActivity(Intent(context, AuthActivity::class.java))
+                requireActivity().finish()
+            }
         }
         binding.farmersRv.adapter = adapter
 

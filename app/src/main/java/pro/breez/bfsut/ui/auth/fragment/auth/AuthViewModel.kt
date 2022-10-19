@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
-    private val authUC: AuthUseCase
+    private val authUC: AuthUseCase,
 ) : BaseViewModel() {
 
     val fieldsError = SingleLiveEvent<Nothing>()
@@ -31,9 +31,13 @@ class AuthViewModel @Inject constructor(
         showLoadingView()
         authUC.execute(viewModelScope, AuthBody(authFields.first!!, authFields.second!!)) {
             handleResult(it) {
-                navigateToActivity.startEvent(ActivityTransaction(R.id.auth_fragment_to_main_activity))
+                navigateToMain()
             }
         }
 
+    }
+
+    private fun navigateToMain() {
+        navigateToActivity.startEvent(ActivityTransaction(R.id.auth_fragment_to_main_activity))
     }
 }

@@ -11,6 +11,7 @@ import pro.breez.bfsut.model.FilterResult
 import pro.breez.bfsut.ui.main.filter_result.FilterResultFragment
 import pro.breez.bfsut.util.alert.OnPageSelectedListener
 import pro.breez.bfsut.util.setOnClickOnceListener
+import pro.breez.domain.model.output.LogsModel
 
 @AndroidEntryPoint
 class ActiveLogFragment : BaseFragment<FragmentActiveLogBinding, ActiveLogViewModel>(),
@@ -48,6 +49,7 @@ class ActiveLogFragment : BaseFragment<FragmentActiveLogBinding, ActiveLogViewMo
                 adapter.selectAll(checked)
                 viewModel.selectAll(checked)
             }
+            checkList(it)
             binding.activeLogRv.adapter = adapter
         }
 
@@ -72,6 +74,18 @@ class ActiveLogFragment : BaseFragment<FragmentActiveLogBinding, ActiveLogViewMo
                 binding.infoPriceTv.text = "${it.second} сом"
                 logSelected = true
             }
+        }
+    }
+
+    private fun checkList(list: List<LogsModel>) {
+        if (list.isEmpty()) {
+            binding.notFoundView.visibility = View.VISIBLE
+            binding.activeLogRv.visibility = View.GONE
+            binding.selectAllToggle.visibility = View.GONE
+        } else {
+            binding.notFoundView.visibility = View.GONE
+            binding.activeLogRv.visibility = View.VISIBLE
+            binding.selectAllToggle.visibility = View.VISIBLE
         }
     }
 

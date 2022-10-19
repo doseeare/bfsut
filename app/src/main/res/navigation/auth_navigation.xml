@@ -26,6 +26,9 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/nav_splash"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/splash_fragment_to_main_activity"
+            app:destination="@id/nav_main_activity"/>
     </fragment>
 
     <activity
