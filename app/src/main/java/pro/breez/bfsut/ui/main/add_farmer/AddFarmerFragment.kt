@@ -15,7 +15,7 @@ import pro.breez.bfsut.databinding.FragmentAddFarmerBinding
 import pro.breez.bfsut.model.GenderEnum
 import pro.breez.bfsut.model.MaritalStatusEnum
 import pro.breez.bfsut.util.Utils.setNumberMask
-import pro.breez.bfsut.util.setOnClickOnceListener
+import pro.breez.bfsut.util.validator.AddFarmerFieldValidator
 
 
 @AndroidEntryPoint
@@ -24,6 +24,7 @@ class AddFarmerFragment : BaseFragment<FragmentAddFarmerBinding, AddFarmerViewMo
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        initAcceptBtn()
         initObservers()
     }
 
@@ -41,12 +42,9 @@ class AddFarmerFragment : BaseFragment<FragmentAddFarmerBinding, AddFarmerViewMo
         phoneNumberEt.editText.setNumberMask()
         phoneNumberMoreEt.editText.setNumberMask()
 
-        actualLocationYes.setOnClickOnceListener {
-            initButtons(actualLocationYes, actualLocationNo)
-        }
-        actualLocationNo.setOnClickOnceListener {
-            initButtons(actualLocationNo, actualLocationYes)
-        }
+        initButtons(actualLocationYes, actualLocationNo)
+        initButtons(actualLocationNo, actualLocationYes)
+
         innEt.editText.filters = arrayOf<InputFilter>(LengthFilter(14))
         innEt.editText.inputType = InputType.TYPE_CLASS_NUMBER
 
@@ -78,24 +76,9 @@ class AddFarmerFragment : BaseFragment<FragmentAddFarmerBinding, AddFarmerViewMo
         }
     }
 
-    private fun initAcceptBtn() = with(binding) {
-        viewModel.apply {
-            name = nameEt.text
-            lastname = lastNameEt.text
-            surname = surnameEt.text
-            phoneNumber = phoneNumberEt.text
-            phoneNumberMore = phoneNumberMoreEt.text
-            phoneNumberComfort = phoneNumberComfortEt.text
-            INN = innEt.text
-            docNumber = numberDocEt.text
-            village = villageEt.text
-            street = streetEt.text
-            house = houseEt.text
-            apartment = apartmentEt.text
-            jobCompany = jobCompanyEt.text
-            jobName = jobEt.text
-            jobAddress = jobAddressEt.text
-            initAcceptClicked()
+    private fun initAcceptBtn() {
+        binding.acceptBtn.setOnClickListener {
+            AddFarmerFieldValidator(binding, viewModel).validateImportant()
         }
     }
 
@@ -118,8 +101,8 @@ class AddFarmerFragment : BaseFragment<FragmentAddFarmerBinding, AddFarmerViewMo
         viewModel.docIssueLV.observe(viewLifecycleOwner) {
             binding.issueDocEt.text = it.name
         }
-        viewModel.whenDocLV.observe(viewLifecycleOwner) {
-            binding.whenDocEt.text = it
+        viewModel.docWhenLV.observe(viewLifecycleOwner) {
+            binding.whenDocEt.editText.setText(it)
         }
         viewModel.areaLv.observe(viewLifecycleOwner) {
             binding.areaEt.text = it.name
@@ -146,25 +129,30 @@ class AddFarmerFragment : BaseFragment<FragmentAddFarmerBinding, AddFarmerViewMo
 
     private fun initButtons(selectedBtn: AppCompatButton, alternativeBtn: AppCompatButton) {
         selectedBtn.apply {
-            if (isSelected) return@apply
-            isSelected = true
-            setTextColor(ContextCompat.getColor(context, R.color.white))
-            alternativeBtn.isSelected = false
-            alternativeBtn.setTextColor(
-                ContextCompat.getColor(
-                    context,
-                    R.color.text_bold_color
+            setOnClickListener {
+                setBackgroundResource(R.drawable.selector_selectable_button)
+                alternativeBtn.setBackgroundResource(R.drawable.selector_selectable_button)
+                if (isSelected) return@setOnClickListener
+                isSelected = true
+                setTextColor(ContextCompat.getColor(context, R.color.white))
+                alternativeBtn.isSelected = false
+                alternativeBtn.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.text_bold_color
+                    )
                 )
-            )
-        }
-        when (selectedBtn.id) {
-            binding.actualLocationYes.id -> {
-                binding.actualLocationContainer.visibility = View.VISIBLE
-                viewModel.isActualLocation = true
-            }
-            binding.actualLocationNo.id -> {
-                binding.actualLocationContainer.visibility = View.GONE
-                viewModel.isActualLocation = false
+                when (id) {
+                    binding.actualLocationYes.id -> {
+                        binding.actualLocationContainer.visibility = View.GONE
+                        viewModel.isActualLocation = true
+                    }
+                    binding.actualLocationNo.id -> {
+                        binding.actualLocationContainer.visibility = View.VISIBLE
+                        viewModel.isActualLocation = false
+                    }
+                }
+
             }
         }
     }

@@ -44,7 +44,7 @@ open class CreditAddViewModel @Inject constructor(
             amount = sum.value!!,
             category = categoryLV.value!!.id,
             customer = farmerLV.value!!.id,
-            date_pay = dateOfPayment.value!!.toInt(),
+            date_pay =  dateOfPayment.value!!.toInt(),
             period = 12,
             product_bank = productLV.value!!.id,
             purpose_comment = commentOfGoal.value!!,

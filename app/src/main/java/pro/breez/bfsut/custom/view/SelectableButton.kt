@@ -16,7 +16,7 @@ class SelectableButton(context: Context, attributeSet: AttributeSet?, defStyle: 
     private val binding =
         LayoutSelectableButtonBinding.inflate(LayoutInflater.from(context), this, true)
 
-    private var buttons: ArrayList<SelectableButton>? = null
+    private var alternativeButtons: ArrayList<SelectableButton>? = null
 
     private var onClicked: ((SelectableButton) -> Unit)? = null
 
@@ -30,13 +30,25 @@ class SelectableButton(context: Context, attributeSet: AttributeSet?, defStyle: 
             field = value
         }
 
+    var error: Boolean = false
+        set(value) {
+            if (value) {
+                binding.container.setBackgroundResource(R.drawable.bg_rounded_error)
+            } else {
+                binding.container.setBackgroundResource(R.drawable.bg_shape_selectable_button)
+            }
+            field = value
+        }
+
     fun setAlternatives(views: ArrayList<SelectableButton>) {
-        buttons = views
+        alternativeButtons = views
     }
 
     private fun disableAlternatives() {
-        buttons?.let {
+        error = false
+        alternativeButtons?.let {
             for (button in it) {
+                button.error = false
                 if (button.isActive) {
                     button.isActive = false
                     break

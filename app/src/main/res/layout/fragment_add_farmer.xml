@@ -261,7 +261,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Выберите место"
-                app:title="Населенный пункт/село *"
+                app:title="Населенный пункт/село"
                 app:type="field" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText

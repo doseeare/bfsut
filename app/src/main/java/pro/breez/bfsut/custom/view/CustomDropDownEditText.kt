@@ -31,6 +31,16 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
             return binding.edittext.text.toString()
         }
 
+    var error: Boolean = false
+        set(value) {
+            if (value) {
+                binding.border.setBackgroundResource(R.drawable.bg_rounded_error)
+            } else {
+                binding.border.setBackgroundResource(R.drawable.bg_rounded_shape_darker)
+            }
+            field = value
+        }
+
     val editText: EditText
         get() {
             return binding.edittext
@@ -49,6 +59,16 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
     fun setOnClickListener(block: () -> Unit) {
         binding.rootButton.setOnClickOnceListener {
             block.invoke()
+        }
+    }
+
+    fun ifEmptyError(): Boolean {
+        return if (text.isEmpty()) {
+            error = true
+            /*isEmpty = */ true
+        } else {
+            error = false
+            /*isEmpty = */  false
         }
     }
 
@@ -94,7 +114,6 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
                         binding.rootButton.setOnClickOnceListener {
                             onClicked.invoke()
                         }
-
                     }
                     2 -> {
                         binding.edittext.isEnabled = false
@@ -104,13 +123,9 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
                         binding.rootButton.setOnClickOnceListener {
                             onClicked.invoke()
                         }
-
                     }
                 }
             }
-
         }
     }
-
-
 }

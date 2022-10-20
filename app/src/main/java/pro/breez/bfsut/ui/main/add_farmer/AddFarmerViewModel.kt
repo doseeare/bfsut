@@ -33,7 +33,7 @@ class AddFarmerViewModel @Inject constructor(
     val docIssueLV = MutableLiveData<MfSysModel>()
     val docSeriesLV = MutableLiveData<MfSysModel>()
     val citizenLV = MutableLiveData<MfSysModel>()
-    val whenDocLV = MutableLiveData<String>()
+    val docWhenLV = MutableLiveData<String?>()
     val countryLV = MutableLiveData<MfSysModel>()
     val areaLv = MutableLiveData<MfSysModel>()
     val regionLV = MutableLiveData<MfSysModel>()
@@ -63,8 +63,8 @@ class AddFarmerViewModel @Inject constructor(
     var isActualLocation: Boolean? = null
 
     //Поля с SelectableButton
-    private var maritalStatus: MaritalStatusEnum? = null
-    private var gender: GenderEnum? = null
+    var maritalStatus: MaritalStatusEnum? = null
+    var gender: GenderEnum? = null
 
     fun birthDayClicked() {
         val constraintsBuilder =
@@ -174,7 +174,7 @@ class AddFarmerViewModel @Inject constructor(
             .build()
 
         dateRangePicker.addOnPositiveButtonClickListener {
-            whenDocLV.postValue(DateUtil.toDate(it))
+            docWhenLV.postValue(DateUtil.toDate(it))
         }
         showDialogFragment.postValue(dateRangePicker)
     }
@@ -256,11 +256,31 @@ class AddFarmerViewModel @Inject constructor(
     }
 
     fun initAcceptClicked() {
+        if (checkImportantFields()) {
+            showErrorSnackbar("Заполните все обязательные поля")
+            return
+        }
 
     }
 
-    private fun checkImportantFields(){
-
+    private fun checkImportantFields(): Boolean {
+        val fields = arrayOf(
+            name, lastname, birthdayLV.value,
+            nationalityLV.value?.name, citizenLV.value?.name,
+            gender?.name, phoneNumber,
+            INN, docTypesLV.value?.name,
+            docSeriesLV.value?.name, docNumber,
+            docIssueLV.value?.name, docWhenLV.value,
+            countryLV.value?.name, areaLv.value?.name,
+            regionLV.value?.name,
+            jobName, jobCompany, jobAddress
+        )
+        for (f in fields) {
+            if (f == null) {
+                return true
+            }
+        }
+        return false
     }
 
 }
