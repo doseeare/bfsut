@@ -85,7 +85,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
             }
 
             vm.popBackStack.observe(this) {
-                popBackStack(it)
+                popBackStack()
             }
             vm.showBottomSheetFragment.observe(this) { fragment ->
                 fragment.show(childFragmentManager, fragment.tag)
@@ -115,6 +115,9 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
 
             vm.showDialogFragment.observe(this) {
                 it.show(childFragmentManager, "QuestionDialog")
+            }
+            vm.previousScreen.observe(this) {
+                requireActivity().onBackPressed()
             }
         }
     }
@@ -160,9 +163,9 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
         }
     }
 
-    protected fun popBackStack(@IdRes destinationId: Int, inclusive: Boolean = false) {
+    protected fun popBackStack() {
         if (activity is BaseActivity<*>) {
-            (activity as BaseActivity<*>).popBackStack(destinationId, inclusive)
+            (activity as BaseActivity<*>).popBackStack()
         }
     }
 

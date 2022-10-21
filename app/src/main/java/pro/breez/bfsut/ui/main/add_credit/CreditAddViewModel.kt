@@ -53,7 +53,7 @@ open class CreditAddViewModel @Inject constructor(
         )
         postCreditUseCase.execute(viewModelScope, postCreditBody) {
             handleResult(it) {
-                popBackStack.startEvent(R.id.navigation_home)
+                popBackStack.startEvent(Unit)
             }
         }
     }

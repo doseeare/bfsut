@@ -3,6 +3,7 @@ package pro.breez.data.repository
 import pro.breez.data.cache.DataPreference
 import pro.breez.data.rest.RestClient
 import pro.breez.domain.interactor.base.Result
+import pro.breez.domain.model.input.FarmerBody
 import pro.breez.domain.model.output.MfSysModel
 import pro.breez.domain.repository.AddFarmerRepository
 
@@ -37,6 +38,14 @@ class AddFarmerRepositoryImpl(
 
     override fun getEducations(): Result<List<MfSysModel>> {
         return restClient.mainApi.getEducations(dataPreference.token)
+    }
+
+    override fun getJobPurpose(): Result<List<MfSysModel>> {
+        return restClient.mainApi.getJobPurpose(dataPreference.token)
+    }
+
+    override fun postFarmer(body: FarmerBody): Result<String> {
+        return restClient.mainApi.postFarmer(dataPreference.token, body)
     }
 
 }

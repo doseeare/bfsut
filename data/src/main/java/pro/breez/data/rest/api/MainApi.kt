@@ -3,6 +3,7 @@ package pro.breez.data.rest.api
 import pro.breez.domain.interactor.base.Result
 import pro.breez.domain.model.input.CalculateActiveBody
 import pro.breez.domain.model.input.CreditBody
+import pro.breez.domain.model.input.FarmerBody
 import pro.breez.domain.model.input.MilkChangesBody
 import pro.breez.domain.model.output.*
 import retrofit2.http.*
@@ -125,4 +126,15 @@ interface MainApi {
     fun getEducations(
         @Header("Authorization") token: String,
     ): Result<List<MfSysModel>>
+
+    @GET("v1/mfsys/purposes")
+    fun getJobPurpose(
+        @Header("Authorization") token: String,
+    ): Result<List<MfSysModel>>
+
+    @POST("v1/farmers/")
+    fun postFarmer(
+        @Header("Authorization") token: String,
+        @Body body: FarmerBody
+    ): Result<String>
 }

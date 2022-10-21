@@ -11,6 +11,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doOnTextChanged
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.LayoutDropDownEditTextBinding
+import pro.breez.bfsut.util.ifTrue
+import pro.breez.bfsut.util.isNull
 import pro.breez.bfsut.util.setOnClickOnceListener
 
 class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defStyle: Int) :
@@ -20,6 +22,8 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
 
     private val binding =
         LayoutDropDownEditTextBinding.inflate(LayoutInflater.from(context), this, true)
+
+    private var conditionClearError: (() -> Boolean)? = null
 
     var onClicked: () -> Unit = { }
 
@@ -72,10 +76,30 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
         }
     }
 
+    fun setCustomConditionError(block: () -> Boolean) {
+        conditionClearError = block
+    }
+
+    fun textOrNull(): String? {
+        return if (text.isBlank() || text.isEmpty()) null
+        else text
+    }
+
     init {
         binding.edittext.doOnTextChanged { text, start, before, count ->
-            onTextChanged.invoke(text.toString())
+            val filledText = text.toString()
+
+            if (conditionClearError.isNull()) {
+                if (filledText.isNotEmpty() && filledText.isNotBlank())
+                    error = false
+            } else {
+                conditionClearError?.invoke()?.ifTrue {
+                    error = false
+                }
+            }
+            onTextChanged.invoke(filledText)
         }
+
         attributeSet?.let {
             val attr =
                 context.obtainStyledAttributes(attributeSet, R.styleable.CustomDropDownEditText)

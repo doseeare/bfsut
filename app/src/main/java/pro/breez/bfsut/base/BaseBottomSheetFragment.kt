@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.createViewModelLazy
@@ -44,7 +43,7 @@ abstract class BaseBottomSheetFragment<VB : ViewBinding, VM : BaseViewModel> :
     }
 
     override fun getExpandedHeight(): Int {
-        return  ViewGroup.LayoutParams.WRAP_CONTENT
+        return ViewGroup.LayoutParams.WRAP_CONTENT
     }
 
     override fun isSheetAlwaysExpanded(): Boolean {
@@ -79,7 +78,7 @@ abstract class BaseBottomSheetFragment<VB : ViewBinding, VM : BaseViewModel> :
             }
 
             vm.popBackStack.observe(this) {
-                popBackStack(it)
+                popBackStack()
             }
             vm.showBottomSheetFragment.observe(this) { fragment ->
                 fragment.show(childFragmentManager, fragment.tag)
@@ -107,7 +106,7 @@ abstract class BaseBottomSheetFragment<VB : ViewBinding, VM : BaseViewModel> :
                 it.create(requireContext())
             }
 
-            vm.showDialogFragment.observe(this){
+            vm.showDialogFragment.observe(this) {
                 it.show(childFragmentManager, "QuestionDialog")
             }
         }
@@ -154,9 +153,9 @@ abstract class BaseBottomSheetFragment<VB : ViewBinding, VM : BaseViewModel> :
         }
     }
 
-    protected fun popBackStack(@IdRes destinationId: Int, inclusive: Boolean = false) {
+    protected fun popBackStack() {
         if (activity is BaseActivity<*>) {
-            (activity as BaseActivity<*>).popBackStack(destinationId, inclusive)
+            (activity as BaseActivity<*>).popBackStack()
         }
     }
 

@@ -3,6 +3,8 @@ package pro.breez.bfsut.util
 import android.annotation.SuppressLint
 import pro.breez.bfsut.model.DateRange
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 object DateUtil {
@@ -10,6 +12,15 @@ object DateUtil {
     fun isToday(date: String): Boolean {
         val currentDate: String = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
         return currentDate == date
+    }
+
+    fun reformatDate(date: String?): String? {
+        return if (date.isNull()) null
+        else {
+            val format = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+            val mDate = LocalDate.parse(date, format)
+            return mDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        }
     }
 
     fun toBinaryMonth(date: Int): String {

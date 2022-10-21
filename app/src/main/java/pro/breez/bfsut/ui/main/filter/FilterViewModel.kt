@@ -43,7 +43,7 @@ class FilterViewModel @Inject constructor(
     }
 
     fun backBtnClicked() {
-        popBackStack.startEvent(R.id.navigation_log)
+        popBackStack.startEvent(Unit)
     }
 
     fun farmerClicked() {

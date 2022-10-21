@@ -5,6 +5,7 @@ import android.text.InputFilter
 import android.text.InputFilter.LengthFilter
 import android.text.InputType
 import android.view.View
+import androidx.activity.addCallback
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,11 +27,18 @@ class AddFarmerFragment : BaseFragment<FragmentAddFarmerBinding, AddFarmerViewMo
         initViews()
         initAcceptBtn()
         initObservers()
+        overrideBackKey()
+    }
+
+    private fun overrideBackKey() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            viewModel.backBtnClicked()
+        }
     }
 
     private fun initViews() = with(binding) {
         toolbar.setOnBackClickListener {
-            requireActivity().onBackPressed()
+            viewModel.backBtnClicked()
         }
         toolbar.setTitle("Создание фермера")
         SelectableButton.init(genderMale, genderFemale) {
@@ -48,6 +56,9 @@ class AddFarmerFragment : BaseFragment<FragmentAddFarmerBinding, AddFarmerViewMo
         innEt.editText.filters = arrayOf<InputFilter>(LengthFilter(14))
         innEt.editText.inputType = InputType.TYPE_CLASS_NUMBER
 
+        numberDocEt.editText.filters = arrayOf<InputFilter>(LengthFilter(7))
+        numberDocEt.editText.inputType = InputType.TYPE_CLASS_NUMBER
+
         birthdayEt.setOnClickListener(viewModel::birthDayClicked)
         nationEt.setOnClickListener(viewModel::nationClicked)
         citizenEt.setOnClickListener(viewModel::citizenClicked)
@@ -56,6 +67,8 @@ class AddFarmerFragment : BaseFragment<FragmentAddFarmerBinding, AddFarmerViewMo
         issueDocEt.setOnClickListener(viewModel::docIssueClicked)
         whenDocEt.setOnClickListener(viewModel::whenDocClicked)
         educationEt.setOnClickListener(viewModel::educationClicked)
+        jobPurposeEt.setOnClickListener(viewModel::jobPurposeClicked)
+
         countryEt.setOnClickListener {
             viewModel.countryClicked(false)
         }
@@ -77,8 +90,9 @@ class AddFarmerFragment : BaseFragment<FragmentAddFarmerBinding, AddFarmerViewMo
     }
 
     private fun initAcceptBtn() {
+        val validator = AddFarmerFieldValidator(binding, viewModel)
         binding.acceptBtn.setOnClickListener {
-            AddFarmerFieldValidator(binding, viewModel).validateImportant()
+            validator.validateImportantFields()
         }
     }
 
@@ -125,7 +139,12 @@ class AddFarmerFragment : BaseFragment<FragmentAddFarmerBinding, AddFarmerViewMo
         viewModel.educationLV.observe(viewLifecycleOwner) {
             binding.educationEt.text = it.name
         }
+        viewModel.jobPurposeLV.observe(viewLifecycleOwner) {
+            binding.jobPurposeEt.text = it.name
+        }
+
     }
+
 
     private fun initButtons(selectedBtn: AppCompatButton, alternativeBtn: AppCompatButton) {
         selectedBtn.apply {

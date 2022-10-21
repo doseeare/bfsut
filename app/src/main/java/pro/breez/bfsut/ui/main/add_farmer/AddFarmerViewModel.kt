@@ -10,8 +10,11 @@ import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.model.GenderEnum
 import pro.breez.bfsut.model.MaritalStatusEnum
 import pro.breez.bfsut.util.DateUtil
+import pro.breez.bfsut.util.alert.QuestionDialog
+import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilderImpl
 import pro.breez.domain.interactor.*
+import pro.breez.domain.model.input.FarmerBody
 import pro.breez.domain.model.output.MfSysModel
 import javax.inject.Inject
 
@@ -23,7 +26,9 @@ class AddFarmerViewModel @Inject constructor(
     private val areaUseCase: AreaUseCase,
     private val countryUseCase: CountryUseCase,
     private val regionUseCase: RegionUseCase,
-    private val educationUseCase: EducationUseCase
+    private val educationUseCase: EducationUseCase,
+    private val jobPurposeUseCase: JobPurposeUseCase,
+    private val addFarmerUse: AddFarmerUseCase
 ) : BaseViewModel() {
 
     //Поля drop
@@ -38,6 +43,7 @@ class AddFarmerViewModel @Inject constructor(
     val areaLv = MutableLiveData<MfSysModel>()
     val regionLV = MutableLiveData<MfSysModel>()
     val educationLV = MutableLiveData<MfSysModel>()
+    val jobPurposeLV = MutableLiveData<MfSysModel>()
 
     //Поля field
     var name: String? = null
@@ -48,6 +54,7 @@ class AddFarmerViewModel @Inject constructor(
     var phoneNumberComfort: String? = null
     var INN: String? = null
     var docNumber: String? = null
+    var docIssueNumber: String? = null
     var village: String? = null
     var street: String? = null
     var house: String? = null
@@ -60,11 +67,19 @@ class AddFarmerViewModel @Inject constructor(
     val actualCountryLV = MutableLiveData<MfSysModel>()
     val actualAreaLv = MutableLiveData<MfSysModel>()
     val actualRegionLV = MutableLiveData<MfSysModel>()
+    var actualVillage: String? = null
+    var actualStreet: String? = null
+    var actualHouse: String? = null
+    var actualApartment: String? = null
     var isActualLocation: Boolean? = null
+
+    var placeOfBirth: String? = null
 
     //Поля с SelectableButton
     var maritalStatus: MaritalStatusEnum? = null
     var gender: GenderEnum? = null
+
+    var backBtnMutex: Boolean = true
 
     fun birthDayClicked() {
         val constraintsBuilder =
@@ -247,6 +262,22 @@ class AddFarmerViewModel @Inject constructor(
 
     }
 
+    fun jobPurposeClicked() {
+        jobPurposeUseCase.execute(viewModelScope) {
+            handleResult(it) {
+                val selector = SelectorDialogBuilderImpl<MfSysModel>()
+                selector.setList(it)
+                selector.setVmScope(viewModelScope)
+                selector.setSearchByVal(MfSysModel::name.name)
+                selector.setResultListener {
+                    jobPurposeLV.postValue(it)
+                }
+                showSelectorDialog.startEvent(selector)
+            }
+        }
+
+    }
+
     fun maritalSelected(status: MaritalStatusEnum) {
         maritalStatus = status
     }
@@ -255,32 +286,79 @@ class AddFarmerViewModel @Inject constructor(
         this.gender = gender
     }
 
-    fun initAcceptClicked() {
-        if (checkImportantFields()) {
-            showErrorSnackbar("Заполните все обязательные поля")
-            return
-        }
-
-    }
-
-    private fun checkImportantFields(): Boolean {
-        val fields = arrayOf(
-            name, lastname, birthdayLV.value,
-            nationalityLV.value?.name, citizenLV.value?.name,
-            gender?.name, phoneNumber,
-            INN, docTypesLV.value?.name,
-            docSeriesLV.value?.name, docNumber,
-            docIssueLV.value?.name, docWhenLV.value,
-            countryLV.value?.name, areaLv.value?.name,
-            regionLV.value?.name,
-            jobName, jobCompany, jobAddress
+    fun onSuccessValidate() {
+        val body = FarmerBody(
+            first_name = name,
+            father_name = lastname,
+            last_name = surname,
+            gender = gender?.key,
+            document_series = docSeriesLV.value?.name,
+            document_number = docNumber,
+            document_date = DateUtil.reformatDate(docWhenLV.value),
+            document_issue = getId(docIssueLV),
+            document_issue_number = docIssueNumber,
+            tax_number = INN,
+            document_type = getId(docTypesLV),
+            state = getId(countryLV),
+            country = getId(areaLv),
+            region = getId(regionLV),
+            village = village,
+            address = street,
+            house = house,
+            apartment = apartment,
+            actual_state = getId(actualCountryLV),
+            actual_country = getId(actualAreaLv),
+            actual_region = getId(actualRegionLV),
+            actual_village = actualVillage,
+            actual_address = actualStreet,
+            actual_house = actualHouse,
+            actual_apartment = actualApartment,
+            place_of_birth = placeOfBirth,
+            is_actual_address_match = isActualLocation,
+            phone_number = phoneNumber,
+            phone_number_additional = phoneNumberMore,
+            marital_status = maritalStatus?.key,
+            spouse_customer_id = null,
+            family_count = null,
+            nationality = getId(nationalityLV),
+            education = getId(educationLV),
+            purpose = getId(jobPurposeLV),
+            job = jobCompany,
+            job_address = jobAddress,
+            job_position = jobName,
+            resident = getId(citizenLV),
+            birth_date = DateUtil.reformatDate(birthdayLV.value)
         )
-        for (f in fields) {
-            if (f == null) {
-                return true
+        addFarmerUse.execute(viewModelScope, body) {
+            handleResult(it) {
+                val dialog = AlertDialogBuilderImpl()
+                dialog.setTitle("Фермер был создан")
+                dialog.setSubTitle("Можете начать собирать молоко")
+                dialog.setDismissListener {
+                    popBackStack.startEvent(Unit)
+                }
+                showAlertDialog.startEvent(dialog)
             }
         }
-        return false
+    }
+
+    private fun getId(lv: MutableLiveData<MfSysModel>): Int? {
+        return lv.value?.id
+    }
+
+
+    fun onFailValidate() {
+        showErrorSnackbar("Заполните все обязательные поля")
+    }
+
+    fun backBtnClicked() {
+        val dialog = QuestionDialog().apply {
+            setTitle("Хотите выйти,\nне сохранив данные?")
+            onPositiveBtnClicked {
+                popBackStack.startEvent(Unit)
+            }
+        }
+        showDialogFragment.startEvent(dialog)
     }
 
 }

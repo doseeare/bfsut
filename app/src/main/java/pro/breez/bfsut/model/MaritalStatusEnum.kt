@@ -10,7 +10,7 @@ WIDOWED = "03", "Вдовец/Вдова"
 DIVORCED = "04", "В разводе")
 */
 
-enum class MaritalStatusEnum(key: String) {
+enum class MaritalStatusEnum(val key: String) {
     MARRIED("01"),
     SINGLE("02"),
     WIDOWED("03"),

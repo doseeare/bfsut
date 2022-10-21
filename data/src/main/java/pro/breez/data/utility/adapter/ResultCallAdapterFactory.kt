@@ -64,7 +64,7 @@ class ResultCallAdapterFactory private constructor() : CallAdapter.Factory() {
                         when (response.isSuccessful) {
                             true -> {
                                 val result =
-                                    pro.breez.domain.interactor.base.Result.Success(response.body()!!)
+                                    Result.Success(response.body()!!)
                                 result.networkConnectionEnable = true
                                 result
                             }
@@ -76,7 +76,6 @@ class ResultCallAdapterFactory private constructor() : CallAdapter.Factory() {
                                         stream,
                                         ErrorsResponse::class.java
                                     )
-
                                     Result.Exception(
                                         HttpException(
                                             response.code(),

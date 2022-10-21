@@ -10,7 +10,6 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.andrefrsousa.superbottomsheet.SuperBottomSheetFragment
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import pro.breez.bfsut.R
 import pro.breez.bfsut.exception.ErrorMessageFactory
 import pro.breez.bfsut.helper.SingleLiveEvent
@@ -19,7 +18,6 @@ import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.util.alert.DialogBuilder
 import pro.breez.bfsut.util.alert.LoadingViewParams
-import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilder
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilder
 import pro.breez.bfsut.util.alert.snackbar.SnackbarNotificationBuilder
@@ -42,7 +40,8 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
     val navigateToFragment = SingleLiveEvent<FragmentTransaction>()
     val navigateToActivity = SingleLiveEvent<ActivityTransaction>()
     val handleIntent = SingleLiveEvent<Intent>()
-    val popBackStack = SingleLiveEvent<Int>()
+    val popBackStack = SingleLiveEvent<Unit>()
+    val previousScreen = SingleLiveEvent<Int>()
     val finish = SingleLiveEvent<Void>()
     val onNetworkConnectionLostAlert = SingleLiveEvent<Void>()
     val onNetworkConnectionRestored = SingleLiveEvent<Void>()
@@ -69,7 +68,7 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
 
     fun showErrorSnackbar(message: String, @DrawableRes icon: Int? = null) {
         val snackbar = SnackbarNotificationBuilder().apply {
-            setBackground(R.drawable.bg_snackbar_error)
+            setBackground(R.drawable.bg_error_shape)
             if (icon != null) setLeftIcon(icon)
             setMessage(message)
             setMessageColor(R.color.white)

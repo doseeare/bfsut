@@ -48,7 +48,7 @@ class CalculateActiveLogViewModel @Inject constructor(
                 dialog.setTitle("Изменения были сохранены")
                 dialog.setSubTitle("Отличная работа")
                 dialog.setDismissListener {
-                    popBackStack.startEvent(R.id.navigation_log)
+                    popBackStack.startEvent(Unit)
                 }
                 showAlertDialog.startEvent(dialog)
             }
@@ -65,7 +65,7 @@ class CalculateActiveLogViewModel @Inject constructor(
                 dialog.setTitle("Рассчет был произведен")
                 dialog.setSubTitle("Отличная работа")
                 dialog.setDismissListener {
-                    popBackStack.startEvent(R.id.navigation_log)
+                    popBackStack.startEvent(Unit)
                 }
                 showAlertDialog.startEvent(dialog)
             }

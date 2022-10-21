@@ -12,7 +12,7 @@ class AllFarmersViewModel @Inject constructor() : BaseViewModel() {
     val farmers = ArrayList<String>()
 
     fun backClicked() {
-        popBackStack.startEvent(R.id.navigation_home)
+        popBackStack.startEvent(Unit)
     }
 
     override fun onCreate(owner: LifecycleOwner) {

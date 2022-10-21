@@ -208,6 +208,15 @@
                 app:type="drop" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/issue_number_doc_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Введите номер"
+                app:title="Номер выдавшего органа *"
+                app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/when_doc_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -290,6 +299,15 @@
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Введите номер квартиры"
                 app:title="Квартира"
+                app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/place_of_birth_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Введите место рождения"
+                app:title="Место рождение *"
                 app:type="field" />
 
             <TextView
@@ -492,8 +510,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                app:hint="Введите ФИО"
                 android:visibility="gone"
+                app:hint="Введите ФИО"
                 app:title="ФИО супруги (а) *"
                 app:type="field" />
 
@@ -502,8 +520,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                app:hint="Выберите количество"
                 android:visibility="gone"
+                app:hint="Выберите количество"
                 app:title="Члены семьи *"
                 app:type="field" />
 
@@ -542,6 +560,15 @@
                 app:hint="Название места работы"
                 app:title="Место работы *"
                 app:type="field" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/job_purpose_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margins"
+                app:hint="Введите сферу деятельности"
+                app:title="Сфера деятельности *"
+                app:type="drop" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/job_et"
