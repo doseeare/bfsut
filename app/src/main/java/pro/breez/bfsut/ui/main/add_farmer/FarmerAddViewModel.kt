@@ -6,6 +6,7 @@ import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
 import dagger.hilt.android.lifecycle.HiltViewModel
+import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.model.GenderEnum
 import pro.breez.bfsut.model.MaritalStatusEnum
@@ -19,7 +20,7 @@ import pro.breez.domain.model.output.MfSysModel
 import javax.inject.Inject
 
 @HiltViewModel
-class AddFarmerViewModel @Inject constructor(
+class FarmerAddViewModel @Inject constructor(
     private val nationalityUseCase: NationalityUseCase,
     private val docTypesUseCase: DocTypesUseCase,
     private val docIssueUseCase: DocIssueUseCase,
@@ -78,8 +79,6 @@ class AddFarmerViewModel @Inject constructor(
     //Поля с SelectableButton
     var maritalStatus: MaritalStatusEnum? = null
     var gender: GenderEnum? = null
-
-    var backBtnMutex: Boolean = true
 
     fun birthDayClicked() {
         val constraintsBuilder =
@@ -334,6 +333,7 @@ class AddFarmerViewModel @Inject constructor(
                 val dialog = AlertDialogBuilderImpl()
                 dialog.setTitle("Фермер был создан")
                 dialog.setSubTitle("Можете начать собирать молоко")
+                dialog.setIcon(R.drawable.ic_success)
                 dialog.setDismissListener {
                     popBackStack.startEvent(Unit)
                 }

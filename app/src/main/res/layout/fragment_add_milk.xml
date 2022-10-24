@@ -4,97 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.active_logs.calculate.CalculateActiveLogsFragment">
+    tools:context=".ui.main.add_milk.MilkAddFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <pro.breez.bfsut.custom.view.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/toolbar_back_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="20sp"
-            android:src="@drawable/ic_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:padding="@dimen/default_margins"
-            android:text="Запись сбора молока"
-            android:textColor="@color/black_text_color"
-            android:textSize="21sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/status_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_active_span"
-            app:layout_constraintEnd_toEndOf="@id/toolbar_title"
-            app:layout_constraintStart_toStartOf="@id/toolbar_title"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_title">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:paddingLeft="6sp"
-                android:text="активный"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/default_margins"
-            android:background="#E2E4E9"
-            app:layout_constraintTop_toBottomOf="@id/status_container" />
-
-        <ImageView
-            android:id="@+id/delete_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/default_margins"
-            android:src="@drawable/ic_delete"
-            app:layout_constraintBottom_toBottomOf="@id/toolbar_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/toolbar_title" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Сбор молока" />
 
     <TextView
-        android:id="@+id/name_tv"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margins"
-        android:text="Сбор молока у \n Акылбека Асанова"
+        android:text="Сбор молока \nза сегодня"
         android:textColor="@color/text_bold_color"
-        android:textSize="36sp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <pro.breez.bfsut.custom.view.CustomDropDownEditText
+        android:id="@+id/name_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/default_margins"
+        android:layout_marginTop="@dimen/default_margins"
+        app:hint="Найдите фермера"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:title="ФИО"
+        app:type="drop" />
 
 
     <LinearLayout
         android:id="@+id/fields_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/name_tv">
+        app:layout_constraintTop_toBottomOf="@id/name_et">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/day_container"
@@ -113,20 +62,21 @@
                 android:layout_marginTop="8dp"
                 android:text="Утром"
                 android:textColor="@color/text_bold_color"
+                android:textSize="18sp"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/day_et"
+                android:id="@+id/morning_et"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/default_margins"
                 android:layout_marginTop="6dp"
-                android:gravity="start"
                 android:layout_marginBottom="8dp"
                 android:background="@null"
+                android:gravity="start"
+                android:hint="0л"
                 android:inputType="number"
                 android:maxLines="1"
-                android:text="4л"
                 android:textColor="@color/text_bold_color"
                 android:textSize="36sp"
                 android:textStyle="bold"
@@ -134,7 +84,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/day_title_tv"
-                tools:hint="Ваш логин" />
+                tools:text="4л" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -155,6 +105,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Вечером"
                 android:textColor="@color/text_bold_color"
+                android:textSize="18sp"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
@@ -165,10 +116,10 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="8dp"
                 android:background="@null"
+                android:gravity="start"
+                android:hint="0л"
                 android:inputType="number"
                 android:maxLines="1"
-                android:text="4л"
-                android:gravity="start"
                 android:textColor="@color/text_bold_color"
                 android:textSize="36sp"
                 android:textStyle="bold"
@@ -176,7 +127,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/evening_title_tv"
-                tools:hint="Ваш логин" />
+                tools:hint="Ваш логин"
+                tools:text="4л" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -219,52 +171,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="100 сом \n за литр"
             android:textColor="@color/dark_blue"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/milk_img"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="100 сом \n за литр" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/total_amount_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margins"
+        android:layout_marginHorizontal="@dimen/default_margins"
+        android:layout_marginBottom="@dimen/default_margins"
+        android:text="Итого: 0 сом"
         android:textColor="@color/text_bold_color"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/calculate_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="Итого: 500 сом" />
+        app:layout_constraintBottom_toTopOf="@id/create_btn" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/save_changes_btn"
+        android:id="@+id/create_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/default_margins"
-        android:layout_marginBottom="@dimen/default_margins"
-        android:background="@drawable/bg_secondory_btn"
-        android:text="Сохранить изменения"
-        android:textAllCaps="false"
-        android:textColor="@color/text_bold_color"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/calculate_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/default_margins"
-        android:layout_marginBottom="@dimen/default_margins"
-        android:background="@drawable/bg_calc_btn"
-        android:text="Рассчитать"
+        android:layout_height="56dp"
+        android:layout_margin="@dimen/default_margins"
+        android:background="@drawable/selector_default_button"
+        android:text="Создать"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/save_changes_btn" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

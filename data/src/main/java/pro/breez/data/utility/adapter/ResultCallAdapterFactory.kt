@@ -106,12 +106,14 @@ class ResultCallAdapterFactory private constructor() : CallAdapter.Factory() {
                             }
                         }
                     } catch (throwable: Throwable) {
+                        throwable.printStackTrace()
                         Result.Exception(throwable)
                     }
                 } else {
                     Result.Exception(ConnectionLostException())
                 }
             } catch (throwable: Throwable) {
+                throwable.printStackTrace()
                 return Result.Exception(ConnectionLostException())
             }
         }

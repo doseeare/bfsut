@@ -54,7 +54,7 @@
 
     <fragment
         android:id="@+id/navigation_farmer_add"
-        android:name="pro.breez.bfsut.ui.main.add_farmer.AddFarmerFragment"
+        android:name="pro.breez.bfsut.ui.main.add_farmer.FarmerAddFragment"
         android:label="Добавить фермера"
         tools:layout="@layout/fragment_add_farmer" />
 
@@ -63,6 +63,12 @@
         android:name="pro.breez.bfsut.ui.main.add_credit.CreditAddFragment"
         android:label="Заявка на кредит"
         tools:layout="@layout/fragment_credit_add" />
+
+    <fragment
+        android:id="@+id/navigation_milk_add"
+        android:name="pro.breez.bfsut.ui.main.add_milk.MilkAddFragment"
+        android:label="Сбор молока"
+        tools:layout="@layout/fragment_add_milk" />
 
     <fragment
         android:id="@+id/navigation_filter"

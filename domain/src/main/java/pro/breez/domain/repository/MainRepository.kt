@@ -6,10 +6,11 @@ import pro.breez.domain.model.output.*
 
 interface MainRepository {
     fun getFarmers(): Result<List<FarmersModel>>
-    fun getProduct(id : String): Result<List<ProductsModel>>
-    fun getCategory():Result<List<CategoryModel>>
+    fun getProduct(id: String): Result<List<ProductsModel>>
+    fun getCategory(): Result<List<CategoryModel>>
     fun getDate(): Result<List<Pair<String, String>>>
-    fun getGoal():  Result<List<GoalModel>>
+    fun getGoal(): Result<List<GoalModel>>
     fun getCredits(): Result<List<CreditLogModel>>
-    fun postCredit(body : CreditBody): Result<CreditModel>
+    fun postCredit(body: CreditBody): Result<CreditModel>
+    fun getMilkPrice(): Result<MilkPriceModel>
 }

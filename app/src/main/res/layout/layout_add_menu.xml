@@ -7,13 +7,13 @@
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="18dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:layout_marginEnd="6dp"
-        android:layout_height="18dp"
-        tools:src="@drawable/ic_add_milk"
         app:layout_constraintBottom_toBottomOf="@id/label"
         app:layout_constraintEnd_toStartOf="@id/label"
-        app:layout_constraintTop_toTopOf="@id/label" />
+        app:layout_constraintTop_toTopOf="@id/label"
+        tools:src="@drawable/ic_add_farmer" />
 
     <TextView
         android:id="@+id/label"
@@ -22,7 +22,7 @@
         android:gravity="center"
         android:padding="9dp"
         android:textColor="@color/black_text_color"
-        android:textSize="18sp"
+        android:textSize="21sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

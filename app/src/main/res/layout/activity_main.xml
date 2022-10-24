@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -49,6 +50,7 @@
         android:layout_margin="@dimen/default_margins"
         android:elevation="@dimen/default_margins"
         android:visibility="gone"
+        tools:visibility="visible"
         app:cardCornerRadius="@dimen/default_margins"
         app:layout_constraintBottom_toTopOf="@id/custom_nav">
 
@@ -56,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:layout_marginVertical="@dimen/default_margins"
             android:orientation="vertical">
 
             <pro.breez.bfsut.custom.view.AddMenuView
@@ -76,7 +79,7 @@
                 android:id="@+id/add_farmer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:icon="@drawable/ic_farmer_p"
+                app:icon="@drawable/ic_add_farmer"
                 app:label="Новый фермер" />
 
         </LinearLayout>

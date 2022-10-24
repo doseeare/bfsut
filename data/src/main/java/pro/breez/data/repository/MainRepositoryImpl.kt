@@ -33,7 +33,7 @@ class MainRepositoryImpl(
         }
     }
 
-    override fun getGoal():  Result<List<GoalModel>> {
+    override fun getGoal(): Result<List<GoalModel>> {
         return restClient.mainApi.getGoal(dataPreference.token)
     }
 
@@ -43,5 +43,9 @@ class MainRepositoryImpl(
 
     override fun postCredit(body: CreditBody): Result<CreditModel> {
         return restClient.mainApi.postCredit(dataPreference.token, body)
+    }
+
+    override fun getMilkPrice(): Result<MilkPriceModel> {
+        return restClient.mainApi.getMilkPrice(dataPreference.token)
     }
 }

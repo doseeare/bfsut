@@ -20,7 +20,7 @@ import pro.breez.bfsut.util.validator.AddFarmerFieldValidator
 
 
 @AndroidEntryPoint
-class AddFarmerFragment : BaseFragment<FragmentAddFarmerBinding, AddFarmerViewModel>() {
+class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -171,7 +171,6 @@ class AddFarmerFragment : BaseFragment<FragmentAddFarmerBinding, AddFarmerViewMo
                         viewModel.isActualLocation = false
                     }
                 }
-
             }
         }
     }

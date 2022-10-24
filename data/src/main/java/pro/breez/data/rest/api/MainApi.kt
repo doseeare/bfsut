@@ -132,9 +132,15 @@ interface MainApi {
         @Header("Authorization") token: String,
     ): Result<List<MfSysModel>>
 
+
+    @GET("v1/agents/actual_milk_price")
+    fun getMilkPrice(
+        @Header("Authorization") token: String,
+    ): Result<MilkPriceModel>
+
     @POST("v1/farmers/")
     fun postFarmer(
         @Header("Authorization") token: String,
         @Body body: FarmerBody
-    ): Result<String>
+    ): Result<DefaultSuccessModel>
 }

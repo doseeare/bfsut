@@ -46,6 +46,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.fabBtn.setOnClickOnceListener {
             fabSelected = !fabSelected
         }
+        binding.addMilk.setOnClickOnceListener {
+            fabSelected = false
+            navigateToFragment(FragmentTransaction(R.id.navigation_milk_add))
+        }
 
         binding.addFarmer.setOnClickOnceListener {
             fabSelected = false

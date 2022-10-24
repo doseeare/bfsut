@@ -4,6 +4,7 @@ import pro.breez.data.cache.DataPreference
 import pro.breez.data.rest.RestClient
 import pro.breez.domain.interactor.base.Result
 import pro.breez.domain.model.input.FarmerBody
+import pro.breez.domain.model.output.DefaultSuccessModel
 import pro.breez.domain.model.output.MfSysModel
 import pro.breez.domain.repository.AddFarmerRepository
 
@@ -44,7 +45,7 @@ class AddFarmerRepositoryImpl(
         return restClient.mainApi.getJobPurpose(dataPreference.token)
     }
 
-    override fun postFarmer(body: FarmerBody): Result<String> {
+    override fun postFarmer(body: FarmerBody): Result<DefaultSuccessModel> {
         return restClient.mainApi.postFarmer(dataPreference.token, body)
     }
 

@@ -2,6 +2,7 @@ package pro.breez.domain.repository
 
 import pro.breez.domain.interactor.base.Result
 import pro.breez.domain.model.input.FarmerBody
+import pro.breez.domain.model.output.DefaultSuccessModel
 import pro.breez.domain.model.output.MfSysModel
 
 interface AddFarmerRepository {
@@ -13,5 +14,5 @@ interface AddFarmerRepository {
     fun getRegions(id: String): Result<List<MfSysModel>>
     fun getEducations(): Result<List<MfSysModel>>
     fun getJobPurpose(): Result<List<MfSysModel>>
-    fun postFarmer(body: FarmerBody): Result<String>
+    fun postFarmer(body: FarmerBody): Result<DefaultSuccessModel>
 }

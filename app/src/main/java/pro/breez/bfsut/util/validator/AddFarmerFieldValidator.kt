@@ -2,14 +2,14 @@ package pro.breez.bfsut.util.validator
 
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.FragmentAddFarmerBinding
-import pro.breez.bfsut.ui.main.add_farmer.AddFarmerViewModel
+import pro.breez.bfsut.ui.main.add_farmer.FarmerAddViewModel
 import pro.breez.bfsut.util.ifFalse
 import pro.breez.bfsut.util.ifTrue
 import pro.breez.bfsut.util.isNull
 
 class AddFarmerFieldValidator(
     val binding: FragmentAddFarmerBinding,
-    val viewModel: AddFarmerViewModel
+    val viewModel: FarmerAddViewModel
 ) {
     private val importantFields = arrayListOf(
         binding.nameEt, binding.lastNameEt, binding.birthdayEt,
