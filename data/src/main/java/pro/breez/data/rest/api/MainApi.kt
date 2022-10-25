@@ -1,10 +1,7 @@
 package pro.breez.data.rest.api
 
 import pro.breez.domain.interactor.base.Result
-import pro.breez.domain.model.input.CalculateActiveBody
-import pro.breez.domain.model.input.CreditBody
-import pro.breez.domain.model.input.FarmerBody
-import pro.breez.domain.model.input.MilkChangesBody
+import pro.breez.domain.model.input.*
 import pro.breez.domain.model.output.*
 import retrofit2.http.*
 
@@ -137,6 +134,20 @@ interface MainApi {
     fun getMilkPrice(
         @Header("Authorization") token: String,
     ): Result<MilkPriceModel>
+
+
+    @PATCH("v1/agents/actual_milk_price")
+    fun postMilkPrice(
+        @Header("Authorization") token: String,
+        @Body body: MilkPriceModel
+    ): Result<MilkPriceModel>
+
+
+    @POST("v1/journal/")
+    fun postMilk(
+        @Header("Authorization") token: String,
+        @Body body: AddMilkBody
+    ): Result<AddMilkModel>
 
     @POST("v1/farmers/")
     fun postFarmer(

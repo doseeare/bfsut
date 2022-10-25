@@ -1,6 +1,7 @@
 package pro.breez.domain.repository
 
 import pro.breez.domain.interactor.base.Result
+import pro.breez.domain.model.input.AddMilkBody
 import pro.breez.domain.model.input.CreditBody
 import pro.breez.domain.model.output.*
 
@@ -13,4 +14,6 @@ interface MainRepository {
     fun getCredits(): Result<List<CreditLogModel>>
     fun postCredit(body: CreditBody): Result<CreditModel>
     fun getMilkPrice(): Result<MilkPriceModel>
+    fun postMilkPrice(body : MilkPriceModel) : Result<MilkPriceModel>
+    fun postMilk(body : AddMilkBody) : Result<AddMilkModel>
 }

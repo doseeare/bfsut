@@ -3,6 +3,7 @@ package pro.breez.data.repository
 import pro.breez.data.cache.DataPreference
 import pro.breez.data.rest.RestClient
 import pro.breez.domain.interactor.base.Result
+import pro.breez.domain.model.input.AddMilkBody
 import pro.breez.domain.model.input.CreditBody
 import pro.breez.domain.model.output.*
 import pro.breez.domain.repository.MainRepository
@@ -47,5 +48,13 @@ class MainRepositoryImpl(
 
     override fun getMilkPrice(): Result<MilkPriceModel> {
         return restClient.mainApi.getMilkPrice(dataPreference.token)
+    }
+
+    override fun postMilkPrice(body: MilkPriceModel): Result<MilkPriceModel> {
+        return restClient.mainApi.postMilkPrice(dataPreference.token, body)
+    }
+
+    override fun postMilk(body: AddMilkBody): Result<AddMilkModel> {
+        return  restClient.mainApi.postMilk(dataPreference.token, body)
     }
 }

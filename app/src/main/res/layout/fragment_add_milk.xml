@@ -70,6 +70,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/default_margins"
+                android:maxLength="4"
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="8dp"
                 android:background="@null"
@@ -116,6 +117,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="8dp"
                 android:background="@null"
+                android:maxLength="4"
                 android:gravity="start"
                 android:hint="0л"
                 android:inputType="number"
@@ -183,6 +185,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
+        android:id="@+id/total_sum_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/default_margins"
@@ -199,6 +202,7 @@
         android:layout_height="56dp"
         android:layout_margin="@dimen/default_margins"
         android:background="@drawable/selector_default_button"
+        android:enabled="false"
         android:text="Создать"
         android:textAllCaps="false"
         android:textColor="@color/white"
