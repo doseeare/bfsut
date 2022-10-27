@@ -57,4 +57,8 @@ class MainRepositoryImpl(
     override fun postMilk(body: AddMilkBody): Result<AddMilkModel> {
         return  restClient.mainApi.postMilk(dataPreference.token, body)
     }
+
+    override fun getTotalMilk(): Result<TotalMilkModel> {
+        return restClient.mainApi.getTotalMilk(dataPreference.token)
+    }
 }

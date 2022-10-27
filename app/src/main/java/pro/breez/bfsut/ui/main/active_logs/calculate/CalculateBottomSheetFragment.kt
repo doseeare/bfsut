@@ -16,8 +16,6 @@ import pro.breez.domain.model.output.LogsModel
 class CalculateBottomSheetFragment :
     BaseBottomSheetFragment<FragmentCalculateBottomSheetBinding, CalculateLogViewModel>() {
 
-    val dismissLiveData = MutableLiveData<Unit>()
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requireArguments().let {
@@ -70,11 +68,6 @@ class CalculateBottomSheetFragment :
             statusTv.text = statusTitle
             statusContainer.setBackgroundResource(statusBg)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        dismissLiveData.postValue(Unit)
     }
 
     override fun getTheme(): Int {

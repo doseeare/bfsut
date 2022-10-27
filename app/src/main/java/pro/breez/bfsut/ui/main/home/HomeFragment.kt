@@ -9,6 +9,7 @@ import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentHomeBinding
 import pro.breez.bfsut.ui.auth.activity.AuthActivity
 import pro.breez.bfsut.util.setOnClickOnceListener
+import pro.breez.domain.model.output.FarmersModel
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
@@ -17,31 +18,58 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        initObservers()
     }
 
     private fun initViews() {
-        val adapter = FarmersAdapter(viewModel.farmers.take(8) as ArrayList)
-        binding.showMoreBtn.setOnClickOnceListener {
-            if (showMore) {
-                binding.showMoreBtn.text = "Скрыть"
-                adapter.update(viewModel.farmers.take(12) as ArrayList)
-            } else {
-                binding.showMoreBtn.text = "Показать еще"
-                adapter.update(viewModel.farmers.take(8) as ArrayList)
-            }
-            showMore = !showMore
-        }
         binding.logoutBtn.setOnClickOnceListener {
             viewModel.logOut {
                 startActivity(Intent(context, AuthActivity::class.java))
                 requireActivity().finish()
             }
         }
-        binding.farmersRv.adapter = adapter
 
         binding.showAllBtn.setOnClickOnceListener {
             viewModel.showAll()
         }
+        binding.priceOfLiterBtn.setOnClickOnceListener {
+            viewModel.navigateToChangePrice()
+        }
     }
 
+    fun refreshMilkPrice() {
+        viewModel.getMilkPrice()
+    }
+
+    private fun initObservers() {
+        viewModel.farmersLV.observe(viewLifecycleOwner) { farmers ->
+            val adapter = FarmersAdapter(farmers.take(farmers.size / 2) as ArrayList<FarmersModel>)
+            binding.showMoreBtn.setOnClickOnceListener {
+                if (showMore) {
+                    binding.showMoreBtn.text = "Скрыть"
+                    adapter.update(farmers.take(farmers.size) as ArrayList<FarmersModel>)
+                } else {
+                    binding.showMoreBtn.text = "Показать еще"
+                    adapter.update(farmers.take(farmers.size / 2) as ArrayList<FarmersModel>)
+                }
+                showMore = !showMore
+            }
+            binding.farmersRv.adapter = adapter
+        }
+
+        viewModel.milkPriceLV.observe(viewLifecycleOwner) {
+            binding.priceOfLiterBtn.text = "$it сом за литр молока"
+        }
+
+        viewModel.totalMilkLv.observe(viewLifecycleOwner) {
+            binding.morningPanel.apply {
+                setLiters(it.morning_milk_sum)
+                setSum(it.morning_price_sum)
+            }
+            binding.eveningPanel.apply {
+                setLiters(it.evening_milk_sum)
+                setSum(it.evening_price_sum)
+            }
+        }
+    }
 }

@@ -6,6 +6,7 @@ import pro.breez.domain.model.output.*
 import retrofit2.http.*
 
 interface MainApi {
+
     @GET("v1/farmers")
     fun getFarmers(
         @Header("Authorization") token: String,
@@ -129,12 +130,10 @@ interface MainApi {
         @Header("Authorization") token: String,
     ): Result<List<MfSysModel>>
 
-
     @GET("v1/agents/actual_milk_price")
     fun getMilkPrice(
         @Header("Authorization") token: String,
     ): Result<MilkPriceModel>
-
 
     @PATCH("v1/agents/actual_milk_price")
     fun postMilkPrice(
@@ -142,12 +141,16 @@ interface MainApi {
         @Body body: MilkPriceModel
     ): Result<MilkPriceModel>
 
-
     @POST("v1/journal/")
     fun postMilk(
         @Header("Authorization") token: String,
         @Body body: AddMilkBody
     ): Result<AddMilkModel>
+
+    @GET("v1/journal/total-day")
+    fun getTotalMilk(
+        @Header("Authorization") token: String,
+    ): Result<TotalMilkModel>
 
     @POST("v1/farmers/")
     fun postFarmer(

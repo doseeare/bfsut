@@ -6,7 +6,7 @@ import pro.breez.domain.model.output.MilkPriceModel
 import pro.breez.domain.repository.MainRepository
 import javax.inject.Inject
 
-class PriceChangeUseCase @Inject constructor(
+class ChangeMilkPriceUseCase @Inject constructor(
     private val mainRepository: MainRepository
 ) : UseCase<MilkPriceModel, MilkPriceModel>() {
 

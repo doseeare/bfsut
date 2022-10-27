@@ -1,7 +1,7 @@
 package pro.breez.domain.model.input
 
 data class AddMilkBody(
-    val evening: Int,
+    var evening: Int = 0,
     val farmer: String,
-    val morning: Int
+    var morning: Int = 0
 )

@@ -2,34 +2,85 @@ package pro.breez.bfsut.ui.main.home
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.util.alert.QuestionDialog
-import pro.breez.domain.model.output.FarmersCheckModel
+import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
+import pro.breez.domain.interactor.ChangeMilkPriceUseCase
+import pro.breez.domain.interactor.FarmersUseCase
+import pro.breez.domain.interactor.MilkPriceUseCase
+import pro.breez.domain.interactor.TotalMilkUseCase
+import pro.breez.domain.model.output.FarmersModel
+import pro.breez.domain.model.output.MilkPriceModel
+import pro.breez.domain.model.output.TotalMilkModel
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor() : BaseViewModel() {
-    val farmersLV = MutableLiveData<ArrayList<FarmersCheckModel>>()
+class HomeViewModel @Inject constructor(
+    private val farmersUseCase: FarmersUseCase,
+    private val getTotalMilk: TotalMilkUseCase,
+    private val getMilkPrice: MilkPriceUseCase,
+    private val changeMilkPrice: ChangeMilkPriceUseCase
+) : BaseViewModel() {
 
-    var showMore = false
-        set(value) {
-            if (value)
-                farmersLV.postValue(farmers.take(12) as ArrayList)
-            else
-                farmersLV.postValue(farmers.take(8) as ArrayList)
-            field = !value
+    val farmersLV = MutableLiveData<List<FarmersModel>>()
+    val totalMilkLv = MutableLiveData<TotalMilkModel>()
+    val milkPriceLV = MutableLiveData<Int>()
+
+    override fun onResume(owner: LifecycleOwner) {
+        super.onResume(owner)
+        getFarmers()
+        getTotalMilk()
+        getMilkPrice()
+    }
+
+    fun navigateToChangePrice() {
+        showBottomSheetFragment.startEvent(
+            ChangePriceBottomSheetFragment.newInstance(
+                milkPriceLV.value ?: 0
+            )
+        )
+    }
+
+    fun changeMilkPrice(newPrice: Int, block: () -> Unit) {
+        changeMilkPrice.execute(viewModelScope, MilkPriceModel(newPrice)) {
+            handleResult(it) {
+                val dialog = AlertDialogBuilderImpl()
+                dialog.setIcon(R.drawable.ic_success)
+                dialog.setTitle("Цена изменена")
+                dialog.setSubTitle("")
+                dialog.setDismissListener {
+                    block.invoke()
+                }
+                showAlertDialog.startEvent(dialog)
+            }
         }
+    }
 
+    fun getMilkPrice() {
+        getMilkPrice.execute(viewModelScope) {
+            handleResult(it) {
+                milkPriceLV.postValue(it.price)
+            }
+        }
+    }
 
-    val farmers = ArrayList<FarmersCheckModel>()
+    private fun getFarmers() {
+        farmersUseCase.execute(viewModelScope) {
+            handleResult(it) {
+                farmersLV.postValue(it)
+            }
+        }
+    }
 
-    override fun onCreate(owner: LifecycleOwner) {
-        super.onCreate(owner)
-        for (i in 0..20) {
-            farmers.add(FarmersCheckModel("Райым Маткасымов"))
+    private fun getTotalMilk() {
+        getTotalMilk.execute(viewModelScope) {
+            handleResult(it) {
+                totalMilkLv.postValue(it)
+            }
         }
     }
 

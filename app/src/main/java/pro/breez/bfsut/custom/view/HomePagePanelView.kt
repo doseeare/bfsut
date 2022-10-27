@@ -42,12 +42,20 @@ class HomePagePanelView(context: Context, attributeSet: AttributeSet?, defStyle:
             }
         }
 
-     //   binding.dayContainer.setBackgroundResource(panelBackground!!)
+        //   binding.dayContainer.setBackgroundResource(panelBackground!!)
         binding.panelImg.setImageResource(panelBackground!!)
         binding.tagTv.text = panelTag
         binding.priceTv.setTextColor(panelBottomTextColor!!)
         binding.currencyTv.setTextColor(panelBottomTextColor!!)
         binding.literTv.setTextColor(panelBottomTextColor!!)
+    }
+
+    fun setLiters(text: Int?) {
+        binding.literTv.text = "$text литров"
+    }
+
+    fun setSum(text: Int?) {
+        binding.priceTv.text = text.toString()
     }
 
 }

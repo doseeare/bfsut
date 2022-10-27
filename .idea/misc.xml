@@ -43,6 +43,7 @@
         <entry key="app/src/main/res/drawable/bg_price_of_liter.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_rounded_error.xml" value="0.2445" />
         <entry key="app/src/main/res/drawable/bg_rounded_shape.xml" value="0.2325" />
+        <entry key="app/src/main/res/drawable/bg_rounded_shape_black.xml" value="0.1965" />
         <entry key="app/src/main/res/drawable/bg_rounded_shape_darker.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/bg_rounded_shape_light.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/bg_rounded_shapre.xml" value="0.2325" />
@@ -104,6 +105,7 @@
         <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_calculate_active_logs.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_calculate_bottom_sheet.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_change_price_bottom_sheet.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_credit_add.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_credits.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_credits_container.xml" value="0.2984181274048739" />

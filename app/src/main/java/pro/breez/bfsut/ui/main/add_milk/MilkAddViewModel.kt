@@ -38,9 +38,10 @@ class MilkAddViewModel @Inject constructor(
     fun createBtnClicked(morning: String, evening: String) {
         val body = AddMilkBody(
             farmer = farmerLV.value!!.id,
-            evening = evening.toInt(),
-            morning = morning.toInt()
         )
+        if (morning.isNotBlank()) body.morning = morning.toInt()
+        if (evening.isNotBlank()) body.evening = evening.toInt()
+
         addMilkUseCase.execute(viewModelScope, body) {
             handleResult(it) {
                 val dialog = AlertDialogBuilderImpl().apply {

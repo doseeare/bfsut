@@ -1,9 +1,5 @@
 package pro.breez.bfsut.util.permission
 
-import android.content.Context
-import java.security.Permissions
-import java.util.ArrayList
-
 interface PermissionCheckerBuilder {
     fun setPermission(permission: String): PermissionCheckerBuilder
     fun setPermissions(vararg permissions: String): PermissionCheckerBuilder

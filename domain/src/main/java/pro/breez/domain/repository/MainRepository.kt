@@ -16,4 +16,5 @@ interface MainRepository {
     fun getMilkPrice(): Result<MilkPriceModel>
     fun postMilkPrice(body : MilkPriceModel) : Result<MilkPriceModel>
     fun postMilk(body : AddMilkBody) : Result<AddMilkModel>
+    fun getTotalMilk () : Result<TotalMilkModel>
 }

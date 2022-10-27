@@ -54,6 +54,7 @@
             app:layout_constraintTop_toBottomOf="@id/welcome_tv">
 
             <pro.breez.bfsut.custom.view.HomePagePanelView
+                android:id="@+id/morning_panel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_margins"
@@ -62,6 +63,7 @@
                 app:is_day="true" />
 
             <pro.breez.bfsut.custom.view.HomePagePanelView
+                android:id="@+id/evening_panel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -78,7 +80,7 @@
             android:layout_marginHorizontal="@dimen/default_margins"
             android:layout_marginTop="@dimen/default_margins"
             android:background="@drawable/bg_black_button"
-            android:text="100 сом за литр молока"
+            android:text="0 сом за литр молока"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp"
