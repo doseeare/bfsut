@@ -43,7 +43,7 @@ class FilterViewModel @Inject constructor(
     }
 
     fun backBtnClicked() {
-        popBackStack.startEvent(Unit)
+        popBackStack.startEvent(null)
     }
 
     fun farmerClicked() {
@@ -85,7 +85,12 @@ class FilterViewModel @Inject constructor(
     }
 
     fun acceptClicked() {
-        val filterResult = FilterResult(farmerLV.value?.full_name, farmerLV.value?.id, filterSpan, rangeDateLv.value)
+        val filterResult = FilterResult(
+            farmerLV.value?.full_name,
+            farmerLV.value?.id,
+            filterSpan,
+            rangeDateLv.value
+        )
         val args = FilterFragmentDirections.filterFragmentToFilterResult(filterResult).arguments
         navigateToFragment.startEvent(FragmentTransaction(R.id.navigation_filter_result, args))
     }

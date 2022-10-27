@@ -53,7 +53,7 @@ open class CreditAddViewModel @Inject constructor(
         )
         postCreditUseCase.execute(viewModelScope, postCreditBody) {
             handleResult(it) {
-                popBackStack.startEvent(Unit)
+                popBackStack.startEvent(null)
             }
         }
     }

@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.LayoutDropDownEditTextBinding
@@ -115,6 +116,10 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
             attr.getString(R.styleable.CustomDropDownEditText_helper)?.let {
                 binding.helper.visibility = View.VISIBLE
                 binding.helper.text = it
+            }
+
+            attr.getBoolean(R.styleable.CustomDropDownEditText_important, false).let {
+                binding.importantImg.isVisible = it
             }
 
             attr.getResourceId(R.styleable.CustomDropDownEditText_icon_end, R.drawable.ic_drop)

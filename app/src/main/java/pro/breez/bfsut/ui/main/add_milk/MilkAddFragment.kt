@@ -26,29 +26,32 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
 
     private fun initValidate() {
         fieldsValidate = {
-            binding.createBtn.isEnabled = isNameNotEmpty && isEveningNotEmpty && isMorningNotEmpty
+            binding.createBtn.isEnabled = (isMorningNotEmpty || isEveningNotEmpty) && isNameNotEmpty
             var totalSum = 0L
             val literPrice = viewModel.milkPriceLV.value!!.price
-            if (isMorningNotEmpty && isEveningNotEmpty) {
-                val evening = binding.eveningEt.text.toString().toInt()
+            if (isMorningNotEmpty) {
                 val morning = binding.morningEt.text.toString().toInt()
-                totalSum = ((evening * literPrice) + (morning * literPrice)).toLong()
+                totalSum += morning * literPrice
+            }
+            if (isEveningNotEmpty) {
+                val evening = binding.eveningEt.text.toString().toInt()
+                totalSum += evening * literPrice
             }
             binding.totalSumTv.text = "Итого: $totalSum сом"
         }
-        binding.morningEt.doOnTextChanged { text, start, before, count ->
+        binding.morningEt.doOnTextChanged { text, _, _, _ ->
             val stringText = text.toString()
             val isNotEmpty = stringText.isNotEmpty() || stringText.isNotBlank()
             isMorningNotEmpty = isNotEmpty
             fieldsValidate.invoke()
         }
-        binding.eveningEt.doOnTextChanged { text, start, before, count ->
+        binding.eveningEt.doOnTextChanged { text, _, _, _ ->
             val stringText = text.toString()
             val isNotEmpty = stringText.isNotEmpty() || stringText.isNotBlank()
             isEveningNotEmpty = isNotEmpty
             fieldsValidate.invoke()
         }
-        binding.nameEt.editText.doOnTextChanged { text, start, before, count ->
+        binding.nameEt.editText.doOnTextChanged { text, _, _, _ ->
             val stringText = text.toString()
             val isNotEmpty = stringText.isNotEmpty() || stringText.isNotBlank()
             isNameNotEmpty = isNotEmpty

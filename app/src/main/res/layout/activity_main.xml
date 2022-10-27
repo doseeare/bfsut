@@ -15,7 +15,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="@dimen/default_margins">
+            android:layout_marginHorizontal="@dimen/default_margins"
+            android:layout_marginVertical="8dp">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/nav_view"
@@ -23,7 +24,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/default_margins"
                 android:background="@drawable/bg_main_bottom_nav"
+                app:itemIconSize="26sp"
                 app:itemIconTint="@color/selector_main_bottomnav"
+                app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
+                app:itemTextAppearanceInactive="@style/BottomNavigationView"
+                app:itemTextColor="@color/selector_bottom_navigation_text_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/fab_btn"
                 app:layout_constraintStart_toStartOf="parent"
@@ -32,12 +37,15 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="6dp"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:elevation="0dp"
+                app:elevation="0dp"
                 android:foreground="@drawable/bg_add_main"
+                android:padding="6dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -50,15 +58,15 @@
         android:layout_margin="@dimen/default_margins"
         android:elevation="@dimen/default_margins"
         android:visibility="gone"
-        tools:visibility="visible"
         app:cardCornerRadius="@dimen/default_margins"
-        app:layout_constraintBottom_toTopOf="@id/custom_nav">
+        app:layout_constraintBottom_toTopOf="@id/custom_nav"
+        tools:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:layout_marginVertical="@dimen/default_margins"
+            android:gravity="center"
             android:orientation="vertical">
 
             <pro.breez.bfsut.custom.view.AddMenuView
@@ -97,5 +105,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/main_navigation" />
+
+    <View
+        android:id="@+id/shadow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        android:clickable="true"
+        android:background="@color/black"
+        android:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

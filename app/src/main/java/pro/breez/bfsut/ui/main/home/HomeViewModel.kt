@@ -13,6 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor() : BaseViewModel() {
     val farmersLV = MutableLiveData<ArrayList<FarmersCheckModel>>()
+
     var showMore = false
         set(value) {
             if (value)
@@ -24,6 +25,13 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
 
 
     val farmers = ArrayList<FarmersCheckModel>()
+
+    override fun onCreate(owner: LifecycleOwner) {
+        super.onCreate(owner)
+        for (i in 0..20) {
+            farmers.add(FarmersCheckModel("Райым Маткасымов"))
+        }
+    }
 
     fun showAll() {
         navigateToFragment.startEvent(FragmentTransaction(R.id.home_fragment_to_all_farmers))
@@ -38,12 +46,4 @@ class HomeViewModel @Inject constructor() : BaseViewModel() {
         }
         showDialogFragment.startEvent(dialog)
     }
-
-    override fun onCreate(owner: LifecycleOwner) {
-        super.onCreate(owner)
-        for (i in 0..20) {
-            farmers.add(FarmersCheckModel("Райым Маткасымов"))
-        }
-    }
-
 }

@@ -24,10 +24,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 binding.addMenu.visibility = View.VISIBLE
                 binding.fabBtn.foreground =
                     ContextCompat.getDrawable(this, R.drawable.bg_add_close)
+                binding.shadow.visibility = View.VISIBLE
             } else {
                 binding.addMenu.visibility = View.GONE
                 binding.fabBtn.foreground =
                     ContextCompat.getDrawable(this, R.drawable.bg_add_main)
+                binding.shadow.visibility = View.GONE
             }
         }
 
@@ -59,6 +61,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.addCredit.setOnClickOnceListener {
             fabSelected = false
             navigateToFragment(FragmentTransaction(R.id.navigation_credit_add))
+        }
+
+        binding.shadow.setOnClickOnceListener {
+            fabSelected = !fabSelected
         }
     }
 

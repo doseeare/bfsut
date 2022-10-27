@@ -40,7 +40,7 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
     val navigateToFragment = SingleLiveEvent<FragmentTransaction>()
     val navigateToActivity = SingleLiveEvent<ActivityTransaction>()
     val handleIntent = SingleLiveEvent<Intent>()
-    val popBackStack = SingleLiveEvent<Unit>()
+    val popBackStack = SingleLiveEvent<Int?>()
     val previousScreen = SingleLiveEvent<Int>()
     val finish = SingleLiveEvent<Void>()
     val onNetworkConnectionLostAlert = SingleLiveEvent<Void>()

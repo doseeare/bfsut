@@ -1,6 +1,7 @@
 package pro.breez.bfsut.base
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,15 +41,12 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
         return _binding!!.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = createViewModelLazy(classVM.kotlin, { viewModelStore }).value
         lifecycle.addObserver(viewModel)
         setupBaseViewModel()
+        Log.d("Fragments", "onCreate: ${this::class.java}")
     }
 
 
@@ -74,6 +72,11 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.e("Fragments", "onDestroyView: ${this::class.java}")
+    }
+
     private fun setupBaseViewModel() {
         viewModel.let { vm ->
             vm.navigateToFragment.observe(this) {
@@ -85,7 +88,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
             }
 
             vm.popBackStack.observe(this) {
-                popBackStack()
+                popBackStack(it)
             }
             vm.showBottomSheetFragment.observe(this) { fragment ->
                 fragment.show(childFragmentManager, fragment.tag)
@@ -163,9 +166,9 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
         }
     }
 
-    protected fun popBackStack() {
+    protected fun popBackStack(@IdRes id: Int? = null) {
         if (activity is BaseActivity<*>) {
-            (activity as BaseActivity<*>).popBackStack()
+            (activity as BaseActivity<*>).popBackStack(id)
         }
     }
 

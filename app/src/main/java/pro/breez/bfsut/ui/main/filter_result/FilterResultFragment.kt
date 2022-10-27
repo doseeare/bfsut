@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import dagger.hilt.android.AndroidEntryPoint
+import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentFilterResultBinding
 import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
@@ -44,7 +45,7 @@ class FilterResultFragment : BaseFragment<FragmentFilterResultBinding, FilterRes
         binding.toolbar.setTitle("Результаты по:")
         binding.resultTitleTv.text = strBuilder.toString()
         binding.toolbar.setOnBackClickListener {
-            requireActivity().onBackPressed()
+            popBackStack(R.id.navigation_log)
         }
         val pagerAdapter = FragmentPagerItemAdapter(
             childFragmentManager, createTabs()

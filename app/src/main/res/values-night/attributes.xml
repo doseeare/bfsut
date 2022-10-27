@@ -19,6 +19,7 @@
         <attr name="hint" />
         <attr name="helper" format="string" />
         <attr name="icon_end" format="reference" />
+        <attr name="important" format="boolean" />
         <attr name="type">
             <flag name="field" value="0" />
             <flag name="drop" value="1" />

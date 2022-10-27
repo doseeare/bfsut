@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root_container"
     android:layout_width="match_parent"
     android:layout_height="300dp"
-    android:background="@drawable/bg_home_panel_day">
+    app:cardCornerRadius="36dp"
+    app:strokeWidth="0dp"
+    app:strokeColor="#F2F2F2">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/day_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/panel_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_home_panel_day" />
 
         <TextView
             android:id="@+id/tag_tv"
@@ -18,12 +27,12 @@
             android:layout_margin="32dp"
             android:background="@drawable/bg_home_panel_tag"
             android:gravity="center"
-            android:paddingHorizontal="6dp"
+            android:paddingHorizontal="@dimen/default_margins"
+            android:paddingVertical="6dp"
             android:text="Утром"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:paddingVertical="6dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,4 +75,4 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>

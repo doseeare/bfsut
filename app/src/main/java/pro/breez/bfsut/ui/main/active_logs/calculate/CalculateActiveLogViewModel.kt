@@ -48,12 +48,11 @@ class CalculateActiveLogViewModel @Inject constructor(
                 dialog.setTitle("Изменения были сохранены")
                 dialog.setSubTitle("Отличная работа")
                 dialog.setDismissListener {
-                    popBackStack.startEvent(Unit)
+                    popBackStack.startEvent(null)
                 }
                 showAlertDialog.startEvent(dialog)
             }
         }
-
     }
 
     fun calculateLog(id: String) {
@@ -65,7 +64,7 @@ class CalculateActiveLogViewModel @Inject constructor(
                 dialog.setTitle("Рассчет был произведен")
                 dialog.setSubTitle("Отличная работа")
                 dialog.setDismissListener {
-                    popBackStack.startEvent(Unit)
+                    popBackStack.startEvent(null)
                 }
                 showAlertDialog.startEvent(dialog)
             }

@@ -31,13 +31,13 @@
     <string name="create">Создать</string>
     <string name="job">Работа</string>
     <string name="education">Образование</string>
-    <string name="familty_status">Семейный статус *</string>
+    <string name="familty_status">Семейный статус</string>
     <string name="fact_location">Фактический адрес проживание</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
-    <string name="fact_location_question">Фактически адрес фермера является таким же? *</string>
+    <string name="fact_location_question">Фактически адрес фермера является таким же?</string>
     <string name="location_on_doc">Адрес проживания по прописке</string>
     <string name="passport_data">Паспортные данные</string>
-    <string name="sex">Пол *</string>
+    <string name="sex">Пол</string>
     <string name="personal_data">Личные данные</string>
 </resources>

@@ -17,6 +17,7 @@ import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilderImpl
 import pro.breez.domain.interactor.*
 import pro.breez.domain.model.input.FarmerBody
 import pro.breez.domain.model.output.MfSysModel
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -81,15 +82,20 @@ class FarmerAddViewModel @Inject constructor(
     var gender: GenderEnum? = null
 
     fun birthDayClicked() {
+        val startDate = Calendar.getInstance()
+        val endDate = Calendar.getInstance()
+        startDate.add(Calendar.YEAR, -88)
+        endDate.add(Calendar.YEAR, -18)
+
         val constraintsBuilder =
             CalendarConstraints.Builder()
-                .setValidator(DateValidatorPointBackward.now())
+        constraintsBuilder.setStart(startDate.timeInMillis)
+        constraintsBuilder.setEnd(endDate.timeInMillis)
 
         val dateRangePicker = MaterialDatePicker.Builder.datePicker()
             .setTitleText("Выберите дату")
             .setPositiveButtonText("Подвердить")
             .setCalendarConstraints(constraintsBuilder.build())
-            .setSelection(System.currentTimeMillis())
             .setNegativeButtonText("Отменить")
             .build()
 
@@ -335,7 +341,7 @@ class FarmerAddViewModel @Inject constructor(
                 dialog.setSubTitle("Можете начать собирать молоко")
                 dialog.setIcon(R.drawable.ic_success)
                 dialog.setDismissListener {
-                    popBackStack.startEvent(Unit)
+                    popBackStack.startEvent(null)
                 }
                 showAlertDialog.startEvent(dialog)
             }
@@ -355,7 +361,7 @@ class FarmerAddViewModel @Inject constructor(
         val dialog = QuestionDialog().apply {
             setTitle("Хотите выйти,\nне сохранив данные?")
             onPositiveBtnClicked {
-                popBackStack.startEvent(Unit)
+                popBackStack.startEvent(null)
             }
         }
         showDialogFragment.startEvent(dialog)

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -68,8 +69,11 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     abstract fun inflateLayout(layoutInflater: LayoutInflater): VB
 
-    fun popBackStack() {
-        navigation.popBackStack()
+    fun popBackStack(@IdRes id: Int? = null) {
+        if (id == null)
+            navigation.popBackStack()
+        else
+            navigation.popBackStack(id, false)
     }
 
     fun showLoading(@StringRes resourceId: Int) {

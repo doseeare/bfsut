@@ -40,7 +40,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Введите имя"
-                app:title="Имя *"
+                app:important="true"
+                app:title="Имя"
                 app:type="field" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -49,7 +50,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 app:hint="Введите фамилию"
-                app:title="Фамилия *"
+                app:important="true"
+                app:title="Фамилия"
                 app:type="field" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -68,7 +70,8 @@
                 android:layout_marginTop="14dp"
                 app:hint="Выберите дату"
                 app:icon_end="@drawable/ic_calendar"
-                app:title="Дата рождение *"
+                app:important="true"
+                app:title="Дата рождение"
                 app:type="drop" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -77,7 +80,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 app:hint="Введите национальность"
-                app:title="Национальность *"
+                app:important="true"
+                app:title="Национальность"
                 app:type="drop" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -86,17 +90,37 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 app:hint="Выберите вариант"
-                app:title="Гражданство *"
+                app:important="true"
+                app:title="Гражданство"
                 app:type="drop" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margins"
-                android:text="@string/sex"
-                android:textColor="@color/text_bold_color"
-                android:textSize="28sp"
-                android:textStyle="bold" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margins"
+                    android:text="@string/sex"
+                    android:textColor="@color/text_bold_color"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:src="@drawable/ic_important"
+                    app:layout_constraintBottom_toBottomOf="@id/text1"
+                    app:layout_constraintStart_toEndOf="@id/text1"
+                    app:layout_constraintTop_toTopOf="@id/text1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -130,7 +154,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 app:hint="+996 ___ ___ ___"
-                app:title="Моб. телефон *"
+                app:important="true"
+                app:title="Моб. телефон"
                 app:type="field" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -166,7 +191,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Введите ИНН"
-                app:title="ИНН *"
+                app:important="true"
+                app:title="ИНН"
                 app:type="field" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -175,7 +201,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Выберите тип документа"
-                app:title="Тип документа *"
+                app:important="true"
+                app:title="Тип документа"
                 app:type="drop" />
 
 
@@ -185,7 +212,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Выберите серию документа"
-                app:title="Серия *"
+                app:important="true"
+                app:title="Серия"
                 app:type="drop" />
 
 
@@ -195,7 +223,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Выберите номер документа"
-                app:title="Номер документа *"
+                app:important="true"
+                app:title="Номер документа"
                 app:type="field" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -204,7 +233,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Выберите учреждение"
-                app:title="Кем выдан *"
+                app:important="true"
+                app:title="Кем выдан"
                 app:type="drop" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -213,7 +243,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Введите номер"
-                app:title="Номер выдавшего органа *"
+                app:important="true"
+                app:title="Номер выдавшего органа"
                 app:type="field" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -223,7 +254,8 @@
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Выберите дату"
                 app:icon_end="@drawable/ic_calendar"
-                app:title="Когда выдан *"
+                app:important="true"
+                app:title="Когда выдан"
                 app:type="drop" />
 
             <TextView
@@ -241,7 +273,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Страна нахождение"
-                app:title="Страна *"
+                app:important="true"
+                app:title="Страна"
                 app:type="drop" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -250,7 +283,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Выберите область"
-                app:title="Область *"
+                app:important="true"
+                app:title="Область"
                 app:type="drop" />
 
 
@@ -260,7 +294,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Выберите свой регион/город"
-                app:title="Регион/Город *"
+                app:important="true"
+                app:title="Регион/Город"
                 app:type="drop" />
 
 
@@ -270,7 +305,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Выберите место"
-                app:title="Населенный пункт/село *"
+                app:important="true"
+                app:title="Населенный пункт/село"
                 app:type="field" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -289,7 +325,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Введите номер дома"
-                app:title="Дом *"
+                app:important="true"
+                app:title="Дом"
                 app:type="field" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -307,17 +344,38 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Введите место рождения"
-                app:title="Место рождение *"
+                app:important="true"
+                app:title="Место рождение"
                 app:type="field" />
 
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margins"
-                android:text="@string/fact_location_question"
-                android:textColor="@color/text_bold_color"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margins"
+                    android:text="@string/fact_location_question"
+                    android:textColor="@color/text_bold_color"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/important_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:src="@drawable/ic_important"
+                    app:layout_constraintBottom_toBottomOf="@id/text"
+                    app:layout_constraintStart_toEndOf="@id/text"
+                    app:layout_constraintTop_toTopOf="@id/text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -372,7 +430,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margins"
                     app:hint="Страна нахождение"
-                    app:title="Страна *"
+                    app:important="true"
+                    app:title="Страна"
                     app:type="drop" />
 
                 <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -381,7 +440,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margins"
                     app:hint="Выберите область"
-                    app:title="Область *"
+                    app:important="true"
+                    app:title="Область"
                     app:type="drop" />
 
 
@@ -391,7 +451,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margins"
                     app:hint="Выберите свой регион/город"
-                    app:title="Регион/Город *"
+                    app:important="true"
+                    app:title="Регион/Город"
                     app:type="drop" />
 
 
@@ -410,7 +471,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margins"
                     app:hint="Выберите улицу"
-                    app:title="Улица *"
+                    app:title="Улица"
                     app:type="field" />
 
 
@@ -420,7 +481,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margins"
                     app:hint="Введите номер дома"
-                    app:title="Дом *"
+                    app:important="true"
+                    app:title="Дом"
                     app:type="field" />
 
                 <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -444,14 +506,33 @@
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margins"
-                android:text="@string/familty_status"
-                android:textColor="@color/text_bold_color"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margins"
+                    android:text="@string/familty_status"
+                    android:textColor="@color/text_bold_color"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:src="@drawable/ic_important"
+                    app:layout_constraintBottom_toBottomOf="@id/text"
+                    app:layout_constraintStart_toEndOf="@id/text"
+                    app:layout_constraintTop_toTopOf="@id/text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -512,7 +593,8 @@
                 android:layout_marginTop="14dp"
                 android:visibility="gone"
                 app:hint="Введите ФИО"
-                app:title="ФИО супруги (а) *"
+                app:important="true"
+                app:title="ФИО супруги (а)"
                 app:type="field" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -522,7 +604,8 @@
                 android:layout_marginTop="14dp"
                 android:visibility="gone"
                 app:hint="Выберите количество"
-                app:title="Члены семьи *"
+                app:important="true"
+                app:title="Члены семьи"
                 app:type="field" />
 
             <TextView
@@ -540,7 +623,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Степень образования"
-                app:title="Степень *"
+                app:important="true"
+                app:title="Степень"
                 app:type="drop" />
 
             <TextView
@@ -558,7 +642,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Название места работы"
-                app:title="Место работы *"
+                app:important="true"
+                app:title="Место работы"
                 app:type="field" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -567,7 +652,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Введите сферу деятельности"
-                app:title="Сфера деятельности *"
+                app:important="true"
+                app:title="Сфера деятельности"
                 app:type="drop" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -576,7 +662,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Ваша должность"
-                app:title="Должность *"
+                app:important="true"
+                app:title="Должность"
                 app:type="field" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -585,7 +672,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Введите адрес работы"
-                app:title="Рабочий адрес *"
+                app:important="true"
+                app:title="Рабочий адрес"
                 app:type="field" />
 
         </LinearLayout>

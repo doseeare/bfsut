@@ -14,7 +14,7 @@ fun View.setOnClickOnceListener(clickInterval: Long = 500L, action: (View) -> Un
         if (SystemClock.elapsedRealtime() - mLastClickTime < clickInterval) {
             return@setOnClickListener;
         }
-        mLastClickTime = SystemClock.elapsedRealtime();
+        mLastClickTime = SystemClock.elapsedRealtime()
         action.invoke(it)
     }
 }

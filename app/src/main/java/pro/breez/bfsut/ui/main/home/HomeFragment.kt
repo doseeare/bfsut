@@ -3,7 +3,6 @@ package pro.breez.bfsut.ui.main.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.adapter.FarmersAdapter
 import pro.breez.bfsut.base.BaseFragment
@@ -18,11 +17,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        print("dsa")
     }
 
     private fun initViews() {
