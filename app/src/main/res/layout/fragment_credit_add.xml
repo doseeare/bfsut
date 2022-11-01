@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:textColor="@color/text_bold_color"
-                android:textSize="66sp"
+                android:textSize="58sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:textColor="@color/text_bold_color"
-                android:textSize="66sp"
+                android:textSize="58sp"
                 android:textStyle="bold" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -128,7 +128,7 @@
                 app:helper="Дата ежемесячной оплаты"
                 app:hint="Введите число для оплаты"
                 app:title="День для выплат"
-                app:type="field" />
+                app:type="drop" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/sum"

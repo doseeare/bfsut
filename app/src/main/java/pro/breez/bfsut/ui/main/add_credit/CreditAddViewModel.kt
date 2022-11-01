@@ -1,10 +1,13 @@
 package pro.breez.bfsut.ui.main.add_credit
 
 import androidx.lifecycle.viewModelScope
+import com.google.android.material.datepicker.MaterialDatePicker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.helper.SingleLiveEvent
+import pro.breez.bfsut.util.DateUtil
+import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilderImpl
 import pro.breez.domain.interactor.*
 import pro.breez.domain.model.input.CreditBody
@@ -29,11 +32,11 @@ open class CreditAddViewModel @Inject constructor(
     val productLV = SingleLiveEvent<ProductsModel>()
     val categoryLV = SingleLiveEvent<CategoryModel>()
     val goalLV = SingleLiveEvent<GoalModel>()
-    val dateLV = SingleLiveEvent<Pair<String, String>>()
 
     val commentOfGoal = SingleLiveEvent<String>()
-    val dateOfPayment = SingleLiveEvent<String>()
     val sum = SingleLiveEvent<String>()
+    val dateOfPaymentLV = SingleLiveEvent<String>()
+    val periodLV = SingleLiveEvent<String>()
 
     fun sendBtnClicked(fieldsNotEmpty: Boolean) {
         if (!fieldsNotEmpty) {
@@ -44,16 +47,24 @@ open class CreditAddViewModel @Inject constructor(
             amount = sum.value!!,
             category = categoryLV.value!!.id,
             customer = farmerLV.value!!.id,
-            date_pay =  dateOfPayment.value!!.toInt(),
-            period = 12,
+            date_pay = 1,
+            period = 1,
             product_bank = productLV.value!!.id,
             purpose_comment = commentOfGoal.value!!,
             purpose = goalLV.value!!.id,
-            date_disburse_plan = "2022-09-27" //поменять когда подключат
+            date_disburse_plan = "2022-12-12"
         )
         postCreditUseCase.execute(viewModelScope, postCreditBody) {
             handleResult(it) {
-                popBackStack.startEvent(null)
+                val dialog = AlertDialogBuilderImpl().apply {
+                    setIcon(R.drawable.ic_alert)
+                    setTitle("Заявка была принята")
+                    setSubTitle("Отличная работа")
+                    setDismissListener {
+                        previousScreen.trigger()
+                    }
+                }
+                showAlertDialog.startEvent(dialog)
             }
         }
     }
@@ -121,7 +132,35 @@ open class CreditAddViewModel @Inject constructor(
                 showSelectorDialog.startEvent(selector)
             }
         }
+    }
 
+    fun dateOfPaymentClicked() {
+        val dateRangePicker = MaterialDatePicker.Builder.datePicker()
+            .setTitleText("Выберите дату")
+            .setPositiveButtonText("Подвердить")
+            .setNegativeButtonText("Отменить")
+            .build()
+
+        dateRangePicker.addOnPositiveButtonClickListener {
+            dateOfPaymentLV.postValue(DateUtil.toDate(it))
+        }
+        showDialogFragment.startEvent(dateRangePicker)
+    }
+
+    fun periodClicked() {
+        val list = ArrayList<TestModel>()
+        list.add(TestModel("3 месяца"))
+        list.add(TestModel("6 месяцев"))
+        list.add(TestModel("9 месяцев"))
+        list.add(TestModel("12 месяцев"))
+        val selector = SelectorDialogBuilderImpl<TestModel>()
+        selector.setList(list)
+        selector.setSearchByVal(TestModel::name.name)
+        selector.setVmScope(viewModelScope)
+        selector.setResultListener {
+            periodLV.postEvent(it.name)
+        }
+        showSelectorDialog.startEvent(selector)
     }
 
 /*    //todo поменять на список из сервара, когда будет
@@ -135,5 +174,8 @@ open class CreditAddViewModel @Inject constructor(
         val selector = SelectorDialogBuilderImpl(list, textField) { selectedProduct ->
             dateLV.postValue(selectedProduct)
         }
-        showSelectorDialog.startEvent(selector)*/
-    }
+        showSelectorDialog.startEvent(selector)
+    }*/
+}
+
+class TestModel(val name: String)

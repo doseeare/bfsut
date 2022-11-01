@@ -3,7 +3,6 @@ package pro.breez.bfsut.ui.main.active_logs.calculate
 import android.os.Bundle
 import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
-import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentCalculateActiveLogsBinding
 import pro.breez.bfsut.util.setOnClickOnceListener
@@ -17,7 +16,7 @@ class CalculateActiveLogsFragment :
         viewModel.currentLogLV.observe(viewLifecycleOwner) {
             binding.nameTv.text = "Сбор молока у ${it.farmer_name}"
             binding.dayEt.setText("${it.morning} л")
-            binding.eveningEt.setText("${it.morning} л")
+            binding.eveningEt.setText("${it.evening} л")
             binding.milkPriceTv.text = "${it.milk_price} сом\nза литр"
             binding.totalAmountTv.text = "Итого: ${it.overall} сом"
             binding.calculateBtn.setOnClickOnceListener { _ ->

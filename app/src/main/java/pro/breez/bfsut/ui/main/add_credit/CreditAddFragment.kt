@@ -1,12 +1,14 @@
 package pro.breez.bfsut.ui.main.add_credit
 
 import android.os.Bundle
+import android.text.InputType
 import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
-import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentCreditAddBinding
+import pro.breez.bfsut.util.ifTrue
 import pro.breez.bfsut.util.setOnClickOnceListener
+import pro.breez.bfsut.util.validator.CreditAddFieldValidator
 
 @AndroidEntryPoint
 class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewModel>() {
@@ -30,8 +32,11 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
         goalLV.observe(viewLifecycleOwner) {
             binding.goal.text = it.name
         }
-        dateLV.observe(viewLifecycleOwner) {
-            binding.date.text = it.second
+        periodLV.observe(viewLifecycleOwner) {
+            binding.date.text = it
+        }
+        dateOfPaymentLV.observe(viewLifecycleOwner) {
+            binding.dateOfPayment.text = it
         }
     }
 
@@ -51,39 +56,24 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
         category.onClicked = {
             viewModel.categoryClicked()
         }
-   /*     date.onClicked = {
-            viewModel.dateClicked()
-        }*/
-
-        sendBtn.setOnClickOnceListener {
-            viewModel.sendBtnClicked(fieldsNotEmpty())
+        date.onClicked = {
+            viewModel.periodClicked()
         }
-
+        sendBtn.setOnClickOnceListener {
+            val validator = CreditAddFieldValidator(binding)
+            viewModel.sendBtnClicked(validator.validateFields())
+        }
         commentsOfGoal.onTextChanged = {
             viewModel.commentOfGoal.postEvent(it)
         }
-        dateOfPayment.onTextChanged = {
-            viewModel.dateOfPayment.postEvent(it)
+        dateOfPayment.onClicked = {
+            viewModel.dateOfPaymentClicked()
         }
+        sum.editText.inputType = InputType.TYPE_CLASS_NUMBER
         sum.onTextChanged = {
-            viewModel.sum.postEvent(it)
+            it.isNotBlank().ifTrue {
+                viewModel.sum.postEvent(it.toFloat().toString())
+            }
         }
-    }
-
-    private fun fieldsNotEmpty(): Boolean {
-        val fields = listOf(
-            binding.farmer,
-            binding.goal,
-            binding.commentsOfGoal,
-            binding.product,
-            binding.category,
-            binding.date,
-            binding.dateOfPayment,
-            binding.sum
-        )
-        for (field in fields) {
-            if (field.isFieldEmpty) return false
-        }
-        return true
     }
 }

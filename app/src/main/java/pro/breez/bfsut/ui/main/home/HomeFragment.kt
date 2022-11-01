@@ -33,17 +33,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             viewModel.showAll()
         }
         binding.priceOfLiterBtn.setOnClickOnceListener {
-            viewModel.navigateToChangePrice()
+             viewModel.navigateToChangePrice()
         }
     }
 
-    fun refreshMilkPrice() {
-        viewModel.getMilkPrice()
+    fun refreshInfo() {
+        viewModel.refreshInfo()
     }
 
     private fun initObservers() {
         viewModel.farmersLV.observe(viewLifecycleOwner) { farmers ->
-            val adapter = FarmersAdapter(farmers.take(farmers.size / 2) as ArrayList<FarmersModel>)
+            val adapter =
+                FarmersAdapter(
+                    itemList = farmers.take(farmers.size / 2) as ArrayList<FarmersModel>,
+
+                    addClicked = {
+                        viewModel.addMilkToFarmer(it)
+                    },
+                    itemClicked = {
+                        viewModel.farmerClicked(it)
+                    })
+
             binding.showMoreBtn.setOnClickOnceListener {
                 if (showMore) {
                     binding.showMoreBtn.text = "Скрыть"

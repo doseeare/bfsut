@@ -37,7 +37,7 @@ class FilterResultFragment : BaseFragment<FragmentFilterResultBinding, FilterRes
                 strBuilder.append("\n")
                 strBuilder.append(it)
             }
-            it.filterSpan.title?.let {
+            it.filterSpan?.title?.let {
                 strBuilder.append("\n")
                 strBuilder.append(it)
             }

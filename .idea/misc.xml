@@ -81,6 +81,7 @@
         <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/ic_password_hide.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/ic_password_show.xml" value="0.181" />
+        <entry key="app/src/main/res/drawable/ic_success.xml" value="0.1965" />
         <entry key="app/src/main/res/drawable/market_custom_tab_colors.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/selector_bottom_navigation_text_color.xml" value="0.216" />
         <entry key="app/src/main/res/drawable/selector_custom_tab_color.xml" value="0.1" />
@@ -97,6 +98,7 @@
         <entry key="app/src/main/res/layout/custom_snackbar.xml" value="0.2" />
         <entry key="app/src/main/res/layout/custom_tab_layout.xml" value="0.2" />
         <entry key="app/src/main/res/layout/dialog_item_selector.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/dialog_milk_price.xml" value="0.2975630611372381" />
         <entry key="app/src/main/res/layout/fragment_active_log.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_add_farmer.xml" value="0.16475644699140402" />
         <entry key="app/src/main/res/layout/fragment_add_milk.xml" value="0.25" />
@@ -110,6 +112,8 @@
         <entry key="app/src/main/res/layout/fragment_credits.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_credits_container.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.22735507246376813" />
+        <entry key="app/src/main/res/layout/fragment_edit_milk.xml" value="0.2984181274048739" />
+        <entry key="app/src/main/res/layout/fragment_farmer_profile.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_filter.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_filter_logs.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_filter_result.xml" value="0.2984181274048739" />

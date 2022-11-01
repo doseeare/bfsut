@@ -7,8 +7,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.model.navigation.FragmentTransaction
+import pro.breez.bfsut.util.DateUtil
+import pro.breez.bfsut.util.alert.MilkPriceDialog
 import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
+import pro.breez.data.cache.DataPreference
+import pro.breez.data.cache.SettingsPreference
 import pro.breez.domain.interactor.ChangeMilkPriceUseCase
 import pro.breez.domain.interactor.FarmersUseCase
 import pro.breez.domain.interactor.MilkPriceUseCase
@@ -23,12 +27,19 @@ class HomeViewModel @Inject constructor(
     private val farmersUseCase: FarmersUseCase,
     private val getTotalMilk: TotalMilkUseCase,
     private val getMilkPrice: MilkPriceUseCase,
-    private val changeMilkPrice: ChangeMilkPriceUseCase
+    private val changeMilkPrice: ChangeMilkPriceUseCase,
+    private val dataPreference: DataPreference,
+    val settingsPreference: SettingsPreference
 ) : BaseViewModel() {
 
     val farmersLV = MutableLiveData<List<FarmersModel>>()
     val totalMilkLv = MutableLiveData<TotalMilkModel>()
     val milkPriceLV = MutableLiveData<Int>()
+
+    override fun onCreate(owner: LifecycleOwner) {
+        super.onCreate(owner)
+        showChangePrice()
+    }
 
     override fun onResume(owner: LifecycleOwner) {
         super.onResume(owner)
@@ -37,12 +48,26 @@ class HomeViewModel @Inject constructor(
         getMilkPrice()
     }
 
+    private fun showChangePrice() {
+        if (settingsPreference.lastPriceChangeDate != DateUtil.getToday()) {
+            val dialog = MilkPriceDialog(milkPriceLV.value ?: 0)
+            dialog.onPositiveBtnClicked {
+                changeMilkPrice(it) {
+                    settingsPreference.lastPriceChangeDate = DateUtil.getToday()
+                    dialog.dismiss()
+                }
+            }
+            showDialogFragment.startEvent(dialog)
+        }
+    }
+
     fun navigateToChangePrice() {
-        showBottomSheetFragment.startEvent(
-            ChangePriceBottomSheetFragment.newInstance(
+        if (settingsPreference.lastManualPriceChangeDate != DateUtil.getToday()) {
+            val dialog = ChangePriceBottomSheetFragment.newInstance(
                 milkPriceLV.value ?: 0
             )
-        )
+            showBottomSheetFragment.startEvent(dialog)
+        }
     }
 
     fun changeMilkPrice(newPrice: Int, block: () -> Unit) {
@@ -60,7 +85,12 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun getMilkPrice() {
+    fun refreshInfo() {
+        getMilkPrice()
+        getTotalMilk()
+    }
+
+    private fun getMilkPrice() {
         getMilkPrice.execute(viewModelScope) {
             handleResult(it) {
                 milkPriceLV.postValue(it.price)
@@ -92,9 +122,33 @@ class HomeViewModel @Inject constructor(
         val dialog = QuestionDialog().apply {
             setTitle("Хотите выйти?")
             onPositiveBtnClicked {
+                dataPreference.token = ""
                 block.invoke()
             }
         }
         showDialogFragment.startEvent(dialog)
+    }
+
+    fun farmerClicked(item: FarmersModel) {
+        val args = HomeFragmentDirections.homeFragmentToProfileFarmer(item).arguments
+        navigateToFragment.startEvent(FragmentTransaction(R.id.navigation_farmer_profile, args))
+    }
+
+    fun addMilkToFarmer(farmer: FarmersModel) {
+        when (farmer.is_picked) {
+            "paid" -> {
+
+            }
+            "active" -> {
+                val args = HomeFragmentDirections.homeFragmentToEditMilk(farmer).arguments
+                val transaction = FragmentTransaction(R.id.home_fragment_to_edit_milk, args)
+                navigateToFragment.startEvent(transaction)
+            }
+            "not_active" -> {
+                val args = HomeFragmentDirections.homeFragmentToAddMilk(farmer).arguments
+                val transaction = FragmentTransaction(R.id.home_fragment_to_add_milk, args)
+                navigateToFragment.startEvent(transaction)
+            }
+        }
     }
 }

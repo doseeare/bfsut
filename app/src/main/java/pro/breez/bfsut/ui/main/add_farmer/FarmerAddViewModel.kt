@@ -102,7 +102,7 @@ class FarmerAddViewModel @Inject constructor(
         dateRangePicker.addOnPositiveButtonClickListener {
             birthdayLV.postValue(DateUtil.toDate(it))
         }
-        showDialogFragment.postValue(dateRangePicker)
+        showDialogFragment.startEvent(dateRangePicker)
     }
 
     fun nationClicked() {
@@ -122,8 +122,8 @@ class FarmerAddViewModel @Inject constructor(
 
     fun citizenClicked() {
         val list = listOf(
-            MfSysModel(0, "0", "Иностранец", ""),
-            MfSysModel(1, "1", "Резидент", "")
+            MfSysModel(0, "0", "Гражданин КР", ""),
+            MfSysModel(1, "1", "Не гражданин КР", "")
         )
         val selector = SelectorDialogBuilderImpl<MfSysModel>()
         selector.setList(list)

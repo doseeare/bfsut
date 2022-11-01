@@ -6,6 +6,7 @@ import androidx.core.widget.doOnTextChanged
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseBottomSheetFragment
 import pro.breez.bfsut.databinding.FragmentChangePriceBottomSheetBinding
+import pro.breez.bfsut.util.DateUtil
 import pro.breez.bfsut.util.setOnClickOnceListener
 
 @AndroidEntryPoint
@@ -24,7 +25,7 @@ class ChangePriceBottomSheetFragment :
         binding.priceTv.text = "Текущая цена: $currentPrice сом за литр"
         binding.priceEt.hint = "$currentPrice"
 
-        binding.priceEt.doOnTextChanged { text, start, before, count ->
+        binding.priceEt.doOnTextChanged { text, _, _, _ ->
             binding.priceEt.isEnabled = text.toString().isNotBlank()
         }
         binding.cancelBtn.setOnClickOnceListener {
@@ -34,7 +35,8 @@ class ChangePriceBottomSheetFragment :
         binding.editBtn.setOnClickOnceListener {
             val newPrice = binding.priceEt.text.toString().toInt()
             viewModel.changeMilkPrice(newPrice) {
-                (requireParentFragment() as HomeFragment).refreshMilkPrice()
+                (requireParentFragment() as HomeFragment).refreshInfo()
+                viewModel.settingsPreference.lastManualPriceChangeDate = DateUtil.getToday()
                 dismiss()
             }
         }

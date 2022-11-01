@@ -25,7 +25,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margins"
-            android:text="Садыр Жапаров"
+            android:text="9999"
             android:textColor="@color/text_bold_color"
             android:textSize="26sp"
             android:textStyle="bold"

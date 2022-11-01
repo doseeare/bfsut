@@ -25,15 +25,27 @@ class MilkAddViewModel @Inject constructor(
 
     val milkPriceLV = MutableLiveData<MilkPriceModel>()
     val farmerLV = MutableLiveData<FarmersModel>()
+    val isSelectedFarmer = MutableLiveData<Boolean>()
+
+    private val farmer: FarmersModel? by lazy {
+        MilkAddFragmentArgs.fromBundle(requiredArguments()).farmer
+    }
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
+        if (farmer != null) {
+            farmerLV.postValue(farmer)
+            isSelectedFarmer.postValue(true)
+        } else {
+            isSelectedFarmer.postValue(false)
+        }
         milkPriceUseCase.execute(viewModelScope) {
             handleResult(it) { milkPrice ->
                 milkPriceLV.postValue(milkPrice)
             }
         }
     }
+
 
     fun createBtnClicked(morning: String, evening: String) {
         val body = AddMilkBody(

@@ -87,7 +87,7 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
     }
 
     init {
-        binding.edittext.doOnTextChanged { text, start, before, count ->
+        binding.edittext.doOnTextChanged { text, _, _, _ ->
             val filledText = text.toString()
 
             if (conditionClearError.isNull()) {
@@ -128,33 +128,43 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
                 }
 
             attr.getInt(R.styleable.CustomDropDownEditText_type, 0).let {
-                when (it) {
-                    0 -> {
-                        binding.rootButton.visibility = View.INVISIBLE
-                        binding.rootButton.setOnClickOnceListener {
-                            binding.edittext.requestFocus()
-                        }
-                    }
-                    1 -> {
-                        binding.edittext.isEnabled = false
-                        binding.dropImg.visibility = View.VISIBLE
-                        binding.rootButton.visibility = View.VISIBLE
-                        binding.rootButton.setBackgroundColor(Color.TRANSPARENT)
-                        binding.rootButton.setOnClickOnceListener {
-                            onClicked.invoke()
-                        }
-                    }
-                    2 -> {
-                        binding.edittext.isEnabled = false
-                        binding.dropImg.visibility = View.GONE
-                        binding.rootButton.visibility = View.VISIBLE
-                        binding.rootButton.setBackgroundColor(Color.TRANSPARENT)
-                        binding.rootButton.setOnClickOnceListener {
-                            onClicked.invoke()
-                        }
-                    }
+                setType(it)
+            }
+        }
+    }
+
+    fun setType(type: Int) {
+        when (type) {
+            0 -> {
+                binding.rootButton.visibility = View.INVISIBLE
+                binding.rootButton.setOnClickOnceListener {
+                    binding.edittext.requestFocus()
+                }
+            }
+            1 -> {
+                binding.edittext.isEnabled = false
+                binding.dropImg.visibility = View.VISIBLE
+                binding.rootButton.visibility = View.VISIBLE
+                binding.rootButton.setBackgroundColor(Color.TRANSPARENT)
+                binding.rootButton.setOnClickOnceListener {
+                    onClicked.invoke()
+                }
+            }
+            2 -> {
+                binding.edittext.isEnabled = false
+                binding.dropImg.visibility = View.GONE
+                binding.rootButton.visibility = View.VISIBLE
+                binding.rootButton.setBackgroundColor(Color.TRANSPARENT)
+                binding.rootButton.setOnClickOnceListener {
+                    onClicked.invoke()
                 }
             }
         }
+    }
+
+    companion object {
+        const val FIELD = 0
+        const val DROP = 1
+        const val NONE = 2
     }
 }

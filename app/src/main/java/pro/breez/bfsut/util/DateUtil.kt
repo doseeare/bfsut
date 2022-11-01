@@ -23,6 +23,10 @@ object DateUtil {
         }
     }
 
+    fun getToday(): String {
+        return SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
+    }
+
     fun toBinaryMonth(date: Int): String {
         val cDate = date.plus(1).toString()
         return if (cDate.length == 1) {

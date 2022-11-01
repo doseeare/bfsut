@@ -62,7 +62,7 @@ class SelectorDialogBuilderImpl<T> : SelectorDialogBuilder<T> {
     private fun setFilter(
         binding: DialogItemSelectorBinding,
     ) {
-        binding.search.doOnTextChanged { text, start, before, count ->
+        binding.search.doOnTextChanged { text, _, _, _ ->
             vmScope?.launch {
                 val filterResult = filter(searchByVal, text.toString().lowercase())
                 searchResult.invoke(filterResult)

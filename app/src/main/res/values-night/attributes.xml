@@ -45,6 +45,7 @@
 
     <declare-styleable name="Toolbar">
         <attr name="toolbarLabel" format="string" />
+        <attr name="option_img" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="ButtonDrawableView">

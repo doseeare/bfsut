@@ -120,7 +120,7 @@ class ActiveLogViewModel @Inject constructor(
             dialog.dismiss()
             calculateActiveLogs.execute(viewModelScope, selectedLogsLV.value) {
                 handleResult(it) {
-                    val dialog = AlertDialogBuilderImpl().apply {
+                    val quitDialog = AlertDialogBuilderImpl().apply {
                         setIcon(R.drawable.ic_alert)
                         setTitle("Рассчет был произведен")
                         setSubTitle("Отличная работа")
@@ -128,7 +128,7 @@ class ActiveLogViewModel @Inject constructor(
                             getActiveLogs()
                         }
                     }
-                    showAlertDialog.startEvent(dialog)
+                    showAlertDialog.startEvent(quitDialog)
                 }
             }
         }

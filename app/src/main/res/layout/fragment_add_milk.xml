@@ -36,7 +36,6 @@
         app:title="ФИО"
         app:type="drop" />
 
-
     <LinearLayout
         android:id="@+id/fields_container"
         android:layout_width="match_parent"

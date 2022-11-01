@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.add_milk.MilkAddFragment">
+
+    <pro.breez.bfsut.custom.view.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Сбор молока" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margins"
+        android:text="Сбор молока \nза сегодня"
+        android:textColor="@color/text_bold_color"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <pro.breez.bfsut.custom.view.CustomDropDownEditText
+        android:id="@+id/name_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/default_margins"
+        android:layout_marginTop="@dimen/default_margins"
+        app:hint="Найдите фермера"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:title="ФИО"
+        app:type="none" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fields_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/default_margins"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_rounded_shape_darker"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/name_et">
+
+        <TextView
+            android:id="@+id/sub_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_margins"
+            android:text="За сегодня уже собрано: "
+            android:textColor="@color/text_bold_color"
+            android:textSize="21sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margins"
+            android:layout_marginTop="@dimen/default_margins"
+            android:text="Утром"
+            android:textColor="@color/error_color"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sub_title" />
+
+        <TextView
+            android:id="@+id/day_liters_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_bold_color"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/day"
+            app:layout_constraintTop_toBottomOf="@id/day"
+            android:text="0л" />
+
+        <TextView
+            android:id="@+id/evening"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="@dimen/default_margins"
+            android:text="Вечером"
+            android:textColor="@color/text_bold_color"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/day_liters_tv"
+            app:layout_constraintTop_toBottomOf="@id/sub_title" />
+
+        <TextView
+            android:id="@+id/evening_liters_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_bold_color"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/evening"
+            app:layout_constraintTop_toBottomOf="@id/evening"
+            android:text="0л" />
+
+
+        <TextView
+            android:id="@+id/total_sum_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/default_margins"
+            android:textColor="@color/text_bold_color"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/evening_liters_tv"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="0 сом" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/edit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_margin="@dimen/default_margins"
+            android:background="@drawable/selector_default_button"
+            android:enabled="false"
+            android:text="Редактировать запись"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/evening_liters_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

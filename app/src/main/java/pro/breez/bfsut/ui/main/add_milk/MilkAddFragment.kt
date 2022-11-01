@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.widget.doOnTextChanged
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseFragment
+import pro.breez.bfsut.custom.view.CustomDropDownEditText
 import pro.breez.bfsut.databinding.FragmentAddMilkBinding
 import pro.breez.bfsut.util.setOnClickOnceListener
 
@@ -28,16 +29,17 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
         fieldsValidate = {
             binding.createBtn.isEnabled = (isMorningNotEmpty || isEveningNotEmpty) && isNameNotEmpty
             var totalSum = 0L
-            val literPrice = viewModel.milkPriceLV.value!!.price
-            if (isMorningNotEmpty) {
-                val morning = binding.morningEt.text.toString().toInt()
-                totalSum += morning * literPrice
+            viewModel.milkPriceLV.value?.price.let {
+                if (isMorningNotEmpty) {
+                    val morning = binding.morningEt.text.toString().toInt()
+                    totalSum += morning * it!!
+                }
+                if (isEveningNotEmpty) {
+                    val evening = binding.eveningEt.text.toString().toInt()
+                    totalSum += evening * it!!
+                }
+                binding.totalSumTv.text = "Итого: $totalSum сом"
             }
-            if (isEveningNotEmpty) {
-                val evening = binding.eveningEt.text.toString().toInt()
-                totalSum += evening * literPrice
-            }
-            binding.totalSumTv.text = "Итого: $totalSum сом"
         }
         binding.morningEt.doOnTextChanged { text, _, _, _ ->
             val stringText = text.toString()
@@ -65,6 +67,9 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
         }
         viewModel.farmerLV.observe(viewLifecycleOwner) {
             binding.nameEt.text = it.full_name
+        }
+        viewModel.isSelectedFarmer.observe(viewLifecycleOwner) {
+            if (it) binding.nameEt.setType(CustomDropDownEditText.NONE)
         }
     }
 

@@ -2,6 +2,7 @@ package pro.breez.bfsut.util
 
 import android.os.SystemClock
 import android.view.View
+import androidx.fragment.app.Fragment
 
 fun View.setGoneIfFalse(b: Boolean?) {
     if (b != null)

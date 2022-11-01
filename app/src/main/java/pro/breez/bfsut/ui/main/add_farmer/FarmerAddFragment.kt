@@ -56,6 +56,9 @@ class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewMo
         innEt.editText.filters = arrayOf<InputFilter>(LengthFilter(14))
         innEt.editText.inputType = InputType.TYPE_CLASS_NUMBER
 
+        issueNumberDocEt.editText.filters = arrayOf<InputFilter>(LengthFilter(7))
+        issueNumberDocEt.editText.inputType = InputType.TYPE_CLASS_NUMBER
+
         numberDocEt.editText.filters = arrayOf<InputFilter>(LengthFilter(7))
         numberDocEt.editText.inputType = InputType.TYPE_CLASS_NUMBER
 

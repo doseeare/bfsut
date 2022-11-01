@@ -14,10 +14,21 @@
             android:id="@+id/main_activity_to_add_credit"
             app:destination="@id/nav_main_activity"
             app:popUpTo="@id/navigation_home" />
-
         <action
             android:id="@+id/home_fragment_to_all_farmers"
             app:destination="@id/navigation_all_farmers"
+            app:popUpTo="@id/navigation_home" />
+        <action
+            android:id="@+id/home_fragment_to_profile_farmer"
+            app:destination="@id/navigation_farmer_profile"
+            app:popUpTo="@id/navigation_home" />
+        <action
+            android:id="@+id/home_fragment_to_edit_milk"
+            app:destination="@id/navigation_edit_milk"
+            app:popUpTo="@id/navigation_home" />
+        <action
+            android:id="@+id/home_fragment_to_add_milk"
+            app:destination="@id/navigation_milk_add"
             app:popUpTo="@id/navigation_home" />
     </fragment>
 
@@ -59,6 +70,16 @@
         tools:layout="@layout/fragment_add_farmer" />
 
     <fragment
+        android:id="@+id/navigation_farmer_profile"
+        android:name="pro.breez.bfsut.ui.main.farmer_profile.FarmerProfileFragment"
+        android:label="Профиль фермера"
+        tools:layout="@layout/fragment_farmer_profile">
+        <argument
+            android:name="farmer"
+            app:argType="pro.breez.domain.model.output.FarmersModel" />
+    </fragment>
+
+    <fragment
         android:id="@+id/navigation_credit_add"
         android:name="pro.breez.bfsut.ui.main.add_credit.CreditAddFragment"
         android:label="Заявка на кредит"
@@ -68,7 +89,14 @@
         android:id="@+id/navigation_milk_add"
         android:name="pro.breez.bfsut.ui.main.add_milk.MilkAddFragment"
         android:label="Сбор молока"
-        tools:layout="@layout/fragment_add_milk" />
+        tools:layout="@layout/fragment_add_milk">
+        <argument
+            android:name="farmer"
+            android:defaultValue="@null"
+            app:argType="pro.breez.domain.model.output.FarmersModel"
+            app:nullable="true" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/navigation_filter"
@@ -111,11 +139,24 @@
             app:argType="pro.breez.domain.model.output.LogsModel" />
     </fragment>
 
+    <fragment
+        android:id="@+id/navigation_edit_milk"
+        android:name="pro.breez.bfsut.ui.main.edit_milk_log.EditMilkFragment"
+        android:label="Повторный сбор у фермера"
+        tools:layout="@layout/fragment_edit_milk">
+        <action
+            android:id="@+id/edit_milk_to_calculate_active_log"
+            app:destination="@id/calculate_active_logs"
+            app:popUpTo="@id/navigation_log" />
+
+        <argument
+            android:name="farmer"
+            app:argType="pro.breez.domain.model.output.FarmersModel" />
+    </fragment>
+
     <activity
         android:id="@+id/nav_main_activity"
         android:name="pro.breez.bfsut.MainActivity"
         android:label="activity_main"
-        tools:layout="@layout/activity_main">
-
-    </activity>
+        tools:layout="@layout/activity_main" />
 </navigation>
