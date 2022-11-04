@@ -7,7 +7,7 @@ import androidx.viewbinding.ViewBinding
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseRecyclerAdapter<VB : ViewBinding, M>(var items: ArrayList<M>) :
-    RecyclerView.Adapter<BaseViewHolder<VB>>() {
+    RecyclerView.Adapter<BaseRecyclerAdapter.BaseViewHolder<VB>>() {
 
     private val type = (javaClass.genericSuperclass as ParameterizedType)
     private val classVB = type.actualTypeArguments[0] as Class<VB>
@@ -23,8 +23,7 @@ abstract class BaseRecyclerAdapter<VB : ViewBinding, M>(var items: ArrayList<M>)
     override fun getItemCount(): Int = items.count()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<VB> {
-        binding =
-            inflateMethod.invoke(null, LayoutInflater.from(parent.context), parent, false) as VB
+        binding = inflateMethod.invoke(null, LayoutInflater.from(parent.context), parent, false) as VB
         return BaseViewHolder(binding)
     }
 
@@ -42,7 +41,9 @@ abstract class BaseRecyclerAdapter<VB : ViewBinding, M>(var items: ArrayList<M>)
         ViewGroup::class.java,
         Boolean::class.java
     )
+    class BaseViewHolder<VB : ViewBinding>(val binding: VB) : RecyclerView.ViewHolder(binding.root) {
+
+    }
+
 }
 
-class BaseViewHolder<VB : ViewBinding>(val binding: VB) : RecyclerView.ViewHolder(binding.root) {
-}

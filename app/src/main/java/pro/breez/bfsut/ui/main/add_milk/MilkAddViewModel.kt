@@ -9,9 +9,11 @@ import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilderImpl
 import pro.breez.domain.interactor.AddMilkUseCase
+import pro.breez.domain.interactor.FarmersCheckUseCase
 import pro.breez.domain.interactor.FarmersUseCase
 import pro.breez.domain.interactor.MilkPriceUseCase
 import pro.breez.domain.model.input.AddMilkBody
+import pro.breez.domain.model.output.FarmerCheckModel
 import pro.breez.domain.model.output.FarmersModel
 import pro.breez.domain.model.output.MilkPriceModel
 import javax.inject.Inject
@@ -19,15 +21,15 @@ import javax.inject.Inject
 @HiltViewModel
 class MilkAddViewModel @Inject constructor(
     private val milkPriceUseCase: MilkPriceUseCase,
-    private val farmersUseCase: FarmersUseCase,
+    private val farmersCheckUseCase: FarmersCheckUseCase,
     private val addMilkUseCase: AddMilkUseCase,
 ) : BaseViewModel() {
 
     val milkPriceLV = MutableLiveData<MilkPriceModel>()
-    val farmerLV = MutableLiveData<FarmersModel>()
+    val farmerLV = MutableLiveData<FarmerCheckModel>()
     val isSelectedFarmer = MutableLiveData<Boolean>()
 
-    private val farmer: FarmersModel? by lazy {
+    private val farmer: FarmerCheckModel? by lazy {
         MilkAddFragmentArgs.fromBundle(requiredArguments()).farmer
     }
 
@@ -45,7 +47,6 @@ class MilkAddViewModel @Inject constructor(
             }
         }
     }
-
 
     fun createBtnClicked(morning: String, evening: String) {
         val body = AddMilkBody(
@@ -71,9 +72,9 @@ class MilkAddViewModel @Inject constructor(
 
     fun farmerClicked() {
         showLoadingView()
-        farmersUseCase.execute(viewModelScope) {
+        farmersCheckUseCase.execute(viewModelScope) {
             handleResult(it) { list ->
-                val selector = SelectorDialogBuilderImpl<FarmersModel>()
+                val selector = SelectorDialogBuilderImpl<FarmerCheckModel>()
                 selector.setList(list)
                 selector.setVmScope(viewModelScope)
                 selector.setSearchByVal(FarmersModel::full_name.name)

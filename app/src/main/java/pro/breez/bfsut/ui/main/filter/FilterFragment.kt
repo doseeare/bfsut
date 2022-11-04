@@ -38,7 +38,7 @@ class FilterFragment : BaseFragment<FragmentFilterBinding, FilterViewModel>() {
         backBtn.setOnClickOnceListener {
             viewModel.backBtnClicked()
         }
-        farmerEt.onClicked = {
+        farmerEt.setOnClickListener {
             viewModel.farmerClicked()
         }
 
@@ -47,12 +47,12 @@ class FilterFragment : BaseFragment<FragmentFilterBinding, FilterViewModel>() {
             resetGroupClicked = false
         }
 
-        fromEt.onClicked = {
-            viewModel.showDatePicker()
+        fromEt.setOnClickListener {
+            viewModel.showDatePicker(true)
         }
 
-        toEt.onClicked = {
-            viewModel.showDatePicker()
+        toEt.setOnClickListener {
+            viewModel.showDatePicker(false)
         }
 
         acceptBtn.setOnClickOnceListener {

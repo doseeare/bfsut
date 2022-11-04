@@ -35,8 +35,11 @@ class CalculateActiveLogViewModel @Inject constructor(
             return
         }
         showLoadingView()
-        val morningChanges = morning.replace("л", "").replace(" ", "").toInt()
-        val eveningChanges = evening.replace("л", "").replace(" ", "").toInt()
+        val morningChanges = morning.replace("л", "")
+            .replace(" ", "").toInt()
+        val eveningChanges = evening.replace("л", "")
+            .replace(" ", "").toInt()
+
         val body = MilkChangesBody(
             morning = morningChanges,
             evening = eveningChanges

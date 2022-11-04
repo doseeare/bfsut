@@ -8,12 +8,14 @@ import pro.breez.bfsut.helper.SingleLiveEvent
 import pro.breez.bfsut.model.SnackBarMessageOptions
 import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.domain.interactor.AuthUseCase
+import pro.breez.domain.interactor.UserNameUseCase
 import pro.breez.domain.model.input.AuthBody
 import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewModel @Inject constructor(
     private val authUC: AuthUseCase,
+    private val userNameUseCase: UserNameUseCase,
 ) : BaseViewModel() {
 
     val fieldsError = SingleLiveEvent<Nothing>()
@@ -31,10 +33,15 @@ class AuthViewModel @Inject constructor(
         showLoadingView()
         authUC.execute(viewModelScope, AuthBody(authFields.first!!, authFields.second!!)) {
             handleResult(it) {
+                getUserName()
                 navigateToMain()
             }
         }
 
+    }
+
+    private fun getUserName() {
+        userNameUseCase.execute(viewModelScope) {}
     }
 
     private fun navigateToMain() {

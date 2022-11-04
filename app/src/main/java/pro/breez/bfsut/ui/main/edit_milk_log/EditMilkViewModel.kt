@@ -10,7 +10,7 @@ import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.util.DateUtil
 import pro.breez.domain.interactor.ActiveLogsUseCase
 import pro.breez.domain.model.input.FilterBody
-import pro.breez.domain.model.output.FarmersModel
+import pro.breez.domain.model.output.FarmerCheckModel
 import pro.breez.domain.model.output.LogsModel
 import javax.inject.Inject
 
@@ -19,15 +19,17 @@ class EditMilkViewModel @Inject constructor(
     private val activeLogsUseCase: ActiveLogsUseCase
 ) : BaseViewModel() {
 
-    val farmer: FarmersModel by lazy {
+    val farmer: FarmerCheckModel by lazy {
         EditMilkFragmentArgs.fromBundle(requiredArguments()).farmer
     }
 
     val foundLogLV = MutableLiveData<LogsModel>()
+    val farmerCheckLV = MutableLiveData<FarmerCheckModel>()
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
         val filterBody = FilterBody(farmer.id, null, DateUtil.getToday(), DateUtil.getToday())
+        farmerCheckLV.postValue(farmer)
         activeLogsUseCase.execute(viewModelScope, filterBody) {
             handleResult(it) {
                 foundLogLV.postValue(it.first())

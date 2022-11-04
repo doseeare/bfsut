@@ -12,6 +12,16 @@ fun Boolean.ifFalse(block: () -> Unit) {
     }
 }
 
+fun <T> T?.ifNull(block: () -> Unit) {
+    if (this == null)
+        block.invoke()
+}
+
+fun <T> T?.ifNotNull(block: (T) -> Unit) {
+    if (this != null)
+        block.invoke(this)
+}
+
 fun Any?.isNull(): Boolean {
     return this == null
 }

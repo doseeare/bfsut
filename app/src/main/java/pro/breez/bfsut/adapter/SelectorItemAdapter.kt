@@ -11,7 +11,7 @@ import pro.breez.bfsut.util.setOnClickOnceListener
 
 class SelectorItemAdapter<T>(
     private var itemList: List<T>,
-    private val valueName: String,
+    val valueName: Array<String>,
     private val activeBtn: () -> Unit
 ) :
     RecyclerView.Adapter<SelectorItemAdapter<T>.SelectorViewHolder>() {
@@ -47,10 +47,14 @@ class SelectorItemAdapter<T>(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: T, position: Int) {
             binding.apply {
-                val value = item!!::class.java.getDeclaredField(valueName)
-                value.isAccessible = true
-                nameTv.text = value.get(item) as String
-                value.isAccessible = false
+                val strBuilder = StringBuilder()
+                valueName.forEach {
+                    val value = item!!::class.java.getDeclaredField(it)
+                    value.isAccessible = true
+                    strBuilder.append("${value.get(item) as String?} ")
+                    value.isAccessible = false
+                }
+                nameTv.text = strBuilder.toString()
                 root.setSelect(lastCheckedPos == position, position)
                 root.setOnClickOnceListener {
                     val copyLastPos = lastCheckedPos

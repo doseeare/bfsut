@@ -27,4 +27,10 @@ class DataPreference @Inject constructor(@ApplicationContext context: Context) {
         set(value) = preferences.edit {
             it.putString("token", value)
         }
+
+    var userName: String
+        get() = preferences.getString("userName", "")!!
+        set(value) = preferences.edit {
+            it.putString("userName", value)
+        }
 }

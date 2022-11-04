@@ -31,7 +31,7 @@
     <string name="create">Создать</string>
     <string name="job">Работа</string>
     <string name="education">Образование</string>
-    <string name="familty_status">Семейный статус</string>
+    <string name="family_status">Семейный статус</string>
     <string name="fact_location">Фактический адрес проживание</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
@@ -43,4 +43,13 @@
     <string name="change_price_content">При изменении текущей цены молока, в записях сделанных ранее, цены останутся прежними</string>
     <string name="change_price_title">Изменить цену на молоко</string>
     <string name="fill_milk_price">Укажите цену молока\nна сегодня</string>
+    <string name="milk_history">История сбора молока</string>
+    <string name="old_price_or_new">Укажите цену молока
+на сегодня или оставьте предыдущую стоимость</string>
+    <string name="check_or_create">Перед созданием фермера проверьте его наличие в базе. Так вы сэкономите время на заполнение данных</string>
+    <string name="need_to_create">Пользователя с таким ФИО не найдено. Вам нужно создать его</string>
+    <string name="farmer_not_found">Пользователя с таким ФИО не найдено. Свяжитесь со своим СПФ</string>
+    <string name="fill_the_field">Заполните полe</string>
+    <string name="filter_journal">Отчет сбора молока:</string>
+    <string name="date">Дате</string>
 </resources>

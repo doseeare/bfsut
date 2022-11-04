@@ -13,9 +13,11 @@ import pro.breez.bfsut.model.MaritalStatusEnum
 import pro.breez.bfsut.util.DateUtil
 import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
+import pro.breez.bfsut.util.alert.dialog.SearchItemDialog
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilderImpl
 import pro.breez.domain.interactor.*
 import pro.breez.domain.model.input.FarmerBody
+import pro.breez.domain.model.output.MfSysFarmerModel
 import pro.breez.domain.model.output.MfSysModel
 import java.util.*
 import javax.inject.Inject
@@ -30,7 +32,8 @@ class FarmerAddViewModel @Inject constructor(
     private val regionUseCase: RegionUseCase,
     private val educationUseCase: EducationUseCase,
     private val jobPurposeUseCase: JobPurposeUseCase,
-    private val addFarmerUse: AddFarmerUseCase
+    private val addFarmerUse: AddFarmerUseCase,
+    private val searchFarmer: SearchFarmerUseCase
 ) : BaseViewModel() {
 
     //Поля drop
@@ -80,6 +83,8 @@ class FarmerAddViewModel @Inject constructor(
     //Поля с SelectableButton
     var maritalStatus: MaritalStatusEnum? = null
     var gender: GenderEnum? = null
+
+    val farmerFoundLV = MutableLiveData<MfSysFarmerModel>()
 
     fun birthDayClicked() {
         val startDate = Calendar.getInstance()
@@ -267,6 +272,35 @@ class FarmerAddViewModel @Inject constructor(
 
     }
 
+    fun searchClicked() {
+        val dialog =
+            SearchItemDialog<MfSysFarmerModel>(
+                valueName = arrayOf(
+                    MfSysFarmerModel::firstName.name,
+                    MfSysFarmerModel::fatherName.name,
+                    MfSysFarmerModel::lastName.name
+                )
+            )
+        dialog.onKeyChanged {
+            searchFarmersInSystem(dialog, it)
+        }
+        dialog.onPositiveBtnClicked {
+            farmerFoundLV.postValue(it)
+        }
+        showDialogFragment.startEvent(dialog)
+    }
+
+    private fun searchFarmersInSystem(
+        dialog: SearchItemDialog<MfSysFarmerModel>,
+        searchKey: String
+    ) {
+        searchFarmer.execute(viewModelScope, searchKey) {
+            handleResult(it) {
+                dialog.updateList(it)
+            }
+        }
+    }
+
     fun jobPurposeClicked() {
         jobPurposeUseCase.execute(viewModelScope) {
             handleResult(it) {
@@ -280,7 +314,6 @@ class FarmerAddViewModel @Inject constructor(
                 showSelectorDialog.startEvent(selector)
             }
         }
-
     }
 
     fun maritalSelected(status: MaritalStatusEnum) {

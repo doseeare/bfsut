@@ -10,7 +10,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:toolbarLabel="Создание фермера" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -24,6 +25,32 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="@dimen/default_margins"
             android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                    android:id="@+id/search_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margins"
+                    android:visibility="gone"
+                    app:hint="Выберите фермера"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:title="Поиск по ФИО|ИНН"
+                    app:type="drop" />
+
+                <ImageView
+                    android:id="@+id/search_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margins"
+                    android:src="@drawable/ic_search_farmer"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -515,7 +542,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margins"
-                    android:text="@string/familty_status"
+                    android:text="@string/family_status"
                     android:textColor="@color/text_bold_color"
                     android:textSize="18sp"
                     android:textStyle="bold"

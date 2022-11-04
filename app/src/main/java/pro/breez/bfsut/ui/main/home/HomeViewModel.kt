@@ -13,51 +13,61 @@ import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
 import pro.breez.data.cache.DataPreference
 import pro.breez.data.cache.SettingsPreference
-import pro.breez.domain.interactor.ChangeMilkPriceUseCase
-import pro.breez.domain.interactor.FarmersUseCase
-import pro.breez.domain.interactor.MilkPriceUseCase
-import pro.breez.domain.interactor.TotalMilkUseCase
-import pro.breez.domain.model.output.FarmersModel
+import pro.breez.domain.interactor.*
+import pro.breez.domain.model.output.FarmerCheckModel
 import pro.breez.domain.model.output.MilkPriceModel
 import pro.breez.domain.model.output.TotalMilkModel
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val farmersUseCase: FarmersUseCase,
+    private val farmerCheck: FarmersCheckUseCase,
     private val getTotalMilk: TotalMilkUseCase,
     private val getMilkPrice: MilkPriceUseCase,
     private val changeMilkPrice: ChangeMilkPriceUseCase,
     private val dataPreference: DataPreference,
+    private val userNameUseCase: UserNameUseCase,
     val settingsPreference: SettingsPreference
 ) : BaseViewModel() {
 
-    val farmersLV = MutableLiveData<List<FarmersModel>>()
+    val farmersCheckLV = MutableLiveData<List<FarmerCheckModel>>()
     val totalMilkLv = MutableLiveData<TotalMilkModel>()
     val milkPriceLV = MutableLiveData<Int>()
+    val userNameLV = MutableLiveData<String>()
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
         showChangePrice()
+        setUserName()
+    }
+
+    private fun setUserName() {
+        userNameUseCase.execute(viewModelScope) {
+            handleResult(it) {
+                userNameLV.postValue(it.username)
+            }
+        }
     }
 
     override fun onResume(owner: LifecycleOwner) {
         super.onResume(owner)
-        getFarmers()
+        getFarmersCheck()
         getTotalMilk()
         getMilkPrice()
     }
 
     private fun showChangePrice() {
-        if (settingsPreference.lastPriceChangeDate != DateUtil.getToday()) {
-            val dialog = MilkPriceDialog(milkPriceLV.value ?: 0)
-            dialog.onPositiveBtnClicked {
-                changeMilkPrice(it) {
-                    settingsPreference.lastPriceChangeDate = DateUtil.getToday()
-                    dialog.dismiss()
+        getMilkPrice {
+            if (settingsPreference.lastPriceChangeDate != DateUtil.getToday()) {
+                val dialog = MilkPriceDialog(it)
+                dialog.onPositiveBtnClicked {
+                    changeMilkPrice(it) {
+                        settingsPreference.lastPriceChangeDate = DateUtil.getToday()
+                        dialog.dismiss()
+                    }
                 }
+                showDialogFragment.startEvent(dialog)
             }
-            showDialogFragment.startEvent(dialog)
         }
     }
 
@@ -90,18 +100,19 @@ class HomeViewModel @Inject constructor(
         getTotalMilk()
     }
 
-    private fun getMilkPrice() {
+    private fun getMilkPrice(block: ((Int) -> Unit)? = null) {
         getMilkPrice.execute(viewModelScope) {
             handleResult(it) {
+                block?.invoke(it.price)
                 milkPriceLV.postValue(it.price)
             }
         }
     }
 
-    private fun getFarmers() {
-        farmersUseCase.execute(viewModelScope) {
+    private fun getFarmersCheck() {
+        farmerCheck.execute(viewModelScope) {
             handleResult(it) {
-                farmersLV.postValue(it)
+                farmersCheckLV.postValue(it)
             }
         }
     }
@@ -123,18 +134,19 @@ class HomeViewModel @Inject constructor(
             setTitle("Хотите выйти?")
             onPositiveBtnClicked {
                 dataPreference.token = ""
+                dataPreference.userName = ""
                 block.invoke()
             }
         }
         showDialogFragment.startEvent(dialog)
     }
 
-    fun farmerClicked(item: FarmersModel) {
+    fun farmerClicked(item: FarmerCheckModel) {
         val args = HomeFragmentDirections.homeFragmentToProfileFarmer(item).arguments
         navigateToFragment.startEvent(FragmentTransaction(R.id.navigation_farmer_profile, args))
     }
 
-    fun addMilkToFarmer(farmer: FarmersModel) {
+    fun addMilkToFarmer(farmer: FarmerCheckModel) {
         when (farmer.is_picked) {
             "paid" -> {
 

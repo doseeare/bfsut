@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margins"
-        android:text="Фильтр\nзаявок по:"
+        android:text="@string/filter_journal"
         android:textColor="@color/text_bold_color"
         android:textSize="36sp"
         android:textStyle="bold"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margins"
-        android:text="Дате"
+        android:text="@string/date"
         android:textColor="@color/gray"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/default_margins"
         android:layout_marginTop="8dp"
+        app:toggle_selectableAmount="1"
         app:flexWrap="wrap"
         app:layout_constraintTop_toBottomOf="@id/date">
 

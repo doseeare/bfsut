@@ -21,10 +21,10 @@ class FilterResult(
 }
 
 class DateRange(
-    val from: String?,
-    val to: String?,
-    val fromMillis: Long?,
-    val toMillis: Long?,
+    var from: String?,
+    var to: String?,
+    var fromMillis: Long?,
+    var toMillis: Long?,
 ) : Serializable
 
 enum class FilterSpan(@IdRes val id: Int, val key: String?, val title: String?) : Serializable {

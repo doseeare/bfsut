@@ -20,6 +20,7 @@ class SelectorDialogBuilderImpl<T> : SelectorDialogBuilder<T> {
 
     private lateinit var searchResult: (List<T>) -> Unit
     private var searchByVal = ""
+    private var customNotFoundText: String? = null
 
     override fun showDialog(
         context: Context
@@ -31,8 +32,11 @@ class SelectorDialogBuilderImpl<T> : SelectorDialogBuilder<T> {
             setContentView(binding.root)
             window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             checkList(binding, list!!)
-            val adapter = SelectorItemAdapter(list!!, searchByVal) {
+            val adapter = SelectorItemAdapter(list!!, arrayOf(searchByVal)) {
                 binding.selectBtn.isEnabled = true
+            }
+            customNotFoundText?.let {
+                binding.helperTv.text = it
             }
             setFilter(binding)
             searchResult = {
@@ -98,6 +102,10 @@ class SelectorDialogBuilderImpl<T> : SelectorDialogBuilder<T> {
 
     override fun setResultListener(result: (T) -> Unit) {
         this.result = result
+    }
+
+    override fun setNotFoundText(value: String) {
+        customNotFoundText = value
     }
 
 }

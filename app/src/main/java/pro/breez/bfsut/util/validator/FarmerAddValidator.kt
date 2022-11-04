@@ -7,7 +7,7 @@ import pro.breez.bfsut.util.ifFalse
 import pro.breez.bfsut.util.ifTrue
 import pro.breez.bfsut.util.isNull
 
-class AddFarmerFieldValidator(
+class FarmerAddValidator(
     val binding: FragmentAddFarmerBinding,
     val viewModel: FarmerAddViewModel
 ) {

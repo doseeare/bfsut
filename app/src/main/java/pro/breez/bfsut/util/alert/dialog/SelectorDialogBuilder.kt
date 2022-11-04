@@ -8,5 +8,6 @@ interface SelectorDialogBuilder<T> {
     fun setVmScope(scope: CoroutineScope)
     fun setList(list: List<T>)
     fun setSearchByVal(value: String)
+    fun setNotFoundText(value: String)
     fun setResultListener(result: (T) -> Unit)
 }

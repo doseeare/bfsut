@@ -12,6 +12,16 @@ interface MainApi {
         @Header("Authorization") token: String,
     ): Result<List<FarmersModel>>
 
+    @GET("v1/agents/username")
+    fun getUserName(
+        @Header("Authorization") token: String,
+    ): Result<UserNameModel>
+
+    @GET("v1/farmers/farmer-list")
+    fun getFarmersCheck(
+        @Header("Authorization") token: String,
+    ): Result<List<FarmerCheckModel>>
+
     @POST("v1/mfsys/loan_products")
     fun getProduct(
         @Header("Authorization") token: String,
@@ -157,4 +167,10 @@ interface MainApi {
         @Header("Authorization") token: String,
         @Body body: FarmerBody
     ): Result<DefaultSuccessModel>
+
+    @POST("v1/farmers/search")
+    fun searchFarmer(
+        @Header("Authorization") token: String,
+        @QueryMap queries: Map<String, String>
+    ): Result<List<MfSysFarmerModel>>
 }

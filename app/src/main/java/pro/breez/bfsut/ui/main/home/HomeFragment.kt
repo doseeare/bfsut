@@ -9,7 +9,7 @@ import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentHomeBinding
 import pro.breez.bfsut.ui.auth.activity.AuthActivity
 import pro.breez.bfsut.util.setOnClickOnceListener
-import pro.breez.domain.model.output.FarmersModel
+import pro.breez.domain.model.output.FarmerCheckModel
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
@@ -33,7 +33,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             viewModel.showAll()
         }
         binding.priceOfLiterBtn.setOnClickOnceListener {
-             viewModel.navigateToChangePrice()
+            viewModel.navigateToChangePrice()
         }
     }
 
@@ -42,10 +42,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     private fun initObservers() {
-        viewModel.farmersLV.observe(viewLifecycleOwner) { farmers ->
+        viewModel.farmersCheckLV.observe(viewLifecycleOwner) { farmers ->
             val adapter =
                 FarmersAdapter(
-                    itemList = farmers.take(farmers.size / 2) as ArrayList<FarmersModel>,
+                    itemList = farmers.take(farmers.size / 2) as ArrayList<FarmerCheckModel>,
 
                     addClicked = {
                         viewModel.addMilkToFarmer(it)
@@ -57,20 +57,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             binding.showMoreBtn.setOnClickOnceListener {
                 if (showMore) {
                     binding.showMoreBtn.text = "Скрыть"
-                    adapter.update(farmers.take(farmers.size) as ArrayList<FarmersModel>)
+                    adapter.update(farmers.take(farmers.size) as ArrayList<FarmerCheckModel>)
                 } else {
                     binding.showMoreBtn.text = "Показать еще"
-                    adapter.update(farmers.take(farmers.size / 2) as ArrayList<FarmersModel>)
+                    adapter.update(farmers.take(farmers.size / 2) as ArrayList<FarmerCheckModel>)
                 }
                 showMore = !showMore
             }
             binding.farmersRv.adapter = adapter
         }
-
         viewModel.milkPriceLV.observe(viewLifecycleOwner) {
             binding.priceOfLiterBtn.text = "$it сом за литр молока"
         }
-
+        viewModel.userNameLV.observe(viewLifecycleOwner) {
+            binding.nameTv.text = it
+        }
         viewModel.totalMilkLv.observe(viewLifecycleOwner) {
             binding.morningPanel.apply {
                 setLiters(it.morning_milk_sum)

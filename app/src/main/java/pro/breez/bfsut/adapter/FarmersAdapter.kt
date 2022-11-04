@@ -3,16 +3,20 @@ package pro.breez.bfsut.adapter
 import pro.breez.bfsut.base.BaseRecyclerAdapter
 import pro.breez.bfsut.databinding.ItemFarmerNeedToCheckBinding
 import pro.breez.bfsut.util.setOnClickOnceListener
-import pro.breez.domain.model.output.FarmersModel
+import pro.breez.domain.model.output.FarmerCheckModel
 
 class FarmersAdapter(
-    itemList: ArrayList<FarmersModel>,
-    private val itemClicked: (FarmersModel) -> Unit,
-    private val addClicked: (FarmersModel) -> Unit
+    itemList: ArrayList<FarmerCheckModel>,
+    private val itemClicked: (FarmerCheckModel) -> Unit,
+    private val addClicked: (FarmerCheckModel) -> Unit
 ) :
-    BaseRecyclerAdapter<ItemFarmerNeedToCheckBinding, FarmersModel>(itemList) {
+    BaseRecyclerAdapter<ItemFarmerNeedToCheckBinding, FarmerCheckModel>(itemList) {
 
-    override fun bind(item: FarmersModel, binding: ItemFarmerNeedToCheckBinding, position: Int) {
+    override fun bind(
+        item: FarmerCheckModel,
+        binding: ItemFarmerNeedToCheckBinding,
+        position: Int
+    ) {
         binding.apply {
             binding.itemView.setOnClickOnceListener {
                 itemClicked.invoke(item)

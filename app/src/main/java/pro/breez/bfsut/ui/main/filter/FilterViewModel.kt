@@ -1,7 +1,6 @@
 package pro.breez.bfsut.ui.main.filter
 
 import androidx.annotation.IdRes
-import androidx.core.util.Pair
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -68,17 +67,32 @@ class FilterViewModel @Inject constructor(
         typeFilterSelected?.invoke(false)
     }
 
-    fun showDatePicker() {
+    fun showDatePicker(isFrom: Boolean) {
         val selectedRange = rangeDateLv.value
-        val dateRangePicker = MaterialDatePicker.Builder.dateRangePicker()
+        val dateRangePicker = MaterialDatePicker.Builder.datePicker()
             .setTitleText("Выберите период")
             .setPositiveButtonText("Подвердить")
             .setNegativeButtonText("Отменить")
-            .setSelection(Pair(selectedRange?.fromMillis, selectedRange?.toMillis))
+            .setSelection(if (isFrom) selectedRange?.fromMillis else selectedRange?.toMillis)
             .build()
 
         dateRangePicker.addOnPositiveButtonClickListener {
-            rangeDateLv.postValue(DateUtil.toDateRange(it))
+            val result = if (isFrom) {
+                DateRange(
+                    from = DateUtil.toDate(it),
+                    to = selectedRange?.to,
+                    fromMillis = it,
+                    toMillis = selectedRange?.toMillis
+                )
+            } else {
+                DateRange(
+                    from = selectedRange?.from,
+                    to = DateUtil.toDate(it),
+                    fromMillis = selectedRange?.fromMillis,
+                    toMillis = it
+                )
+            }
+            rangeDateLv.postValue(result)
             typeFilterSelected?.invoke(true)
         }
         showDialogFragment.postValue(dateRangePicker)

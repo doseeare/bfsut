@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.DialogMilkPriceBinding
 
 class MilkPriceDialog(private val currentPrice: Int) : DialogFragment() {
@@ -19,6 +20,9 @@ class MilkPriceDialog(private val currentPrice: Int) : DialogFragment() {
         binding = DialogMilkPriceBinding.inflate(inflater, container, false)
         requireDialog().window?.setBackgroundDrawableResource(android.R.color.transparent)
         requireDialog().setCancelable(false)
+        if (currentPrice != 0) {
+            binding.title.text = getString(R.string.old_price_or_new)
+        }
         binding.priceEt.hint = "$currentPrice"
         binding.positiveBtn.setOnClickListener(onPositiveClick)
         return binding.root
@@ -26,7 +30,13 @@ class MilkPriceDialog(private val currentPrice: Int) : DialogFragment() {
 
     fun onPositiveBtnClicked(block: (Int) -> Unit) {
         onPositiveClick = View.OnClickListener {
-            block.invoke(binding.priceEt.text.toString().toInt())
+            val price = binding.priceEt.text.toString()
+            val newPrice = if (price.isNotBlank()) {
+                price.toInt()
+            } else {
+                currentPrice
+            }
+            block.invoke(newPrice)
         }
     }
 

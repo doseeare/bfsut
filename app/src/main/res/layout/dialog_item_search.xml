@@ -79,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margins"
                     android:gravity="center"
-                    android:text="@string/not_found"
+                    android:text="@string/check_or_create"
                     android:textColor="@color/text_bold_color"
                     android:textSize="21sp" />
 

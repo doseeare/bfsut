@@ -17,6 +17,14 @@ class MainRepositoryImpl(
         return restClient.mainApi.getFarmers(dataPreference.token)
     }
 
+    override fun getUserName(): Result<UserNameModel> {
+        return restClient.mainApi.getUserName(dataPreference.token)
+    }
+
+    override fun getFarmersCheck(): Result<List<FarmerCheckModel>> {
+        return restClient.mainApi.getFarmersCheck(dataPreference.token)
+    }
+
     override fun getProduct(id: String): Result<List<ProductsModel>> {
         return restClient.mainApi.getProduct(dataPreference.token, id)
     }
@@ -55,7 +63,7 @@ class MainRepositoryImpl(
     }
 
     override fun postMilk(body: AddMilkBody): Result<AddMilkModel> {
-        return  restClient.mainApi.postMilk(dataPreference.token, body)
+        return restClient.mainApi.postMilk(dataPreference.token, body)
     }
 
     override fun getTotalMilk(): Result<TotalMilkModel> {

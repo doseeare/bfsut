@@ -41,8 +41,6 @@ class HomePagePanelView(context: Context, attributeSet: AttributeSet?, defStyle:
                 }
             }
         }
-
-        //   binding.dayContainer.setBackgroundResource(panelBackground!!)
         binding.panelImg.setImageResource(panelBackground!!)
         binding.tagTv.text = panelTag
         binding.priceTv.setTextColor(panelBottomTextColor!!)

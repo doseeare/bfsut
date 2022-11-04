@@ -76,7 +76,7 @@
         tools:layout="@layout/fragment_farmer_profile">
         <argument
             android:name="farmer"
-            app:argType="pro.breez.domain.model.output.FarmersModel" />
+            app:argType="pro.breez.domain.model.output.FarmerCheckModel" />
     </fragment>
 
     <fragment
@@ -93,7 +93,7 @@
         <argument
             android:name="farmer"
             android:defaultValue="@null"
-            app:argType="pro.breez.domain.model.output.FarmersModel"
+            app:argType="pro.breez.domain.model.output.FarmerCheckModel"
             app:nullable="true" />
     </fragment>
 
@@ -151,7 +151,7 @@
 
         <argument
             android:name="farmer"
-            app:argType="pro.breez.domain.model.output.FarmersModel" />
+            app:argType="pro.breez.domain.model.output.FarmerCheckModel" />
     </fragment>
 
     <activity

@@ -3,9 +3,9 @@ package pro.breez.bfsut.ui.main.all_farmers
 import android.os.Bundle
 import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
+import pro.breez.bfsut.adapter.AllFarmerAdapter
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentAllFarmersBinding
-import pro.breez.bfsut.adapter.AllFarmerAdapter
 
 
 @AndroidEntryPoint
@@ -17,7 +17,9 @@ class AllFarmersFragment : BaseFragment<FragmentAllFarmersBinding, AllFarmersVie
     }
 
     private fun initViews() = with(binding) {
-        allFarmersRv.adapter = AllFarmerAdapter(viewModel.farmers)
+        viewModel.farmers.observe(viewLifecycleOwner) {
+            allFarmersRv.adapter = AllFarmerAdapter(it)
+        }
         toolbar.setOnBackClickListener {
             viewModel.backClicked()
         }

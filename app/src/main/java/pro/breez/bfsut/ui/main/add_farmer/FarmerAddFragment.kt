@@ -16,7 +16,8 @@ import pro.breez.bfsut.databinding.FragmentAddFarmerBinding
 import pro.breez.bfsut.model.GenderEnum
 import pro.breez.bfsut.model.MaritalStatusEnum
 import pro.breez.bfsut.util.Utils.setNumberMask
-import pro.breez.bfsut.util.validator.AddFarmerFieldValidator
+import pro.breez.bfsut.util.setOnClickOnceListener
+import pro.breez.bfsut.util.validator.FarmerAddValidator
 
 
 @AndroidEntryPoint
@@ -39,6 +40,10 @@ class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewMo
     private fun initViews() = with(binding) {
         toolbar.setOnBackClickListener {
             viewModel.backBtnClicked()
+        }
+        binding.searchBtn.setOnClickOnceListener {
+            it.visibility = View.GONE
+            binding.searchEt.visibility = View.VISIBLE
         }
         toolbar.setTitle("Создание фермера")
         SelectableButton.init(genderMale, genderFemale) {
@@ -71,7 +76,7 @@ class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewMo
         whenDocEt.setOnClickListener(viewModel::whenDocClicked)
         educationEt.setOnClickListener(viewModel::educationClicked)
         jobPurposeEt.setOnClickListener(viewModel::jobPurposeClicked)
-
+        binding.searchEt.setOnClickListener(viewModel::searchClicked)
         countryEt.setOnClickListener {
             viewModel.countryClicked(false)
         }
@@ -93,7 +98,7 @@ class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewMo
     }
 
     private fun initAcceptBtn() {
-        val validator = AddFarmerFieldValidator(binding, viewModel)
+        val validator = FarmerAddValidator(binding, viewModel)
         binding.acceptBtn.setOnClickListener {
             validator.validateImportantFields()
         }
@@ -145,9 +150,13 @@ class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewMo
         viewModel.jobPurposeLV.observe(viewLifecycleOwner) {
             binding.jobPurposeEt.text = it.name
         }
+        viewModel.farmerFoundLV.observe(viewLifecycleOwner) {
+            binding.nameEt.text = it.firstName
+            binding.lastNameEt.text = it.fatherName
+            binding.surnameEt.text = it.lastName
+        }
 
     }
-
 
     private fun initButtons(selectedBtn: AppCompatButton, alternativeBtn: AppCompatButton) {
         selectedBtn.apply {
