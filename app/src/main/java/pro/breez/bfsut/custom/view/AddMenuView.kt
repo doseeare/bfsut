@@ -19,14 +19,12 @@ class AddMenuView(context: Context, attributeSet: AttributeSet?, defStyle: Int) 
         attributeSet?.let {
             val attr =
                 context.obtainStyledAttributes(attributeSet, R.styleable.AddMenuView)
-
             attr.getString(R.styleable.AddMenuView_label)?.let {
                 binding.label.text = it
             }
             attr.getResourceId(R.styleable.AddMenuView_icon, 0).let {
                 binding.icon.setImageResource(it)
             }
-
         }
     }
 

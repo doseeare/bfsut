@@ -17,6 +17,12 @@ interface MainApi {
         @Header("Authorization") token: String,
     ): Result<UserNameModel>
 
+    @GET("v1/farmers/profile")
+    fun getFarmerProfile(
+        @Header("Authorization") token: String,
+        @Query("farmer_id") id: String,
+    ): Result<FarmerProfileModel>
+
     @GET("v1/farmers/farmer-list")
     fun getFarmersCheck(
         @Header("Authorization") token: String,
@@ -164,6 +170,12 @@ interface MainApi {
 
     @POST("v1/farmers/")
     fun postFarmer(
+        @Header("Authorization") token: String,
+        @Body body: FarmerBody
+    ): Result<DefaultSuccessModel>
+
+    @PATCH("v1/farmers/profile")
+    fun updateProfile(
         @Header("Authorization") token: String,
         @Body body: FarmerBody
     ): Result<DefaultSuccessModel>

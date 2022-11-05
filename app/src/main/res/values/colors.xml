@@ -18,4 +18,5 @@
     <color name="text_gray_purple_color">@color/text_bold_color</color>
     <color name="dark_blue">#292F68</color>
     <color name="gray">#5D5A70</color>
+    <color name="light_gray">#F0F1F5</color>
 </resources>

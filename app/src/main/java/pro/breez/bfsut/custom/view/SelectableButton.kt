@@ -20,7 +20,7 @@ class SelectableButton(context: Context, attributeSet: AttributeSet?, defStyle: 
 
     private var onClicked: ((SelectableButton) -> Unit)? = null
 
-    private var isActive: Boolean = false
+    var isActive: Boolean = false
         set(value) {
             if (value) {
                 binding.indicatorImg.setImageResource(R.drawable.ic_chooser_red)

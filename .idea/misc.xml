@@ -31,6 +31,7 @@
         <entry key="app/src/main/res/drawable/bg_disabled_btn.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/bg_enabled_btn.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/bg_error_shape.xml" value="0.2325" />
+        <entry key="app/src/main/res/drawable/bg_farmer_profile.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/bg_home_panel_day.xml" value="0.12" />
         <entry key="app/src/main/res/drawable/bg_home_panel_night.xml" value="0.1355" />
         <entry key="app/src/main/res/drawable/bg_home_panel_tag.xml" value="0.144" />
@@ -117,7 +118,8 @@
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.22735507246376813" />
         <entry key="app/src/main/res/layout/fragment_dialog_milk_price.xml" value="0.15391192817443353" />
         <entry key="app/src/main/res/layout/fragment_edit_milk.xml" value="0.2984181274048739" />
-        <entry key="app/src/main/res/layout/fragment_farmer_profile.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_farmer_profile.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_farmer_profile_edit.xml" value="0.17179424070883584" />
         <entry key="app/src/main/res/layout/fragment_filter.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_filter_logs.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_filter_result.xml" value="0.2984181274048739" />
@@ -145,6 +147,7 @@
         <entry key="app/src/main/res/layout/layout_button_drawable.xml" value="0.3625" />
         <entry key="app/src/main/res/layout/layout_drop_down_edit_text.xml" value="0.33" />
         <entry key="app/src/main/res/layout/layout_home_page_panel.xml" value="0.5366528354080221" />
+        <entry key="app/src/main/res/layout/layout_profile_textview.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_registration_edittext.xml" value="0.33" />
         <entry key="app/src/main/res/layout/layout_selectable_button.xml" value="0.87" />
         <entry key="app/src/main/res/layout/layout_toolbar.xml" value="0.2975630611372381" />

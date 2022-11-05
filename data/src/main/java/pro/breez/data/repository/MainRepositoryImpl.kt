@@ -5,6 +5,7 @@ import pro.breez.data.rest.RestClient
 import pro.breez.domain.interactor.base.Result
 import pro.breez.domain.model.input.AddMilkBody
 import pro.breez.domain.model.input.CreditBody
+import pro.breez.domain.model.input.FarmerBody
 import pro.breez.domain.model.output.*
 import pro.breez.domain.repository.MainRepository
 
@@ -19,6 +20,14 @@ class MainRepositoryImpl(
 
     override fun getUserName(): Result<UserNameModel> {
         return restClient.mainApi.getUserName(dataPreference.token)
+    }
+
+    override fun updateProfile(body: FarmerBody): Result<DefaultSuccessModel> {
+        return restClient.mainApi.updateProfile(dataPreference.token, body)
+    }
+
+    override fun getFarmerProfile(id: String): Result<FarmerProfileModel> {
+        return restClient.mainApi.getFarmerProfile(dataPreference.token, id)
     }
 
     override fun getFarmersCheck(): Result<List<FarmerCheckModel>> {

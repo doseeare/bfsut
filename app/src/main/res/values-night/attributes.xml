@@ -38,6 +38,11 @@
         <attr name="label" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="ProfileTextView" parent="CustomEditText">
+        <attr name="top_title" format="string" />
+        <attr name="sub_title" format="string" />
+    </declare-styleable>
+
     <declare-styleable name="SelectableButton">
         <attr name="button_image" format="reference" />
         <attr name="button_text" format="string" />

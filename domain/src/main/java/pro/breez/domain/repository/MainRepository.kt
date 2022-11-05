@@ -3,11 +3,14 @@ package pro.breez.domain.repository
 import pro.breez.domain.interactor.base.Result
 import pro.breez.domain.model.input.AddMilkBody
 import pro.breez.domain.model.input.CreditBody
+import pro.breez.domain.model.input.FarmerBody
 import pro.breez.domain.model.output.*
 
 interface MainRepository {
     fun getFarmers(): Result<List<FarmersModel>>
-    fun getUserName() : Result<UserNameModel>
+    fun getUserName(): Result<UserNameModel>
+    fun updateProfile(body : FarmerBody): Result<DefaultSuccessModel>
+    fun getFarmerProfile(id : String): Result<FarmerProfileModel>
     fun getFarmersCheck(): Result<List<FarmerCheckModel>>
     fun getProduct(id: String): Result<List<ProductsModel>>
     fun getCategory(): Result<List<CategoryModel>>
@@ -16,7 +19,7 @@ interface MainRepository {
     fun getCredits(): Result<List<CreditLogModel>>
     fun postCredit(body: CreditBody): Result<CreditModel>
     fun getMilkPrice(): Result<MilkPriceModel>
-    fun postMilkPrice(body : MilkPriceModel) : Result<MilkPriceModel>
-    fun postMilk(body : AddMilkBody) : Result<AddMilkModel>
-    fun getTotalMilk () : Result<TotalMilkModel>
+    fun postMilkPrice(body: MilkPriceModel): Result<MilkPriceModel>
+    fun postMilk(body: AddMilkBody): Result<AddMilkModel>
+    fun getTotalMilk(): Result<TotalMilkModel>
 }

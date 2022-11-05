@@ -142,7 +142,7 @@ class HomeViewModel @Inject constructor(
     }
 
     fun farmerClicked(item: FarmerCheckModel) {
-        val args = HomeFragmentDirections.homeFragmentToProfileFarmer(item).arguments
+        val args = HomeFragmentDirections.homeFragmentToProfileFarmer(item.id).arguments
         navigateToFragment.startEvent(FragmentTransaction(R.id.navigation_farmer_profile, args))
     }
 

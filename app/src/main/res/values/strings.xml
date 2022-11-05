@@ -52,4 +52,8 @@
     <string name="fill_the_field">Заполните полe</string>
     <string name="filter_journal">Отчет сбора молока:</string>
     <string name="date">Дате</string>
+    <string name="living_location">Место проживания</string>
+    <string name="family">Семья</string>
+    <string name="edit_farmer">Редактирование фермера</string>
+    <string name="save_changes">Сохранить изменения</string>
 </resources>

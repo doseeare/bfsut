@@ -18,7 +18,9 @@ class AllFarmersFragment : BaseFragment<FragmentAllFarmersBinding, AllFarmersVie
 
     private fun initViews() = with(binding) {
         viewModel.farmers.observe(viewLifecycleOwner) {
-            allFarmersRv.adapter = AllFarmerAdapter(it)
+            allFarmersRv.adapter = AllFarmerAdapter(it){
+              viewModel.farmerClicked(it)
+            }
         }
         toolbar.setOnBackClickListener {
             viewModel.backClicked()

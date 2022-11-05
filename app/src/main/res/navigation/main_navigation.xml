@@ -55,13 +55,28 @@
         android:id="@+id/navigation_all_farmers"
         android:name="pro.breez.bfsut.ui.main.all_farmers.AllFarmersFragment"
         android:label="Мои фермеры"
-        tools:layout="@layout/fragment_all_farmers" />
+        tools:layout="@layout/fragment_all_farmers">
+        <action
+            android:id="@+id/home_fragment_to_profile_farmer"
+            app:destination="@id/navigation_farmer_profile"
+            app:popUpTo="@id/navigation_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_credits"
         android:name="pro.breez.bfsut.ui.main.credit.CreditsFragment"
         android:label="@string/title_credits"
+
         tools:layout="@layout/fragment_credits" />
+    <fragment
+        android:id="@+id/navigation_edit_profile"
+        android:name="pro.breez.bfsut.ui.main.farmer_profile_edit.EditProfileFragment"
+        android:label="@string/edit_farmer"
+        tools:layout="@layout/fragment_farmer_profile_edit">
+        <argument
+            android:name="farmer"
+            app:argType="pro.breez.domain.model.output.FarmerProfileModel" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_farmer_add"
@@ -75,8 +90,12 @@
         android:label="Профиль фермера"
         tools:layout="@layout/fragment_farmer_profile">
         <argument
-            android:name="farmer"
-            app:argType="pro.breez.domain.model.output.FarmerCheckModel" />
+            android:name="farmer_id"
+            app:argType="string" />
+        <action
+            android:id="@+id/profile_to_edit"
+            app:destination="@id/navigation_edit_profile"
+            app:popUpTo="@id/navigation_farmer_profile" />
     </fragment>
 
     <fragment
