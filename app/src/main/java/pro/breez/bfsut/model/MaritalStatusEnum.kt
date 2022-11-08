@@ -10,12 +10,11 @@ WIDOWED = "03", "Вдовец/Вдова"
 DIVORCED = "04", "В разводе")
 */
 
-enum class MaritalStatusEnum(val key: String) {
-    MARRIED("01"),
-    SINGLE("02"),
-    WIDOWED("03"),
-    DIVORCED("04");
-
+enum class MaritalStatusEnum(val key: String, val value: String) {
+    MARRIED("01", "Женат/Замужем"),
+    SINGLE("02", "Не состою в браке"),
+    WIDOWED("03", "Вдовец/Вдова"),
+    DIVORCED("04", "В разводе");
     companion object {
         fun fromId(@IdRes id: Int): MaritalStatusEnum {
             return when (id) {

@@ -74,6 +74,7 @@ class EditProfileViewModel @Inject constructor(
     val actualCountryLV = MutableLiveData<MfSysModel>()
     val actualAreaLv = MutableLiveData<MfSysModel>()
     val actualRegionLV = MutableLiveData<MfSysModel>()
+
     var actualVillage: String? = null
     var actualStreet: String? = null
     var actualHouse: String? = null
@@ -362,11 +363,10 @@ class EditProfileViewModel @Inject constructor(
             resident = getId(citizenLV),
             birth_date = DateUtil.reformatDate(birthdayLV.value)
         )
-        updateProfile.execute(viewModelScope, body) {
+        updateProfile.execute(viewModelScope, body to farmer.id) {
             handleResult(it) {
                 val dialog = AlertDialogBuilderImpl()
-                dialog.setTitle("Фермер был создан")
-                dialog.setSubTitle("Можете начать собирать молоко")
+                dialog.setTitle("Изменения были успешно сохранены")
                 dialog.setIcon(R.drawable.ic_success)
                 dialog.setDismissListener {
                     popBackStack.startEvent(null)

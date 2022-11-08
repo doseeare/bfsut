@@ -74,7 +74,7 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
     }
 
     fun ifEmptyError(): Boolean {
-        return if (text.isEmpty()) {
+        return if (text.isBlank()) {
             error = true
             /*isEmpty = */ true
         } else {

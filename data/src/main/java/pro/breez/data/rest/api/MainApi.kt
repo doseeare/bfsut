@@ -177,7 +177,8 @@ interface MainApi {
     @PATCH("v1/farmers/profile")
     fun updateProfile(
         @Header("Authorization") token: String,
-        @Body body: FarmerBody
+        @Body body: FarmerBody,
+        @Query("farmer_id") id: String
     ): Result<DefaultSuccessModel>
 
     @POST("v1/farmers/search")

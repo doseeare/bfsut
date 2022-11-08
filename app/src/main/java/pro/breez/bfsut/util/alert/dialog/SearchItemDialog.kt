@@ -57,17 +57,21 @@ class SearchItemDialog<T>(
             adapter.update(list)
             binding.notFoundView.visibility = View.GONE
             binding.itemRv.visibility = View.VISIBLE
+            binding.selectBtn.text = "Выбрать"
         } else {
             binding.notFoundView.visibility = View.VISIBLE
             binding.itemRv.visibility = View.GONE
             binding.img.setImageResource(R.drawable.ic_search_not_found)
             binding.helperTv.text = getString(R.string.need_to_create)
+            binding.selectBtn.text = "Создать"
         }
     }
 
     fun onPositiveBtnClicked(block: (T) -> Unit) {
         onPositiveClick = View.OnClickListener {
-            block.invoke(adapter.getSelectedItem())
+            if (binding.itemRv.visibility == View.VISIBLE) {
+                block.invoke(adapter.getSelectedItem())
+            }
             dismiss()
         }
     }

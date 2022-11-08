@@ -22,8 +22,8 @@ class MainRepositoryImpl(
         return restClient.mainApi.getUserName(dataPreference.token)
     }
 
-    override fun updateProfile(body: FarmerBody): Result<DefaultSuccessModel> {
-        return restClient.mainApi.updateProfile(dataPreference.token, body)
+    override fun updateProfile(body: Pair<FarmerBody, String>): Result<DefaultSuccessModel> {
+        return restClient.mainApi.updateProfile(dataPreference.token, body.first, body.second)
     }
 
     override fun getFarmerProfile(id: String): Result<FarmerProfileModel> {

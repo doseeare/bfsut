@@ -35,7 +35,7 @@ class FarmerProfileFragment : BaseFragment<FragmentFarmerProfileBinding, FarmerP
                 birthdayTv.text = it.birth_date
                 nationTv.text = it.nationality.toString() //todo спросить
                 citizenTv.text = it.resident.toString() //todo спросить
-                genderTv.text = GenderEnum.fromInt(it.gender!!).value //todo спросить
+                genderTv.text = it.gender
                 morePhoneTv.text = it.phone_number
                 moreSecondPhoneTv.text = it.phone_number_additional
                 innTv.text = it.tax_number
@@ -47,7 +47,7 @@ class FarmerProfileFragment : BaseFragment<FragmentFarmerProfileBinding, FarmerP
                 countryTv.text = it.state.toString() //todo спросить
                 areaTv.text = it.country.toString() //todo спросить
                 regionTv.text = it.region.toString()
-                streetTv.text = "Не указан" //todo спросить
+                streetTv.text = it.address
                 villageTv.text = it.village
                 houseTv.text = it.house
                 apartmentTv.text = it.apartment

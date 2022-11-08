@@ -21,7 +21,7 @@ data class FarmerBody(
     val education: Int? = null,
     val family_count: Int? = null,
     val father_name: String? = null,
-    val first_name: String? = "KOTOKBASH",
+    val first_name: String? = null,
     val gender: Int? = null,
     val house: String? = null,
     val is_actual_address_match: Boolean? = null,

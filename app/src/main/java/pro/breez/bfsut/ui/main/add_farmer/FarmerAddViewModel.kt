@@ -1,5 +1,6 @@
 package pro.breez.bfsut.ui.main.add_farmer
 
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.android.material.datepicker.CalendarConstraints
@@ -85,6 +86,11 @@ class FarmerAddViewModel @Inject constructor(
     var gender: GenderEnum? = null
 
     val farmerFoundLV = MutableLiveData<MfSysFarmerModel>()
+
+    override fun onCreate(owner: LifecycleOwner) {
+        super.onCreate(owner)
+        showSearchDialog(false)
+    }
 
     fun birthDayClicked() {
         val startDate = Calendar.getInstance()
@@ -272,7 +278,7 @@ class FarmerAddViewModel @Inject constructor(
 
     }
 
-    fun searchClicked() {
+    fun showSearchDialog(isCancelable: Boolean) {
         val dialog =
             SearchItemDialog<MfSysFarmerModel>(
                 valueName = arrayOf(
@@ -284,6 +290,7 @@ class FarmerAddViewModel @Inject constructor(
         dialog.onKeyChanged {
             searchFarmersInSystem(dialog, it)
         }
+        dialog.isCancelable = isCancelable
         dialog.onPositiveBtnClicked {
             farmerFoundLV.postValue(it)
         }

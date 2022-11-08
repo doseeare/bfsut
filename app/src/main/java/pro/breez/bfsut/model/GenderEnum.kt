@@ -3,7 +3,7 @@ package pro.breez.bfsut.model
 import androidx.annotation.IdRes
 import pro.breez.bfsut.R
 
-enum class GenderEnum(val key: Int, val value : String) {
+enum class GenderEnum(val key: Int, val value: String) {
     MALE(1, "Мужской"),
     FEMALE(0, "Женский");
 
@@ -15,9 +15,9 @@ enum class GenderEnum(val key: Int, val value : String) {
             }
         }
 
-        fun fromInt( id: Int): GenderEnum {
-            return when (id) {
-                1 -> MALE
+        fun fromValue(value: String): GenderEnum {
+            return when (value) {
+                "Мужской" -> MALE
                 else -> FEMALE
             }
         }

@@ -76,7 +76,9 @@ class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewMo
         whenDocEt.setOnClickListener(viewModel::whenDocClicked)
         educationEt.setOnClickListener(viewModel::educationClicked)
         jobPurposeEt.setOnClickListener(viewModel::jobPurposeClicked)
-        binding.searchEt.setOnClickListener(viewModel::searchClicked)
+        binding.searchEt.setOnClickListener {
+            viewModel.showSearchDialog(true)
+        }
         countryEt.setOnClickListener {
             viewModel.countryClicked(false)
         }

@@ -21,8 +21,8 @@ class FarmerProfileViewModel @Inject constructor(
         FarmerProfileFragmentArgs.fromBundle(requiredArguments()).farmerId
     }
 
-    override fun onCreate(owner: LifecycleOwner) {
-        super.onCreate(owner)
+    override fun onResume(owner: LifecycleOwner) {
+        super.onResume(owner)
         getFarmerProfile()
     }
 

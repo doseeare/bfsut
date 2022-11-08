@@ -87,6 +87,7 @@
         <entry key="app/src/main/res/drawable/ic_success.xml" value="0.1965" />
         <entry key="app/src/main/res/drawable/market_custom_tab_colors.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/selector_bottom_navigation_text_color.xml" value="0.216" />
+        <entry key="app/src/main/res/drawable/selector_btn_text_color.xml" value="0.238" />
         <entry key="app/src/main/res/drawable/selector_custom_tab_color.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/selector_default_btn_text_color.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/selector_default_button.xml" value="0.2325" />

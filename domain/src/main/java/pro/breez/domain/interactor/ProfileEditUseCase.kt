@@ -9,9 +9,9 @@ import javax.inject.Inject
 
 class ProfileEditUseCase @Inject constructor(
     private val mainRepository: MainRepository
-) : UseCase<DefaultSuccessModel, FarmerBody>() {
+) : UseCase<DefaultSuccessModel, Pair<FarmerBody, String>>() {
 
-    override suspend fun doOnBackground(params: FarmerBody?): Result<DefaultSuccessModel> {
+    override suspend fun doOnBackground(params: Pair<FarmerBody, String>?): Result<DefaultSuccessModel> {
         return mainRepository.updateProfile(params!!)
     }
 

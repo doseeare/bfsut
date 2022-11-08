@@ -9,7 +9,7 @@ import pro.breez.domain.model.output.*
 interface MainRepository {
     fun getFarmers(): Result<List<FarmersModel>>
     fun getUserName(): Result<UserNameModel>
-    fun updateProfile(body : FarmerBody): Result<DefaultSuccessModel>
+    fun updateProfile(body: Pair<FarmerBody, String>): Result<DefaultSuccessModel>
     fun getFarmerProfile(id : String): Result<FarmerProfileModel>
     fun getFarmersCheck(): Result<List<FarmerCheckModel>>
     fun getProduct(id: String): Result<List<ProductsModel>>

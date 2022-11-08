@@ -14,6 +14,8 @@ import pro.breez.bfsut.databinding.FragmentFarmerProfileEditBinding
 import pro.breez.bfsut.model.GenderEnum
 import pro.breez.bfsut.model.MaritalStatusEnum
 import pro.breez.bfsut.util.Utils.setNumberMask
+import pro.breez.bfsut.util.ifNotNull
+import pro.breez.bfsut.util.setGoneIfFalse
 import pro.breez.bfsut.util.setOnClickOnceListener
 import pro.breez.bfsut.util.validator.ProfileEditValidator
 
@@ -35,36 +37,77 @@ class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditP
                 nameEt.editText.setText(it.first_name)
                 surnameEt.editText.setText(it.last_name)
                 birthdayEt.editText.setText(it.birth_date)
-                nationEt.editText.setText(it.nationality.toString() )//todo спросить
-                citizenEt.editText.setText(it.resident.toString()) //todo спросить
-                if (it.gender == 1) genderMale.isActive = true else genderFemale.isActive = true
+                nationEt.editText.setText(it.nationality)//todo спросить
+                citizenEt.editText.setText(it.resident) //todo спросить
                 phoneNumberEt.editText.setText(it.phone_number)
                 phoneNumberMoreEt.editText.setText(it.phone_number_additional)
                 innEt.editText.setText(it.tax_number)
-                typeDocEt.editText.setText(it.document_type.toString() )//todo спросить
+                typeDocEt.editText.setText(it.document_type)//todo спросить
                 seriesDocEt.editText.setText(it.document_series)
-                numberDocEt.editText.setText(it.document_number )//todo спросить
-                issueDocEt.editText.setText(it.document_issue.toString())//todo спросить
+                numberDocEt.editText.setText(it.document_number)//todo спросить
+                issueDocEt.editText.setText(it.document_issue)//todo спросить
                 issueNumberDocEt.editText.setText(it.document_issue_number) //todo спросить
-                countryEt.editText.setText(it.state.toString()) //todo спросить
-                areaEt.editText.setText(it.country.toString() )//todo спросить
-                regionEt.editText.setText(it.region.toString())
-                streetEt.editText.setText("Не указан" )//todo спросить
+                whenDocEt.editText.setText(it.document_date)
+                placeOfBirthEt.editText.setText(it.place_of_birth)
+                countryEt.editText.setText(it.state) //todo спросить
+                areaEt.editText.setText(it.country)//todo спросить
+                regionEt.editText.setText(it.region)
+                streetEt.editText.setText(it.address)
                 villageEt.editText.setText(it.village)
                 houseEt.editText.setText(it.house)
                 apartmentEt.editText.setText(it.apartment)
-                namePartnerEt.editText.setText("Не указан" )//todo спросить
+                namePartnerEt.editText.setText("Не указан")//todo спросить
                 familyMembersEt.editText.setText(it.family_count.toString()) //todo спросить
                 jobEt.editText.setText(it.job)
-                jobPurposeEt.editText.setText(it.job_position)
+                jobPurposeEt.editText.setText(it.purpose)
                 jobAddressEt.editText.setText(it.job_address)
-                educationEt.editText.setText(it.education.toString() )//todo спросить
+                jobCompanyEt.editText.setText(it.job_position)
+                educationEt.editText.setText(it.education)//todo спросить
+                actualCountryEt.editText.setText(it.actual_state)
+                actualAreaEt.editText.setText(it.actual_country)
+                actualRegionEt.editText.setText(it.actual_region)
+                actualVillageEt.editText.setText(it.actual_village)
+                actualStreetEt.editText.setText(it.actual_address)
+                actualHouseEt.editText.setText(it.actual_house)
+                actualApartmentEt.editText.setText(it.actual_apartment)
+
+                it.is_actual_address_match.ifNotNull {
+                    viewModel.isActualLocation = it
+                    binding.actualLocationContainer.setGoneIfFalse(it)
+                    if (it) {
+                        actualLocationYes.isSelected = true
+                    } else {
+                        actualLocationNo.isSelected = true
+                    }
+                }
 
                 when (it.marital_status) {
-                    MaritalStatusEnum.MARRIED.key -> marriedBtn.isActive = true
-                    MaritalStatusEnum.SINGLE.key -> singleBtn.isActive = true
-                    MaritalStatusEnum.DIVORCED.key -> divorcedBtn.isActive = true
-                    MaritalStatusEnum.WIDOWED.key -> widowerBtn.isActive = true
+                    MaritalStatusEnum.MARRIED.value -> {
+                        marriedBtn.isActive = true
+                        viewModel.maritalStatus = MaritalStatusEnum.MARRIED
+                    }
+                    MaritalStatusEnum.SINGLE.value -> {
+                        singleBtn.isActive = true
+                        viewModel.maritalStatus = MaritalStatusEnum.SINGLE
+                    }
+                    MaritalStatusEnum.DIVORCED.value -> {
+                        divorcedBtn.isActive = true
+                        viewModel.maritalStatus = MaritalStatusEnum.SINGLE
+                    }
+                    MaritalStatusEnum.WIDOWED.value -> {
+                        widowerBtn.isActive = true
+                        viewModel.maritalStatus = MaritalStatusEnum.DIVORCED
+                    }
+                }
+                when (it.gender) {
+                    GenderEnum.MALE.value -> {
+                        genderMale.isActive = true
+                        viewModel.gender = GenderEnum.MALE
+                    }
+                    GenderEnum.FEMALE.value -> {
+                        genderFemale.isActive = true
+                        viewModel.gender = GenderEnum.FEMALE
+                    }
                 }
             }
         }
@@ -154,6 +197,7 @@ class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditP
         whenDocEt.setOnClickListener(viewModel::whenDocClicked)
         educationEt.setOnClickListener(viewModel::educationClicked)
         jobPurposeEt.setOnClickListener(viewModel::jobPurposeClicked)
+
         countryEt.setOnClickListener {
             viewModel.countryClicked(false)
         }

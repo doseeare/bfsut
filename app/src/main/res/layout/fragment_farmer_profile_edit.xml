@@ -392,7 +392,7 @@
                     android:background="@drawable/selector_selectable_button"
                     android:text="@string/no"
                     android:textAllCaps="false"
-                    android:textColor="@color/text_bold_color"
+                    android:textColor="@color/selector_btn_text_color"
                     android:textSize="16sp" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -404,7 +404,7 @@
                     android:background="@drawable/selector_selectable_button"
                     android:text="@string/yes"
                     android:textAllCaps="false"
-                    android:textColor="@color/text_bold_color"
+                    android:textColor="@color/selector_btn_text_color"
                     android:textSize="16sp" />
             </LinearLayout>
 
