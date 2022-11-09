@@ -18,4 +18,5 @@ class FilterResultViewModel @Inject constructor() : BaseViewModel() {
         super.onCreate(owner)
         Log.d("FilterResultViewModel", "filterResult: $filterResult")
     }
+
 }

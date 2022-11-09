@@ -37,32 +37,31 @@ class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditP
                 nameEt.editText.setText(it.first_name)
                 surnameEt.editText.setText(it.last_name)
                 birthdayEt.editText.setText(it.birth_date)
-                nationEt.editText.setText(it.nationality)//todo спросить
-                citizenEt.editText.setText(it.resident) //todo спросить
+                nationEt.editText.setText(it.nationality)
+                citizenEt.editText.setText(it.resident) 
                 phoneNumberEt.editText.setText(it.phone_number)
                 phoneNumberMoreEt.editText.setText(it.phone_number_additional)
                 innEt.editText.setText(it.tax_number)
-                typeDocEt.editText.setText(it.document_type)//todo спросить
+                typeDocEt.editText.setText(it.document_type)
                 seriesDocEt.editText.setText(it.document_series)
-                numberDocEt.editText.setText(it.document_number)//todo спросить
-                issueDocEt.editText.setText(it.document_issue)//todo спросить
-                issueNumberDocEt.editText.setText(it.document_issue_number) //todo спросить
+                numberDocEt.editText.setText(it.document_number)
+                issueDocEt.editText.setText(it.document_issue)
+                issueNumberDocEt.editText.setText(it.document_issue_number) 
                 whenDocEt.editText.setText(it.document_date)
                 placeOfBirthEt.editText.setText(it.place_of_birth)
-                countryEt.editText.setText(it.state) //todo спросить
-                areaEt.editText.setText(it.country)//todo спросить
+                countryEt.editText.setText(it.state) 
+                areaEt.editText.setText(it.country)
                 regionEt.editText.setText(it.region)
                 streetEt.editText.setText(it.address)
                 villageEt.editText.setText(it.village)
                 houseEt.editText.setText(it.house)
                 apartmentEt.editText.setText(it.apartment)
-                namePartnerEt.editText.setText("Не указан")//todo спросить
-                familyMembersEt.editText.setText(it.family_count.toString()) //todo спросить
+                familyMembersEt.editText.setText(it.family_count.toString())
                 jobEt.editText.setText(it.job)
                 jobPurposeEt.editText.setText(it.purpose)
                 jobAddressEt.editText.setText(it.job_address)
                 jobCompanyEt.editText.setText(it.job_position)
-                educationEt.editText.setText(it.education)//todo спросить
+                educationEt.editText.setText(it.education)
                 actualCountryEt.editText.setText(it.actual_state)
                 actualAreaEt.editText.setText(it.actual_country)
                 actualRegionEt.editText.setText(it.actual_region)

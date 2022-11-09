@@ -96,6 +96,10 @@
             android:id="@+id/profile_to_edit"
             app:destination="@id/navigation_edit_profile"
             app:popUpTo="@id/navigation_farmer_profile" />
+        <action
+            android:id="@+id/profile_to_journal"
+            app:destination="@id/navigation_filter_result"
+            app:popUpTo="@id/navigation_filter_result" />
     </fragment>
 
     <fragment

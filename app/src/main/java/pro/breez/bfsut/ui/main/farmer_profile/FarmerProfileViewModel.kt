@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
+import pro.breez.bfsut.model.FilterResult
 import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.domain.interactor.FarmerProfileUseCase
 import pro.breez.domain.model.output.FarmerProfileModel
@@ -41,5 +42,13 @@ class FarmerProfileViewModel @Inject constructor(
                 FarmerProfileFragmentDirections.profileToEdit(farmerProfileLV.value!!).arguments
             navigateToFragment.startEvent(FragmentTransaction(R.id.profile_to_edit, args))
         }
+    }
+
+    fun historyClicked() {
+        val farmerName =
+            "${farmerProfileLV.value!!.first_name} ${farmerProfileLV.value!!.father_name} ${farmerProfileLV.value!!.first_name}"
+        val filter = FilterResult(farmerId = farmerId, farmerName = farmerName)
+        val args = FarmerProfileFragmentDirections.profileToJournal(filter).arguments
+        navigateToFragment.startEvent(FragmentTransaction(R.id.profile_to_journal, args))
     }
 }

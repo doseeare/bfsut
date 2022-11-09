@@ -35,6 +35,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         binding.priceOfLiterBtn.setOnClickOnceListener {
             viewModel.navigateToChangePrice()
         }
+        binding.nameTv.text = viewModel.dataPreference.userName
     }
 
     fun refreshInfo() {

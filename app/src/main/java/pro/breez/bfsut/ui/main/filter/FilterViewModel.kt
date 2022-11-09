@@ -28,13 +28,13 @@ class FilterViewModel @Inject constructor(
     val farmerLV = MutableLiveData<FarmersModel>()
     val rangeDateLv = MutableLiveData<DateRange?>()
 
-    private var filterSpan = FilterSpan.ALL_TIME
+    private var filterSpan = FilterSpan.NONE
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
         typeFilterSelected = { isPeriod ->
             if (isPeriod) {
-                filterSpan = FilterSpan.ALL_TIME
+                filterSpan = FilterSpan.NONE
             } else {
                 rangeDateLv.postValue(null)
             }

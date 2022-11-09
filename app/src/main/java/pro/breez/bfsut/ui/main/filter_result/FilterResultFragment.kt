@@ -2,6 +2,7 @@ package pro.breez.bfsut.ui.main.filter_result
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
@@ -13,6 +14,7 @@ import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
 import pro.breez.bfsut.ui.main.all_logs.AllLogFragment
 import pro.breez.bfsut.ui.main.paid_logs.PaidLogsFragment
 import pro.breez.bfsut.util.alert.OnPageSelectedListener
+import pro.breez.bfsut.util.ifNotNull
 
 
 @AndroidEntryPoint
@@ -25,28 +27,38 @@ class FilterResultFragment : BaseFragment<FragmentFilterResultBinding, FilterRes
 
     private fun initViews() {
         val strBuilder = StringBuilder()
-        viewModel.filterResult.let {
-            it.farmerName?.let {
+        viewModel.filterResult.let { filter ->
+            filter.farmerName?.let {
                 strBuilder.append(it)
             }
-            it.range?.from?.let {
-                strBuilder.append("\n")
+            filter.range?.from?.let {
+                filter.farmerName.ifNotNull {
+                    strBuilder.append("\n")
+                }
                 strBuilder.append("$it - ")
             }
-            it.range?.to?.let {
-                strBuilder.append("\n")
+            filter.range?.to?.let {
                 strBuilder.append(it)
             }
-            it.filterSpan?.title?.let {
+            filter.filterSpan?.title?.let {
                 strBuilder.append("\n")
                 strBuilder.append(it)
             }
         }
         binding.toolbar.setTitle("Результаты по:")
         binding.resultTitleTv.text = strBuilder.toString()
+
         binding.toolbar.setOnBackClickListener {
-            popBackStack(R.id.navigation_log)
+            when (findNavController().previousBackStackEntry?.destination?.id) {
+                R.id.navigation_filter -> {
+                    popBackStack(R.id.navigation_log)
+                }
+                R.id.navigation_farmer_profile -> {
+                    requireActivity().onBackPressed()
+                }
+            }
         }
+
         val pagerAdapter = FragmentPagerItemAdapter(
             childFragmentManager, createTabs()
         )
@@ -63,7 +75,7 @@ class FilterResultFragment : BaseFragment<FragmentFilterResultBinding, FilterRes
             override fun onPageSelected(position: Int) {
                 val fragment =
                     pagerAdapter.getPage(position)
-                if (fragment != null) {
+                fragment.ifNotNull {
                     (fragment as OnPageSelectedListener).onPageSelected()
                 }
             }

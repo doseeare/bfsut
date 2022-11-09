@@ -13,7 +13,10 @@ import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
 import pro.breez.data.cache.DataPreference
 import pro.breez.data.cache.SettingsPreference
-import pro.breez.domain.interactor.*
+import pro.breez.domain.interactor.ChangeMilkPriceUseCase
+import pro.breez.domain.interactor.FarmersCheckUseCase
+import pro.breez.domain.interactor.MilkPriceUseCase
+import pro.breez.domain.interactor.TotalMilkUseCase
 import pro.breez.domain.model.output.FarmerCheckModel
 import pro.breez.domain.model.output.MilkPriceModel
 import pro.breez.domain.model.output.TotalMilkModel
@@ -25,8 +28,7 @@ class HomeViewModel @Inject constructor(
     private val getTotalMilk: TotalMilkUseCase,
     private val getMilkPrice: MilkPriceUseCase,
     private val changeMilkPrice: ChangeMilkPriceUseCase,
-    private val dataPreference: DataPreference,
-    private val userNameUseCase: UserNameUseCase,
+    val dataPreference: DataPreference,
     val settingsPreference: SettingsPreference
 ) : BaseViewModel() {
 
@@ -38,15 +40,6 @@ class HomeViewModel @Inject constructor(
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
         showChangePrice()
-        setUserName()
-    }
-
-    private fun setUserName() {
-        userNameUseCase.execute(viewModelScope) {
-            handleResult(it) {
-                userNameLV.postValue(it.username)
-            }
-        }
     }
 
     override fun onResume(owner: LifecycleOwner) {

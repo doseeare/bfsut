@@ -7,9 +7,9 @@ import java.io.Serializable
 
 class FilterResult(
     val farmerName: String? = null,
-    val farmerId: String?,
-    val filterSpan: FilterSpan?,
-    val range: DateRange?
+    val farmerId: String? = null,
+    val filterSpan: FilterSpan? = null,
+    val range: DateRange? = null
 ) : Serializable {
 
     fun toBody() = FilterBody(
