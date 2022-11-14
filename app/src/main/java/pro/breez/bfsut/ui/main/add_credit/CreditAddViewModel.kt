@@ -22,7 +22,6 @@ open class CreditAddViewModel @Inject constructor(
     private val farmersUseCase: FarmersUseCase,
     private val productUseCase: ProductUseCase,
     private val categoryUseCase: CategoryUseCase,
-    private val dateUseCase: DateUseCase,
     private val goalUseCase: GoalUseCase,
     private val postCreditUseCase: CreditUseCase
 
@@ -84,7 +83,6 @@ open class CreditAddViewModel @Inject constructor(
             }
         }
     }
-
 
     fun productClicked() {
         showLoadingView()

@@ -59,7 +59,7 @@
                 android:text="@string/personal_data"
                 android:textColor="@color/text_bold_color"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/name_et"
@@ -133,7 +133,7 @@
                     android:text="@string/sex"
                     android:textColor="@color/text_bold_color"
                     android:textSize="28sp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -210,7 +210,7 @@
                 android:text="@string/passport_data"
                 android:textColor="@color/text_bold_color"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/inn_et"
@@ -292,7 +292,7 @@
                 android:text="@string/location_on_doc"
                 android:textColor="@color/text_bold_color"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/country_et"
@@ -342,6 +342,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 app:hint="Выберите улицу"
+                app:important="true"
                 app:title="Улица"
                 app:type="field" />
 
@@ -387,7 +388,7 @@
                     android:text="@string/fact_location_question"
                     android:textColor="@color/text_bold_color"
                     android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -449,7 +450,7 @@
                     android:text="@string/fact_location"
                     android:textColor="@color/text_bold_color"
                     android:textSize="28sp"
-                    android:textStyle="bold" />
+                    android:textStyle="normal" />
 
                 <pro.breez.bfsut.custom.view.CustomDropDownEditText
                     android:id="@+id/actual_country_et"
@@ -531,7 +532,7 @@
                 android:text="Семья"
                 android:textColor="@color/text_bold_color"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
@@ -545,7 +546,7 @@
                     android:text="@string/family_status"
                     android:textColor="@color/text_bold_color"
                     android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:textStyle="normal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -642,7 +643,7 @@
                 android:text="@string/education"
                 android:textColor="@color/text_bold_color"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/education_et"
@@ -661,7 +662,7 @@
                 android:text="@string/job"
                 android:textColor="@color/text_bold_color"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/job_company_et"

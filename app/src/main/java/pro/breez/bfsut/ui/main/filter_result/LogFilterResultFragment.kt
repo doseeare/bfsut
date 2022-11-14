@@ -9,7 +9,7 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
-import pro.breez.bfsut.databinding.FragmentFilterResultBinding
+import pro.breez.bfsut.databinding.FragmentLogFilterResultBinding
 import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
 import pro.breez.bfsut.ui.main.all_logs.AllLogFragment
 import pro.breez.bfsut.ui.main.paid_logs.PaidLogsFragment
@@ -18,7 +18,8 @@ import pro.breez.bfsut.util.ifNotNull
 
 
 @AndroidEntryPoint
-class FilterResultFragment : BaseFragment<FragmentFilterResultBinding, FilterResultViewModel>() {
+class LogFilterResultFragment :
+    BaseFragment<FragmentLogFilterResultBinding, LogFilterResultViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -32,7 +32,7 @@
             android:text="Утром"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold"
+            android:textStyle="normal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,7 +57,6 @@
             android:text="сом"
             android:textColor="@color/text_bold_color"
             android:textSize="18sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/price_tv"
             app:layout_constraintStart_toEndOf="@id/price_tv" />
 
@@ -68,7 +67,7 @@
             android:text="0 литров"
             android:textColor="@color/text_bold_color"
             android:textSize="13sp"
-            android:textStyle="bold"
+            android:textStyle="normal"
             app:layout_constraintBottom_toTopOf="@id/price_tv"
             app:layout_constraintStart_toStartOf="@id/price_tv" />
 

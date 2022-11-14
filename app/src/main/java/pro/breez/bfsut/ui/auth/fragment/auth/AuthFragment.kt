@@ -1,7 +1,9 @@
 package pro.breez.bfsut.ui.auth.fragment.auth
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseFragment
@@ -35,5 +37,6 @@ class AuthFragment : BaseFragment<FragmentAuthBinding, AuthViewModel>() {
             passwordEt.showError = false
         }
     }
+
 
 }

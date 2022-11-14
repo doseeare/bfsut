@@ -15,7 +15,10 @@ import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
 import pro.breez.bfsut.ui.main.all_logs.AllLogFragment
+import pro.breez.bfsut.ui.main.credit.CreditIssuedTabFragment
+import pro.breez.bfsut.ui.main.credit.CreditStatusTabFragment
 import pro.breez.bfsut.ui.main.credit.CreditsFragment
+import pro.breez.bfsut.ui.main.credit_status.CreditStatusFragment
 import pro.breez.bfsut.ui.main.home.HomeFragment
 import pro.breez.bfsut.ui.main.log.LogFragment
 import pro.breez.bfsut.ui.main.paid_logs.PaidLogsFragment
@@ -49,7 +52,6 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
         Log.d("Fragments", "onCreate: ${this::class.java}")
     }
 
-
     override fun onResume() {
         super.onResume()
         when (this) {
@@ -58,6 +60,9 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
             is AllLogFragment,
             is HomeFragment,
             is LogFragment,
+            is CreditStatusTabFragment,
+            is CreditStatusFragment,
+            is CreditIssuedTabFragment,
             is CreditsFragment -> hideOrShowBottomNavigation(false)
             else -> hideOrShowBottomNavigation(true)
         }

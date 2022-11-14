@@ -188,4 +188,6 @@ class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewMo
             }
         }
     }
+
+
 }

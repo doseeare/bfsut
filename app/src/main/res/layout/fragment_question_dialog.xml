@@ -20,7 +20,7 @@
             android:gravity="center"
             android:textColor="@color/text_bold_color"
             android:textSize="26sp"
-            android:textStyle="bold"
+            android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -48,7 +48,7 @@
                 android:text="Нет"
                 android:textAllCaps="false"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/positive_btn"
@@ -62,7 +62,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
         </LinearLayout>
 

@@ -22,6 +22,7 @@
         android:layout_marginBottom="13dp"
         android:textColor="@color/text_bold_color"
         android:textSize="26sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:text="Мужской" />
 

@@ -10,6 +10,7 @@ import androidx.fragment.app.DialogFragment
 import pro.breez.bfsut.R
 import pro.breez.bfsut.adapter.SelectorItemAdapter
 import pro.breez.bfsut.databinding.DialogItemSearchBinding
+import pro.breez.bfsut.util.ifNotNull
 
 class SearchItemDialog<T>(
     private val valueName: Array<String>,
@@ -18,6 +19,7 @@ class SearchItemDialog<T>(
     private lateinit var binding: DialogItemSearchBinding
 
     private var onPositiveClick: View.OnClickListener? = null
+    private var onHomeClicked: View.OnClickListener? = null
     private var onKeyChanged: ((String) -> Unit)? = null
 
     private lateinit var adapter: SelectorItemAdapter<T>
@@ -28,11 +30,16 @@ class SearchItemDialog<T>(
     ): View {
         binding = DialogItemSearchBinding.inflate(inflater, container, false)
         requireDialog().window?.setBackgroundDrawableResource(android.R.color.transparent)
+
         adapter = SelectorItemAdapter(arrayListOf(), valueName, activeBtn = {
             binding.selectBtn.isEnabled = true
         })
         binding.itemRv.adapter = adapter
         binding.selectBtn.setOnClickListener(onPositiveClick)
+        binding.homeBtn.setOnClickListener(onHomeClicked)
+        onHomeClicked.ifNotNull {
+            binding.homeBtn.visibility = View.VISIBLE
+        }
         onEditTextFilled()
         return binding.root
     }
@@ -40,11 +47,15 @@ class SearchItemDialog<T>(
     private fun onEditTextFilled() {
         var mLastClickTime = 0L
         binding.search.doOnTextChanged { text, _, _, _ ->
-            if (text.toString().isNotBlank())
+            binding.selectBtn.isEnabled = false
+            if (text.toString().isNotBlank()) {
                 if (SystemClock.elapsedRealtime() - mLastClickTime > 500L) {
                     mLastClickTime = SystemClock.elapsedRealtime()
                     onKeyChanged?.invoke(text.toString())
                 }
+            } else {
+                setDefaultView()
+            }
         }
     }
 
@@ -57,13 +68,14 @@ class SearchItemDialog<T>(
             adapter.update(list)
             binding.notFoundView.visibility = View.GONE
             binding.itemRv.visibility = View.VISIBLE
-            binding.selectBtn.text = "Выбрать"
+            binding.selectBtn.text = "Применить"
         } else {
             binding.notFoundView.visibility = View.VISIBLE
             binding.itemRv.visibility = View.GONE
             binding.img.setImageResource(R.drawable.ic_search_not_found)
             binding.helperTv.text = getString(R.string.need_to_create)
             binding.selectBtn.text = "Создать"
+            binding.selectBtn.isEnabled = true
         }
     }
 
@@ -74,5 +86,22 @@ class SearchItemDialog<T>(
             }
             dismiss()
         }
+    }
+
+    fun onHomeBtnClicked(block: () -> Unit) {
+        onHomeClicked = View.OnClickListener {
+            block.invoke()
+            dismiss()
+        }
+    }
+
+    private fun setDefaultView() {
+        binding.img.setImageResource(R.drawable.ic_search_preview)
+        binding.helperTv.text = getString(R.string.check_or_create)
+        binding.homeBtn.visibility = View.VISIBLE
+        binding.selectBtn.isEnabled = false
+        binding.notFoundView.visibility = View.VISIBLE
+        binding.itemRv.visibility = View.GONE
+        adapter.update(emptyList())
     }
 }

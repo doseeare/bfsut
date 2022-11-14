@@ -21,7 +21,7 @@
         android:text="Сбор молока \nза сегодня"
         android:textColor="@color/text_bold_color"
         android:textSize="30sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
@@ -79,7 +79,7 @@
                 android:maxLines="1"
                 android:textColor="@color/text_bold_color"
                 android:textSize="36sp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +123,7 @@
                 android:maxLines="1"
                 android:textColor="@color/text_bold_color"
                 android:textSize="36sp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -192,7 +192,7 @@
         android:text="Итого: 0 сом"
         android:textColor="@color/text_bold_color"
         android:textSize="26sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@id/create_btn" />
 
     <androidx.appcompat.widget.AppCompatButton

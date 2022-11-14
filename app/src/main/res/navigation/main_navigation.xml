@@ -134,9 +134,9 @@
 
     <fragment
         android:id="@+id/navigation_filter_result"
-        android:name="pro.breez.bfsut.ui.main.filter_result.FilterResultFragment"
+        android:name="pro.breez.bfsut.ui.main.filter_result.LogFilterResultFragment"
         android:label="Результаты фильтра"
-        tools:layout="@layout/fragment_filter_result">
+        tools:layout="@layout/fragment_log_filter_result">
         <argument
             android:name="filter_result"
             app:argType="pro.breez.bfsut.model.FilterResult" />

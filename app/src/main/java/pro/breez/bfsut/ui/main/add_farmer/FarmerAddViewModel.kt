@@ -291,8 +291,12 @@ class FarmerAddViewModel @Inject constructor(
             searchFarmersInSystem(dialog, it)
         }
         dialog.isCancelable = isCancelable
+
         dialog.onPositiveBtnClicked {
             farmerFoundLV.postValue(it)
+        }
+        dialog.onHomeBtnClicked {
+            popBackStack.trigger()
         }
         showDialogFragment.startEvent(dialog)
     }
@@ -332,6 +336,7 @@ class FarmerAddViewModel @Inject constructor(
     }
 
     fun onSuccessValidate() {
+        showLoadingView()
         val body = FarmerBody(
             first_name = name,
             father_name = lastname,

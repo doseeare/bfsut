@@ -47,7 +47,7 @@
     <string name="old_price_or_new">Укажите цену молока
 на сегодня или оставьте предыдущую стоимость</string>
     <string name="check_or_create">Перед созданием фермера проверьте его наличие в базе. Так вы сэкономите время на заполнение данных</string>
-    <string name="need_to_create">Пользователя с таким ФИО не найдено. Вам нужно создать его</string>
+    <string name="need_to_create">В системе не найдено,\nвам нужно создать фермера </string>
     <string name="farmer_not_found">Пользователя с таким ФИО не найдено. Свяжитесь со своим СПФ</string>
     <string name="fill_the_field">Заполните полe</string>
     <string name="filter_journal">Отчет сбора молока:</string>
@@ -56,4 +56,6 @@
     <string name="family">Семья</string>
     <string name="edit_farmer">Редактирование фермера</string>
     <string name="save_changes">Сохранить изменения</string>
+    <string name="return_to_home">Вернуться на главную</string>
+    <string name="credit_status_all">Все</string>
 </resources>

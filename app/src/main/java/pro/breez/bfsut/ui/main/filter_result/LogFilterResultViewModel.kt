@@ -8,10 +8,10 @@ import pro.breez.bfsut.model.FilterResult
 import javax.inject.Inject
 
 @HiltViewModel
-class FilterResultViewModel @Inject constructor() : BaseViewModel() {
+class LogFilterResultViewModel @Inject constructor() : BaseViewModel() {
 
     val filterResult: FilterResult by lazy {
-        FilterResultFragmentArgs.fromBundle(requiredArguments()).filterResult
+        LogFilterResultFragmentArgs.fromBundle(requiredArguments()).filterResult
     }
 
     override fun onCreate(owner: LifecycleOwner) {

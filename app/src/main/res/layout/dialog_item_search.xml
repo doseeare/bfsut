@@ -29,7 +29,7 @@
                 android:hint="@string/search"
                 android:padding="@dimen/default_margins"
                 android:textSize="18sp"
-                android:textStyle="bold"
+                android:textStyle="normal"
                 app:layout_constraintEnd_toStartOf="@id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +53,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/search"
                 tools:itemCount="6"
-                tools:listitem="@layout/item_selector" />
+                tools:listitem="@layout/item_selector"
+                tools:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/not_found_view"
@@ -83,6 +84,18 @@
                     android:textColor="@color/text_bold_color"
                     android:textSize="21sp" />
 
+                <TextView
+                    android:id="@+id/home_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margins"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:textSize="16sp"
+                    android:background="@drawable/bg_shape_light_gray_corners"
+                    android:padding="8dp"
+                    android:text="@string/return_to_home" />
+
             </LinearLayout>
 
 
@@ -97,7 +110,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/selector_default_button"
         android:enabled="false"
-        android:text="@string/select"
+        android:text="Применить"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@id/card"

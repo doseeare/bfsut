@@ -14,7 +14,6 @@ import pro.breez.bfsut.model.MaritalStatusEnum
 import pro.breez.bfsut.util.DateUtil
 import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
-import pro.breez.bfsut.util.alert.dialog.SearchItemDialog
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilderImpl
 import pro.breez.domain.interactor.*
 import pro.breez.domain.model.input.FarmerBody
@@ -284,17 +283,6 @@ class EditProfileViewModel @Inject constructor(
             }
         }
 
-    }
-
-    private fun searchFarmersInSystem(
-        dialog: SearchItemDialog<MfSysFarmerModel>,
-        searchKey: String
-    ) {
-        searchFarmer.execute(viewModelScope, searchKey) {
-            handleResult(it) {
-                dialog.updateList(it)
-            }
-        }
     }
 
     fun jobPurposeClicked() {

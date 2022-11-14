@@ -38,7 +38,7 @@
         android:layout_margin="@dimen/default_margins"
         android:textColor="@color/text_bold_color"
         android:textSize="18sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="26.05.2022" />
@@ -51,7 +51,7 @@
         android:paddingHorizontal="@dimen/default_margins"
         android:textColor="@color/text_bold_color"
         android:textSize="26sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintTop_toBottomOf="@id/post_date_tv"
         tools:text="Акылбек Асанов" />
 
@@ -71,7 +71,7 @@
             android:text="Утром"
             android:textColor="@color/error_color"
             android:textSize="20sp"
-            android:textStyle="bold"
+            android:textStyle="normal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/text_bold_color"
             android:textSize="56sp"
-            android:textStyle="bold"
+            android:textStyle="normal"
             app:layout_constraintStart_toStartOf="@id/day"
             app:layout_constraintTop_toBottomOf="@id/day"
             tools:text="6л" />
@@ -94,7 +94,7 @@
             android:text="Вечером"
             android:textColor="@color/text_bold_color"
             android:textSize="20sp"
-            android:textStyle="bold"
+            android:textStyle="normal"
             app:layout_constraintStart_toEndOf="@id/day_liters_tv"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/text_bold_color"
             android:textSize="56sp"
-            android:textStyle="bold"
+            android:textStyle="normal"
             app:layout_constraintStart_toStartOf="@id/evening"
             app:layout_constraintTop_toBottomOf="@id/evening"
             tools:text="6л" />
@@ -163,7 +163,7 @@
         android:text="Итого:"
         android:textColor="@color/gray_text"
         android:textSize="22sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/total_sum_tv"
         app:layout_constraintStart_toStartOf="@id/total_sum_tv"
@@ -187,7 +187,7 @@
         android:layout_marginBottom="24dp"
         android:textColor="@color/text_bold_color"
         android:textSize="56sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@id/calc_btn"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="600л" />

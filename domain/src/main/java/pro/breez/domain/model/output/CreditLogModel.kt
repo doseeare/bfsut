@@ -15,6 +15,6 @@ data class CreditLogModel(
     val period: Int,
     val productBankID: Int,
     val purposeID: Int,
-    val rating: Any,
+    val rating: Int,
     val status: String
 ): Serializable

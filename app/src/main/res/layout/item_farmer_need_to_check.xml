@@ -12,7 +12,7 @@
         android:layout_marginStart="@dimen/default_margins"
         android:textColor="@color/text_bold_color"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@id/milk_btn"
         app:layout_constraintEnd_toStartOf="@id/milk_btn"
         app:layout_constraintStart_toStartOf="parent"
