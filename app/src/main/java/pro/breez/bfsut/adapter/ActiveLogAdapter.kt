@@ -26,7 +26,6 @@ class ActiveLogAdapter(
             nightLitersTv.text = "${item.evening}л"
             nameTv.text = item.farmer_name
             priceTv.text = "${item.overall}с"
-            itemList[position].isSelected = select
             checkbox.isChecked = select
             container.setOnClickOnceListener {
                 itemClicked.invoke(item)

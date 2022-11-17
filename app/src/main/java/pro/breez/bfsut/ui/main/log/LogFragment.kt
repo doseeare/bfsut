@@ -32,6 +32,7 @@ class LogFragment : BaseFragment<FragmentLogBinding, LogViewModel>() {
             childFragmentManager, createTabs()
         )
         binding.viewPager.adapter = pagerAdapter
+        binding.viewPager.offscreenPageLimit = pagerAdapter.count
         binding.tabLayout.setViewPager(binding.viewPager)
         binding.tabLayout.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
@@ -52,7 +53,6 @@ class LogFragment : BaseFragment<FragmentLogBinding, LogViewModel>() {
             override fun onPageScrollStateChanged(state: Int) {
 
             }
-
         })
     }
 

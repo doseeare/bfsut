@@ -66,8 +66,41 @@
         android:id="@+id/navigation_credits"
         android:name="pro.breez.bfsut.ui.main.credit.CreditsFragment"
         android:label="@string/title_credits"
+        tools:layout="@layout/fragment_credits">
+        <action
+            android:id="@+id/credit_to_credits_detail"
+            app:destination="@id/navigation_credits_detail"
+            app:popUpTo="@id/navigation_credits" />
+        <action
+            android:id="@+id/credit_to_credits_search_result"
+            app:destination="@id/navigation_credit_search_result"
+            app:popUpTo="@id/navigation_credits" />
 
-        tools:layout="@layout/fragment_credits" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_credit_search_result"
+        android:name="pro.breez.bfsut.ui.main.credit_search_result.CreditSearchResultFragment"
+        android:label="@string/title_credits"
+        tools:layout="@layout/fragment_credit_search_result">
+        <argument
+            android:name="farmer"
+            app:argType="pro.breez.domain.model.output.FarmersModel" />
+        <action
+            android:id="@+id/credit_search_result_to_credit_detail"
+            app:destination="@id/navigation_credits_detail"
+            app:popUpTo="@id/navigation_credit_search_result" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_credits_detail"
+        android:name="pro.breez.bfsut.ui.main.credit_status_detail.CreditStatusDetailFragment"
+        android:label="@string/title_credits"
+        tools:layout="@layout/fragment_credit_status_detail">
+        <argument
+            android:name="creditId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_edit_profile"
         android:name="pro.breez.bfsut.ui.main.farmer_profile_edit.EditProfileFragment"

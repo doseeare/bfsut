@@ -10,16 +10,17 @@ interface MainRepository {
     fun getFarmers(): Result<List<FarmersModel>>
     fun getUserName(): Result<UserNameModel>
     fun updateProfile(body: Pair<FarmerBody, String>): Result<DefaultSuccessModel>
-    fun getFarmerProfile(id : String): Result<FarmerProfileModel>
+    fun getFarmerProfile(id: String): Result<FarmerProfileModel>
     fun getFarmersCheck(): Result<List<FarmerCheckModel>>
     fun getProduct(id: String): Result<List<ProductsModel>>
     fun getCategory(): Result<List<CategoryModel>>
     fun getDate(): Result<List<Pair<String, String>>>
     fun getGoal(): Result<List<GoalModel>>
-    fun getCredits(): Result<List<CreditLogModel>>
+    fun getCredits(queries: Map<String, String>): Result<List<CreditStatusModel>>
     fun postCredit(body: CreditBody): Result<CreditModel>
     fun getMilkPrice(): Result<MilkPriceModel>
     fun postMilkPrice(body: MilkPriceModel): Result<MilkPriceModel>
     fun postMilk(body: AddMilkBody): Result<AddMilkModel>
     fun getTotalMilk(): Result<TotalMilkModel>
+    fun getCreditDetail(creditId : String): Result<CreditDetailModel>
 }

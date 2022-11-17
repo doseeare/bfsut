@@ -58,4 +58,6 @@
     <string name="save_changes">Сохранить изменения</string>
     <string name="return_to_home">Вернуться на главную</string>
     <string name="credit_status_all">Все</string>
+    <string name="credit_status_green">Ура! Заявка Асанова Кабылбека была одобрена, он сможет получить 60000 сом. Свяжитесь с нашими специалистами</string>
+    <string name="credit_status_red">К сожалению заявка Дайыра Ахматова на 900000 сом была отклонена.</string>
 </resources>

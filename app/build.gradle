@@ -55,6 +55,9 @@ dependencies {
     implementation project(':data')
     implementation project(':domain')
     implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.7.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
 
     def presentationImpl = rootProject.ext.presentationImpl
     def presentationKapt = rootProject.ext.presentationKapt

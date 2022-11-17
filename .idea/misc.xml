@@ -27,6 +27,8 @@
         <entry key="app/src/main/res/drawable/bg_choose_off.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_corner_gray_btn.xml" value="0.2445" />
         <entry key="app/src/main/res/drawable/bg_credit.xml" value="0.126" />
+        <entry key="app/src/main/res/drawable/bg_credit_status_green.xml" value="0.188" />
+        <entry key="app/src/main/res/drawable/bg_credit_status_red.xml" value="0.188" />
         <entry key="app/src/main/res/drawable/bg_default_span.xml" value="0.323" />
         <entry key="app/src/main/res/drawable/bg_disabled_btn.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/bg_enabled_btn.xml" value="0.2325" />
@@ -48,6 +50,7 @@
         <entry key="app/src/main/res/drawable/bg_rounded_shape_darker.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/bg_rounded_shape_light.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/bg_rounded_shapre.xml" value="0.2325" />
+        <entry key="app/src/main/res/drawable/bg_rounded_status.xml" value="0.188" />
         <entry key="app/src/main/res/drawable/bg_secondery_button.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/bg_secondory_btn.xml" value="0.323" />
         <entry key="app/src/main/res/drawable/bg_select_btn.xml" value="0.139" />
@@ -68,7 +71,9 @@
         <entry key="app/src/main/res/drawable/ic_app_title.xml" value="0.126" />
         <entry key="app/src/main/res/drawable/ic_change_password_lock.xml" value="0.1115" />
         <entry key="app/src/main/res/drawable/ic_credit.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/ic_credit_filter.xml" value="0.188" />
         <entry key="app/src/main/res/drawable/ic_credit_request.xml" value="0.1145" />
+        <entry key="app/src/main/res/drawable/ic_credit_search.xml" value="0.188" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/ic_default_error.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/ic_fab_plus.xml" value="0.1145" />
@@ -90,6 +95,7 @@
         <entry key="app/src/main/res/drawable/ic_status_commit.xml" value="0.1825" />
         <entry key="app/src/main/res/drawable/ic_status_denied_default.xml" value="0.1825" />
         <entry key="app/src/main/res/drawable/ic_status_denied_selected.xml" value="0.1825" />
+        <entry key="app/src/main/res/drawable/ic_status_selected.xml" value="0.188" />
         <entry key="app/src/main/res/drawable/ic_status_sent.xml" value="0.1825" />
         <entry key="app/src/main/res/drawable/ic_success.xml" value="0.1965" />
         <entry key="app/src/main/res/drawable/market_custom_tab_colors.xml" value="0.1" />
@@ -125,9 +131,11 @@
         <entry key="app/src/main/res/layout/fragment_change_price_bottom_sheet.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_credit_add.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_credit_issued_tab.xml" value="0.2984181274048739" />
+        <entry key="app/src/main/res/layout/fragment_credit_search_result.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_credit_status.xml" value="0.2984181274048739" />
+        <entry key="app/src/main/res/layout/fragment_credit_status_detail.xml" value="0.3068131868131868" />
         <entry key="app/src/main/res/layout/fragment_credit_status_tab.xml" value="0.2984181274048739" />
-        <entry key="app/src/main/res/layout/fragment_credits.xml" value="0.2984181274048739" />
+        <entry key="app/src/main/res/layout/fragment_credits.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_credits_container.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.22735507246376813" />
         <entry key="app/src/main/res/layout/fragment_dialog_milk_price.xml" value="0.15391192817443353" />
@@ -151,6 +159,7 @@
         <entry key="app/src/main/res/layout/item_all_farmers.xml" value="0.22083333333333333" />
         <entry key="app/src/main/res/layout/item_all_log.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_credit.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_credit_status.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_farmer_need_to_check.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/item_paid_logs.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_paid_logs_detail.xml" value="0.33" />

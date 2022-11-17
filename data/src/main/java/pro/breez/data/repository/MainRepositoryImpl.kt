@@ -55,8 +55,8 @@ class MainRepositoryImpl(
         return restClient.mainApi.getGoal(dataPreference.token)
     }
 
-    override fun getCredits(): Result<List<CreditLogModel>> {
-        return restClient.mainApi.getCredits(dataPreference.token)
+    override fun getCredits(queries: Map<String, String>): Result<List<CreditStatusModel>> {
+        return restClient.mainApi.getCredits(dataPreference.token, queries)
     }
 
     override fun postCredit(body: CreditBody): Result<CreditModel> {
@@ -77,5 +77,9 @@ class MainRepositoryImpl(
 
     override fun getTotalMilk(): Result<TotalMilkModel> {
         return restClient.mainApi.getTotalMilk(dataPreference.token)
+    }
+
+    override fun getCreditDetail(creditId: String): Result<CreditDetailModel> {
+        return restClient.mainApi.creditDetail(dataPreference.token, creditId)
     }
 }

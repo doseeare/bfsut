@@ -39,6 +39,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ImageView
+        android:id="@+id/filter_btn"
+        android:layout_width="42dp"
+        android:layout_margin="@dimen/default_margins"
+        android:layout_height="42dp"
+        android:src="@drawable/ic_credit_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <pro.breez.bfsut.custom.view.ParentViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"

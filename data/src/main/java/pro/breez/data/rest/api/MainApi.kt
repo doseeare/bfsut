@@ -53,7 +53,8 @@ interface MainApi {
     @GET("v1/credit/")
     fun getCredits(
         @Header("Authorization") token: String,
-    ): Result<List<CreditLogModel>>
+        @QueryMap queries: Map<String, String>
+    ): Result<List<CreditStatusModel>>
 
     @POST("v1/credit/")
     fun postCredit(
@@ -186,4 +187,10 @@ interface MainApi {
         @Header("Authorization") token: String,
         @QueryMap queries: Map<String, String>
     ): Result<List<MfSysFarmerModel>>
+
+    @POST("v1/credit/detailed")
+    fun creditDetail(
+        @Header("Authorization") token: String,
+        @Query("credit_id") creditId: String
+    ): Result<CreditDetailModel>
 }
