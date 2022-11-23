@@ -49,7 +49,8 @@ ext {
             smartBottomSheet   : "com.github.andrefrsousa:SuperBottomSheet:2.0.0",
             customRadioButtons : "nl.bryanderidder:themed-toggle-button-group:1.4.1",
             editTextMask       : "com.github.RedMadRobot:input-mask-android:6.1.0",
-            broadCast          : "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0"
+            broadCast          : "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0",
+            pdfViewer : "com.github.barteksc:android-pdf-viewer:2.8.2"
     ]
 
     presentationKapt = [

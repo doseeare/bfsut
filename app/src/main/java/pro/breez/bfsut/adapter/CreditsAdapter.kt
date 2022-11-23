@@ -1,6 +1,7 @@
 package pro.breez.bfsut.adapter
 
 import android.view.View
+import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseRecyclerAdapter
 import pro.breez.bfsut.databinding.ItemCreditStatusBinding
 import pro.breez.bfsut.model.CreditStatusEnum
@@ -18,8 +19,10 @@ class CreditsAdapter(
         binding.apply {
             nameTv.text = item.full_name
             dateTv.text = item.credit_request_creation_date
-
             val creditStatus = CreditStatusEnum.fromKey(item.status)
+            if (!item.read_status)
+                nameTv.setCompoundDrawablesWithIntrinsicBounds(0,0, R.drawable.ic_not_open_indicator,0)
+
             if (isAll) {
                 binding.statusTv.visibility = View.VISIBLE
                 binding.statusTv.text = creditStatus.title

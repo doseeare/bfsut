@@ -18,6 +18,7 @@ import pro.breez.bfsut.ui.main.all_logs.AllLogFragment
 import pro.breez.bfsut.ui.main.credit.CreditIssuedTabFragment
 import pro.breez.bfsut.ui.main.credit.CreditStatusTabFragment
 import pro.breez.bfsut.ui.main.credit.CreditsFragment
+import pro.breez.bfsut.ui.main.credit_issued.CreditIssuedFragment
 import pro.breez.bfsut.ui.main.credit_status.CreditStatusFragment
 import pro.breez.bfsut.ui.main.home.HomeFragment
 import pro.breez.bfsut.ui.main.log.LogFragment
@@ -63,6 +64,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
             is CreditStatusTabFragment,
             is CreditStatusFragment,
             is CreditIssuedTabFragment,
+            is CreditIssuedFragment,
             is CreditsFragment -> hideOrShowBottomNavigation(false)
             else -> hideOrShowBottomNavigation(true)
         }

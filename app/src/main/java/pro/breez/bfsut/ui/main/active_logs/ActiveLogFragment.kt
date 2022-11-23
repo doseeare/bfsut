@@ -8,8 +8,9 @@ import pro.breez.bfsut.adapter.ActiveLogAdapter
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentActiveLogBinding
 import pro.breez.bfsut.model.FilterResult
-import pro.breez.bfsut.ui.main.filter_result.LogFilterResultFragment
+import pro.breez.bfsut.ui.main.filter_result.log.LogFilterResultFragment
 import pro.breez.bfsut.util.alert.OnPageSelectedListener
+import pro.breez.bfsut.util.ifNotNull
 import pro.breez.bfsut.util.setOnClickOnceListener
 import pro.breez.domain.model.output.LogsModel
 

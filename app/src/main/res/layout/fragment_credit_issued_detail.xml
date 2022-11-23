@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.main.credit_issued_detail.CreditIssuedDetailFragment">
+
+    <pro.breez.bfsut.custom.view.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:toolbarLabel="Выданный кредит" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tab_container"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginHorizontal="@dimen/default_margins"
-        android:layout_marginTop="@dimen/default_margins"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bg_tab"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_goneMarginTop="@dimen/default_margins">
 
         <com.ogaclejapan.smarttablayout.SmartTabLayout
@@ -25,10 +34,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:stl_defaultTabTextAllCaps="false"
-            app:stl_distributeEvenly="true"
             app:stl_customTabTextLayoutId="@layout/custom_tab_layout"
             app:stl_customTabTextViewId="@id/textView_title"
+            app:stl_defaultTabTextAllCaps="false"
+            app:stl_distributeEvenly="true"
             app:stl_dividerThickness="0dp"
             app:stl_indicatorColor="@color/black"
             app:stl_indicatorCornerRadius="12dp"

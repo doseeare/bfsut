@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.model.DateRange
+import pro.breez.bfsut.model.FilterFromEnum
 import pro.breez.bfsut.model.FilterResult
 import pro.breez.bfsut.model.FilterSpan
 import pro.breez.bfsut.model.navigation.FragmentTransaction
@@ -22,6 +23,10 @@ import javax.inject.Inject
 class FilterViewModel @Inject constructor(
     private val farmersUseCase: FarmersUseCase,
 ) : BaseViewModel() {
+
+    private val filterFrom: FilterFromEnum by lazy {
+        FilterFragmentArgs.fromBundle(requiredArguments()).filterFromEnum
+    }
 
     private var typeFilterSelected: ((isPeriod: Boolean) -> Unit)? = null
 
@@ -105,7 +110,28 @@ class FilterViewModel @Inject constructor(
             filterSpan,
             rangeDateLv.value
         )
-        val args = FilterFragmentDirections.filterFragmentToFilterResult(filterResult).arguments
-        navigateToFragment.startEvent(FragmentTransaction(R.id.navigation_filter_result, args))
+        when (filterFrom) {
+            FilterFromEnum.LOGS -> {
+                val args =
+                    FilterFragmentDirections.filterFragmentToFilterResult(filterResult).arguments
+                navigateToFragment.startEvent(
+                    FragmentTransaction(
+                        R.id.navigation_filter_result,
+                        args
+                    )
+                )
+            }
+            FilterFromEnum.ISSUED_CREDITS -> {
+                val args =
+                    FilterFragmentDirections.filterFragmentToIssuedFilterResult(filterResult).arguments
+                navigateToFragment.startEvent(
+                    FragmentTransaction(
+                        R.id.navigation_issued_filter_result,
+                        args
+                    )
+                )
+            }
+        }
+
     }
 }

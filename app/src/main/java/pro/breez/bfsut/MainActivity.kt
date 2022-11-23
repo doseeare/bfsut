@@ -45,6 +45,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         val navController = findNavController(R.id.nav_host)
         navView.setupWithNavController(navController)
 
+        navController.navigateUp()
         binding.fabBtn.setOnClickOnceListener {
             fabSelected = !fabSelected
         }

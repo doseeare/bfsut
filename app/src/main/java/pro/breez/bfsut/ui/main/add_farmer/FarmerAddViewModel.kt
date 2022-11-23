@@ -163,7 +163,7 @@ class FarmerAddViewModel @Inject constructor(
 
     fun docSeriesClicked() {
         val list = listOf(
-            MfSysModel(0, "A", "A", ""),
+            MfSysModel(0, "AN", "AN", ""),
             MfSysModel(1, "ID", "ID", "")
         )
         val selector = SelectorDialogBuilderImpl<MfSysModel>()

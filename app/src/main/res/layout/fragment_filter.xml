@@ -66,7 +66,7 @@
             app:toggle_borderColor="@color/bg_default_color"
             app:toggle_borderWidth="2dp"
             app:toggle_btnCornerRadius="10dp"
-            app:toggle_fontFamily="/fonts/helveticaneuecyr.ttf"
+            
             app:toggle_padding="10dp"
             app:toggle_selectedBackgroundColor="@color/text_bold_color"
             app:toggle_selectedTextColor="@color/white"
@@ -83,7 +83,7 @@
             app:toggle_borderColor="@color/bg_default_color"
             app:toggle_borderWidth="2dp"
             app:toggle_btnCornerRadius="10dp"
-            app:toggle_fontFamily="/fonts/helveticaneuecyr.ttf"
+            
             app:toggle_padding="10dp"
             app:toggle_selectedBackgroundColor="@color/text_bold_color"
             app:toggle_selectedTextColor="@color/white"
@@ -99,7 +99,7 @@
             app:toggle_backgroundColor="@android:color/transparent"
             app:toggle_borderColor="@color/bg_default_color"
             app:toggle_borderWidth="2dp"
-            app:toggle_fontFamily="/fonts/helveticaneuecyr.ttf"
+            
             app:toggle_btnCornerRadius="10dp"
             app:toggle_padding="10dp"
             app:toggle_selectedBackgroundColor="@color/text_bold_color"
@@ -116,7 +116,7 @@
             app:toggle_backgroundColor="@android:color/transparent"
             app:toggle_borderColor="@color/bg_default_color"
             app:toggle_borderWidth="2dp"
-            app:toggle_fontFamily="/fonts/helveticaneuecyr.ttf"
+            
             app:toggle_btnCornerRadius="10dp"
             app:toggle_padding="10dp"
             app:toggle_selectedBackgroundColor="@color/text_bold_color"
@@ -133,7 +133,7 @@
             app:toggle_backgroundColor="@android:color/transparent"
             app:toggle_borderColor="@color/bg_default_color"
             app:toggle_borderWidth="2dp"
-            app:toggle_fontFamily="/fonts/helveticaneuecyr.ttf"
+            
             app:toggle_btnCornerRadius="10dp"
             app:toggle_padding="10dp"
             app:toggle_selectedBackgroundColor="@color/text_bold_color"

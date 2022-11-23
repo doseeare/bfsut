@@ -1,4 +1,4 @@
-package pro.breez.bfsut.ui.main.filter_result
+package pro.breez.bfsut.ui.main.filter_result.log
 
 import android.util.Log
 import androidx.lifecycle.LifecycleOwner

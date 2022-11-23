@@ -5,6 +5,7 @@ import pro.breez.domain.model.input.AddMilkBody
 import pro.breez.domain.model.input.CreditBody
 import pro.breez.domain.model.input.FarmerBody
 import pro.breez.domain.model.output.*
+import java.io.InputStream
 
 interface MainRepository {
     fun getFarmers(): Result<List<FarmersModel>>
@@ -22,5 +23,8 @@ interface MainRepository {
     fun postMilkPrice(body: MilkPriceModel): Result<MilkPriceModel>
     fun postMilk(body: AddMilkBody): Result<AddMilkModel>
     fun getTotalMilk(): Result<TotalMilkModel>
-    fun getCreditDetail(creditId : String): Result<CreditDetailModel>
+    fun getCreditDetail(creditId: String): Result<CreditDetailModel>
+    fun getCreditIssued(queries: Map<String, String>): Result<CreditIssuedModel>
+    fun getIssuedDetail(creditId: String): Result<IssuedDetailModel>
+    fun getIssuedGraph(creditId: String): Result<InputStream>
 }

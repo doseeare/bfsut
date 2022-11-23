@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.main.filter_result.issued.IssuedFilterResultFragment">
+
+    <pro.breez.bfsut.custom.view.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/result_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/default_margins"
+        android:layout_marginTop="@dimen/default_margins"
+        android:textColor="@color/text_bold_color"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        tools:text="Садыр Жапаров" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tab_container"
@@ -12,7 +32,7 @@
         android:layout_marginTop="@dimen/default_margins"
         android:background="@drawable/bg_tab"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/result_title_tv"
         app:layout_goneMarginTop="@dimen/default_margins">
 
         <com.ogaclejapan.smarttablayout.SmartTabLayout
@@ -25,10 +45,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:stl_defaultTabTextAllCaps="false"
-            app:stl_distributeEvenly="true"
             app:stl_customTabTextLayoutId="@layout/custom_tab_layout"
             app:stl_customTabTextViewId="@id/textView_title"
+            app:stl_defaultTabTextAllCaps="false"
+            app:stl_distributeEvenly="true"
             app:stl_dividerThickness="0dp"
             app:stl_indicatorColor="@color/black"
             app:stl_indicatorCornerRadius="12dp"

@@ -8,6 +8,7 @@ import pro.breez.domain.model.input.CreditBody
 import pro.breez.domain.model.input.FarmerBody
 import pro.breez.domain.model.output.*
 import pro.breez.domain.repository.MainRepository
+import java.io.InputStream
 
 class MainRepositoryImpl(
     private val restClient: RestClient,
@@ -81,5 +82,18 @@ class MainRepositoryImpl(
 
     override fun getCreditDetail(creditId: String): Result<CreditDetailModel> {
         return restClient.mainApi.creditDetail(dataPreference.token, creditId)
+    }
+
+    override fun getCreditIssued(queries: Map<String, String>): Result<CreditIssuedModel> {
+        return restClient.mainApi.creditIssued(dataPreference.token, queries)
+    }
+
+    override fun getIssuedDetail(creditId: String): Result<IssuedDetailModel> {
+        return restClient.mainApi.issuedDetail(dataPreference.token, creditId)
+    }
+
+    override fun getIssuedGraph(creditId: String): Result<InputStream> {
+        return restClient.mainApi.issuedGraph(dataPreference.token, creditId)
+            .map { it.byteStream() }
     }
 }

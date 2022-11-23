@@ -1,5 +1,6 @@
 package pro.breez.data.rest.api
 
+import okhttp3.ResponseBody
 import pro.breez.domain.interactor.base.Result
 import pro.breez.domain.model.input.*
 import pro.breez.domain.model.output.*
@@ -193,4 +194,24 @@ interface MainApi {
         @Header("Authorization") token: String,
         @Query("credit_id") creditId: String
     ): Result<CreditDetailModel>
+
+    @POST("v1/credit/detailed")
+    fun issuedDetail(
+        @Header("Authorization") token: String,
+        @Query("credit_id") creditId: String
+    ): Result<IssuedDetailModel>
+
+    @GET("v1/credit/schedule-download")
+    @Streaming
+    fun issuedGraph(
+        @Header("Authorization") token: String,
+        @Query("credit_id") creditId: String
+    ): Result<ResponseBody>
+
+    @GET("v1/credit/issued")
+    fun creditIssued(
+        @Header("Authorization") token: String,
+        @QueryMap queries: Map<String, String>
+    ): Result<CreditIssuedModel>
+
 }

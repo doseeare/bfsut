@@ -75,6 +75,14 @@
             android:id="@+id/credit_to_credits_search_result"
             app:destination="@id/navigation_credit_search_result"
             app:popUpTo="@id/navigation_credits" />
+        <action
+            android:id="@+id/credit_to_credit_issued_detail"
+            app:destination="@id/navigation_credit_issued_detail"
+            app:popUpTo="@id/navigation_credits" />
+        <action
+            android:id="@+id/credits_fragment_to_filter"
+            app:destination="@id/navigation_filter"
+            app:popUpTo="@id/navigation_credits" />
 
     </fragment>
 
@@ -101,6 +109,17 @@
             android:name="creditId"
             app:argType="string" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_credit_issued_detail"
+        android:name="pro.breez.bfsut.ui.main.credit_issued_detail.CreditIssuedDetailFragment"
+        android:label="@string/title_credits"
+        tools:layout="@layout/fragment_credit_issued_detail">
+        <argument
+            android:name="creditId"
+            app:argType="string" />
+    </fragment>
+
     <fragment
         android:id="@+id/navigation_edit_profile"
         android:name="pro.breez.bfsut.ui.main.farmer_profile_edit.EditProfileFragment"
@@ -159,17 +178,38 @@
         android:name="pro.breez.bfsut.ui.main.filter.FilterFragment"
         android:label="Фильтр"
         tools:layout="@layout/fragment_filter">
+        <argument
+            android:name="filterFromEnum"
+            app:argType="pro.breez.bfsut.model.FilterFromEnum" />
         <action
             android:id="@+id/filter_fragment_to_filter_result"
             app:destination="@id/navigation_filter_result"
+            app:popUpTo="@id/navigation_filter" />
+        <action
+            android:id="@+id/filter_fragment_to_issued_filter_result"
+            app:destination="@id/navigation_issued_filter_result"
             app:popUpTo="@id/navigation_filter" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_filter_result"
-        android:name="pro.breez.bfsut.ui.main.filter_result.LogFilterResultFragment"
+        android:name="pro.breez.bfsut.ui.main.filter_result.log.LogFilterResultFragment"
         android:label="Результаты фильтра"
         tools:layout="@layout/fragment_log_filter_result">
+        <argument
+            android:name="filter_result"
+            app:argType="pro.breez.bfsut.model.FilterResult" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_issued_filter_result"
+        android:name="pro.breez.bfsut.ui.main.filter_result.issued.IssuedFilterResultFragment"
+        android:label="Результаты фильтра"
+        tools:layout="@layout/fragment_issued_filter_result">
+        <action
+            android:id="@+id/issued_filter_result_to_issued_detail"
+            app:destination="@id/navigation_credit_issued_detail"
+            app:popUpTo="@id/navigation_issued_filter_result" />
         <argument
             android:name="filter_result"
             app:argType="pro.breez.bfsut.model.FilterResult" />

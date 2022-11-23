@@ -22,18 +22,19 @@
 
     <TextView
         android:id="@+id/name_tv"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="18dp"
         android:layout_marginEnd="18dp"
+        android:drawablePadding="8dp"
         android:maxLines="1"
         android:textColor="@color/text_bold_color"
         android:textSize="23sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/date_tv"
         app:layout_constraintTop_toBottomOf="@id/status_container"
+        tools:drawableEndCompat="@drawable/ic_not_open_indicator"
         tools:text="Мээрим Орозбакова" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -31,11 +31,16 @@ class CreditStatusDetailFragment :
             when (statusEnum) {
                 CreditStatusEnum.ACCEPTED -> {
                     warningContainer.setBackgroundResource(R.drawable.bg_credit_status_green)
-                    warningTv.text = getString(R.string.credit_status_green)
+                    warningTv.text = buildString {
+                        append("Ура! Заявка фемера ${it.full_name} была одобрена," +
+                                " он сможет получить ${it.amount} сом. Свяжитесь с нашими специалистами")
+                    }
                 }
                 CreditStatusEnum.DENIED -> {
                     warningContainer.setBackgroundResource(R.drawable.bg_credit_status_red)
-                    warningTv.text = getString(R.string.credit_status_red)
+                    warningTv.text = buildString {
+                        append("К сожалению заявка фермера ${it.full_name} на ${it.amount} сом была отклонена")
+                    }
                 }
                 else -> {
                     warningContainer.visibility = View.GONE
@@ -48,7 +53,9 @@ class CreditStatusDetailFragment :
 
             nameTv.text = it.full_name
             creditSumTv.text = it.amount
-            creditPeriodTv.text = "${it.period} мес."
+            creditPeriodTv.text = buildString {
+                append("${it.period}  мес.")
+            }
             branchTv.text = it.branch
             officeTv.text = it.office
             creditOfficerTv.text = it.credit_officer
@@ -59,7 +66,9 @@ class CreditStatusDetailFragment :
             paymentDateTv.text = "${it.date_pay} число"
             sumTv.text = it.amount
             percentTv.text = it.percent_per_year
-            overallTv.text = "Примерно ${it.monthly_payment_amount.toDouble().toInt()} с/мес."
+            overallTv.text = buildString {
+                append("Примерно ${it.monthly_payment_amount.toDouble().toInt()} с/мес.")
+            }
         }
     }
 
