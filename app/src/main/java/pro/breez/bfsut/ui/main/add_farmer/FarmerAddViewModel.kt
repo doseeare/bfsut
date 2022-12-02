@@ -57,6 +57,7 @@ class FarmerAddViewModel @Inject constructor(
     var surname: String? = null
     var phoneNumber: String? = null
     var phoneNumberMore: String? = null
+    var customerId: Int? = null
     var phoneNumberComfort: String? = null
     var INN: String? = null
     var docNumber: String? = null
@@ -293,6 +294,7 @@ class FarmerAddViewModel @Inject constructor(
         dialog.isCancelable = isCancelable
 
         dialog.onPositiveBtnClicked {
+            customerId = it.customerID
             farmerFoundLV.postValue(it)
         }
         dialog.onHomeBtnClicked {
@@ -368,7 +370,7 @@ class FarmerAddViewModel @Inject constructor(
             phone_number = phoneNumber,
             phone_number_additional = phoneNumberMore,
             marital_status = maritalStatus?.key,
-            spouse_customer_id = null,
+            customer_id = customerId,
             family_count = null,
             nationality = getId(nationalityLV),
             education = getId(educationLV),

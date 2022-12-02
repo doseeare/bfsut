@@ -50,10 +50,10 @@ object DateUtil {
         val fromDate = dateFormat.format(Date(range.first))
         val toDate = dateFormat.format(Date(range.second))
         return DateRange(
-            from = fromDate,
-            to = toDate,
-            fromMillis = range.first,
-            toMillis = range.second
+            start = fromDate,
+            end = toDate,
+            startMillis = range.first,
+            endMillis = range.second
         )
     }
 

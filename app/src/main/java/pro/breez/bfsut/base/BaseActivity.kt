@@ -109,7 +109,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
                 fragmentTransaction.navOptions
             )
         } catch (i: IllegalArgumentException) {
-            Log.e("BaseActivity", "${i.printStackTrace()}: ", )
+            Log.e("BaseActivity", "${i.printStackTrace()}: ")
         }
     }
 

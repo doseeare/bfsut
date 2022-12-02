@@ -78,23 +78,23 @@ class FilterViewModel @Inject constructor(
             .setTitleText("Выберите период")
             .setPositiveButtonText("Подвердить")
             .setNegativeButtonText("Отменить")
-            .setSelection(if (isFrom) selectedRange?.fromMillis else selectedRange?.toMillis)
+            .setSelection(if (isFrom) selectedRange?.startMillis else selectedRange?.endMillis)
             .build()
 
         dateRangePicker.addOnPositiveButtonClickListener {
             val result = if (isFrom) {
                 DateRange(
-                    from = DateUtil.toDate(it),
-                    to = selectedRange?.to,
-                    fromMillis = it,
-                    toMillis = selectedRange?.toMillis
+                    start = DateUtil.toDate(it),
+                    end = selectedRange?.end,
+                    startMillis = it,
+                    endMillis = selectedRange?.endMillis
                 )
             } else {
                 DateRange(
-                    from = selectedRange?.from,
-                    to = DateUtil.toDate(it),
-                    fromMillis = selectedRange?.fromMillis,
-                    toMillis = it
+                    start = selectedRange?.start,
+                    end = DateUtil.toDate(it),
+                    startMillis = selectedRange?.startMillis,
+                    endMillis = it
                 )
             }
             rangeDateLv.postValue(result)

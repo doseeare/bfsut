@@ -16,8 +16,8 @@ class ActiveLogsUseCase @Inject constructor(
         params?.let { body ->
             body.farmerId?.let { queries.put("farmer_id", it) }
             body.date?.let { queries.put("date", it) }
-            body.rangeAfter?.let { queries.put("range_after", it) }
-            body.rangeBefore?.let { queries.put("range_before", it) }
+            body.rangeStart?.let { queries.put("range_after", it) }
+            body.rangeEnd?.let { queries.put("range_before", it) }
         }
         queries.put("status", "active")
         return logsRepository.getActiveLogs(queries)

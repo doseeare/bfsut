@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import com.google.android.material.shape.CornerFamily
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.LayoutHomePagePanelBinding
 
@@ -46,6 +47,15 @@ class HomePagePanelView(context: Context, attributeSet: AttributeSet?, defStyle:
         binding.priceTv.setTextColor(panelBottomTextColor!!)
         binding.currencyTv.setTextColor(panelBottomTextColor!!)
         binding.literTv.setTextColor(panelBottomTextColor!!)
+
+        val radius = resources.getDimension(R.dimen.home_panel_radius)
+        binding.panelImg.shapeAppearanceModel = binding.panelImg.shapeAppearanceModel
+            .toBuilder()
+            .setTopRightCorner(CornerFamily.ROUNDED, radius)
+            .setTopLeftCorner(CornerFamily.ROUNDED, radius)
+            .setBottomRightCorner(CornerFamily.ROUNDED, radius)
+            .setBottomLeftCorner(CornerFamily.ROUNDED, radius)
+            .build();
     }
 
     fun setLiters(text: Int?) {

@@ -8,18 +8,19 @@ import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.helper.SingleLiveEvent
 import pro.breez.bfsut.util.DateUtil
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
+import pro.breez.bfsut.util.alert.dialog.SearchItemDialog
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilderImpl
 import pro.breez.domain.interactor.*
 import pro.breez.domain.model.input.CreditBody
 import pro.breez.domain.model.output.CategoryModel
-import pro.breez.domain.model.output.FarmersModel
 import pro.breez.domain.model.output.GoalModel
+import pro.breez.domain.model.output.MfSysFarmerModel
 import pro.breez.domain.model.output.ProductsModel
 import javax.inject.Inject
 
 @HiltViewModel
 open class CreditAddViewModel @Inject constructor(
-    private val farmersUseCase: FarmersUseCase,
+    private val searchFarmerUseCase: SearchFarmerUseCase,
     private val productUseCase: ProductUseCase,
     private val categoryUseCase: CategoryUseCase,
     private val goalUseCase: GoalUseCase,
@@ -27,7 +28,7 @@ open class CreditAddViewModel @Inject constructor(
 
 ) : BaseViewModel() {
 
-    val farmerLV = SingleLiveEvent<FarmersModel>()
+    val farmerLV = SingleLiveEvent<MfSysFarmerModel>()
     val productLV = SingleLiveEvent<ProductsModel>()
     val categoryLV = SingleLiveEvent<CategoryModel>()
     val goalLV = SingleLiveEvent<GoalModel>()
@@ -45,13 +46,15 @@ open class CreditAddViewModel @Inject constructor(
         val postCreditBody = CreditBody(
             amount = sum.value!!,
             category = categoryLV.value!!.id,
-            customer = farmerLV.value!!.id,
+            mfsys_customer_id = farmerLV.value!!.customerID,
             date_pay = 1,
             period = 1,
             product_bank = productLV.value!!.id,
             purpose_comment = commentOfGoal.value!!,
             purpose = goalLV.value!!.id,
-            date_disburse_plan = "2022-12-12"
+            date_disburse_plan = "2022-12-12",
+            office = farmerLV.value!!.office,
+            credit_officer = farmerLV.value!!.creditSpecialistFullName,
         )
         postCreditUseCase.execute(viewModelScope, postCreditBody) {
             handleResult(it) {
@@ -68,18 +71,40 @@ open class CreditAddViewModel @Inject constructor(
         }
     }
 
-    fun farmerClicked() {
-        showLoadingView()
-        farmersUseCase.execute(viewModelScope) {
-            handleResult(it) { list ->
-                val selector = SelectorDialogBuilderImpl<FarmersModel>()
-                selector.setList(list)
-                selector.setVmScope(viewModelScope)
-                selector.setSearchByVal(FarmersModel::full_name.name)
-                selector.setResultListener {
-                    farmerLV.postValue(it)
-                }
-                showSelectorDialog.startEvent(selector)
+    fun showSearchDialog(isCancelable: Boolean) {
+        val dialog =
+            SearchItemDialog<MfSysFarmerModel>(
+                valueName = arrayOf(
+                    MfSysFarmerModel::firstName.name,
+                    MfSysFarmerModel::fatherName.name,
+                    MfSysFarmerModel::lastName.name
+                )
+            )
+        dialog.onKeyChanged {
+            searchFarmersInSystem(dialog, it)
+        }
+        dialog.isCancelable = isCancelable
+
+        dialog.notFoundIcon = R.drawable.ic_not_found
+        dialog.notFoundText = getString(R.string.credit_farmer_not_found)
+        dialog.notFoundBtnText = getString(R.string.understand)
+        dialog.helperText = getString(R.string.find_by_name_or_tax)
+        dialog.onPositiveBtnClicked {
+            farmerLV.postValue(it)
+        }
+        dialog.onHomeBtnClicked {
+            popBackStack.trigger()
+        }
+        showDialogFragment.startEvent(dialog)
+    }
+
+    private fun searchFarmersInSystem(
+        dialog: SearchItemDialog<MfSysFarmerModel>,
+        searchKey: String
+    ) {
+        searchFarmerUseCase.execute(viewModelScope, searchKey) {
+            handleResult(it) {
+                dialog.updateList(it)
             }
         }
     }

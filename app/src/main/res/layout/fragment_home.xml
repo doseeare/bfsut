@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_milky_color"
     android:orientation="vertical"
     tools:context=".ui.main.home.HomeFragment">
 
@@ -86,25 +87,22 @@
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/info_panel" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/default_margins"
-            android:layout_marginTop="@dimen/default_margins"
-            android:layout_marginBottom="@dimen/default_margins"
-            app:cardCornerRadius="16dp"
-            app:layout_constraintBottom_toTopOf="@id/show_all_btn"
-            app:layout_constraintTop_toBottomOf="@id/price_of_liter_btn">
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
+                android:layout_marginHorizontal="@dimen/default_margins"
+                android:layout_marginTop="@dimen/default_margins"
+                android:layout_marginBottom="@dimen/default_margins"
+                android:padding="21dp"
+                app:cardCornerRadius="16dp"
+                android:background="@drawable/bg_default_corner_white"
+                app:layout_constraintBottom_toTopOf="@id/show_all_btn"
+                app:layout_constraintTop_toBottomOf="@id/price_of_liter_btn"
                 android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/farmer_list_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_margins"
                     android:text="@string/need_to_check"
                     android:textColor="@color/text_bold_color"
                     android:textSize="26sp"
@@ -138,8 +136,6 @@
                     app:layout_constraintTop_toBottomOf="@id/farmers_rv" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
 
         <pro.breez.bfsut.custom.view.ButtonDrawableView
             android:id="@+id/show_all_btn"

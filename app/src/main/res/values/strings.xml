@@ -50,6 +50,8 @@
     <string name="need_to_create">В системе не найдено,\nвам нужно создать фермера </string>
     <string name="farmer_not_found">Пользователя с таким ФИО не найдено. Свяжитесь со своим СПФ</string>
     <string name="fill_the_field">Заполните полe</string>
+    <string name="credit_farmer_not_found">Пользователя с таким ФИО не найдено. Свяжитесь
+со своим СПФ</string>
     <string name="filter_journal">Отчет сбора молока:</string>
     <string name="date">Дате</string>
     <string name="living_location">Место проживания</string>
@@ -61,4 +63,17 @@
     <string name="credit_status_green">Ура! Заявка Асанова Кабылбека была одобрена, он сможет получить 60000 сом. Свяжитесь с нашими специалистами</string>
     <string name="credit_status_red">К сожалению заявка Дайыра Ахматова на 900000 сом была отклонена.</string>
     <string name="overdue_days">Просрочено дней</string>
+    <string name="edit">Изменить</string>
+    <string name="cancel">Отменить</string>
+    <string name="understand">Понятно</string>
+    <string name="find_by_name_or_tax">Найти фермера по ФИО или ИНН</string>
+    <string name="milk_accept">Молоко принято</string>
+    <string name="thank_for_job">Спасибо за работа</string>
+    <string name="total_som">Итого: %1$ сом</string>
+    <string name="total_default_som">Итого: 0 сом</string>
+    <string name="question_edit_log">Хотите отредактировать
+запись?</string>
+    <string name="evening">Вечером</string>
+    <string name="morning">Утром</string>
+    <string name="all_logs_paid">Все записи рассчитаны</string>
 </resources>

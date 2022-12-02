@@ -24,8 +24,8 @@ class FilterFragment : BaseFragment<FragmentFilterBinding, FilterViewModel>() {
         }
         viewModel.rangeDateLv.observe(viewLifecycleOwner) {
             if (it != null) {
-                binding.fromEt.editText.setText(it.from)
-                binding.toEt.editText.setText(it.to)
+                binding.fromEt.editText.setText(it.start)
+                binding.toEt.editText.setText(it.end)
                 resetFilterGroup()
             } else {
                 binding.fromEt.text = ""

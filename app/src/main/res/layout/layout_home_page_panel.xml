@@ -1,77 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/root_container"
     android:layout_width="match_parent"
-    android:layout_height="300dp"
-    app:cardCornerRadius="36dp"
-    app:strokeWidth="0dp"
-    app:strokeColor="#F2F2F2">
+    android:layout_height="268dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/day_container"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/panel_img"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_home_panel_day" />
 
-        <ImageView
-            android:id="@+id/panel_img"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bg_home_panel_day" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_default_corner_gone" />
 
-        <TextView
-            android:id="@+id/tag_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="32dp"
-            android:background="@drawable/bg_home_panel_tag"
-            android:gravity="center"
-            android:paddingHorizontal="@dimen/default_margins"
-            android:paddingVertical="6dp"
-            android:text="Утром"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tag_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:background="@drawable/bg_home_panel_tag"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/default_margins"
+        android:paddingVertical="6dp"
+        android:text="Утром"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/price_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="32dp"
-            android:text="0"
-            android:textColor="@color/text_bold_color"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:text="0"
+        android:textColor="@color/text_bold_color"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/currency_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginBottom="2dp"
-            android:text="сом"
-            android:textColor="@color/text_bold_color"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@id/price_tv"
-            app:layout_constraintStart_toEndOf="@id/price_tv" />
+    <TextView
+        android:id="@+id/currency_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="2dp"
+        android:text="сом"
+        android:textColor="@color/text_bold_color"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/price_tv"
+        app:layout_constraintStart_toEndOf="@id/price_tv" />
 
-        <TextView
-            android:id="@+id/liter_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0 литров"
-            android:textColor="@color/text_bold_color"
-            android:textSize="13sp"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toTopOf="@id/price_tv"
-            app:layout_constraintStart_toStartOf="@id/price_tv" />
+    <TextView
+        android:id="@+id/liter_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 литров"
+        android:textColor="@color/text_bold_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/price_tv"
+        app:layout_constraintStart_toStartOf="@id/price_tv" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.Window
+import android.widget.FrameLayout
 import androidx.annotation.DrawableRes
 import androidx.lifecycle.MutableLiveData
 import pro.breez.bfsut.databinding.LayoutAlertDialogBinding

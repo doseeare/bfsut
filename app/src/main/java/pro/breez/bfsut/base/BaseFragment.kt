@@ -122,7 +122,6 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
             vm.showAlertDialog.observe(this) {
                 it.create(requireContext())
             }
-
             vm.showDialogFragment.observe(this) {
                 it.show(childFragmentManager, "QuestionDialog")
             }

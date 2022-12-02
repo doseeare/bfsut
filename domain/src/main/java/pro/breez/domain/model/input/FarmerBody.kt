@@ -37,7 +37,7 @@ data class FarmerBody(
     val purpose: Int? = null,
     val region: Int? = null,
     val resident: Int? = null,
-    val spouse_customer_id: String? = null,
+    val customer_id: Int? = null,
     val state: Int? = null,
     val tax_number: String? = null,
     val village: String? = null

@@ -49,8 +49,8 @@ class CreditIssuedViewModel @Inject constructor(
             CreditIssuedBody(
                 farmerId = filterBody?.farmerId,
                 date = filterBody?.date,
-                rangeBefore = filterBody?.rangeBefore,
-                rangeAfter = filterBody?.rangeAfter
+                rangeBefore = filterBody?.rangeEnd,
+                rangeAfter = filterBody?.rangeStart
             )
         } else {
             CreditIssuedBody(status = creditIssue?.key)

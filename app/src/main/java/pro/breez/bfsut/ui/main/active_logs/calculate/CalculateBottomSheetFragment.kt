@@ -1,5 +1,6 @@
 package pro.breez.bfsut.ui.main.active_logs.calculate
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.MutableLiveData
@@ -24,6 +25,7 @@ class CalculateBottomSheetFragment :
         initViews()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun initViews() = with(binding) {
         viewModel.log?.let { log ->
             nameTv.text = log.farmer_name
@@ -31,7 +33,8 @@ class CalculateBottomSheetFragment :
             dayLitersTv.text = "${log.morning}л"
             eveningLitersTv.text = "${log.evening}л"
             totalSumTv.text = "${log.overall}с"
-            milkPriceTv.text = "${log.milk_price} сом\n за литр"
+            milkPriceTv.text = "цена за утро ${log.morning_price} сом\n" +
+                    "\nцена за вечер ${log.evening_price} сом"
 
             var statusTitle = ""
             var statusBg = 0

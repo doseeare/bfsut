@@ -23,7 +23,6 @@
         android:padding="9dp"
         android:textColor="@color/black_text_color"
         android:textSize="21sp"
-        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/icon"

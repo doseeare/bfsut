@@ -165,6 +165,10 @@
         android:name="pro.breez.bfsut.ui.main.add_milk.MilkAddFragment"
         android:label="Сбор молока"
         tools:layout="@layout/fragment_add_milk">
+        <action
+            android:id="@+id/milk_add_to_calc"
+            app:destination="@id/calculate_active_logs"
+            app:popUpTo="@id/navigation_milk_add" />
         <argument
             android:name="farmer"
             android:defaultValue="@null"
@@ -255,4 +259,5 @@
         android:name="pro.breez.bfsut.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
+
 </navigation>

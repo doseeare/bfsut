@@ -340,7 +340,7 @@ class EditProfileViewModel @Inject constructor(
             phone_number = phoneNumber,
             phone_number_additional = phoneNumberMore,
             marital_status = maritalStatus?.key,
-            spouse_customer_id = null,
+            customer_id = null,
             family_count = null,
             nationality = getId(nationalityLV),
             education = getId(educationLV),

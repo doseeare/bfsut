@@ -96,4 +96,8 @@ class MainRepositoryImpl(
         return restClient.mainApi.issuedGraph(dataPreference.token, creditId)
             .map { it.byteStream() }
     }
+
+    override fun getEveningStatus(): Result<EveningModel> {
+        return restClient.mainApi.getEveningStatus(dataPreference.token)
+    }
 }

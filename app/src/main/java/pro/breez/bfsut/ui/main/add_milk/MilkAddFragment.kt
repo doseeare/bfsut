@@ -29,14 +29,15 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
         fieldsValidate = {
             binding.createBtn.isEnabled = (isMorningNotEmpty || isEveningNotEmpty) && isNameNotEmpty
             var totalSum = 0L
-            viewModel.milkPriceLV.value?.price.let {
-                if (isMorningNotEmpty) {
-                    val morning = binding.morningEt.text.toString().toInt()
-                    totalSum += morning * it!!
+            viewModel.farmerLV.value?.let {
+                val morning = binding.morningEt.text.toString().filter { it.isDigit() }
+                if (morning.isNotBlank()) {
+                    totalSum += morning.toInt() * it.morning_price
                 }
-                if (isEveningNotEmpty) {
-                    val evening = binding.eveningEt.text.toString().toInt()
-                    totalSum += evening * it!!
+                val evening = binding.eveningEt.text.toString()
+                    .filter { it.isDigit() }
+                if (evening.isNotBlank()) {
+                    totalSum += evening.toInt() * it.evening_price
                 }
                 binding.totalSumTv.text = "Итого: $totalSum сом"
             }
@@ -48,15 +49,9 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
             fieldsValidate.invoke()
         }
         binding.eveningEt.doOnTextChanged { text, _, _, _ ->
-            val stringText = text.toString()
-            val isNotEmpty = stringText.isNotEmpty() || stringText.isNotBlank()
-            isEveningNotEmpty = isNotEmpty
             fieldsValidate.invoke()
         }
         binding.nameEt.editText.doOnTextChanged { text, _, _, _ ->
-            val stringText = text.toString()
-            val isNotEmpty = stringText.isNotEmpty() || stringText.isNotBlank()
-            isNameNotEmpty = isNotEmpty
             fieldsValidate.invoke()
         }
     }
@@ -67,9 +62,15 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
         }
         viewModel.farmerLV.observe(viewLifecycleOwner) {
             binding.nameEt.text = it.full_name
+            binding.morningEt.setText("${it.morning} л")
+            binding.eveningEt.setText("${it.evening} л")
+            binding.morningEt.isEnabled = true
         }
         viewModel.isSelectedFarmer.observe(viewLifecycleOwner) {
             if (it) binding.nameEt.setType(CustomDropDownEditText.NONE)
+        }
+        viewModel.eveningStatusLV.observe(viewLifecycleOwner) {
+            binding.eveningEt.isEnabled = it
         }
     }
 
@@ -77,7 +78,10 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
         toolbar.setTitle("Сбор молока")
         toolbar.setOnBackClickListener(requireActivity()::onBackPressed)
         createBtn.setOnClickOnceListener {
-            viewModel.createBtnClicked(morningEt.text.toString(), eveningEt.text.toString())
+            viewModel.createBtnClicked(
+                morningEt.text.toString(),
+                eveningEt.text.toString()
+            )
         }
         nameEt.setOnClickListener {
             viewModel.farmerClicked()

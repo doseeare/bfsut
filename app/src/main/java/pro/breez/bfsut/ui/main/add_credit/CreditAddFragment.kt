@@ -21,7 +21,9 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
 
     private fun initObserver() = with(viewModel) {
         farmerLV.observe(viewLifecycleOwner) {
-            binding.farmer.text = it.full_name
+            binding.farmer.text =
+                "${it.firstName} ${it.fatherName} ${it.lastName}"
+                    .replace("  ", " ")
         }
         productLV.observe(viewLifecycleOwner) {
             binding.product.text = it.name
@@ -44,19 +46,19 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
         toolbar.setOnBackClickListener {
             requireActivity().onBackPressed()
         }
-        farmer.onClicked = {
-            viewModel.farmerClicked()
+        farmer.setOnClickListener {
+            viewModel.showSearchDialog(false)
         }
-        goal.onClicked = {
+        goal.setOnClickListener {
             viewModel.goalClicked()
         }
-        product.onClicked = {
+        product.setOnClickListener {
             viewModel.productClicked()
         }
-        category.onClicked = {
+        category.setOnClickListener {
             viewModel.categoryClicked()
         }
-        date.onClicked = {
+        date.setOnClickListener {
             viewModel.periodClicked()
         }
         sendBtn.setOnClickOnceListener {
@@ -66,7 +68,7 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
         commentsOfGoal.onTextChanged = {
             viewModel.commentOfGoal.postEvent(it)
         }
-        dateOfPayment.onClicked = {
+        dateOfPayment.setOnClickListener {
             viewModel.dateOfPaymentClicked()
         }
         sum.editText.inputType = InputType.TYPE_CLASS_NUMBER

@@ -120,7 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:background="@drawable/bg_farmer_profile"
+                android:background="@drawable/bg_default_corner_white"
                 android:orientation="vertical"
                 android:paddingHorizontal="@dimen/default_margins">
 

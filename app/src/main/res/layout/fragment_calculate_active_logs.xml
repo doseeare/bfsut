@@ -124,10 +124,10 @@
                 android:layout_marginBottom="8dp"
                 android:background="@null"
                 android:gravity="start"
-                android:inputType="number"
-                android:maxLines="1"
-                tools:text="4л"
                 android:hint="0л"
+                android:inputType="number"
+                android:maxLength="4"
+                android:maxLines="1"
                 android:textColor="@color/text_bold_color"
                 android:textSize="36sp"
                 android:textStyle="normal"
@@ -135,7 +135,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/day_title_tv"
-                tools:hint="Ваш логин" />
+                tools:hint="Ваш логин"
+                tools:text="4л" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -167,10 +168,10 @@
                 android:layout_marginBottom="8dp"
                 android:background="@null"
                 android:gravity="start"
-                android:inputType="number"
-                android:maxLines="1"
-                tools:text="4л"
                 android:hint="0л"
+                android:inputType="number"
+                android:maxLength="4"
+                android:maxLines="1"
                 android:textColor="@color/text_bold_color"
                 android:textSize="36sp"
                 android:textStyle="normal"
@@ -178,7 +179,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/evening_title_tv"
-                tools:hint="Ваш логин" />
+                tools:hint="Ваш логин"
+                tools:text="4л" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -198,7 +200,7 @@
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/milk_price_container"
+        android:id="@+id/milk_price_container_morning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margins"
@@ -207,7 +209,7 @@
         app:layout_constraintTop_toBottomOf="@id/fields_container">
 
         <ImageView
-            android:id="@+id/milk_img"
+            android:id="@+id/milk_img_morning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -217,17 +219,52 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/milk_price_tv"
+            android:id="@+id/milk_price_tv_morning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="100 сом \n за литр"
             android:textColor="@color/dark_blue"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/milk_img"
+            app:layout_constraintStart_toEndOf="@id/milk_img_morning"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="100 сом \n за литр" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/milk_price_container_evening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margins"
+        android:background="@drawable/bg_price_of_liter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/milk_price_container_morning">
+
+        <ImageView
+            android:id="@+id/milk_img_evening"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_milk"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/milk_price_tv_evening"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textColor="@color/dark_blue"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/milk_img_evening"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="100 сом \n за литр" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -237,12 +274,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margins"
+        android:text="@string/total_default_som"
         android:textColor="@color/text_bold_color"
         android:textSize="30sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@id/calculate_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="Итого: 500 сом" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/save_changes_btn"

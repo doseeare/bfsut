@@ -19,12 +19,16 @@ class SnackbarNotificationBuilder :
     SnackbarNotificationBuilderInterface {
 
     private var message: String? = null
+
     @ColorRes
-    private var messageTextColor:Int = R.color.white
+    private var messageTextColor: Int = R.color.white
+
     @DrawableRes
     private var leftIcon: Int? = null
+
     @DrawableRes
     private var closeIcon: Int? = null
+
     @DrawableRes
     private var background: Int? = null
     private var hideLeftIconSpace = false
@@ -95,7 +99,16 @@ class SnackbarNotificationBuilder :
 
         background?.let { binding.rootLayout.setBackgroundResource(it) }
         binding.textViewTitle.text = message
-        binding.textViewTitle.setTextColor(ContextCompat.getColor(snackbar.context, messageTextColor))
+        binding.textViewTitle.setTextColor(
+            ContextCompat.getColor(
+                snackbar.context,
+                messageTextColor
+            )
+        )
+
+        val params = binding.rootLayout.layoutParams
+        params.width = FrameLayout.LayoutParams.MATCH_PARENT
+        binding.rootLayout.layoutParams = params
 
         leftIcon?.let {
             binding.imageViewLogo.apply {
@@ -133,11 +146,12 @@ class SnackbarNotificationBuilder :
     @SuppressLint("RestrictedApi")
     private fun setPaddings(layout: Snackbar.SnackbarLayout) {
         val params = (layout.layoutParams as? FrameLayout.LayoutParams)
-        params?.gravity = Gravity.TOP
+        params?.gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
+        params?.width = FrameLayout.LayoutParams.MATCH_PARENT
         params?.setMargins(
-            params.leftMargin + 4,
-            params.topMargin + 100,
-            params.rightMargin + 10,
+            params.leftMargin,
+            params.topMargin + 32,
+            params.rightMargin,
             params.bottomMargin
         )
         params?.let { layout.layoutParams = it }

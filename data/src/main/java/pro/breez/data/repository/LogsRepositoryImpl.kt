@@ -5,10 +5,7 @@ import pro.breez.data.rest.RestClient
 import pro.breez.domain.interactor.base.Result
 import pro.breez.domain.model.input.CalculateActiveBody
 import pro.breez.domain.model.input.MilkChangesBody
-import pro.breez.domain.model.output.LogsModel
-import pro.breez.domain.model.output.MilkModel
-import pro.breez.domain.model.output.PaidLogModel
-import pro.breez.domain.model.output.PaidLogsDetailModel
+import pro.breez.domain.model.output.*
 import pro.breez.domain.repository.LogsRepository
 
 class LogsRepositoryImpl(
@@ -32,11 +29,11 @@ class LogsRepositoryImpl(
         return restClient.mainApi.getAllLogs(dataPreference.token, queries)
     }
 
-    override fun calculateActiveLog(id: String): Result<String> {
+    override fun calculateActiveLog(id: String): Result<CalculateModel> {
         return restClient.mainApi.calculateLog(dataPreference.token, id)
     }
 
-    override fun calculateActiveLogs(body: CalculateActiveBody): Result<String> {
+    override fun calculateActiveLogs(body: CalculateActiveBody): Result<CalculateModel> {
         return restClient.mainApi.calculateLogs(dataPreference.token, body)
     }
 

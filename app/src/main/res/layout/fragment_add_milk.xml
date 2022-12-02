@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Сбор молока" />
+        app:toolbarLabel="Сбор молока" />
 
     <TextView
         android:id="@+id/title"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/default_margins"
                 android:layout_marginTop="8dp"
-                android:text="Утром"
+                android:text="@string/morning"
                 android:textColor="@color/text_bold_color"
                 android:textSize="18sp"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -73,6 +73,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="8dp"
                 android:background="@null"
+                android:enabled="false"
                 android:gravity="start"
                 android:hint="0л"
                 android:inputType="number"
@@ -103,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/default_margins"
                 android:layout_marginTop="8dp"
-                android:text="Вечером"
+                android:text="@string/evening"
                 android:textColor="@color/text_bold_color"
                 android:textSize="18sp"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -117,6 +118,7 @@
                 android:layout_marginBottom="8dp"
                 android:background="@null"
                 android:maxLength="4"
+                android:enabled="false"
                 android:gravity="start"
                 android:hint="0л"
                 android:inputType="number"
@@ -149,7 +151,7 @@
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/milk_price_container"
+        android:id="@+id/milk_price_container_morning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margins"

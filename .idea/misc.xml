@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="0.2" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.33" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/bg_active_span.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_add_main.xml" value="0.1145" />
@@ -30,11 +30,14 @@
         <entry key="app/src/main/res/drawable/bg_credit_status_green.xml" value="0.188" />
         <entry key="app/src/main/res/drawable/bg_credit_status_red.xml" value="0.188" />
         <entry key="app/src/main/res/drawable/bg_credit_status_yellow.xml" value="0.188" />
+        <entry key="app/src/main/res/drawable/bg_default_corner_gone.xml" value="0.2045" />
+        <entry key="app/src/main/res/drawable/bg_default_corner_white.xml" value="0.238" />
         <entry key="app/src/main/res/drawable/bg_default_span.xml" value="0.323" />
         <entry key="app/src/main/res/drawable/bg_disabled_btn.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/bg_enabled_btn.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/bg_error_shape.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/bg_farmer_profile.xml" value="0.205" />
+        <entry key="app/src/main/res/drawable/bg_handler_shape.xml" value="0.238" />
         <entry key="app/src/main/res/drawable/bg_home_panel_day.xml" value="0.12" />
         <entry key="app/src/main/res/drawable/bg_home_panel_night.xml" value="0.1355" />
         <entry key="app/src/main/res/drawable/bg_home_panel_tag.xml" value="0.144" />
@@ -125,12 +128,12 @@
         <entry key="app/src/main/res/layout/fragment_active_log.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_add_farmer.xml" value="0.1681522524692845" />
         <entry key="app/src/main/res/layout/fragment_add_milk.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_all_farmers.xml" value="0.182129115006413" />
+        <entry key="app/src/main/res/layout/fragment_all_farmers.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_all_log.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_calculate_active_logs.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_calculate_bottom_sheet.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_change_price_bottom_sheet.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_change_price_bottom_sheet.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_credit_add.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_credit_issued.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_credit_issued_detail.xml" value="0.2984181274048739" />
@@ -149,7 +152,7 @@
         <entry key="app/src/main/res/layout/fragment_filter.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_filter_logs.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_filter_result.xml" value="0.2984181274048739" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.12" />
         <entry key="app/src/main/res/layout/fragment_home_container.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_issued_filter_result.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_issued_graph.xml" value="0.17765042979942694" />
@@ -164,7 +167,7 @@
         <entry key="app/src/main/res/layout/fragment_question_dialog.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_active_log.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/item_all_farmers.xml" value="0.22083333333333333" />
+        <entry key="app/src/main/res/layout/item_all_farmers.xml" value="0.5339925834363412" />
         <entry key="app/src/main/res/layout/item_all_log.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_credit.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_credit_issued.xml" value="0.2" />
@@ -180,12 +183,13 @@
         <entry key="app/src/main/res/layout/layout_credit_status_tab.xml" value="0.33" />
         <entry key="app/src/main/res/layout/layout_custom_credit_tab.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/layout_drop_down_edit_text.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/layout_home_page_panel.xml" value="0.5366528354080221" />
+        <entry key="app/src/main/res/layout/layout_home_page_panel.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_profile_textview.xml" value="0.4103831891223733" />
         <entry key="app/src/main/res/layout/layout_registration_edittext.xml" value="0.33" />
         <entry key="app/src/main/res/layout/layout_selectable_button.xml" value="0.37990762124711314" />
         <entry key="app/src/main/res/layout/layout_toolbar.xml" value="0.2975630611372381" />
         <entry key="app/src/main/res/layout/select_all_toggle_button.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/select_all_toggle_layout.xml" value="0.2975630611372381" />
         <entry key="app/src/main/res/layout/view_progress.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.36354166666666665" />
         <entry key="app/src/main/res/menu/menu_main_add.xml" value="0.2" />

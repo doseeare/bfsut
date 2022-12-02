@@ -16,7 +16,6 @@ import pro.breez.bfsut.ui.main.paid_logs.PaidLogsFragment
 import pro.breez.bfsut.util.alert.OnPageSelectedListener
 import pro.breez.bfsut.util.ifNotNull
 
-
 @AndroidEntryPoint
 class LogFilterResultFragment :
     BaseFragment<FragmentLogFilterResultBinding, LogFilterResultViewModel>() {
@@ -32,13 +31,13 @@ class LogFilterResultFragment :
             filter.farmerName?.let {
                 strBuilder.append(it)
             }
-            filter.range?.from?.let {
+            filter.range?.start?.let {
                 filter.farmerName.ifNotNull {
                     strBuilder.append("\n")
                 }
                 strBuilder.append("$it - ")
             }
-            filter.range?.to?.let {
+            filter.range?.end?.let {
                 strBuilder.append(it)
             }
             filter.filterSpan?.title?.let {

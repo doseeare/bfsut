@@ -15,8 +15,8 @@ class PaidLogsUseCase @Inject constructor(
         val queries = HashMap<String, String>()
         params?.let { body ->
             body.date?.let { queries.put("paid_date", it) }
-            body.rangeAfter?.let { queries.put("range_after", it) }
-            body.rangeBefore?.let { queries.put("range_before", it) }
+            body.rangeStart?.let { queries.put("range_after", it) }
+            body.rangeEnd?.let { queries.put("range_before", it) }
         }
         return logsRepository.getPaidLogs(queries)
     }

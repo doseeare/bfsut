@@ -27,4 +27,5 @@ interface MainRepository {
     fun getCreditIssued(queries: Map<String, String>): Result<CreditIssuedModel>
     fun getIssuedDetail(creditId: String): Result<IssuedDetailModel>
     fun getIssuedGraph(creditId: String): Result<InputStream>
+    fun getEveningStatus(): Result<EveningModel>
 }

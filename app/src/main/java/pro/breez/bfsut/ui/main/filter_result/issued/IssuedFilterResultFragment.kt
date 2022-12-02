@@ -7,7 +7,6 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentIssuedFilterResultBinding
-import pro.breez.bfsut.model.CreditIssueEnum
 import pro.breez.bfsut.ui.main.credit_issued.CreditIssuedFragment
 import pro.breez.bfsut.util.ifNotNull
 
@@ -25,17 +24,17 @@ class IssuedFilterResultFragment :
             filter.farmerName?.let {
                 strBuilder.append(it)
             }
-            filter.range?.from?.let {
+            filter.range?.start?.let {
                 filter.farmerName.ifNotNull {
                     strBuilder.append("\n")
                 }
                 strBuilder.append("$it - ")
             }
-            filter.range?.to?.let {
+            filter.range?.end?.let {
                 strBuilder.append(it)
             }
             filter.filterSpan?.title?.let {
-                filter.range?.to.ifNotNull {
+                filter.range?.end.ifNotNull {
                     strBuilder.append("\n")
                 }
                 strBuilder.append(it)

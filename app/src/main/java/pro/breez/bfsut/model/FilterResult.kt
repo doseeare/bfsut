@@ -2,6 +2,7 @@ package pro.breez.bfsut.model
 
 import androidx.annotation.IdRes
 import pro.breez.bfsut.R
+import pro.breez.bfsut.util.DateUtil
 import pro.breez.domain.model.input.FilterBody
 import java.io.Serializable
 
@@ -15,16 +16,16 @@ class FilterResult(
     fun toBody() = FilterBody(
         farmerId = farmerId,
         date = filterSpan?.key,
-        rangeAfter = range?.to,
-        rangeBefore = range?.from
+        rangeStart = DateUtil.reformatDate(range?.start),
+        rangeEnd = DateUtil.reformatDate(range?.end)
     )
 }
 
 class DateRange(
-    var from: String?,
-    var to: String?,
-    var fromMillis: Long?,
-    var toMillis: Long?,
+    var start: String?,
+    var end: String?,
+    var startMillis: Long?,
+    var endMillis: Long?,
 ) : Serializable
 
 enum class FilterSpan(@IdRes val id: Int, val key: String?, val title: String?) : Serializable {

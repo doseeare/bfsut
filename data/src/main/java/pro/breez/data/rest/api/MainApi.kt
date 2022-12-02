@@ -92,13 +92,13 @@ interface MainApi {
     fun calculateLog(
         @Header("Authorization") token: String,
         @Path("id") status: String
-    ): Result<String>
+    ): Result<CalculateModel>
 
     @POST("v1/journal/calculate_list")
     fun calculateLogs(
         @Header("Authorization") token: String,
         @Body body: CalculateActiveBody
-    ): Result<String>
+    ): Result<CalculateModel>
 
     @PATCH("v1/journal/")
     fun saveMilkChanges(
@@ -213,5 +213,10 @@ interface MainApi {
         @Header("Authorization") token: String,
         @QueryMap queries: Map<String, String>
     ): Result<CreditIssuedModel>
+
+    @GET("v1/journal/evening-fill-status")
+    fun getEveningStatus(
+        @Header("Authorization") token: String,
+    ): Result<EveningModel>
 
 }

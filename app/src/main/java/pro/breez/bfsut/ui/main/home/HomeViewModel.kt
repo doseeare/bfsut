@@ -124,7 +124,7 @@ class HomeViewModel @Inject constructor(
 
     fun logOut(block: () -> Unit) {
         val dialog = QuestionDialog().apply {
-            setTitle("Хотите выйти?")
+            setTitle("Хотите выйти\n из приложения?")
             onPositiveBtnClicked {
                 dataPreference.token = ""
                 dataPreference.userName = ""
