@@ -39,8 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_active_span"
-            app:layout_constraintEnd_toEndOf="@id/toolbar_title"
-            app:layout_constraintStart_toStartOf="@id/toolbar_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar_title">
 
             <TextView
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="3dp"
-                android:paddingLeft="6sp"
+                android:paddingStart="6sp"
                 android:text="активный"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -84,8 +84,8 @@
         android:layout_margin="@dimen/default_margins"
         android:text="Сбор молока у \n Акылбека Асанова"
         android:textColor="@color/text_bold_color"
-        android:textSize="36sp"
-        android:textStyle="normal"
+        android:textSize="32sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
 
@@ -111,7 +111,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/default_margins"
                 android:layout_marginTop="8dp"
-                android:text="Утром"
+                android:text="@string/morning"
+                android:textSize="18sp"
                 android:textColor="@color/text_bold_color"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -124,12 +125,13 @@
                 android:layout_marginBottom="8dp"
                 android:background="@null"
                 android:gravity="start"
-                android:hint="0л"
+                android:hint="@string/default_liters"
                 android:inputType="number"
-                android:maxLength="4"
+                android:textColorHint="@color/gray_text"
+                android:maxLength="5"
                 android:maxLines="1"
                 android:textColor="@color/text_bold_color"
-                android:textSize="36sp"
+                android:textSize="54sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -155,7 +157,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/default_margins"
                 android:layout_marginTop="8dp"
-                android:text="Вечером"
+                android:text="@string/evening"
                 android:textColor="@color/text_bold_color"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -168,12 +170,13 @@
                 android:layout_marginBottom="8dp"
                 android:background="@null"
                 android:gravity="start"
-                android:hint="0л"
+                android:textColorHint="@color/gray_text"
+                android:hint="@string/default_liters"
                 android:inputType="number"
-                android:maxLength="4"
+                android:maxLength="5"
                 android:maxLines="1"
                 android:textColor="@color/text_bold_color"
-                android:textSize="36sp"
+                android:textSize="54sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -288,10 +291,11 @@
         android:layout_marginHorizontal="@dimen/default_margins"
         android:layout_marginBottom="@dimen/default_margins"
         android:background="@drawable/bg_shape_gray_corners"
+        android:stateListAnimator="@null"
         android:text="Сохранить изменения"
         android:textAllCaps="false"
         android:textColor="@color/text_bold_color"
-        android:textSize="18sp"
+        android:textSize="21sp"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton

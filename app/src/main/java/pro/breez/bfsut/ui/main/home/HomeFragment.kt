@@ -44,10 +44,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private fun initObservers() {
         viewModel.farmersCheckLV.observe(viewLifecycleOwner) { farmers ->
+            val farmersList = if (farmers.isNotEmpty())
+                farmers.take(farmers.size / 2) as ArrayList<FarmerCheckModel>
+            else
+                arrayListOf()
             val adapter =
                 FarmersAdapter(
-                    itemList = farmers.take(farmers.size / 2) as ArrayList<FarmerCheckModel>,
-
+                    itemList = farmersList,
                     addClicked = {
                         viewModel.addMilkToFarmer(it)
                     },

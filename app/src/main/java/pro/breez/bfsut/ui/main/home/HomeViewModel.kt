@@ -28,8 +28,8 @@ class HomeViewModel @Inject constructor(
     private val getTotalMilk: TotalMilkUseCase,
     private val getMilkPrice: MilkPriceUseCase,
     private val changeMilkPrice: ChangeMilkPriceUseCase,
-    val dataPreference: DataPreference,
-    val settingsPreference: SettingsPreference
+    private val settingsPreference: SettingsPreference,
+    val dataPreference: DataPreference
 ) : BaseViewModel() {
 
     val farmersCheckLV = MutableLiveData<List<FarmerCheckModel>>()
@@ -54,10 +54,9 @@ class HomeViewModel @Inject constructor(
             if (settingsPreference.lastPriceChangeDate != DateUtil.getToday()) {
                 val dialog = MilkPriceDialog(it)
                 dialog.onPositiveBtnClicked {
-                    changeMilkPrice(it) {
-                        settingsPreference.lastPriceChangeDate = DateUtil.getToday()
-                        dialog.dismiss()
-                    }
+                    dialog.dismiss()
+                    showLoadingView()
+                    changeMilkPrice(it)
                 }
                 showDialogFragment.startEvent(dialog)
             }
@@ -73,7 +72,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun changeMilkPrice(newPrice: Int, block: () -> Unit) {
+    fun changeMilkPrice(newPrice: Int, block: (() -> Unit)? = null) {
         changeMilkPrice.execute(viewModelScope, MilkPriceModel(newPrice)) {
             handleResult(it) {
                 val dialog = AlertDialogBuilderImpl()
@@ -81,7 +80,11 @@ class HomeViewModel @Inject constructor(
                 dialog.setTitle("Цена изменена")
                 dialog.setSubTitle("")
                 dialog.setDismissListener {
-                    block.invoke()
+                    if (block == null)
+                        settingsPreference.lastPriceChangeDate = DateUtil.getToday()
+                    else
+                        settingsPreference.lastManualPriceChangeDate = DateUtil.getToday()
+                    block?.invoke()
                 }
                 showAlertDialog.startEvent(dialog)
             }

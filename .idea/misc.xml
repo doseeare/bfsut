@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/bg_active_span.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bg_add_main.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/bg_alert.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/bg_alert_pattern.xml" value="0.222" />
         <entry key="app/src/main/res/drawable/bg_auth_edittext.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/bg_auth_edittext_default.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/bg_auth_edittext_error.xml" value="0.107" />
@@ -124,7 +125,7 @@
         <entry key="app/src/main/res/layout/custom_tab_layout.xml" value="0.2" />
         <entry key="app/src/main/res/layout/dialog_item_search.xml" value="0.22" />
         <entry key="app/src/main/res/layout/dialog_item_selector.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/dialog_milk_price.xml" value="0.2975630611372381" />
+        <entry key="app/src/main/res/layout/dialog_milk_price.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_active_log.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_add_farmer.xml" value="0.1681522524692845" />
         <entry key="app/src/main/res/layout/fragment_add_milk.xml" value="0.25" />
@@ -134,7 +135,7 @@
         <entry key="app/src/main/res/layout/fragment_calculate_active_logs.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_calculate_bottom_sheet.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_change_price_bottom_sheet.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_credit_add.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_credit_add.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_credit_issued.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_credit_issued_detail.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_credit_issued_tab.xml" value="0.2984181274048739" />
@@ -178,7 +179,7 @@
         <entry key="app/src/main/res/layout/item_selector.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_add_credit_edittext.xml" value="0.33" />
         <entry key="app/src/main/res/layout/layout_add_menu.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/layout_alert_dialog.xml" value="0.2728921124206709" />
+        <entry key="app/src/main/res/layout/layout_alert_dialog.xml" value="0.5532503457814661" />
         <entry key="app/src/main/res/layout/layout_button_drawable.xml" value="0.3625" />
         <entry key="app/src/main/res/layout/layout_credit_status_tab.xml" value="0.33" />
         <entry key="app/src/main/res/layout/layout_custom_credit_tab.xml" value="0.2984181274048739" />

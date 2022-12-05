@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/default_margins"
             android:layout_marginTop="6dp"
-            android:textColorHint="@color/gray"
+            android:textColorHint="@color/gray_text"
             android:layout_marginBottom="@dimen/default_margins"
             android:background="@null"
             android:maxLines="1"

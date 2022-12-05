@@ -3,10 +3,7 @@ package pro.breez.bfsut.util.alert.dialog
 import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.Window
-import android.widget.FrameLayout
 import androidx.annotation.DrawableRes
-import androidx.lifecycle.MutableLiveData
 import pro.breez.bfsut.databinding.LayoutAlertDialogBinding
 
 class AlertDialogBuilderImpl : AlertDialogBuilder {
@@ -16,7 +13,7 @@ class AlertDialogBuilderImpl : AlertDialogBuilder {
     @DrawableRes
     private var icon = 0
 
-    private val onDismiss = MutableLiveData<Unit>()
+    private var onDismiss: (() -> Unit)? = null
 
     override fun setTitle(title: String): AlertDialogBuilder {
         this.title = title
@@ -45,14 +42,14 @@ class AlertDialogBuilderImpl : AlertDialogBuilder {
         binding.subTitle.text = subTitle
         binding.iconImg.setImageResource(icon)
         alertDialog.setOnDismissListener {
-            onDismiss.postValue(Unit)
+            onDismiss?.invoke()
         }
         alertDialog.show()
         return alertDialog
     }
 
     override fun setDismissListener(onDismiss: () -> Unit): AlertDialogBuilder {
-        this.onDismiss.observeForever { onDismiss.invoke() }
+        this.onDismiss = onDismiss
         return this
     }
 }

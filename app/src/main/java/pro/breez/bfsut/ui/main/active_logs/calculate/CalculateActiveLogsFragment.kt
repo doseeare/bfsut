@@ -6,6 +6,7 @@ import androidx.core.widget.doOnTextChanged
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
+import pro.breez.bfsut.custom.mask.addDigitMask
 import pro.breez.bfsut.databinding.FragmentCalculateActiveLogsBinding
 import pro.breez.bfsut.util.setOnClickOnceListener
 
@@ -26,10 +27,12 @@ class CalculateActiveLogsFragment :
     }
 
     private fun initViews() {
+        binding.dayEt.addDigitMask("л")
+        binding.eveningEt.addDigitMask("л")
         viewModel.currentLogLV.observe(viewLifecycleOwner) {
             binding.nameTv.text = "Сбор молока у ${it.farmer_name}"
-            binding.dayEt.setText("${it.morning} л")
-            binding.eveningEt.setText("${it.evening} л")
+            binding.dayEt.setText("${it.morning}л")
+            binding.eveningEt.setText("${it.evening}л")
             binding.milkPriceTvEvening.text = "цена за вечер: ${it.evening_price} сом"
             binding.milkPriceTvMorning.text = "цена за утро: ${it.morning_price} сом"
             binding.calculateBtn.setOnClickOnceListener { _ ->
@@ -47,32 +50,30 @@ class CalculateActiveLogsFragment :
                 (isMorningNotEmpty || isEveningNotEmpty)
             var totalSum = 0L
             viewModel.currentLogLV.value?.let {
-                if (isMorningNotEmpty) {
-                    val morning = binding.dayEt.text.toString()
-                        .filter { it.isDigit() }.toInt()
-                    totalSum += morning * it.morning_price
-                }
-                if (isEveningNotEmpty) {
-                    val evening = binding.eveningEt.text.toString()
-                        .filter { it.isDigit() }.toInt()
-                    totalSum += evening * it.evening_price
-                    getString(R.string.total_som)
-                }
+                val morning = binding.dayEt.text.toString().filter { it.isDigit() }
+                if (morning.isNotBlank())
+                    totalSum += morning.toInt() * it.morning_price
+                val evening = binding.eveningEt.text.toString()
+                    .filter { it.isDigit() }
+                if (evening.isNotBlank())
+                    totalSum += evening.toInt() * it.evening_price
+                getString(R.string.total_som)
                 binding.totalAmountTv.text = "Итого: $totalSum сом"
             }
         }
 
         binding.dayEt.doOnTextChanged { text, _, _, _ ->
-            val stringText = text.toString()
-            val isNotEmpty = stringText.isNotEmpty() || stringText.isNotBlank()
-            isMorningNotEmpty = isNotEmpty
+            isMorningNotEmpty = !text.isNullOrBlank()
             fieldsValidate.invoke()
         }
         binding.eveningEt.doOnTextChanged { text, _, _, _ ->
-            val stringText = text.toString()
-            val isNotEmpty = stringText.isNotEmpty() || stringText.isNotBlank()
-            isEveningNotEmpty = isNotEmpty
+            isEveningNotEmpty = !text.isNullOrBlank()
             fieldsValidate.invoke()
         }
+        binding.deleteBtn.setOnClickOnceListener {
+            viewModel.delete()
+        }
+
     }
 }
+

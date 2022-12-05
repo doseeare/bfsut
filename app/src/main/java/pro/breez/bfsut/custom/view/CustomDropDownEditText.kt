@@ -32,6 +32,7 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
     var text: String
         set(value) {
             binding.edittext.setText(value)
+            binding.titleTv.setTextColor(ContextCompat.getColor(context, R.color.gray_text))
         }
         get() {
             return binding.edittext.text.toString()

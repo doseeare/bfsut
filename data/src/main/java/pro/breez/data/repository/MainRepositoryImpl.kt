@@ -100,4 +100,8 @@ class MainRepositoryImpl(
     override fun getEveningStatus(): Result<EveningModel> {
         return restClient.mainApi.getEveningStatus(dataPreference.token)
     }
+
+    override fun deleteLog(id: String): Result<DefaultSuccessModel> {
+        return restClient.mainApi.deleteLog(dataPreference.token, id)
+    }
 }

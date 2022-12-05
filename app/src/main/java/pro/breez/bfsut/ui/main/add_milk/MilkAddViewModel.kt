@@ -59,6 +59,7 @@ class MilkAddViewModel @Inject constructor(
     }
 
     fun createBtnClicked(morning: String, evening: String) {
+        showLoadingView()
         val body = AddMilkBody(
             farmer = farmerLV.value!!.id,
         )
@@ -70,7 +71,7 @@ class MilkAddViewModel @Inject constructor(
         addMilkUseCase.execute(viewModelScope, body) {
             handleResult(it) {
                 val dialog = AlertDialogBuilderImpl().apply {
-                    setIcon(R.drawable.ic_milk_icon)
+                    setIcon(R.drawable.ic_add_milk_light)
                     setTitle(getString(R.string.milk_accept))
                     setSubTitle(getString(R.string.thank_for_job))
                     setDismissListener {

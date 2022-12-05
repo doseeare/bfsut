@@ -76,4 +76,7 @@
     <string name="evening">Вечером</string>
     <string name="morning">Утром</string>
     <string name="all_logs_paid">Все записи рассчитаны</string>
+    <string name="default_liters">0л</string>
+    <string name="milked_today">Сбор молока \nза сегодня</string>
+    <string name="default_som">0 сом</string>
 </resources>

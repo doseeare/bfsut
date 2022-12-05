@@ -6,8 +6,10 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
+import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
 import pro.breez.domain.interactor.CalculateActiveLogUseCase
+import pro.breez.domain.interactor.DeleteLogUseCase
 import pro.breez.domain.interactor.SaveMilkChangesUseCase
 import pro.breez.domain.model.input.MilkChangesBody
 import pro.breez.domain.model.output.LogsModel
@@ -16,7 +18,8 @@ import javax.inject.Inject
 @HiltViewModel
 class CalculateActiveLogViewModel @Inject constructor(
     private val calculateUc: CalculateActiveLogUseCase,
-    private val saveMilkChangesUc: SaveMilkChangesUseCase
+    private val saveMilkChangesUc: SaveMilkChangesUseCase,
+    private val deleteLogUseCase: DeleteLogUseCase,
 ) : BaseViewModel() {
     val currentLogLV = MutableLiveData<LogsModel>()
 
@@ -35,10 +38,8 @@ class CalculateActiveLogViewModel @Inject constructor(
             return
         }
         showLoadingView()
-        val morningChanges = morning.replace("л", "")
-            .replace(" ", "").toInt()
-        val eveningChanges = evening.replace("л", "")
-            .replace(" ", "").toInt()
+        val morningChanges = morning.filter { it.isDigit() }.toInt()
+        val eveningChanges = evening.filter { it.isDigit() }.toInt()
 
         val body = MilkChangesBody(
             morning = morningChanges,
@@ -71,6 +72,30 @@ class CalculateActiveLogViewModel @Inject constructor(
                 }
                 showAlertDialog.startEvent(dialog)
             }
+        }
+    }
+
+    fun delete() {
+        QuestionDialog().apply {
+            setTitle("Точно удаляем\nэту запись?")
+            onPositiveBtnClicked {
+                showLoadingView()
+                dismiss()
+                deleteLogUseCase.execute(viewModelScope, activeLog.id) {
+                    handleResult(it) {
+                        AlertDialogBuilderImpl().apply {
+                            setIcon(R.drawable.ic_success)
+                            setTitle("Запись был удалён")
+                            setSubTitle("")
+                            setDismissListener {
+                                popBackStack.trigger()
+                            }
+                            showAlertDialog.startEvent(this)
+                        }
+                    }
+                }
+            }
+            showDialogFragment.startEvent(this)
         }
     }
 }

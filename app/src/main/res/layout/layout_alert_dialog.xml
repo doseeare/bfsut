@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_alert">
+        android:background="@drawable/bg_alert_pattern">
 
         <ImageView
             android:id="@+id/icon_img"
@@ -44,7 +44,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="@dimen/default_margins"
             android:gravity="center"
-            android:textColor="@color/text_gray_purple_color"
+            android:textColor="@color/gray"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

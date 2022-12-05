@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.widget.doOnTextChanged
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseFragment
+import pro.breez.bfsut.custom.mask.addDigitMask
 import pro.breez.bfsut.custom.view.CustomDropDownEditText
 import pro.breez.bfsut.databinding.FragmentAddMilkBinding
 import pro.breez.bfsut.util.setOnClickOnceListener
@@ -43,15 +44,15 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
             }
         }
         binding.morningEt.doOnTextChanged { text, _, _, _ ->
-            val stringText = text.toString()
-            val isNotEmpty = stringText.isNotEmpty() || stringText.isNotBlank()
-            isMorningNotEmpty = isNotEmpty
+            isMorningNotEmpty = !text.isNullOrBlank()
             fieldsValidate.invoke()
         }
         binding.eveningEt.doOnTextChanged { text, _, _, _ ->
+            isEveningNotEmpty = !text.isNullOrBlank()
             fieldsValidate.invoke()
         }
         binding.nameEt.editText.doOnTextChanged { text, _, _, _ ->
+            isNameNotEmpty = !text.isNullOrBlank()
             fieldsValidate.invoke()
         }
     }
@@ -62,8 +63,8 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
         }
         viewModel.farmerLV.observe(viewLifecycleOwner) {
             binding.nameEt.text = it.full_name
-            binding.morningEt.setText("${it.morning} л")
-            binding.eveningEt.setText("${it.evening} л")
+            binding.morningEt.setText("${it.morning}л")
+            binding.eveningEt.setText("${it.evening}л")
             binding.morningEt.isEnabled = true
         }
         viewModel.isSelectedFarmer.observe(viewLifecycleOwner) {
@@ -77,6 +78,8 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
     private fun initViews() = with(binding) {
         toolbar.setTitle("Сбор молока")
         toolbar.setOnBackClickListener(requireActivity()::onBackPressed)
+        binding.morningEt.addDigitMask("л")
+        binding.eveningEt.addDigitMask("л")
         createBtn.setOnClickOnceListener {
             viewModel.createBtnClicked(
                 morningEt.text.toString(),

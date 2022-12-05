@@ -219,4 +219,10 @@ interface MainApi {
         @Header("Authorization") token: String,
     ): Result<EveningModel>
 
+    @DELETE("v1/journal/delete/{id}")
+    fun deleteLog(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Result<DefaultSuccessModel>
+
 }

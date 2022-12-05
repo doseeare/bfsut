@@ -19,7 +19,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#A3A7B1"
+        android:background="#C7CCD8"
         app:layout_constraintTop_toBottomOf="@id/name_tv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

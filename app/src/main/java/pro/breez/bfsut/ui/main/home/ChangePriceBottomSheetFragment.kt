@@ -36,7 +36,6 @@ class ChangePriceBottomSheetFragment :
             val newPrice = binding.priceEt.text.toString().toInt()
             viewModel.changeMilkPrice(newPrice) {
                 (requireParentFragment() as HomeFragment).refreshInfo()
-                viewModel.settingsPreference.lastManualPriceChangeDate = DateUtil.getToday()
                 dismiss()
             }
         }
