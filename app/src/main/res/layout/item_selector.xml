@@ -8,13 +8,27 @@
 
     <TextView
         android:id="@+id/name_tv"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/default_margins"
+        android:paddingVertical="@dimen/default_margins"
+        android:paddingStart="@dimen/default_margins"
+        android:paddingEnd="8dp"
         android:textColor="@color/text_bold_color"
         android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Дастан Бексултанов" />
+
+    <ImageView
+        android:id="@+id/indicator_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_selected"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/name_tv"
+        app:layout_constraintStart_toEndOf="@id/name_tv"
+        app:layout_constraintTop_toTopOf="@id/name_tv"
+        tools:visibility="visible" />
 
     <View
         android:layout_width="match_parent"

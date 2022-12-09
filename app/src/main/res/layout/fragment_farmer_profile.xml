@@ -32,10 +32,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="@dimen/default_margins"
-                tools:text="Садыр Жапаров Нуркожоевич"
                 android:textColor="@color/text_bold_color"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="Садыр Жапаров Нуркожоевич" />
 
             <TextView
                 android:id="@+id/statics_per_tv"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
                 android:layout_marginTop="@dimen/default_margins"
-                android:text="Статистика за 6 месяцев"
+                tools:text="Статистика за 6 месяцев"
                 android:textColor="@color/text_bold_color"
                 android:textSize="21sp"
                 android:textStyle="normal" />
@@ -100,81 +100,81 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="26dp"
                     android:text="@string/personal_data"
-                    android:textStyle="bold"
                     android:textColor="@color/text_bold_color"
-                    android:textSize="26sp" />
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/last_name_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Асанов"
-                    app:top_title="Фамилия" />
+                    app:top_title="Фамилия"
+                    tools:sub_title="Асанов" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/first_name_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Акылбек"
-                    app:top_title="Имя" />
+                    app:top_title="Имя"
+                    tools:sub_title="Акылбек" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/surname_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Намазбекович"
-                    app:top_title="Отчество" />
+                    app:top_title="Отчество"
+                    tools:sub_title="Намазбекович" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/birthday_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="05.02.1990"
-                    app:top_title="Дата рождения" />
+                    app:top_title="Дата рождения"
+                    tools:sub_title="05.02.1990" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/nation_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Кыргыз"
-                    app:top_title="Национальность" />
+                    app:top_title="Национальность"
+                    tools:sub_title="Кыргыз" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/citizen_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Кыргызская Республика"
-                    app:top_title="Гражданство" />
+                    app:top_title="Гражданство"
+                    tools:sub_title="Кыргызская Республика" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/gender_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Мужской"
-                    app:top_title="Пол" />
+                    app:top_title="Пол"
+                    tools:sub_title="Мужской" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/more_phone_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="+996 500 500 500"
-                    app:top_title="Моб. телефон (доп)" />
+                    app:top_title="Моб. телефон (доп)"
+                    tools:sub_title="+996 500 500 500" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/more_second_phone_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="+996 500 500 500"
-                    app:top_title="Моб. телефон (доп)" />
+                    app:top_title="Моб. телефон (доп)"
+                    tools:sub_title="+996 500 500 500" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -190,48 +190,48 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margins"
-                    tools:sub_title="ИНН"
-                    app:top_title="ИНН" />
+                    app:top_title="ИНН"
+                    tools:sub_title="ИНН" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/doc_type_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Тип документа"
-                    app:top_title="Тип документа" />
+                    app:top_title="Тип документа"
+                    tools:sub_title="Тип документа" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/doc_series_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Серия"
-                    app:top_title="Серия" />
+                    app:top_title="Серия"
+                    tools:sub_title="Серия" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/doc_number_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Номер документа"
-                    app:top_title="Номер документа" />
+                    app:top_title="Номер документа"
+                    tools:sub_title="Номер документа" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/doc_issue_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Кем выдан"
-                    app:top_title="Кем выдан" />
+                    app:top_title="Кем выдан"
+                    tools:sub_title="Кем выдан" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/doc_when_issue_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Когда выдан"
-                    app:top_title="Когда выдан" />
+                    app:top_title="Когда выдан"
+                    tools:sub_title="Когда выдан" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -247,56 +247,131 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margins"
-                    tools:sub_title="Кыргызстан"
-                    app:top_title="Страна" />
+                    app:top_title="Страна"
+                    tools:sub_title="Кыргызстан" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/area_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Чуйская"
-                    app:top_title="Область" />
+                    app:top_title="Область"
+                    tools:sub_title="Чуйская" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/region_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Бищкек"
-                    app:top_title="Регион/Город" />
+                    app:top_title="Регион/Город"
+                    tools:sub_title="Бищкек" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/village_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Село большой Кок-Жар"
-                    app:top_title="Населенный пункт/село" />
+                    app:top_title="Населенный пункт/село"
+                    tools:sub_title="Село большой Кок-Жар" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/street_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Фрунзе"
-                    app:top_title="Улица" />
+                    app:top_title="Улица"
+                    tools:sub_title="Фрунзе" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/house_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="15"
-                    app:top_title="Дом" />
+                    app:top_title="Дом"
+                    tools:sub_title="15" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/apartment_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="15"
-                    app:top_title="Квартира" />
+                    app:top_title="Квартира"
+                    tools:sub_title="15" />
+
+                <LinearLayout
+                    android:id="@+id/actual_address_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="46dp"
+                        android:text="@string/actual_address"
+                        android:textColor="@color/text_bold_color"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <pro.breez.bfsut.custom.view.ProfileTextView
+                        android:id="@+id/actual_country_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_margins"
+                        app:top_title="Страна"
+                        tools:sub_title="Кыргызстан" />
+
+                    <pro.breez.bfsut.custom.view.ProfileTextView
+                        android:id="@+id/actual_area_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:top_title="Область"
+                        tools:sub_title="Чуйская" />
+
+                    <pro.breez.bfsut.custom.view.ProfileTextView
+                        android:id="@+id/actual_region_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:top_title="Регион/Город"
+                        tools:sub_title="Бищкек" />
+
+                    <pro.breez.bfsut.custom.view.ProfileTextView
+                        android:id="@+id/actual_village_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:top_title="Населенный пункт/село"
+                        tools:sub_title="Село большой Кок-Жар" />
+
+                    <pro.breez.bfsut.custom.view.ProfileTextView
+                        android:id="@+id/actual_street_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:top_title="Улица"
+                        tools:sub_title="Фрунзе" />
+
+                    <pro.breez.bfsut.custom.view.ProfileTextView
+                        android:id="@+id/actual_house_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:top_title="Дом"
+                        tools:sub_title="15" />
+
+                    <pro.breez.bfsut.custom.view.ProfileTextView
+                        android:id="@+id/actual_apartment_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:top_title="Квартира"
+                        tools:sub_title="15" />
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -312,8 +387,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margins"
-                    tools:sub_title="Замужем/Женат"
-                    app:top_title="Семейный статус" />
+                    app:top_title="Семейный статус"
+                    tools:sub_title="Замужем/Женат" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/name_partner_tv"
@@ -321,16 +396,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:visibility="gone"
-                    tools:sub_title="Чуйская"
-                    app:top_title="ФИО супруги (а)" />
+                    app:top_title="ФИО супруги (а)"
+                    tools:sub_title="Чуйская" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/family_members_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="5"
-                    app:top_title="Члены семьи" />
+                    app:top_title="Члены семьи"
+                    tools:sub_title="5" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -346,8 +421,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margins"
-                    tools:sub_title="Высшее"
-                    app:top_title="Степень" />
+                    app:top_title="Степень"
+                    tools:sub_title="Высшее" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -363,24 +438,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margins"
-                    tools:sub_title="Дома"
-                    app:top_title="Место работы" />
+                    app:top_title="Место работы"
+                    tools:sub_title="Дома" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/job_purpose_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Молочник"
-                    app:top_title="Должность" />
+                    app:top_title="Должность"
+                    tools:sub_title="Молочник" />
 
                 <pro.breez.bfsut.custom.view.ProfileTextView
                     android:id="@+id/job_address_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    tools:sub_title="Село большой Кок-Жар дом 46"
-                    app:top_title="Рабочий адрес" />
+                    app:top_title="Рабочий адрес"
+                    tools:sub_title="Село большой Кок-Жар дом 46" />
 
             </LinearLayout>
 

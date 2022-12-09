@@ -87,13 +87,16 @@ open class CreditAddViewModel @Inject constructor(
 
         dialog.notFoundIcon = R.drawable.ic_not_found
         dialog.notFoundText = getString(R.string.credit_farmer_not_found)
-        dialog.notFoundBtnText = getString(R.string.understand)
+        dialog.notFoundBtnText = getString(R.string.create)
         dialog.helperText = getString(R.string.find_by_name_or_tax)
         dialog.onPositiveBtnClicked {
             farmerLV.postValue(it)
         }
         dialog.onHomeBtnClicked {
             popBackStack.trigger()
+        }
+        dialog.onNotFoundBtnClicked{
+
         }
         showDialogFragment.startEvent(dialog)
     }

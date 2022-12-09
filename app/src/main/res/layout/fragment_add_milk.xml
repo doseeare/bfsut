@@ -18,9 +18,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margins"
+        android:paddingHorizontal="@dimen/default_margins"
         android:text="@string/milked_today"
         android:textColor="@color/text_bold_color"
-        android:textSize="32sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -31,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/default_margins"
         android:layout_marginTop="@dimen/default_margins"
+        android:paddingHorizontal="@dimen/default_margins"
         app:hint="Найдите фермера"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:title="ФИО"
@@ -41,6 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:paddingHorizontal="@dimen/default_margins"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/name_et">
 
@@ -156,7 +159,8 @@
         android:id="@+id/milk_price_container_morning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margins"
+        android:layout_marginHorizontal="@dimen/large_margin"
+        android:layout_marginTop="@dimen/default_margins"
         android:background="@drawable/bg_price_of_liter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fields_container">
@@ -184,7 +188,6 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="100 сом \n за литр" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -194,6 +197,7 @@
         android:layout_marginHorizontal="@dimen/default_margins"
         android:layout_marginBottom="@dimen/default_margins"
         android:text="@string/total_default_som"
+        android:paddingHorizontal="@dimen/default_margins"
         android:textColor="@color/text_bold_color"
         android:textSize="31sp"
         android:textStyle="bold"
@@ -201,10 +205,11 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/create_btn"
+        android:layout_marginHorizontal="@dimen/large_margin"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_margin="@dimen/default_margins"
         android:background="@drawable/selector_default_button"
+        android:layout_marginBottom="@dimen/default_margins"
         android:enabled="false"
         android:text="@string/create"
         android:textAllCaps="false"

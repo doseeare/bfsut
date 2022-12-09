@@ -28,12 +28,12 @@
 
         <ImageView
             android:id="@+id/important_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="3dp"
             android:src="@drawable/ic_important"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/title_tv"
+            tools:visibility="visible"
             app:layout_constraintStart_toEndOf="@id/title_tv"
             app:layout_constraintTop_toTopOf="@id/title_tv" />
 
@@ -77,9 +77,9 @@
         android:layout_height="match_parent"
         android:layout_marginVertical="6dp"
         android:text="@string/fill_the_field"
-        android:textColor="@color/bg_default_color"
+        android:textColor="@color/gray"
         android:textSize="18sp"
-        android:textStyle="normal"
+        android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/border"

@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/default_margins"
+    android:layout_marginBottom="@dimen/default_margins"
     tools:context=".ui.main.active_logs.calculate.CalculateActiveLogsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -27,7 +30,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:padding="@dimen/default_margins"
-            android:text="Запись сбора молока"
+            android:text="@string/milking_log"
             android:textColor="@color/black_text_color"
             android:textSize="21sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +41,7 @@
             android:id="@+id/status_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_active_span"
+            android:background="@drawable/bg_shape_status_active"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar_title">
@@ -46,11 +49,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="8dp"
+                android:paddingHorizontal="@dimen/default_margins"
                 android:paddingVertical="3dp"
-                android:paddingStart="6sp"
-                android:text="активный"
+                android:text="@string/active"
                 android:textColor="@color/white"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -112,8 +115,8 @@
                 android:layout_marginHorizontal="@dimen/default_margins"
                 android:layout_marginTop="8dp"
                 android:text="@string/morning"
-                android:textSize="18sp"
                 android:textColor="@color/text_bold_color"
+                android:textSize="18sp"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
@@ -127,10 +130,10 @@
                 android:gravity="start"
                 android:hint="@string/default_liters"
                 android:inputType="number"
-                android:textColorHint="@color/gray_text"
                 android:maxLength="5"
                 android:maxLines="1"
                 android:textColor="@color/text_bold_color"
+                android:textColorHint="@color/gray_text"
                 android:textSize="54sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -170,12 +173,12 @@
                 android:layout_marginBottom="8dp"
                 android:background="@null"
                 android:gravity="start"
-                android:textColorHint="@color/gray_text"
                 android:hint="@string/default_liters"
                 android:inputType="number"
                 android:maxLength="5"
                 android:maxLines="1"
                 android:textColor="@color/text_bold_color"
+                android:textColorHint="@color/gray_text"
                 android:textSize="54sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -292,7 +295,7 @@
         android:layout_marginBottom="@dimen/default_margins"
         android:background="@drawable/bg_shape_gray_corners"
         android:stateListAnimator="@null"
-        android:text="Сохранить изменения"
+        android:text="@string/save_changes"
         android:textAllCaps="false"
         android:textColor="@color/text_bold_color"
         android:textSize="21sp"
@@ -305,7 +308,7 @@
         android:layout_marginHorizontal="@dimen/default_margins"
         android:layout_marginBottom="@dimen/default_margins"
         android:background="@drawable/selector_default_button"
-        android:text="Рассчитать"
+        android:text="@string/calculate"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"

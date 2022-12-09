@@ -32,7 +32,7 @@ class HomeViewModel @Inject constructor(
     val dataPreference: DataPreference
 ) : BaseViewModel() {
 
-    val farmersCheckLV = MutableLiveData<List<FarmerCheckModel>>()
+    val farmersCheckLV = MutableLiveData<ArrayList<FarmerCheckModel>>()
     val totalMilkLv = MutableLiveData<TotalMilkModel>()
     val milkPriceLV = MutableLiveData<Int>()
     val userNameLV = MutableLiveData<String>()
@@ -108,7 +108,11 @@ class HomeViewModel @Inject constructor(
     private fun getFarmersCheck() {
         farmerCheck.execute(viewModelScope) {
             handleResult(it) {
-                farmersCheckLV.postValue(it)
+                if (it.isNotEmpty()) {
+                    farmersCheckLV.postValue(it as ArrayList)
+                } else {
+                    farmersCheckLV.postValue(arrayListOf())
+                }
             }
         }
     }

@@ -58,6 +58,7 @@ class FilterFragment : BaseFragment<FragmentFilterBinding, FilterViewModel>() {
         acceptBtn.setOnClickOnceListener {
             viewModel.acceptClicked()
         }
+        filterSpanGroup.selectButton(binding.allTimeSpan)
     }
 
     private fun resetFilterGroup() {

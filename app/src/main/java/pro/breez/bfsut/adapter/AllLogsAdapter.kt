@@ -27,12 +27,12 @@ class AllLogsAdapter(
                 "active" -> {
                     clickListener = View.OnClickListener { itemClicked.invoke(item) }
                     statusTitle = "активный"
-                    R.drawable.bg_active_span
+                    R.drawable.bg_shape_status_active
                 }
                 "paid" -> {
                     clickListener = View.OnClickListener { itemClicked.invoke(item) }
                     statusTitle = "рассчитано"
-                    R.drawable.bg_paid_span
+                    R.drawable.bg_shape_status_paid
                 }
                 else -> {
                     clickListener = View.OnClickListener {}

@@ -5,6 +5,7 @@ import android.view.View
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import dagger.hilt.android.AndroidEntryPoint
+import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentCreditIssuedDetailBinding
 import pro.breez.bfsut.ui.issued_graph.IssuedGraphFragment
@@ -31,11 +32,11 @@ class CreditIssuedDetailFragment :
     private fun createTabs(): FragmentPagerItems {
         val creator = FragmentPagerItems.with(requireContext())
         creator.add(
-            "Информация",
+            getString(R.string.information),
             IssuedInfoFragment::class.java,
             Bundle().apply { putString(IssuedInfoFragment.KEY, viewModel.creditId) })
         creator.add(
-            "График",
+            getString(R.string.graphic),
             IssuedGraphFragment::class.java,
             Bundle().apply { putString(IssuedGraphFragment.KEY, viewModel.creditId) })
         return creator.create()

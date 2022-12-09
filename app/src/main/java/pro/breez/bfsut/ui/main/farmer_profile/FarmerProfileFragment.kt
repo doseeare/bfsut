@@ -5,6 +5,8 @@ import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentFarmerProfileBinding
+import pro.breez.bfsut.util.ifFalse
+import pro.breez.bfsut.util.ifTrue
 import pro.breez.bfsut.util.setOnClickOnceListener
 
 @AndroidEntryPoint
@@ -64,6 +66,16 @@ class FarmerProfileFragment : BaseFragment<FragmentFarmerProfileBinding, FarmerP
                 morningPanel.setSum(it.morning_price_sum?.toInt())
                 eveningPanel.setLiters(it.evening_milk_amount?.toInt())
                 eveningPanel.setSum(it.evening_price_sum?.toInt())
+                it.is_actual_address_match?.ifFalse {
+                    actualAddressContainer.visibility = View.VISIBLE
+                    actualCountryTv.text = it.actual_state.toString()
+                    actualAreaTv.text = it.actual_country.toString()
+                    actualRegionTv.text = it.actual_region.toString()
+                    actualStreetTv.text = it.actual_address
+                    actualVillageTv.text = it.actual_village
+                    actualHouseTv.text = it.actual_house
+                    actualApartmentTv.text = it.actual_apartment
+                }
             }
         }
     }

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.ItemSelectorBinding
@@ -55,7 +56,7 @@ class SelectorItemAdapter<T>(
                     value.isAccessible = false
                 }
                 nameTv.text = strBuilder.toString()
-                root.setSelect(lastCheckedPos == position, position)
+                setSelect(lastCheckedPos == position, position)
                 root.setOnClickOnceListener {
                     val copyLastPos = lastCheckedPos
                     lastCheckedPos = position
@@ -65,13 +66,11 @@ class SelectorItemAdapter<T>(
             }
         }
 
-        private fun View.setSelect(isSelected: Boolean, position: Int) {
+        private fun setSelect(isSelected: Boolean, position: Int) {
             if (isSelected) {
                 selectedItem = itemList[position]
-                setBackgroundColor(ContextCompat.getColor(context, R.color.gray_selected))
-            } else {
-                setBackgroundColor(ContextCompat.getColor(context, R.color.white))
             }
+            binding.indicatorImg.isVisible = isSelected
         }
     }
 }

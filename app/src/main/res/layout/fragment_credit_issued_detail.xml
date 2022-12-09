@@ -17,7 +17,7 @@
         android:id="@+id/tab_container"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginHorizontal="@dimen/default_margins"
+        android:layout_marginHorizontal="@dimen/large_margin"
         android:layout_marginTop="8dp"
         android:background="@drawable/bg_tab"
         app:layout_constraintStart_toStartOf="parent"

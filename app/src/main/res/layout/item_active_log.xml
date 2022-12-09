@@ -5,16 +5,15 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
+    android:layout_marginTop="6dp"
     android:background="@drawable/bg_rounded_shape_light">
 
     <CheckBox
         android:id="@+id/checkbox"
-        android:layout_width="42dp"
-        android:layout_height="42dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
         android:layout_margin="@dimen/default_margins"
-        android:background="?android:attr/listChoiceIndicatorMultiple"
-        android:button="@null"
+        android:button="@drawable/selector_checkbox"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,12 +22,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_margins"
-        tools:text="29.09.2001"
         android:textColor="@color/gray_text"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/checkbox"
         app:layout_constraintStart_toEndOf="@id/checkbox"
-        app:layout_constraintTop_toTopOf="@id/checkbox" />
+        app:layout_constraintTop_toTopOf="@id/checkbox"
+        tools:text="29.09.2001" />
 
     <TextView
         android:id="@+id/name_tv"
@@ -36,9 +35,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="@dimen/default_margins"
-        android:text="Акыл Акылов"
+        tools:text="Акыл Акылов"
         android:textColor="@color/black"
-        android:textSize="21sp"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/date_tv"
@@ -49,9 +48,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="утром"
+        android:text="@string/morning"
         android:textColor="@color/error_color"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/name_tv"
         app:layout_constraintTop_toBottomOf="@id/name_tv" />
 
@@ -61,9 +60,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
-        android:text="вечером"
+        android:text="@string/evening"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/day_title_tv"
         app:layout_constraintTop_toBottomOf="@id/name_tv" />
 
@@ -71,37 +70,36 @@
         android:id="@+id/day_liters_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="5л"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="33sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@id/day_title_tv"
-        app:layout_constraintTop_toBottomOf="@id/day_title_tv" />
+        app:layout_constraintTop_toBottomOf="@id/day_title_tv"
+        tools:text="5л" />
 
     <TextView
         android:id="@+id/night_liters_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/default_margins"
-        tools:text="5л"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="33sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/night_title_tv"
-        app:layout_constraintTop_toBottomOf="@id/night_title_tv" />
+        app:layout_constraintTop_toBottomOf="@id/night_title_tv"
+        tools:text="5л" />
 
     <TextView
         android:id="@+id/price_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/default_margins"
-        tools:text="900с"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="33sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/night_liters_tv"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="900с" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

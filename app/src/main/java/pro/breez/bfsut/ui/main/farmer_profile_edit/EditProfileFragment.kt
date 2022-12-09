@@ -1,6 +1,7 @@
 package pro.breez.bfsut.ui.main.farmer_profile_edit
 
 import android.os.Bundle
+import android.os.PowerManager
 import android.text.InputFilter
 import android.text.InputType
 import android.view.View

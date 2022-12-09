@@ -4,9 +4,6 @@ import com.google.gson.Gson
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import org.json.JSONArray
-import org.json.JSONObject
-import pro.breez.data.entity.response.ErrorResponse
 import pro.breez.data.entity.response.ErrorsResponse
 import pro.breez.data.exception.HttpException
 import pro.breez.data.exception.UnauthorizedError
@@ -70,39 +67,24 @@ class ResultCallAdapterFactory private constructor() : CallAdapter.Factory() {
                             }
                             false -> {
                                 val stream = response.errorBody()?.string()
-                                val json = JSONObject(stream ?: "")
-                                if (json.get("data") is JSONArray) {
-                                    val error = Gson().fromJson(
-                                        stream,
-                                        ErrorsResponse::class.java
+                                val error = Gson().fromJson(
+                                    stream,
+                                    ErrorsResponse::class.java
+                                )
+                                if (response.code() == 401) {
+                                    Result.Exception(
+                                        UnauthorizedError(
+                                            response.code(),
+                                            error.message
+                                        )
                                     )
+                                } else
                                     Result.Exception(
                                         HttpException(
                                             response.code(),
-                                            error.data[0].message
+                                            error.message
                                         )
                                     )
-                                } else {
-                                    val error = Gson().fromJson(
-                                        stream,
-                                        ErrorResponse::class.java
-                                    )
-
-                                    if (response.code() == 401) {
-                                        Result.Exception(
-                                            UnauthorizedError(
-                                                response.code(),
-                                                error.data.message
-                                            )
-                                        )
-                                    } else
-                                        Result.Exception(
-                                            HttpException(
-                                                response.code(),
-                                                error.data.message
-                                            )
-                                        )
-                                }
                             }
                         }
                     } catch (throwable: Throwable) {

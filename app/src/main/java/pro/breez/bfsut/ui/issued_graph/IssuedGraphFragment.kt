@@ -2,9 +2,11 @@ package pro.breez.bfsut.ui.issued_graph
 
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.IntRange
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentIssuedGraphBinding
+import java.util.stream.IntStream
 
 @AndroidEntryPoint
 class IssuedGraphFragment : BaseFragment<FragmentIssuedGraphBinding, IssuedGraphViewModel>() {

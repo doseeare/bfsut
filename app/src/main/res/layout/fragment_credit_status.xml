@@ -10,6 +10,7 @@
         android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/default_margins"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_credit_status" />

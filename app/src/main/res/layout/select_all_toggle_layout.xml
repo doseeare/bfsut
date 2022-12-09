@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="wrap_content"
-    android:layout_height="46dp"
+    android:layout_height="43dp"
     android:background="@drawable/bg_choose_all_on">
 
     <ImageView
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="@dimen/default_margins"
-        android:text="Выбрать все"
+        android:text="@string/select_all"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/left_img"
         app:layout_constraintEnd_toEndOf="parent"

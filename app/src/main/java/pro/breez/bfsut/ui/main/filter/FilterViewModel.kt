@@ -4,6 +4,8 @@ import androidx.annotation.IdRes
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
@@ -74,7 +76,12 @@ class FilterViewModel @Inject constructor(
 
     fun showDatePicker(isFrom: Boolean) {
         val selectedRange = rangeDateLv.value
+        val constraintsBuilder =
+            CalendarConstraints.Builder()
+                .setValidator(DateValidatorPointBackward.now())
+
         val dateRangePicker = MaterialDatePicker.Builder.datePicker()
+            .setCalendarConstraints(constraintsBuilder.build())
             .setTitleText("Выберите период")
             .setPositiveButtonText("Подвердить")
             .setNegativeButtonText("Отменить")

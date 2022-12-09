@@ -21,7 +21,7 @@ class PaidLogsDetailFragment :
     private fun initViews() {
         val currentDate: String = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
         val dateTitle =
-            if (currentDate == viewModel.log.paid_date) "Рассчитано на сегодня" else "Рассчитано за ${viewModel.log.paid_date}"
+            if (currentDate == viewModel.log.paid_date) "За сегодня" else "Рассчитано за ${viewModel.log.paid_date}"
         binding.toolbar.setTitle(dateTitle)
         binding.totalSumTv.text = "${viewModel.log.total_sum} с"
         binding.totalMilkLitersTv.text = "${viewModel.log.total_milk} л"

@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/default_margins"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/bottom_panel"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,6 +20,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottom_panel"
         android:layout_width="match_parent"
+        android:paddingHorizontal="@dimen/default_margins"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_shape_rounded_top"
         app:layout_constraintBottom_toBottomOf="parent">

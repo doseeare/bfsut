@@ -9,7 +9,6 @@ import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentHomeBinding
 import pro.breez.bfsut.ui.auth.activity.AuthActivity
 import pro.breez.bfsut.util.setOnClickOnceListener
-import pro.breez.domain.model.output.FarmerCheckModel
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
@@ -44,13 +43,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     private fun initObservers() {
         viewModel.farmersCheckLV.observe(viewLifecycleOwner) { farmers ->
-            val farmersList = if (farmers.isNotEmpty())
-                farmers.take(farmers.size / 2) as ArrayList<FarmerCheckModel>
-            else
-                arrayListOf()
             val adapter =
                 FarmersAdapter(
-                    itemList = farmersList,
+                    itemList = farmers,
                     addClicked = {
                         viewModel.addMilkToFarmer(it)
                     },
@@ -59,14 +54,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                     })
 
             binding.showMoreBtn.setOnClickOnceListener {
-                if (showMore) {
-                    binding.showMoreBtn.text = "Скрыть"
-                    adapter.update(farmers.take(farmers.size) as ArrayList<FarmerCheckModel>)
-                } else {
-                    binding.showMoreBtn.text = "Показать еще"
-                    adapter.update(farmers.take(farmers.size / 2) as ArrayList<FarmerCheckModel>)
+                if (farmers.size > 5) {
+                    if (showMore) {
+                        binding.showMoreBtn.text = "Скрыть"
+                        adapter.update(farmers.take(farmers.size) as ArrayList)
+                    } else {
+                        binding.showMoreBtn.text = "Показать еще"
+                        adapter.update(farmers.take(farmers.size / 2) as ArrayList)
+                    }
+                    showMore = !showMore
                 }
-                showMore = !showMore
             }
             binding.farmersRv.adapter = adapter
         }

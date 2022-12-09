@@ -12,6 +12,7 @@ import pro.breez.bfsut.adapter.SelectorItemAdapter
 import pro.breez.bfsut.databinding.DialogItemSearchBinding
 import pro.breez.bfsut.util.ifNotNull
 import pro.breez.bfsut.util.ifNull
+import pro.breez.bfsut.util.ifTrue
 
 class SearchItemDialog<T>(
     private val valueName: Array<String>,
@@ -21,8 +22,10 @@ class SearchItemDialog<T>(
 
     private var onPositiveClick: View.OnClickListener? = null
     private var onHomeClicked: View.OnClickListener? = null
+    private var onNotFoundBtnClick: View.OnClickListener? = null
     private var onKeyChanged: ((String) -> Unit)? = null
 
+    var isHomeBtnGone = false
     var notFoundIcon: Int = R.drawable.ic_not_found
     var notFoundText: String? = null
     var notFoundBtnText: String? = null
@@ -50,6 +53,10 @@ class SearchItemDialog<T>(
             helperText = getString(R.string.check_or_create)
         }
 
+        isHomeBtnGone.ifTrue {
+            binding.homeBtn.visibility = View.GONE
+        }
+
         adapter = SelectorItemAdapter(arrayListOf(), valueName, activeBtn = {
             binding.selectBtn.isEnabled = true
         })
@@ -57,9 +64,6 @@ class SearchItemDialog<T>(
         binding.selectBtn.setOnClickListener(onPositiveClick)
         binding.homeBtn.setOnClickListener(onHomeClicked)
         binding.helperTv.text = helperText
-        onHomeClicked.ifNotNull {
-            binding.homeBtn.visibility = View.VISIBLE
-        }
         onEditTextFilled()
         return binding.root
     }
@@ -97,7 +101,7 @@ class SearchItemDialog<T>(
             binding.helperTv.text = (notFoundText)
             binding.selectBtn.text = notFoundBtnText
             binding.selectBtn.isEnabled = true
-            binding.selectBtn.setOnClickListener(onHomeClicked)
+            binding.selectBtn.setOnClickListener(onNotFoundBtnClick)
         }
     }
 
@@ -110,9 +114,16 @@ class SearchItemDialog<T>(
         }
     }
 
-    fun onHomeBtnClicked(block: () -> Unit) {
+    fun onHomeBtnClicked(block: (() -> Unit)? = null) {
         onHomeClicked = View.OnClickListener {
-            block.invoke()
+            block?.invoke()
+            dismiss()
+        }
+    }
+
+    fun onNotFoundBtnClicked(block: (() -> Unit)? = null) {
+        onNotFoundBtnClick = View.OnClickListener {
+            block?.invoke()
             dismiss()
         }
     }

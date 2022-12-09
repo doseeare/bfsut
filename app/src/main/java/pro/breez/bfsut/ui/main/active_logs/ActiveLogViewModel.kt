@@ -13,6 +13,7 @@ import pro.breez.bfsut.ui.main.log.LogFragmentDirections
 import pro.breez.bfsut.util.DateUtil
 import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
+import pro.breez.bfsut.util.ifTrue
 import pro.breez.domain.interactor.ActiveLogsUseCase
 import pro.breez.domain.interactor.CalculateActiveLogsUseCase
 import pro.breez.domain.model.output.LogsModel
@@ -23,6 +24,7 @@ class ActiveLogViewModel @Inject constructor(
     private val activeLogsUseCase: ActiveLogsUseCase,
     private val calculateActiveLogs: CalculateActiveLogsUseCase
 ) : BaseViewModel() {
+
     private val selectedLogsLV = MutableLiveData<ArrayList<LogsModel>>()
     val activeLogsLV = MutableLiveData<ArrayList<LogsModel>>()
     val selectedLogsPriceInfoLV = MutableLiveData<Pair<Int, Int>>()
@@ -38,6 +40,15 @@ class ActiveLogViewModel @Inject constructor(
     override fun onResume(owner: LifecycleOwner) {
         super.onResume(owner)
         getActiveLogs()
+    }
+
+    override fun onPause(owner: LifecycleOwner) {
+        super.onPause(owner)
+        selectedLogsLV.value?.let {
+            it.isNotEmpty().ifTrue {
+                selectedLogsLV.postValue(arrayListOf())
+            }
+        }
     }
 
     fun getActiveLogs() {

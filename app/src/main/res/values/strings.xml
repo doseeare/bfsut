@@ -79,4 +79,15 @@
     <string name="default_liters">0л</string>
     <string name="milked_today">Сбор молока \nза сегодня</string>
     <string name="default_som">0 сом</string>
+    <string name="information">Информация</string>
+    <string name="graphic">График</string>
+    <string name="select_all">Выбрать все</string>
+    <string name="or_choose_range">Или выбрать период</string>
+    <string name="accepted">Применить</string>
+    <string name="fetched">Собрано:</string>
+    <string name="active">активный</string>
+    <string name="milking_log">Запись сбора молока</string>
+    <string name="actual_address">Адрес проживания по прописке</string>
+    <string name="fetched_today">За сегодня уже собрано:</string>
+    <string name="edit_log">Редактировать запись</string>
 </resources>

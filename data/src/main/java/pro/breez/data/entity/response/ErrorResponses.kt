@@ -1,17 +1,17 @@
 package pro.breez.data.entity.response
 
 data class ErrorsResponse(
-    val success: Boolean,
-    val status: Int,
-    val data: ArrayList<ErrorBody>
+    val code: String,
+    val field_errors: List<FieldError>,
+    val message: String
+)
+
+data class FieldError(
+    val field_name: String,
+    val message: String
 )
 
 data class ErrorResponse(
-    val success: Boolean,
-    val status: Int,
-    val data: ErrorBody
-)
-
-data class ErrorBody(
-    val message:String
+    val code: String,
+    val message: String,
 )

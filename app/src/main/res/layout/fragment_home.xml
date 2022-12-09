@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/default_margins"
     android:background="@color/bg_milky_color"
     android:orientation="vertical"
     tools:context=".ui.main.home.HomeFragment">
@@ -87,55 +88,55 @@
             android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/info_panel" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/default_margins"
+            android:layout_marginTop="@dimen/default_margins"
+            android:layout_marginBottom="@dimen/default_margins"
+            android:background="@drawable/bg_default_corner_white"
+            android:padding="21dp"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toTopOf="@id/show_all_btn"
+            app:layout_constraintTop_toBottomOf="@id/price_of_liter_btn">
+
+            <TextView
+                android:id="@+id/farmer_list_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/need_to_check"
+                android:textColor="@color/text_bold_color"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/farmers_rv"
                 android:layout_width="match_parent"
-                android:layout_marginHorizontal="@dimen/default_margins"
+                android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/default_margins"
-                android:layout_marginBottom="@dimen/default_margins"
-                android:padding="21dp"
-                app:cardCornerRadius="16dp"
-                android:background="@drawable/bg_default_corner_white"
-                app:layout_constraintBottom_toTopOf="@id/show_all_btn"
-                app:layout_constraintTop_toBottomOf="@id/price_of_liter_btn"
-                android:layout_height="wrap_content">
+                android:nestedScrollingEnabled="false"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/farmer_list_header"
+                tools:itemCount="8"
+                tools:listitem="@layout/item_farmer_need_to_check" />
 
-                <TextView
-                    android:id="@+id/farmer_list_header"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/need_to_check"
-                    android:textColor="@color/text_bold_color"
-                    android:textSize="26sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/show_more_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="@dimen/default_margins"
+                android:text="@string/show_more"
+                android:textColor="@color/gray_text"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/farmers_rv" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/farmers_rv"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/default_margins"
-                    android:nestedScrollingEnabled="false"
-                    android:orientation="vertical"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/farmer_list_header"
-                    tools:itemCount="8"
-                    tools:listitem="@layout/item_farmer_need_to_check" />
-
-                <TextView
-                    android:id="@+id/show_more_btn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="@dimen/default_margins"
-                    android:text="@string/show_more"
-                    android:textColor="@color/text_bold_color"
-                    android:textSize="16sp"
-                    android:textStyle="normal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/farmers_rv" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <pro.breez.bfsut.custom.view.ButtonDrawableView
             android:id="@+id/show_all_btn"

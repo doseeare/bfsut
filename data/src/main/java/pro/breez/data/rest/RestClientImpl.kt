@@ -30,7 +30,7 @@ class RestClientImpl @Inject constructor(
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
         val okHttpClient = OkHttpClient.Builder()
-            //   .addInterceptor(HeaderInterceptor(dataPref))
+            //.addInterceptor(HeaderInterceptor(dataPref))
             .authenticator(tokenAuthenticator)
             .addInterceptor(httpLoggingInterceptor)
             .readTimeout(DEFAULT_TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)

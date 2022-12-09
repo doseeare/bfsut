@@ -89,8 +89,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margins"
-                    android:visibility="gone"
-                    tools:visibility="visible"
                     android:textSize="16sp"
                     android:background="@drawable/bg_shape_light_gray_corners"
                     android:padding="8dp"

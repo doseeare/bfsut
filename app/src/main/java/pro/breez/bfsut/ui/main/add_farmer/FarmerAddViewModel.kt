@@ -292,13 +292,15 @@ class FarmerAddViewModel @Inject constructor(
             searchFarmersInSystem(dialog, it)
         }
         dialog.isCancelable = isCancelable
-
+        dialog.notFoundBtnText = getString(R.string.create)
+        dialog.isHomeBtnGone = isCancelable
+        dialog.onNotFoundBtnClicked()
+        dialog.onHomeBtnClicked {
+            popBackStack.trigger()
+        }
         dialog.onPositiveBtnClicked {
             customerId = it.customerID
             farmerFoundLV.postValue(it)
-        }
-        dialog.onHomeBtnClicked {
-            popBackStack.trigger()
         }
         showDialogFragment.startEvent(dialog)
     }

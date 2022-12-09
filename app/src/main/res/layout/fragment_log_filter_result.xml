@@ -15,7 +15,7 @@
         android:id="@+id/result_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/default_margins"
+        android:layout_marginHorizontal="@dimen/large_margin"
         android:layout_marginTop="@dimen/default_margins"
         android:textColor="@color/text_bold_color"
         android:textSize="22sp"
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginTop="@dimen/default_margins"
-        android:layout_marginHorizontal="@dimen/default_margins"
+        android:layout_marginHorizontal="@dimen/large_margin"
         android:background="@drawable/bg_tab"
         app:layout_constraintTop_toBottomOf="@id/result_title_tv">
 

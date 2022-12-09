@@ -10,6 +10,7 @@
         android:id="@+id/all_logs_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/default_margins"
         android:orientation="vertical"
         android:paddingVertical="@dimen/default_margins"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -24,7 +25,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
 
         <ImageView
             android:layout_width="wrap_content"

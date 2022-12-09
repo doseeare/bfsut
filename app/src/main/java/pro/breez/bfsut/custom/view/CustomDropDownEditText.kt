@@ -98,8 +98,13 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
             val filledText = text.toString()
 
             if (conditionClearError.isNull()) {
-                if (filledText.isNotEmpty() && filledText.isNotBlank())
+                if (filledText.isNotEmpty() && filledText.isNotBlank()){
+                    binding.titleTv.setTextColor(ContextCompat.getColor(context, R.color.gray_text))
                     error = false
+                }else{
+                    binding.titleTv.setTextColor(ContextCompat.getColor(context, R.color.text_bold_color))
+                }
+
             } else {
                 conditionClearError?.invoke()?.ifTrue {
                     error = false

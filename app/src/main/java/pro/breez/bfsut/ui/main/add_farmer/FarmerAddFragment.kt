@@ -44,6 +44,7 @@ class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewMo
         binding.searchBtn.setOnClickOnceListener {
             it.visibility = View.GONE
             binding.searchEt.visibility = View.VISIBLE
+            viewModel.showSearchDialog(true)
         }
         toolbar.setTitle("Создание фермера")
         SelectableButton.init(genderMale, genderFemale) {
@@ -76,7 +77,7 @@ class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewMo
         whenDocEt.setOnClickListener(viewModel::whenDocClicked)
         educationEt.setOnClickListener(viewModel::educationClicked)
         jobPurposeEt.setOnClickListener(viewModel::jobPurposeClicked)
-        binding.searchEt.setOnClickListener {
+        searchEt.setOnClickListener {
             viewModel.showSearchDialog(true)
         }
         countryEt.setOnClickListener {
