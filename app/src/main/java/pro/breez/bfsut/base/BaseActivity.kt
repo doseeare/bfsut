@@ -21,6 +21,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.viewbinding.ViewBinding
+import pro.breez.bfsut.MainActivity
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.ViewProgressBinding
 import pro.breez.bfsut.exception.NavigationInitializationException
@@ -131,6 +132,12 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         val bottomNavigationBar = findViewById<CardView>(R.id.custom_nav) ?: return
         bottomNavigationBar.animate().translationY(0f).setDuration(500).start()
         bottomNavigationBar.visibility = View.VISIBLE
+    }
+
+    fun setBadgeNav(count : Int) {
+        if (this is MainActivity) {
+            this.setBadge(count)
+        }
     }
 
     private fun initializeNavController(): NavController {

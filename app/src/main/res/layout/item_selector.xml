@@ -10,7 +10,7 @@
         android:id="@+id/name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingVertical="@dimen/default_margins"
+        android:paddingVertical="18dp"
         android:paddingStart="@dimen/default_margins"
         android:paddingEnd="8dp"
         android:textColor="@color/text_bold_color"

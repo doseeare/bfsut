@@ -13,14 +13,14 @@
         android:text="@string/filter_journal"
         android:textColor="@color/text_bold_color"
         android:textSize="36sp"
-        android:textStyle="normal"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/back_btn"
-        android:layout_width="46dp"
-        android:layout_height="46dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_marginTop="@dimen/default_margins"
         android:layout_marginEnd="@dimen/large_margin"
         android:src="@drawable/ic_close"
@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/large_margin"
-        android:layout_marginTop="@dimen/default_margins"
+        android:layout_marginTop="@dimen/large_margin"
         app:hint="Введите ФИО"
         app:layout_constraintTop_toBottomOf="@id/title_tv"
         app:title="ФИО"
@@ -173,10 +173,10 @@
         app:layout_constraintTop_toBottomOf="@id/period">
 
         <pro.breez.bfsut.custom.view.CustomDropDownEditText
-            android:id="@+id/from_et"
+            android:id="@+id/start_et"
             android:layout_width="176dp"
             android:layout_height="wrap_content"
-            app:hint="ДД.ММ.ГГГГГ"
+            app:hint="@string/default_calendar_hint"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/period"
             app:title="C"
@@ -189,16 +189,16 @@
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/default_margins"
             android:background="@color/gray_selected"
-            app:layout_constraintBottom_toBottomOf="@id/from_et"
-            app:layout_constraintStart_toEndOf="@id/from_et"
-            app:layout_constraintTop_toTopOf="@id/from_et" />
+            app:layout_constraintBottom_toBottomOf="@id/start_et"
+            app:layout_constraintStart_toEndOf="@id/start_et"
+            app:layout_constraintTop_toTopOf="@id/start_et" />
 
         <pro.breez.bfsut.custom.view.CustomDropDownEditText
-            android:id="@+id/to_et"
+            android:id="@+id/end_et"
             android:layout_width="176dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_margins"
-            app:hint="ДД.ММ.ГГГГГ"
+            app:hint="@string/default_calendar_hint"
             app:layout_constraintBottom_toBottomOf="@id/divider"
             app:layout_constraintStart_toEndOf="@id/divider"
             app:layout_constraintTop_toTopOf="@id/divider"

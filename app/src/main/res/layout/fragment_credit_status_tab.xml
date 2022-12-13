@@ -27,10 +27,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:stl_defaultTabTextAllCaps="false"
             app:stl_distributeEvenly="true"
+            app:stl_indicatorWithoutPadding="false"
             app:stl_dividerThickness="0dp"
             app:stl_indicatorColor="@color/black"
             app:stl_indicatorCornerRadius="12dp"
             app:stl_indicatorGravity="center"
+            app:stl_titleOffset="100dp"
             app:stl_indicatorInterpolation="linear"
             app:stl_indicatorThickness="46dp"
             app:stl_underlineThickness="0dp" />

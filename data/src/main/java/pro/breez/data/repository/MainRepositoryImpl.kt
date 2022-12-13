@@ -104,4 +104,8 @@ class MainRepositoryImpl(
     override fun deleteLog(id: String): Result<DefaultSuccessModel> {
         return restClient.mainApi.deleteLog(dataPreference.token, id)
     }
+
+    override fun getUnreadCount(): Result<UnreadCountModel> {
+        return restClient.mainApi.getUnreadCreditCount(dataPreference.token)
+    }
 }

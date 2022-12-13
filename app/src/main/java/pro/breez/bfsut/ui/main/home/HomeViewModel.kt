@@ -13,10 +13,7 @@ import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
 import pro.breez.data.cache.DataPreference
 import pro.breez.data.cache.SettingsPreference
-import pro.breez.domain.interactor.ChangeMilkPriceUseCase
-import pro.breez.domain.interactor.FarmersCheckUseCase
-import pro.breez.domain.interactor.MilkPriceUseCase
-import pro.breez.domain.interactor.TotalMilkUseCase
+import pro.breez.domain.interactor.*
 import pro.breez.domain.model.output.FarmerCheckModel
 import pro.breez.domain.model.output.MilkPriceModel
 import pro.breez.domain.model.output.TotalMilkModel
@@ -28,6 +25,7 @@ class HomeViewModel @Inject constructor(
     private val getTotalMilk: TotalMilkUseCase,
     private val getMilkPrice: MilkPriceUseCase,
     private val changeMilkPrice: ChangeMilkPriceUseCase,
+    private val unreadCreditCountUseCase: UnreadCreditCountUseCase,
     private val settingsPreference: SettingsPreference,
     val dataPreference: DataPreference
 ) : BaseViewModel() {
@@ -40,6 +38,7 @@ class HomeViewModel @Inject constructor(
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
         showChangePrice()
+        getUnreadCount()
     }
 
     override fun onResume(owner: LifecycleOwner) {
@@ -47,6 +46,14 @@ class HomeViewModel @Inject constructor(
         getFarmersCheck()
         getTotalMilk()
         getMilkPrice()
+    }
+
+    private fun getUnreadCount() {
+        unreadCreditCountUseCase.execute(viewModelScope) {
+            handleResult(it) {
+                badge.postEvent(it.amount)
+            }
+        }
     }
 
     private fun showChangePrice() {

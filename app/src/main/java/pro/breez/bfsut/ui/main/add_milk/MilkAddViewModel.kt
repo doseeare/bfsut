@@ -32,7 +32,7 @@ class MilkAddViewModel @Inject constructor(
     val milkPriceLV = SingleLiveEvent<MilkPriceModel>()
     val eveningStatusLV = SingleLiveEvent<Boolean>()
     val farmerLV = SingleLiveEvent<FarmerCheckModel>()
-    val isSelectedFarmer = SingleLiveEvent<Boolean>()
+    var isSelectedFarmer: Boolean = false
 
     private val farmer: FarmerCheckModel? by lazy {
         MilkAddFragmentArgs.fromBundle(requiredArguments()).farmer
@@ -40,11 +40,11 @@ class MilkAddViewModel @Inject constructor(
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
-        if (farmer != null) {
+        isSelectedFarmer = if (farmer != null) {
             farmerLV.postValue(farmer)
-            isSelectedFarmer.postValue(true)
+            true
         } else {
-            isSelectedFarmer.postValue(false)
+            false
         }
         milkPriceUseCase.execute(viewModelScope) {
             handleResult(it) { milkPrice ->

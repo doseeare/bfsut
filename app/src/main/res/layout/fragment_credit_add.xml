@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Рейтинг"
+                android:text="@string/rating"
                 android:textColor="@color/text_bold_color"
                 android:textSize="24sp"
                 android:textStyle="normal" />
@@ -54,14 +54,14 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:textColor="@color/text_bold_color"
-                android:textSize="58sp"
+                android:textSize="52sp"
                 android:textStyle="normal" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Кредитный потенциал"
+                android:text="@string/credit_potential"
                 android:textColor="@color/text_bold_color"
                 android:textSize="24sp"
                 android:textStyle="normal" />
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:textColor="@color/text_bold_color"
-                android:textSize="58sp"
+                android:textSize="52sp"
                 android:textStyle="normal" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -81,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 app:hint="Выбиретие цель"
+                app:icon_end="@drawable/ic_drop"
                 app:title="Цель"
                 app:type="drop" />
 
@@ -98,6 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                app:icon_end="@drawable/ic_drop"
                 app:hint="Выберите продукт"
                 app:title="Продукт"
                 app:type="drop" />
@@ -109,6 +111,7 @@
                 android:layout_marginTop="12dp"
                 app:helper="Зависит от категории продукта"
                 app:hint="Выберите категорию"
+                app:icon_end="@drawable/ic_drop"
                 app:title="Категория"
                 app:type="drop" />
 
@@ -117,6 +120,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                app:icon_end="@drawable/ic_drop"
                 app:hint="Выберите срок кредита"
                 app:title="Срок"
                 app:type="drop" />
@@ -127,6 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 app:helper="Дата ежемесячной оплаты"
+                app:icon_end="@drawable/ic_drop"
                 app:hint="Введите число для оплаты"
                 app:title="День для выплат"
                 app:type="drop" />
@@ -148,7 +153,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/send_btn"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="66dp"
         android:layout_marginHorizontal="@dimen/large_margin"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="@dimen/default_margins"

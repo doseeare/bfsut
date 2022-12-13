@@ -30,10 +30,10 @@
         android:maxLines="1"
         android:textColor="@color/text_bold_color"
         android:textSize="23sp"
-        android:textStyle="normal"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/date_tv"
-        app:layout_constraintTop_toBottomOf="@id/status_container"
+        app:layout_constraintTop_toBottomOf="@id/date_tv"
         tools:drawableEndCompat="@drawable/ic_not_open_indicator"
         tools:text="Мээрим Орозбакова" />
 

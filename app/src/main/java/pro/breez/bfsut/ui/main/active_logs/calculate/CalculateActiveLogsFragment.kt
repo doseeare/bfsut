@@ -57,7 +57,6 @@ class CalculateActiveLogsFragment :
                     .filter { it.isDigit() }
                 if (evening.isNotBlank())
                     totalSum += evening.toInt() * it.evening_price
-                getString(R.string.total_som)
                 binding.totalAmountTv.text = "Итого: $totalSum сом"
             }
         }

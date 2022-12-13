@@ -134,7 +134,7 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
                 binding.importantImg.isVisible = it
             }
 
-            attr.getResourceId(R.styleable.CustomDropDownEditText_icon_end, R.drawable.ic_drop)
+            attr.getResourceId(R.styleable.CustomDropDownEditText_icon_end, R.drawable.ic_arrow_down)
                 .let {
                     binding.dropImg.setImageResource(it)
                 }
@@ -142,6 +142,7 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
             attr.getInt(R.styleable.CustomDropDownEditText_type, 0).let {
                 setType(it)
             }
+            attr.recycle()
         }
     }
 

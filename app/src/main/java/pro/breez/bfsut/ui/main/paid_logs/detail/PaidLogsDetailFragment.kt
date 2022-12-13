@@ -29,6 +29,7 @@ class PaidLogsDetailFragment :
             requireActivity().onBackPressed()
         }
         viewModel.paidLogsDetailLV.observe(viewLifecycleOwner) {
+            binding.scrollView.visibility = View.VISIBLE
             binding.paidLogRv.adapter = PaidLogDetailAdapter(it)
         }
     }

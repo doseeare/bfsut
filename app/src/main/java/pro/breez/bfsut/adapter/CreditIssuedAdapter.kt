@@ -4,6 +4,7 @@ import androidx.core.content.ContextCompat
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseRecyclerAdapter
 import pro.breez.bfsut.databinding.ItemCreditIssuedBinding
+import pro.breez.bfsut.util.DateUtil
 import pro.breez.bfsut.util.ifNotNull
 import pro.breez.bfsut.util.setOnClickOnceListener
 import pro.breez.domain.model.output.IssuedData
@@ -17,8 +18,8 @@ class CreditIssuedAdapter(
     override fun bind(item: IssuedData, binding: ItemCreditIssuedBinding, position: Int) {
         binding.apply {
             nameTv.text = item.full_name
-            amountPerMonthTv.text = "${item.monthly_payment_amount}"
-            amountTv.text = "${item.amount}"
+            amountPerMonthTv.text = "${item.monthly_payment_amount} с/мес."
+            amountTv.text = "${item.amount} c"
 
             item.is_overdue.ifNotNull {
                 if (item.is_overdue!!) {
@@ -31,7 +32,7 @@ class CreditIssuedAdapter(
                     )
                     leftTopTv.text = "Просрочено:"
                 } else {
-                    leftBottomTv.text = item.date
+                    leftBottomTv.text = DateUtil.reformat(item.date)
                     leftTopTv.text = "Выплата:"
                 }
             }

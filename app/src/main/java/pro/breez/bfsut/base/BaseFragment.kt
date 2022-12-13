@@ -128,6 +128,9 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
             vm.previousScreen.observe(this) {
                 requireActivity().onBackPressed()
             }
+            vm.badge.observe(this){
+                setBadge(it)
+            }
         }
     }
 
@@ -142,6 +145,10 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
 
     private fun showLoading(@StringRes resourceId: Int) {
         (activity as? BaseActivity<*>)?.showLoading(resourceId)
+    }
+
+    private fun setBadge(count : Int){
+        (activity as? BaseActivity<*>)?.setBadgeNav(count)
     }
 
     private fun hideLoading() {
@@ -165,6 +172,8 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
             (activity as BaseActivity<*>).navigateToFragment(fragmentTransaction)
         }
     }
+
+
 
     private fun navigateToActivity(activityTransaction: ActivityTransaction) {
         if (activity is BaseActivity<*>) {

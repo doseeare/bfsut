@@ -27,6 +27,7 @@ class PaidLogsDetailViewModel @Inject constructor(
     }
 
     private fun getPaidLogs() {
+        showLoadingView()
         paidLogsDetailUC.execute(viewModelScope, log.id) {
             handleResult(it) {
                 paidLogsDetailLV.postValue(it as ArrayList<PaidLogsDetailModel>)

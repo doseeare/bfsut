@@ -70,11 +70,12 @@
     <string name="milk_accept">Молоко принято</string>
     <string name="thank_for_job">Спасибо за работа</string>
     <string name="total_som">Итого: %1$ сом</string>
+    <string name="make_calculate_for">Произвести расчет за %1$d литров</string>
     <string name="total_default_som">Итого: 0 сом</string>
     <string name="question_edit_log">Хотите отредактировать
 запись?</string>
-    <string name="evening">Вечером</string>
-    <string name="morning">Утром</string>
+    <string name="evening">вечером</string>
+    <string name="morning">утром</string>
     <string name="all_logs_paid">Все записи рассчитаны</string>
     <string name="default_liters">0л</string>
     <string name="milked_today">Сбор молока \nза сегодня</string>
@@ -90,4 +91,10 @@
     <string name="actual_address">Адрес проживания по прописке</string>
     <string name="fetched_today">За сегодня уже собрано:</string>
     <string name="edit_log">Редактировать запись</string>
+    <string name="default_calendar_hint">ДД.ММ.ГГГГГ</string>
+    <string name="familty">Семья</string>
+    <string name="static_per_month">Статистика за %1$d месяцев</string>
+    <string name="default_liters_price">0 сом \nза литр</string>
+    <string name="credit_potential">Кредитный потенциал</string>
+    <string name="rating">Рейтинг</string>
 </resources>

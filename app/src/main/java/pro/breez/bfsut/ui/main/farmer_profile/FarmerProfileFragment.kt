@@ -3,6 +3,7 @@ package pro.breez.bfsut.ui.main.farmer_profile
 import android.os.Bundle
 import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
+import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentFarmerProfileBinding
 import pro.breez.bfsut.util.ifFalse
@@ -34,6 +35,7 @@ class FarmerProfileFragment : BaseFragment<FragmentFarmerProfileBinding, FarmerP
         farmerProfileLV.observe(viewLifecycleOwner) {
             binding.apply {
                 nameTv.text = "${it.first_name} ${it.father_name} ${it.last_name}"
+                staticsPerTv.text = getString(R.string.static_per_month, 6)
                 lastNameTv.text = it.father_name
                 firstNameTv.text = it.first_name
                 surnameTv.text = it.last_name
@@ -57,7 +59,6 @@ class FarmerProfileFragment : BaseFragment<FragmentFarmerProfileBinding, FarmerP
                 houseTv.text = it.house
                 apartmentTv.text = it.apartment
                 familyStatus.text = it.marital_status
-                familyMembersTv.text = it.family_count.toString()
                 jobTv.text = it.job
                 jobPurposeTv.text = it.job_position
                 jobAddressTv.text = it.job_address

@@ -10,7 +10,6 @@ import pro.breez.bfsut.databinding.FragmentActiveLogBinding
 import pro.breez.bfsut.model.FilterResult
 import pro.breez.bfsut.ui.main.filter_result.log.LogFilterResultFragment
 import pro.breez.bfsut.util.alert.OnPageSelectedListener
-import pro.breez.bfsut.util.ifNotNull
 import pro.breez.bfsut.util.setOnClickOnceListener
 import pro.breez.domain.model.output.LogsModel
 
@@ -63,15 +62,12 @@ class ActiveLogFragment : BaseFragment<FragmentActiveLogBinding, ActiveLogViewMo
             if (it.first == 0 && it.second == 0) {
                 binding.bottomInfoBar.setBackgroundResource(R.drawable.bg_bottom_info_shape_disabled)
                 binding.infoTitleTv.text = getString(R.string.choose_logs)
-                binding.infoLiterTv.visibility = View.GONE
                 binding.infoPriceTv.visibility = View.GONE
                 logSelected = false
             } else {
                 binding.bottomInfoBar.setBackgroundResource(R.drawable.bg_bottom_info_shape_enable)
-                binding.infoTitleTv.text = getString(R.string.make_calculate)
-                binding.infoLiterTv.visibility = View.VISIBLE
+                binding.infoTitleTv.text = getString(R.string.make_calculate_for, it.first)
                 binding.infoPriceTv.visibility = View.VISIBLE
-                binding.infoLiterTv.text = "${it.first} л"
                 binding.infoPriceTv.text = "${it.second} сом"
                 logSelected = true
             }

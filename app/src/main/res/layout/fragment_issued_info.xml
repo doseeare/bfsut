@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/default_margins"
     android:orientation="vertical"
     tools:context=".ui.main.credit_status_detail.CreditStatusDetailFragment">
 
@@ -23,7 +22,7 @@
                 android:id="@+id/name_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/default_margins"
+                android:layout_marginHorizontal="@dimen/large_margin"
                 android:layout_marginTop="@dimen/default_margins"
                 android:textColor="@color/text_bold_color"
                 android:textSize="30sp"
@@ -71,7 +70,7 @@
                 android:layout_marginTop="32dp"
                 android:background="@drawable/bg_default_corner_white"
                 android:orientation="vertical"
-                android:paddingHorizontal="@dimen/default_margins">
+                android:paddingHorizontal="@dimen/large_margin">
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -26,28 +26,11 @@ class LogFilterResultFragment :
     }
 
     private fun initViews() {
-        val strBuilder = StringBuilder()
-        viewModel.filterResult.let { filter ->
-            filter.farmerName?.let {
-                strBuilder.append(it)
-            }
-            filter.range?.start?.let {
-                filter.farmerName.ifNotNull {
-                    strBuilder.append("\n")
-                }
-                strBuilder.append("$it - ")
-            }
-            filter.range?.end?.let {
-                strBuilder.append(it)
-            }
-            filter.filterSpan?.title?.let {
-                strBuilder.append("\n")
-                strBuilder.append(it)
-            }
-        }
         binding.toolbar.setTitle("Результаты по:")
-        binding.resultTitleTv.text = strBuilder.toString()
 
+        viewModel.filterTitleLV.observe(viewLifecycleOwner){
+            binding.resultTitleTv.text = it
+        }
         binding.toolbar.setOnBackClickListener {
             when (findNavController().previousBackStackEntry?.destination?.id) {
                 R.id.navigation_filter -> {

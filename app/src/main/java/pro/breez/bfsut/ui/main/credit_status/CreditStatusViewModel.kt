@@ -3,6 +3,8 @@ package pro.breez.bfsut.ui.main.credit_status
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.model.CreditStatusEnum
@@ -25,7 +27,17 @@ class CreditStatusViewModel @Inject constructor(
         creditsUseCase.execute(viewModelScope, null to creditStatus?.key) {
             handleResult(it) {
                 creditsLV.postValue(it)
+                setBadge(it, creditStatus?.key)
             }
+        }
+    }
+
+    private fun setBadge(list: List<CreditStatusModel>, status: String?) {
+        if (CreditStatusEnum.ALL.key != status) return
+        viewModelScope.launch {
+            val unReadCount = list.count { !it.read_status }
+            badge.postEvent(unReadCount)
+            cancel()
         }
     }
 

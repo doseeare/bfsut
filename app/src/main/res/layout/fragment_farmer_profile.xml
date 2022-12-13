@@ -98,7 +98,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="26dp"
+                    android:layout_marginTop="@dimen/large_margin"
                     android:text="@string/personal_data"
                     android:textColor="@color/text_bold_color"
                     android:textSize="26sp"
@@ -108,7 +108,7 @@
                     android:id="@+id/last_name_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/large_margin"
                     app:top_title="Фамилия"
                     tools:sub_title="Асанов" />
 
@@ -189,7 +189,7 @@
                     android:id="@+id/inn_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margins"
+                    android:layout_marginTop="@dimen/large_margin"
                     app:top_title="ИНН"
                     tools:sub_title="ИНН" />
 
@@ -246,7 +246,7 @@
                     android:id="@+id/country_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margins"
+                    android:layout_marginTop="@dimen/large_margin"
                     app:top_title="Страна"
                     tools:sub_title="Кыргызстан" />
 
@@ -319,7 +319,7 @@
                         android:id="@+id/actual_country_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/default_margins"
+                        android:layout_marginTop="@dimen/large_margin"
                         app:top_title="Страна"
                         tools:sub_title="Кыргызстан" />
 
@@ -386,7 +386,7 @@
                     android:id="@+id/family_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margins"
+                    android:layout_marginTop="@dimen/large_margin"
                     app:top_title="Семейный статус"
                     tools:sub_title="Замужем/Женат" />
 
@@ -398,14 +398,6 @@
                     android:visibility="gone"
                     app:top_title="ФИО супруги (а)"
                     tools:sub_title="Чуйская" />
-
-                <pro.breez.bfsut.custom.view.ProfileTextView
-                    android:id="@+id/family_members_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:top_title="Члены семьи"
-                    tools:sub_title="5" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -420,7 +412,7 @@
                     android:id="@+id/education_level_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margins"
+                    android:layout_marginTop="@dimen/large_margin"
                     app:top_title="Степень"
                     tools:sub_title="Высшее" />
 
@@ -437,7 +429,7 @@
                     android:id="@+id/job_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margins"
+                    android:layout_marginTop="@dimen/large_margin"
                     app:top_title="Место работы"
                     tools:sub_title="Дома" />
 

@@ -2,12 +2,14 @@ package pro.breez.bfsut.ui.main.add_milk
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
 import dagger.hilt.android.AndroidEntryPoint
+import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.custom.mask.addDigitMask
-import pro.breez.bfsut.custom.view.CustomDropDownEditText
 import pro.breez.bfsut.databinding.FragmentAddMilkBinding
+import pro.breez.bfsut.util.ifTrue
 import pro.breez.bfsut.util.setOnClickOnceListener
 
 @AndroidEntryPoint
@@ -43,12 +45,37 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
                 binding.totalSumTv.text = "Итого: $totalSum сом"
             }
         }
+        var morningTitleColor: Int
         binding.morningEt.doOnTextChanged { text, _, _, _ ->
             isMorningNotEmpty = !text.isNullOrBlank()
+            morningTitleColor = if (isEveningNotEmpty) {
+                R.color.gray_text
+            } else {
+                R.color.text_bold_color
+            }
+            binding.morningTitleTv.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    morningTitleColor
+                )
+            )
             fieldsValidate.invoke()
         }
+
+        var eveningTitleColor: Int
         binding.eveningEt.doOnTextChanged { text, _, _, _ ->
             isEveningNotEmpty = !text.isNullOrBlank()
+            eveningTitleColor = if (isEveningNotEmpty) {
+                R.color.gray_text
+            } else {
+                R.color.text_bold_color
+            }
+            binding.eveningTitleTv.setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    eveningTitleColor
+                )
+            )
             fieldsValidate.invoke()
         }
         binding.nameEt.editText.doOnTextChanged { text, _, _, _ ->
@@ -66,9 +93,10 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
             binding.morningEt.setText("${it.morning}л")
             binding.eveningEt.setText("${it.evening}л")
             binding.morningEt.isEnabled = true
-        }
-        viewModel.isSelectedFarmer.observe(viewLifecycleOwner) {
-            if (it) binding.nameEt.setType(CustomDropDownEditText.NONE)
+            viewModel.isSelectedFarmer.ifTrue {
+                binding.nameEt.visibility = View.GONE
+                binding.title.text = "Сбор молока\nу ${it.full_name}"
+            }
         }
         viewModel.eveningStatusLV.observe(viewLifecycleOwner) {
             binding.eveningEt.isEnabled = it

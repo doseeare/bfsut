@@ -28,5 +28,6 @@ interface MainRepository {
     fun getIssuedDetail(creditId: String): Result<IssuedDetailModel>
     fun getIssuedGraph(creditId: String): Result<InputStream>
     fun getEveningStatus(): Result<EveningModel>
-    fun deleteLog(id : String): Result<DefaultSuccessModel>
+    fun deleteLog(id: String): Result<DefaultSuccessModel>
+    fun getUnreadCount(): Result<UnreadCountModel>
 }

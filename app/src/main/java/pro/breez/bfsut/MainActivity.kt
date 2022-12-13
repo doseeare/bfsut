@@ -1,11 +1,13 @@
 package pro.breez.bfsut
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseActivity
@@ -16,6 +18,10 @@ import pro.breez.bfsut.util.setOnClickOnceListener
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
+
+    private val navBagde: BadgeDrawable by lazy {
+        binding.navView.getOrCreateBadge(R.id.navigation_credits)
+    }
 
     var fabSelected: Boolean = false
         set(value) {
@@ -46,6 +52,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         navView.setupWithNavController(navController)
 
         navController.navigateUp()
+
         binding.fabBtn.setOnClickOnceListener {
             fabSelected = !fabSelected
         }
@@ -67,6 +74,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.shadow.setOnClickOnceListener {
             fabSelected = !fabSelected
         }
+    }
+
+    fun setBadge(count: Int) {
+        if (count == 0) {
+            binding.navView.removeBadge(R.id.navigation_credits)
+        } else {
+            navBagde.apply {
+                number = count
+                backgroundColor = getColor(R.color.error_color)
+                badgeTextColor = getColor(R.color.white)
+            }
+        }
+        Log.d("BADGE", "setBadge: $count")
     }
 
     override fun inflateLayout(layoutInflater: LayoutInflater) =

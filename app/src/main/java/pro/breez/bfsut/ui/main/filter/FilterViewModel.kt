@@ -19,6 +19,7 @@ import pro.breez.bfsut.util.DateUtil
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilderImpl
 import pro.breez.domain.interactor.FarmersUseCase
 import pro.breez.domain.model.output.FarmersModel
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -79,13 +80,17 @@ class FilterViewModel @Inject constructor(
         val constraintsBuilder =
             CalendarConstraints.Builder()
                 .setValidator(DateValidatorPointBackward.now())
+                .setEnd(Calendar.getInstance().timeInMillis)
+
+        if (!isFrom) {
+            constraintsBuilder.setStart(selectedRange?.startMillis!!)
+        }
 
         val dateRangePicker = MaterialDatePicker.Builder.datePicker()
             .setCalendarConstraints(constraintsBuilder.build())
             .setTitleText("Выберите период")
             .setPositiveButtonText("Подвердить")
             .setNegativeButtonText("Отменить")
-            .setSelection(if (isFrom) selectedRange?.startMillis else selectedRange?.endMillis)
             .build()
 
         dateRangePicker.addOnPositiveButtonClickListener {

@@ -24,12 +24,12 @@ class FilterFragment : BaseFragment<FragmentFilterBinding, FilterViewModel>() {
         }
         viewModel.rangeDateLv.observe(viewLifecycleOwner) {
             if (it != null) {
-                binding.fromEt.editText.setText(it.start)
-                binding.toEt.editText.setText(it.end)
+                binding.startEt.editText.setText(it.start)
+                binding.endEt.editText.setText(it.end)
                 resetFilterGroup()
             } else {
-                binding.fromEt.text = ""
-                binding.toEt.text = ""
+                binding.startEt.text = ""
+                binding.endEt.text = ""
             }
         }
     }
@@ -45,20 +45,23 @@ class FilterFragment : BaseFragment<FragmentFilterBinding, FilterViewModel>() {
         filterSpanGroup.setOnSelectListener { selectedButton ->
             viewModel.spanSelected(selectedButton.id, resetGroupClicked)
             resetGroupClicked = false
+            acceptBtn.isEnabled = true
         }
 
-        fromEt.setOnClickListener {
+        startEt.setOnClickListener {
             viewModel.showDatePicker(true)
         }
 
-        toEt.setOnClickListener {
-            viewModel.showDatePicker(false)
+        endEt.setOnClickListener {
+            if (startEt.text.isNotBlank())
+                viewModel.showDatePicker(false)
         }
 
         acceptBtn.setOnClickOnceListener {
             viewModel.acceptClicked()
         }
         filterSpanGroup.selectButton(binding.allTimeSpan)
+        acceptBtn.isEnabled = false
     }
 
     private fun resetFilterGroup() {

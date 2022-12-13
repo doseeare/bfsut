@@ -32,7 +32,7 @@
             android:padding="@dimen/default_margins"
             android:text="@string/milking_log"
             android:textColor="@color/black_text_color"
-            android:textSize="21sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -85,9 +85,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margins"
-        android:text="Сбор молока у \n Акылбека Асанова"
+        tools:text="Сбор молока у \nАкылбека Асанова"
         android:textColor="@color/text_bold_color"
-        android:textSize="32sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
@@ -283,7 +283,7 @@
         android:text="@string/total_default_som"
         android:textColor="@color/text_bold_color"
         android:textSize="30sp"
-        android:textStyle="normal"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/calculate_btn"
         app:layout_constraintStart_toStartOf="parent" />
 

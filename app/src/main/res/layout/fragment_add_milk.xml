@@ -18,10 +18,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margins"
+        android:lineSpacingExtra="5sp"
         android:paddingHorizontal="@dimen/default_margins"
+        android:paddingBottom="@dimen/default_margins"
         android:text="@string/milked_today"
         android:textColor="@color/text_bold_color"
-        android:textSize="36sp"
+        android:textSize="33sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -30,9 +32,7 @@
         android:id="@+id/name_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/default_margins"
-        android:layout_marginTop="@dimen/default_margins"
-        android:paddingHorizontal="@dimen/default_margins"
+        android:layout_marginHorizontal="@dimen/large_margin"
         app:hint="Найдите фермера"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:title="ФИО"
@@ -42,26 +42,26 @@
         android:id="@+id/fields_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:paddingHorizontal="@dimen/default_margins"
+        android:layout_marginTop="@dimen/small_margin"
         android:orientation="vertical"
+        android:paddingHorizontal="@dimen/default_margins"
         app:layout_constraintTop_toBottomOf="@id/name_et">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/day_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margins"
+            android:layout_marginHorizontal="@dimen/default_margins"
             android:background="@drawable/bg_rounded_shape_darker"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/name_tv">
 
             <TextView
-                android:id="@+id/day_title_tv"
+                android:id="@+id/morning_title_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/default_margins"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/small_margin"
                 android:text="@string/morning"
                 android:textColor="@color/text_bold_color"
                 android:textSize="18sp"
@@ -83,12 +83,12 @@
                 android:maxLines="1"
                 android:textColor="@color/text_bold_color"
                 android:textColorHint="@color/gray_text"
-                android:textSize="54sp"
+                android:textSize="61sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/day_title_tv"
+                app:layout_constraintTop_toBottomOf="@id/morning_title_tv"
                 tools:text="4л" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -98,6 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/default_margins"
+            android:layout_marginTop="@dimen/small_margin"
             android:background="@drawable/bg_rounded_shape_darker"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/name_tv">
@@ -129,27 +130,13 @@
                 android:maxLines="1"
                 android:textColor="@color/text_bold_color"
                 android:textColorHint="@color/gray_text"
-                android:textSize="54sp"
+                android:textSize="61sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/evening_title_tv"
-                tools:hint="Ваш логин"
                 tools:text="4л" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/price_of_liter_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -179,14 +166,16 @@
             android:id="@+id/milk_price_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginVertical="@dimen/default_margins"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/default_margins"
+            android:text="@string/default_liters_price"
             android:textColor="@color/dark_blue"
             android:textSize="19sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/milk_img"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="100 сом \n за литр" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -196,8 +185,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/default_margins"
         android:layout_marginBottom="@dimen/default_margins"
-        android:text="@string/total_default_som"
         android:paddingHorizontal="@dimen/default_margins"
+        android:text="@string/total_default_som"
         android:textColor="@color/text_bold_color"
         android:textSize="31sp"
         android:textStyle="bold"
@@ -205,11 +194,11 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/create_btn"
-        android:layout_marginHorizontal="@dimen/large_margin"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@drawable/selector_default_button"
+        android:layout_height="66dp"
+        android:layout_marginHorizontal="@dimen/large_margin"
         android:layout_marginBottom="@dimen/default_margins"
+        android:background="@drawable/selector_default_button"
         android:enabled="false"
         android:text="@string/create"
         android:textAllCaps="false"

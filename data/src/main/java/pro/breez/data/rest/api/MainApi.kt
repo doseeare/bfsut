@@ -225,4 +225,10 @@ interface MainApi {
         @Path("id") id: String
     ): Result<DefaultSuccessModel>
 
+
+    @GET("v1/credit/unread-credit-amount")
+    fun getUnreadCreditCount(
+        @Header("Authorization") token: String,
+    ): Result<UnreadCountModel>
+
 }

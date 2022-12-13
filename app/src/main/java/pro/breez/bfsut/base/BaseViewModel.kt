@@ -42,6 +42,7 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
     val handleIntent = SingleLiveEvent<Intent>()
     val popBackStack = SingleLiveEvent<Int?>()
     val previousScreen = SingleLiveEvent<Int>()
+    val badge = SingleLiveEvent<Int>()
     val finish = SingleLiveEvent<Void>()
     val onNetworkConnectionLostAlert = SingleLiveEvent<Void>()
     val onNetworkConnectionRestored = SingleLiveEvent<Void>()

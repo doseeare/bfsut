@@ -172,7 +172,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_margins"
         android:text="Итого:"
-        android:textColor="@color/gray_text"
+        android:textColor="@color/gray"
         android:textSize="22sp"
         android:textStyle="normal"
         android:visibility="invisible"

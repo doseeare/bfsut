@@ -21,7 +21,7 @@ class IssuedInfoFragment : BaseFragment<FragmentIssuedInfoBinding, IssuedInfoVie
             nameTv.text = it.full_name
             creditSumTv.text = "${it.amount} с"
             creditPeriodTv.text = "${it.period} мес."
-            overdueDayTv.text = "0 дней" //спросить
+            overdueDayTv.text = "0 дней"
             branchTv.text = it.branch
             officeTv.text = it.office
             creditOfficerTv.text = it.credit_officer

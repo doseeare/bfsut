@@ -41,13 +41,13 @@ class CalculateBottomSheetFragment :
 
             when (log.status) {
                 "active" -> {
-                    statusTitle = "Активный"
+                    statusTitle = "активный"
                     statusBg = pro.breez.bfsut.R.drawable.bg_active_span
                     totalTv.visibility = View.VISIBLE
                     calcDateTv.visibility = View.INVISIBLE
                 }
                 "paid" -> {
-                    statusTitle = "Рассчитан"
+                    statusTitle = "рассчитан"
                     statusBg = pro.breez.bfsut.R.drawable.bg_paid_span
                     totalTv.visibility = View.INVISIBLE
                     calcBtn.visibility = View.GONE

@@ -10,10 +10,12 @@
 
     <CheckBox
         android:id="@+id/checkbox"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
         android:layout_margin="@dimen/default_margins"
         android:button="@drawable/selector_checkbox"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,13 +37,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="@dimen/default_margins"
-        tools:text="Акыл Акылов"
         android:textColor="@color/black"
         android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/date_tv"
-        app:layout_constraintTop_toBottomOf="@id/date_tv" />
+        app:layout_constraintTop_toBottomOf="@id/date_tv"
+        tools:text="Акыл Акылов" />
 
     <TextView
         android:id="@+id/day_title_tv"

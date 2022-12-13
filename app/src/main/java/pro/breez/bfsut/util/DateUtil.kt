@@ -23,6 +23,16 @@ object DateUtil {
         }
     }
 
+
+    fun reformat(date: String?): String? {
+        return if (date.isNull()) null
+        else {
+            val format = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val mDate = LocalDate.parse(date, format)
+            return mDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        }
+    }
+
     fun getToday(): String {
         return SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
     }

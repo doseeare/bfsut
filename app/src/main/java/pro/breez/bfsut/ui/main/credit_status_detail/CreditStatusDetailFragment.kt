@@ -32,8 +32,10 @@ class CreditStatusDetailFragment :
                 CreditStatusEnum.ACCEPTED -> {
                     warningContainer.setBackgroundResource(R.drawable.bg_credit_status_green)
                     warningTv.text = buildString {
-                        append("Ура! Заявка фемера ${it.full_name} была одобрена," +
-                                " он сможет получить ${it.amount} сом. Свяжитесь с нашими специалистами")
+                        append(
+                            "Ура! Заявка фемера ${it.full_name} была одобрена," +
+                                    " он сможет получить ${it.amount} сом. Свяжитесь с нашими специалистами"
+                        )
                     }
                 }
                 CreditStatusEnum.DENIED -> {
@@ -53,9 +55,7 @@ class CreditStatusDetailFragment :
 
             nameTv.text = it.full_name
             creditSumTv.text = it.amount
-            creditPeriodTv.text = buildString {
-                append("${it.period}  мес.")
-            }
+            creditPeriodTv.text = "${it.period} мес."
             branchTv.text = it.branch
             officeTv.text = it.office
             creditOfficerTv.text = it.credit_officer
@@ -66,9 +66,7 @@ class CreditStatusDetailFragment :
             paymentDateTv.text = "${it.date_pay} число"
             sumTv.text = it.amount
             percentTv.text = it.percent_per_year
-            overallTv.text = buildString {
-                append("Примерно ${it.monthly_payment_amount.toDouble().toInt()} с/мес.")
-            }
+            overallTv.text = "Примерно ${it.monthly_payment_amount.toDouble().toInt()} с/мес."
         }
     }
 

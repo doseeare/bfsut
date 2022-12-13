@@ -86,6 +86,7 @@
         <entry key="app/src/main/res/drawable/ic_credit_search.xml" value="0.188" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/ic_default_error.xml" value="0.2325" />
+        <entry key="app/src/main/res/drawable/ic_drop.xml" value="0.228" />
         <entry key="app/src/main/res/drawable/ic_fab_plus.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1145" />
@@ -129,12 +130,12 @@
         <entry key="app/src/main/res/layout/custom_credit_tab_layout.xml" value="0.2975630611372381" />
         <entry key="app/src/main/res/layout/custom_snackbar.xml" value="0.2" />
         <entry key="app/src/main/res/layout/custom_tab_layout.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/dialog_item_search.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/dialog_item_search.xml" value="0.33" />
         <entry key="app/src/main/res/layout/dialog_item_selector.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dialog_milk_price.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_active_log.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_add_farmer.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_add_milk.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_active_log.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_add_farmer.xml" value="0.22018348623853212" />
+        <entry key="app/src/main/res/layout/fragment_add_milk.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_all_farmers.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_all_log.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_auth.xml" value="0.21" />
@@ -155,7 +156,7 @@
         <entry key="app/src/main/res/layout/fragment_dialog_milk_price.xml" value="0.15391192817443353" />
         <entry key="app/src/main/res/layout/fragment_edit_milk.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_farmer_profile.xml" value="0.24593639575971732" />
-        <entry key="app/src/main/res/layout/fragment_farmer_profile_edit.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_farmer_profile_edit.xml" value="0.18441971383147854" />
         <entry key="app/src/main/res/layout/fragment_filter.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_filter_logs.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_filter_result.xml" value="0.2984181274048739" />
@@ -182,12 +183,12 @@
         <entry key="app/src/main/res/layout/item_farmer_need_to_check.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/item_paid_logs.xml" value="0.67" />
         <entry key="app/src/main/res/layout/item_paid_logs_detail.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/item_selector.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/item_selector.xml" value="0.5698478561549101" />
         <entry key="app/src/main/res/layout/layout_add_credit_edittext.xml" value="0.33" />
         <entry key="app/src/main/res/layout/layout_add_menu.xml" value="0.5" />
         <entry key="app/src/main/res/layout/layout_alert_dialog.xml" value="0.5532503457814661" />
         <entry key="app/src/main/res/layout/layout_button_drawable.xml" value="0.3625" />
-        <entry key="app/src/main/res/layout/layout_credit_status_tab.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/layout_credit_status_tab.xml" value="0.5" />
         <entry key="app/src/main/res/layout/layout_custom_credit_tab.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/layout_drop_down_edit_text.xml" value="0.34709351305812974" />
         <entry key="app/src/main/res/layout/layout_home_page_panel.xml" value="0.25" />

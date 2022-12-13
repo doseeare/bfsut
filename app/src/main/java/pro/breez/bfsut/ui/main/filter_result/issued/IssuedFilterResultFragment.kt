@@ -8,7 +8,6 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentIssuedFilterResultBinding
 import pro.breez.bfsut.ui.main.credit_issued.CreditIssuedFragment
-import pro.breez.bfsut.util.ifNotNull
 
 class IssuedFilterResultFragment :
     BaseFragment<FragmentIssuedFilterResultBinding, IssuedFilterResultViewModel>() {
@@ -19,32 +18,13 @@ class IssuedFilterResultFragment :
     }
 
     private fun initViews() {
-        val strBuilder = StringBuilder()
-        viewModel.filterResult.let { filter ->
-            filter.farmerName?.let {
-                strBuilder.append(it)
-            }
-            filter.range?.start?.let {
-                filter.farmerName.ifNotNull {
-                    strBuilder.append("\n")
-                }
-                strBuilder.append("$it - ")
-            }
-            filter.range?.end?.let {
-                strBuilder.append(it)
-            }
-            filter.filterSpan?.title?.let {
-                filter.range?.end.ifNotNull {
-                    strBuilder.append("\n")
-                }
-                strBuilder.append(it)
-            }
-        }
         binding.toolbar.setOnBackClickListener {
             requireActivity().onBackPressed()
         }
+        viewModel.titleLV.observe(viewLifecycleOwner) {
+            binding.resultTitleTv.text = it
+        }
         binding.toolbar.setTitle("Результаты по:")
-        binding.resultTitleTv.text = strBuilder.toString()
         val pagerAdapter = FragmentPagerItemAdapter(childFragmentManager, createTabs())
 
         binding.viewPager.adapter = pagerAdapter
