@@ -9,10 +9,11 @@ import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentHomeBinding
 import pro.breez.bfsut.ui.auth.activity.AuthActivity
 import pro.breez.bfsut.util.setOnClickOnceListener
+import pro.breez.domain.model.output.FarmerCheckModel
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
-    private var showMore = true
+    var showMore = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,7 +46,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         viewModel.farmersCheckLV.observe(viewLifecycleOwner) { farmers ->
             val adapter =
                 FarmersAdapter(
-                    itemList = farmers,
+                    itemList = arrayListOf(),
                     addClicked = {
                         viewModel.addMilkToFarmer(it)
                     },
@@ -54,18 +55,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                     })
 
             binding.showMoreBtn.setOnClickOnceListener {
-                if (farmers.size > 5) {
-                    if (showMore) {
-                        binding.showMoreBtn.text = "Скрыть"
-                        adapter.update(farmers.take(farmers.size) as ArrayList)
-                    } else {
-                        binding.showMoreBtn.text = "Показать еще"
-                        adapter.update(farmers.take(farmers.size / 2) as ArrayList)
-                    }
-                    showMore = !showMore
-                }
+                showOrHideFarmers(farmers, adapter)
             }
             binding.farmersRv.adapter = adapter
+            showOrHideFarmers(farmers, adapter)
         }
         viewModel.milkPriceLV.observe(viewLifecycleOwner) {
             binding.priceOfLiterBtn.text = "$it сом за литр молока"
@@ -83,5 +76,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 setSum(it.evening_price_sum)
             }
         }
+    }
+
+    private fun showOrHideFarmers(farmers: ArrayList<FarmerCheckModel>, adapter: FarmersAdapter) {
+        if (farmers.size > 5) {
+            if (showMore) {
+                binding.showMoreBtn.text = "Скрыть"
+                adapter.update(farmers.take(farmers.size) as ArrayList)
+            } else {
+                binding.showMoreBtn.text = "Показать еще"
+                adapter.update(farmers.take(farmers.size / 2) as ArrayList)
+            }
+            showMore = !showMore
+        } else {
+            adapter.update(farmers)
+            binding.showMoreBtn.isEnabled = false
+        }
+    }
+
+    fun creditAdd() {
+        viewModel.navigateToCreditAdd()
     }
 }

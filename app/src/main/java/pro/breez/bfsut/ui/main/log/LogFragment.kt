@@ -5,6 +5,7 @@ import android.view.View
 import androidx.viewpager.widget.ViewPager
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
+import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentLogBinding
 import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
@@ -13,6 +14,7 @@ import pro.breez.bfsut.ui.main.paid_logs.PaidLogsFragment
 import pro.breez.bfsut.util.alert.OnPageSelectedListener
 import pro.breez.bfsut.util.setOnClickOnceListener
 
+@AndroidEntryPoint
 class LogFragment : BaseFragment<FragmentLogBinding, LogViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,5 +66,7 @@ class LogFragment : BaseFragment<FragmentLogBinding, LogViewModel>() {
         return creator.create()
     }
 
-
+    fun creditAdd() {
+        viewModel.navigateToCreditAdd()
+    }
 }

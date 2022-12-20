@@ -22,6 +22,9 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
     constructor(context: Context, attributeSet: AttributeSet?) : this(context, attributeSet, 0)
     constructor(context: Context) : this(context, null)
 
+    private var helperText: String? = null
+    private var errorText: String? = null
+
     private val binding =
         LayoutDropDownEditTextBinding.inflate(LayoutInflater.from(context), this, true)
 
@@ -46,9 +49,17 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
                 binding.helper.visibility = View.VISIBLE
             } else {
                 binding.border.setBackgroundResource(R.drawable.bg_rounded_shape_darker)
-
-                binding.helper.setTextColor(ContextCompat.getColor(context, R.color.bg_default_color))
-                binding.helper.visibility = View.GONE
+                if (helperText != null) {
+                    binding.helper.setTextColor(
+                        ContextCompat.getColor(
+                            context,
+                            R.color.gray_text
+                        )
+                    )
+                    binding.helper.text = helperText
+                } else {
+                    binding.helper.visibility = View.GONE
+                }
             }
             field = value
         }
@@ -74,14 +85,12 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
         }
     }
 
-    fun ifEmptyError(): Boolean {
-        return if (text.isBlank()) {
-            error = true
-            /*isEmpty = */ true
-        } else {
-            error = false
-            /*isEmpty = */  false
-        }
+    fun ifEmptyError(): Boolean = if (text.isBlank()) {
+        error = true
+        /*isEmpty = */ true
+    } else {
+        error = false
+        /*isEmpty = */  false
     }
 
     fun setCustomConditionError(block: () -> Boolean) {
@@ -98,11 +107,16 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
             val filledText = text.toString()
 
             if (conditionClearError.isNull()) {
-                if (filledText.isNotEmpty() && filledText.isNotBlank()){
+                if (filledText.isNotEmpty() && filledText.isNotBlank()) {
                     binding.titleTv.setTextColor(ContextCompat.getColor(context, R.color.gray_text))
                     error = false
-                }else{
-                    binding.titleTv.setTextColor(ContextCompat.getColor(context, R.color.text_bold_color))
+                } else {
+                    binding.titleTv.setTextColor(
+                        ContextCompat.getColor(
+                            context,
+                            R.color.text_bold_color
+                        )
+                    )
                 }
 
             } else {
@@ -128,13 +142,17 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
             attr.getString(R.styleable.CustomDropDownEditText_helper)?.let {
                 binding.helper.visibility = View.VISIBLE
                 binding.helper.text = it
+                helperText = it
             }
 
             attr.getBoolean(R.styleable.CustomDropDownEditText_important, false).let {
                 binding.importantImg.isVisible = it
             }
 
-            attr.getResourceId(R.styleable.CustomDropDownEditText_icon_end, R.drawable.ic_arrow_down)
+            attr.getResourceId(
+                R.styleable.CustomDropDownEditText_icon_end,
+                R.drawable.ic_arrow_down
+            )
                 .let {
                     binding.dropImg.setImageResource(it)
                 }

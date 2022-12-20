@@ -22,9 +22,7 @@ class SplashViewModel @Inject constructor(
 
     private fun countAndNavigate() {
         val timer = object : CountDownTimer(3_000, 1_000) {
-            override fun onTick(p0: Long) {
-
-            }
+            override fun onTick(p0: Long) {}
 
             override fun onFinish() {
                 if (dataPreference.token.isNotEmpty()) {

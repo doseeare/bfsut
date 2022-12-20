@@ -3,8 +3,10 @@ package pro.breez.bfsut.ui.main.filter
 import android.os.Bundle
 import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
+import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentFilterBinding
+import pro.breez.bfsut.model.FilterFromEnum
 import pro.breez.bfsut.util.setOnClickOnceListener
 
 @AndroidEntryPoint
@@ -60,8 +62,12 @@ class FilterFragment : BaseFragment<FragmentFilterBinding, FilterViewModel>() {
         acceptBtn.setOnClickOnceListener {
             viewModel.acceptClicked()
         }
-        filterSpanGroup.selectButton(binding.allTimeSpan)
         acceptBtn.isEnabled = false
+
+        when (viewModel.filterFrom) {
+            FilterFromEnum.ISSUED_CREDITS -> titleTv.text = getString(R.string.credits_filter)
+            FilterFromEnum.LOGS -> titleTv.text = getString(R.string.log_filter)
+        }
     }
 
     private fun resetFilterGroup() {

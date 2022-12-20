@@ -10,7 +10,7 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.createViewModelLazy
 import androidx.viewbinding.ViewBinding
-import pro.breez.bfsut.MainActivity
+import pro.breez.bfsut.ui.host.MainActivity
 import pro.breez.bfsut.model.navigation.ActivityTransaction
 import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment

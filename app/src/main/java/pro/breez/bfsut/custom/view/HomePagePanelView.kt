@@ -41,6 +41,7 @@ class HomePagePanelView(context: Context, attributeSet: AttributeSet?, defStyle:
                     panelBottomTextColor = ContextCompat.getColor(context, R.color.white)
                 }
             }
+            attr.recycle()
         }
         binding.panelImg.setImageResource(panelBackground!!)
         binding.tagTv.text = panelTag

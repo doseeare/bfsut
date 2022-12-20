@@ -6,6 +6,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.adapter.CreditIssuedAdapter
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentCreditIssuedBinding
+import pro.breez.bfsut.util.visibility
 
 @AndroidEntryPoint
 class CreditIssuedFragment : BaseFragment<FragmentCreditIssuedBinding, CreditIssuedViewModel>() {
@@ -24,6 +25,11 @@ class CreditIssuedFragment : BaseFragment<FragmentCreditIssuedBinding, CreditIss
             binding.rv.adapter = CreditIssuedAdapter(it.data) {
                 viewModel.itemCLicked(it)
             }
+        }
+
+        viewModel.notFoundLV.observe(viewLifecycleOwner) {
+            binding.notFoundView.visibility(it)
+            binding.rv.visibility(!it)
         }
     }
 

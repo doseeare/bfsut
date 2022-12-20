@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 app:helper="Дата ежемесячной оплаты"
-                app:icon_end="@drawable/ic_drop"
+                app:icon_end="@drawable/ic_arrow_down"
                 app:hint="Введите число для оплаты"
                 app:title="День для выплат"
                 app:type="drop" />
@@ -154,6 +154,7 @@
         android:id="@+id/send_btn"
         android:layout_width="match_parent"
         android:layout_height="66dp"
+        android:enabled="false"
         android:layout_marginHorizontal="@dimen/large_margin"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="@dimen/default_margins"

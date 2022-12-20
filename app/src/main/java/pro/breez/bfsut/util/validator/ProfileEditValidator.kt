@@ -1,11 +1,13 @@
 package pro.breez.bfsut.util.validator
 
+import androidx.core.widget.doOnTextChanged
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.FragmentFarmerProfileEditBinding
 import pro.breez.bfsut.ui.main.farmer_profile_edit.EditProfileViewModel
 import pro.breez.bfsut.util.ifFalse
 import pro.breez.bfsut.util.ifTrue
 import pro.breez.bfsut.util.isNull
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 class ProfileEditValidator(
     val binding: FragmentFarmerProfileEditBinding,
@@ -25,6 +27,55 @@ class ProfileEditValidator(
         binding.issueNumberDocEt, binding.placeOfBirthEt,
         binding.jobPurposeEt
     )
+
+    private val allFields = arrayOf(
+        binding.nameEt, binding.lastNameEt, binding.birthdayEt,
+        binding.nationEt, binding.citizenEt,
+        binding.phoneNumberEt, binding.innEt,
+        binding.typeDocEt, binding.seriesDocEt,
+        binding.whenDocEt, binding.numberDocEt,
+        binding.issueDocEt, binding.countryEt,
+        binding.villageEt, binding.streetEt,
+        binding.areaEt, binding.regionEt, binding.houseEt,
+        binding.educationEt, binding.jobEt,
+        binding.jobCompanyEt, binding.jobAddressEt,
+        binding.issueNumberDocEt, binding.placeOfBirthEt,
+        binding.jobPurposeEt, binding.surnameEt, binding.phoneNumberMoreEt,
+        binding.phoneNumberComfortEt, binding.streetEt, binding.apartmentEt,
+        binding.actualApartmentEt, binding.actualStreetEt,
+        binding.actualVillageEt
+    )
+
+    private val allRadioButtons = arrayOf(
+        binding.marriedBtn, binding.singleBtn,
+        binding.widowerBtn, binding.divorcedBtn,
+        binding.genderMale, binding.genderFemale
+    )
+
+    private val allBtn = arrayOf(
+        binding.actualLocationYes, binding.actualLocationNo
+    )
+
+    fun enableAcceptBtnOnEdit() {
+        for (field in allFields) {
+            field.editText.doOnTextChanged { text, start, before, count ->
+                if (text.toString().isNotBlank())
+                    binding.acceptBtn.isEnabled = true
+            }
+        }
+
+        for (radioButton in allRadioButtons) {
+            radioButton.setResultListener {
+                binding.acceptBtn.isEnabled = true
+            }
+        }
+        for (btn in allBtn) {
+            btn.setOnClickOnceListener {
+                binding.acceptBtn.isEnabled = true
+            }
+        }
+
+    }
 
     fun validateImportantFields() {
         var hasEmptyField = false

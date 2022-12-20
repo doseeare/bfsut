@@ -71,6 +71,7 @@
     <string name="thank_for_job">Спасибо за работа</string>
     <string name="total_som">Итого: %1$ сом</string>
     <string name="make_calculate_for">Произвести расчет за %1$d литров</string>
+    <string name="issued_info">%1$s - %2$s\nПогашение каждое %3$d число\n%4$d с/мес</string>
     <string name="total_default_som">Итого: 0 сом</string>
     <string name="question_edit_log">Хотите отредактировать
 запись?</string>
@@ -97,4 +98,9 @@
     <string name="default_liters_price">0 сом \nза литр</string>
     <string name="credit_potential">Кредитный потенциал</string>
     <string name="rating">Рейтинг</string>
+    <string name="default_days">0 дней</string>
+    <string name="credits_filter">Фильтр по кредитам</string>
+    <string name="log_filter">Отчет сбора молока</string>
+    <string name="choose_period">Выберите период</string>
+    <string name="correct">Подвердить</string>
 </resources>

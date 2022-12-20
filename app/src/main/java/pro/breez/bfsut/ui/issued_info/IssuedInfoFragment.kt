@@ -3,6 +3,7 @@ package pro.breez.bfsut.ui.issued_info
 import android.os.Bundle
 import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
+import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentIssuedInfoBinding
 
@@ -41,12 +42,10 @@ class IssuedInfoFragment : BaseFragment<FragmentIssuedInfoBinding, IssuedInfoVie
             apartmentTv.text = it.apartment
             streetTv.text = it.address
             partnerNameTv.text = it.spouse_full_name
-            binding.warningTv.visibility = View.VISIBLE
-            binding.warningTv.text =
-                "${it.start_date} - ${it.start_date}\nПогашение каждое ${it.date_pay} число\n"
+            binding.warningContainer.visibility = View.VISIBLE
+            binding.warningTv.text = getString(R.string.issued_info, it.start_date, it.end_date, it.date_pay, it.monthly_payment_amount)
         }
     }
-
 
     companion object {
         const val KEY = "IssuedInfoFragment"

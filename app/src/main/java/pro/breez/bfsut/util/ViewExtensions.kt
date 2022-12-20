@@ -4,7 +4,7 @@ import android.os.SystemClock
 import android.view.View
 import androidx.fragment.app.Fragment
 
-fun View.setGoneIfFalse(b: Boolean?) {
+fun View.visibility(b: Boolean?) {
     if (b != null)
         if (b) this.visibility = View.VISIBLE else this.visibility = View.GONE
 }

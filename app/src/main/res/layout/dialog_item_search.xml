@@ -114,7 +114,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/selector_default_button"
         android:enabled="false"
-        android:text="Применить"
+        android:text="@string/cancel"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@id/card"

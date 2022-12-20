@@ -29,11 +29,11 @@ class DateRange(
 ) : Serializable
 
 enum class FilterSpan(@IdRes val id: Int, val key: String?, val title: String?) : Serializable {
-    THIS_WEEK(R.id.this_week_span, "this_week", "за эту неделю"),
-    THIS_MONTH(R.id.this_month_span, "this_month", "в этом месяце"),
-    LAST_WEEK(R.id.last_week_span, "last_week", "на прошлой неделе"),
-    LAST_MONTH(R.id.last_month_span, "last_month", "в прошлом месяце"),
-    ALL_TIME(R.id.all_time_span, null, "за все время"),
+    THIS_WEEK(R.id.this_week_span, "this_week", "За эту неделю"),
+    THIS_MONTH(R.id.this_month_span, "this_month", "В этом месяце"),
+    LAST_WEEK(R.id.last_week_span, "last_week", "На прошлой неделе"),
+    LAST_MONTH(R.id.last_month_span, "last_month", "В прошлом месяце"),
+    ALL_TIME(R.id.all_time_span, null, "За все время"),
     NONE(R.id.none_span, null, null);
 
     companion object {

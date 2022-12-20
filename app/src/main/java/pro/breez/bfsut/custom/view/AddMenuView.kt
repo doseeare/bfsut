@@ -25,6 +25,7 @@ class AddMenuView(context: Context, attributeSet: AttributeSet?, defStyle: Int) 
             attr.getResourceId(R.styleable.AddMenuView_icon, 0).let {
                 binding.icon.setImageResource(it)
             }
+            attr.recycle()
         }
     }
 

@@ -1,7 +1,6 @@
 package pro.breez.bfsut.ui.main.farmer_profile_edit
 
 import android.os.Bundle
-import android.os.PowerManager
 import android.text.InputFilter
 import android.text.InputType
 import android.view.View
@@ -16,9 +15,9 @@ import pro.breez.bfsut.model.GenderEnum
 import pro.breez.bfsut.model.MaritalStatusEnum
 import pro.breez.bfsut.util.Utils.setNumberMask
 import pro.breez.bfsut.util.ifNotNull
-import pro.breez.bfsut.util.setGoneIfFalse
 import pro.breez.bfsut.util.setOnClickOnceListener
 import pro.breez.bfsut.util.validator.ProfileEditValidator
+import pro.breez.bfsut.util.visibility
 
 @AndroidEntryPoint
 class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditProfileViewModel>() {
@@ -39,7 +38,7 @@ class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditP
                 surnameEt.editText.setText(it.last_name)
                 birthdayEt.editText.setText(it.birth_date)
                 nationEt.editText.setText(it.nationality)
-                citizenEt.editText.setText(it.resident) 
+                citizenEt.editText.setText(it.resident)
                 phoneNumberEt.editText.setText(it.phone_number)
                 phoneNumberMoreEt.editText.setText(it.phone_number_additional)
                 innEt.editText.setText(it.tax_number)
@@ -47,10 +46,10 @@ class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditP
                 seriesDocEt.editText.setText(it.document_series)
                 numberDocEt.editText.setText(it.document_number)
                 issueDocEt.editText.setText(it.document_issue)
-                issueNumberDocEt.editText.setText(it.document_issue_number) 
+                issueNumberDocEt.editText.setText(it.document_issue_number)
                 whenDocEt.editText.setText(it.document_date)
                 placeOfBirthEt.editText.setText(it.place_of_birth)
-                countryEt.editText.setText(it.state) 
+                countryEt.editText.setText(it.state)
                 areaEt.editText.setText(it.country)
                 regionEt.editText.setText(it.region)
                 streetEt.editText.setText(it.address)
@@ -73,7 +72,7 @@ class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditP
 
                 it.is_actual_address_match.ifNotNull {
                     viewModel.isActualLocation = it
-                    binding.actualLocationContainer.setGoneIfFalse(it)
+                    binding.actualLocationContainer.visibility(it)
                     if (it) {
                         actualLocationYes.isSelected = true
                     } else {
@@ -110,6 +109,7 @@ class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditP
                     }
                 }
             }
+            validator.enableAcceptBtnOnEdit()
         }
         viewModel.birthdayLV.observe(viewLifecycleOwner) {
             binding.birthdayEt.text = it

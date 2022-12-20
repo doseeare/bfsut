@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.model.FilterResult
+import pro.breez.bfsut.model.FilterSpan
 import pro.breez.bfsut.util.ifNotNull
 import javax.inject.Inject
 
@@ -28,11 +29,9 @@ class LogFilterResultViewModel @Inject constructor() : BaseViewModel() {
                 filterResult.farmerName.ifNotNull { append("\n\n") }
                 append("${it.start} - ${it.end}")
             }
-            filterResult.filterSpan.ifNotNull {
-                if (filterResult.farmerName != null || filterResult.range != null) {
-                    filterResult.farmerName.ifNotNull { append("\n\n") }
-                }
-                append(it.title)
+            if (filterResult.filterSpan != FilterSpan.NONE) {
+                filterResult.farmerName.ifNotNull { append("\n\n") }
+                append(filterResult.filterSpan?.title)
             }
         }
         filterTitleLV.postValue(filterTitle)

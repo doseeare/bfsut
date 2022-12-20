@@ -2,7 +2,7 @@ package pro.breez.domain.model.output
 
 data class IssuedDetailModel(
     val address: String,
-    val amount: String,
+    val amount: Int,
     val apartment: String,
     val branch: String,
     val category: String,
@@ -16,8 +16,9 @@ data class IssuedDetailModel(
     val full_name: String,
     val house: String,
     val id: String,
-    val monthly_payment_amount: String,
+    val monthly_payment_amount: Int,
     val office: String,
+    val overdue_days: Int,
     val percent_per_year: String,
     val period: Int,
     val phone_number: String,

@@ -21,7 +21,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.viewbinding.ViewBinding
-import pro.breez.bfsut.MainActivity
+import pro.breez.bfsut.ui.host.MainActivity
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.ViewProgressBinding
 import pro.breez.bfsut.exception.NavigationInitializationException

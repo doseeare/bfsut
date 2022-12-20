@@ -9,7 +9,7 @@ class ParentViewPager(context: Context, attributeSet: AttributeSet?) : ViewPager
 
     override fun canScroll(v: View?, checkV: Boolean, dx: Int, x: Int, y: Int): Boolean {
         if (v != this && v is ViewPager) {
-            return true;
+            return true
         }
         return super.canScroll(v, checkV, dx, x, y)
 

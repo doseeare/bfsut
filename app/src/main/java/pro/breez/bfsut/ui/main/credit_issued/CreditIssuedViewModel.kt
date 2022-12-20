@@ -28,6 +28,7 @@ class CreditIssuedViewModel @Inject constructor(
 
     private var isFilterMode = false
     val creditIssuedLV = MutableLiveData<CreditIssuedModel>()
+    val notFoundLV = MutableLiveData<Boolean>()
 
     fun initArgs(serializable: Serializable?) {
         if (serializable != null)
@@ -58,6 +59,7 @@ class CreditIssuedViewModel @Inject constructor(
         creditIssuedUseCase.execute(viewModelScope, body) {
             handleResult(it) {
                 creditIssuedLV.postValue(it)
+                notFoundLV.postValue(it.data.isEmpty())
             }
         }
     }

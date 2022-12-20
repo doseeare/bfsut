@@ -12,27 +12,22 @@ import pro.breez.bfsut.util.alert.dialog.SearchItemDialog
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilderImpl
 import pro.breez.domain.interactor.*
 import pro.breez.domain.model.input.CreditBody
-import pro.breez.domain.model.output.CategoryModel
-import pro.breez.domain.model.output.GoalModel
-import pro.breez.domain.model.output.MfSysFarmerModel
-import pro.breez.domain.model.output.ProductsModel
+import pro.breez.domain.model.output.*
 import javax.inject.Inject
 
 @HiltViewModel
 open class CreditAddViewModel @Inject constructor(
-    private val searchFarmerUseCase: SearchFarmerUseCase,
+    private val searchFarmerUseCase: CreditSearchFarmerUseCase,
     private val productUseCase: ProductUseCase,
     private val categoryUseCase: CategoryUseCase,
     private val goalUseCase: GoalUseCase,
     private val postCreditUseCase: CreditUseCase
-
 ) : BaseViewModel() {
 
-    val farmerLV = SingleLiveEvent<MfSysFarmerModel>()
+    val farmerLV = SingleLiveEvent<CreditSearchFarmerModel>()
     val productLV = SingleLiveEvent<ProductsModel>()
     val categoryLV = SingleLiveEvent<CategoryModel>()
     val goalLV = SingleLiveEvent<GoalModel>()
-
     val commentOfGoal = SingleLiveEvent<String>()
     val sum = SingleLiveEvent<String>()
     val dateOfPaymentLV = SingleLiveEvent<String>()
@@ -42,11 +37,11 @@ open class CreditAddViewModel @Inject constructor(
         if (!fieldsNotEmpty) {
             showErrorSnackbar("Заполните все поля"); return
         }
-
+        showLoadingView()
         val postCreditBody = CreditBody(
             amount = sum.value!!,
             category = categoryLV.value!!.id,
-            mfsys_customer_id = farmerLV.value!!.customerID,
+            mfsys_customer_id = farmerLV.value!!.customer_id,
             date_pay = 1,
             period = periodLV.value!!.filter { it.isDigit() }.toInt(),
             product_bank = productLV.value!!.id,
@@ -54,7 +49,7 @@ open class CreditAddViewModel @Inject constructor(
             purpose = goalLV.value!!.id,
             date_disburse_plan = "2022-12-12",
             office = farmerLV.value!!.office,
-            credit_officer = farmerLV.value!!.creditSpecialistFullName,
+            credit_officer = farmerLV.value!!.credit_specialist_full_name,
         )
         postCreditUseCase.execute(viewModelScope, postCreditBody) {
             handleResult(it) {
@@ -73,11 +68,11 @@ open class CreditAddViewModel @Inject constructor(
 
     fun showSearchDialog(isCancelable: Boolean) {
         val dialog =
-            SearchItemDialog<MfSysFarmerModel>(
+            SearchItemDialog<CreditSearchFarmerModel>(
                 valueName = arrayOf(
-                    MfSysFarmerModel::firstName.name,
-                    MfSysFarmerModel::fatherName.name,
-                    MfSysFarmerModel::lastName.name
+                    CreditSearchFarmerModel::first_name.name,
+                    CreditSearchFarmerModel::father_name.name,
+                    CreditSearchFarmerModel::last_name.name
                 )
             )
         dialog.onKeyChanged {
@@ -95,14 +90,14 @@ open class CreditAddViewModel @Inject constructor(
         dialog.onHomeBtnClicked {
             popBackStack.trigger()
         }
-        dialog.onNotFoundBtnClicked{
+        dialog.onNotFoundBtnClicked {
 
         }
         showDialogFragment.startEvent(dialog)
     }
 
     private fun searchFarmersInSystem(
-        dialog: SearchItemDialog<MfSysFarmerModel>,
+        dialog: SearchItemDialog<CreditSearchFarmerModel>,
         searchKey: String
     ) {
         searchFarmerUseCase.execute(viewModelScope, searchKey) {

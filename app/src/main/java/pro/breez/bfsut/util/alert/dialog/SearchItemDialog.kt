@@ -30,6 +30,7 @@ class SearchItemDialog<T>(
     var notFoundText: String? = null
     var notFoundBtnText: String? = null
     var helperText: String? = null
+    var homeBtnText: String? = null
 
     private lateinit var adapter: SelectorItemAdapter<T>
 
@@ -52,13 +53,16 @@ class SearchItemDialog<T>(
         helperText.ifNull {
             helperText = getString(R.string.check_or_create)
         }
-
         isHomeBtnGone.ifTrue {
             binding.homeBtn.visibility = View.GONE
+        }
+        homeBtnText.ifNotNull {
+            binding.homeBtn.text = it
         }
 
         adapter = SelectorItemAdapter(arrayListOf(), valueName, activeBtn = {
             binding.selectBtn.isEnabled = true
+            binding.selectBtn.text = "Применить"
         })
         binding.itemRv.adapter = adapter
         binding.selectBtn.setOnClickListener(onPositiveClick)
@@ -69,14 +73,10 @@ class SearchItemDialog<T>(
     }
 
     private fun onEditTextFilled() {
-        var mLastClickTime = 0L
         binding.search.doOnTextChanged { text, _, _, _ ->
             binding.selectBtn.isEnabled = false
             if (text.toString().isNotBlank()) {
-                if (SystemClock.elapsedRealtime() - mLastClickTime > 500L) {
-                    mLastClickTime = SystemClock.elapsedRealtime()
-                    onKeyChanged?.invoke(text.toString())
-                }
+                onKeyChanged?.invoke(text.toString())
             } else {
                 setDefaultView()
             }
@@ -92,8 +92,8 @@ class SearchItemDialog<T>(
             adapter.update(list)
             binding.notFoundView.visibility = View.GONE
             binding.itemRv.visibility = View.VISIBLE
-            binding.selectBtn.text = "Применить"
             binding.selectBtn.setOnClickListener(onPositiveClick)
+            binding.selectBtn.text = "Применить"
         } else {
             binding.notFoundView.visibility = View.VISIBLE
             binding.itemRv.visibility = View.GONE

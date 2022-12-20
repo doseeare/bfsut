@@ -60,4 +60,8 @@ class CreditsFragment : BaseFragment<FragmentCreditsBinding, CreditsViewModel>()
         creator.add("Выдано ", CreditIssuedTabFragment::class.java)
         return creator.create()
     }
+
+    fun creditAdd() {
+        viewModel.navigateToCreditAdd()
+    }
 }

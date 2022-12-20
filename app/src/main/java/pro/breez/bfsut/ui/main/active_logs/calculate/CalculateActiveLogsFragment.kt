@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.widget.doOnTextChanged
 import dagger.hilt.android.AndroidEntryPoint
-import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.custom.mask.addDigitMask
 import pro.breez.bfsut.databinding.FragmentCalculateActiveLogsBinding
@@ -48,6 +47,9 @@ class CalculateActiveLogsFragment :
         fieldsValidate = {
             binding.calculateBtn.isEnabled =
                 (isMorningNotEmpty || isEveningNotEmpty)
+            binding.saveChangesBtn.isEnabled =
+                (binding.dayEt.text.toString() != "${viewModel.currentLogLV.value?.morning}л") ||
+                        (binding.eveningEt.text.toString() != "${viewModel.currentLogLV.value?.evening}л")
             var totalSum = 0L
             viewModel.currentLogLV.value?.let {
                 val morning = binding.dayEt.text.toString().filter { it.isDigit() }

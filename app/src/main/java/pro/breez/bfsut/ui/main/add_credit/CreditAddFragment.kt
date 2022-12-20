@@ -12,9 +12,11 @@ import pro.breez.bfsut.util.validator.CreditAddFieldValidator
 
 @AndroidEntryPoint
 class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewModel>() {
+    private lateinit var validator: CreditAddFieldValidator
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        validator = CreditAddFieldValidator(binding)
         initViews()
         initObserver()
     }
@@ -22,7 +24,7 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
     private fun initObserver() = with(viewModel) {
         farmerLV.observe(viewLifecycleOwner) {
             binding.farmer.text =
-                "${it.firstName} ${it.fatherName} ${it.lastName}"
+                "${it.first_name} ${it.father_name} ${it.last_name}"
                     .replace("  ", " ")
         }
         productLV.observe(viewLifecycleOwner) {
@@ -43,11 +45,12 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
     }
 
     private fun initViews() = with(binding) {
+        validator.enableSendBtnOnEdit()
         toolbar.setOnBackClickListener {
             requireActivity().onBackPressed()
         }
         farmer.setOnClickListener {
-            viewModel.showSearchDialog(false)
+            viewModel.showSearchDialog(true)
         }
         goal.setOnClickListener {
             viewModel.goalClicked()
@@ -62,7 +65,6 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
             viewModel.periodClicked()
         }
         sendBtn.setOnClickOnceListener {
-            val validator = CreditAddFieldValidator(binding)
             viewModel.sendBtnClicked(validator.validateFields())
         }
         commentsOfGoal.onTextChanged = {

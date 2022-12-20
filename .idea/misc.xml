@@ -97,6 +97,7 @@
         <entry key="app/src/main/res/drawable/ic_milk_icon.xml" value="0.197" />
         <entry key="app/src/main/res/drawable/ic_milk_small.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/ic_not_found.xml" value="0.323" />
+        <entry key="app/src/main/res/drawable/ic_not_open_indicator.xml" value="0.205" />
         <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/ic_password_hide.xml" value="0.181" />
         <entry key="app/src/main/res/drawable/ic_password_show.xml" value="0.181" />
@@ -130,6 +131,7 @@
         <entry key="app/src/main/res/layout/custom_credit_tab_layout.xml" value="0.2975630611372381" />
         <entry key="app/src/main/res/layout/custom_snackbar.xml" value="0.2" />
         <entry key="app/src/main/res/layout/custom_tab_layout.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/custom_tab_layout_center.xml" value="0.2975630611372381" />
         <entry key="app/src/main/res/layout/dialog_item_search.xml" value="0.33" />
         <entry key="app/src/main/res/layout/dialog_item_selector.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dialog_milk_price.xml" value="0.25" />

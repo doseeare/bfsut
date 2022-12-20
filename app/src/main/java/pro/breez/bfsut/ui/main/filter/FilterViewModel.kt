@@ -27,7 +27,7 @@ class FilterViewModel @Inject constructor(
     private val farmersUseCase: FarmersUseCase,
 ) : BaseViewModel() {
 
-    private val filterFrom: FilterFromEnum by lazy {
+    val filterFrom: FilterFromEnum by lazy {
         FilterFragmentArgs.fromBundle(requiredArguments()).filterFromEnum
     }
 
@@ -88,9 +88,9 @@ class FilterViewModel @Inject constructor(
 
         val dateRangePicker = MaterialDatePicker.Builder.datePicker()
             .setCalendarConstraints(constraintsBuilder.build())
-            .setTitleText("Выберите период")
-            .setPositiveButtonText("Подвердить")
-            .setNegativeButtonText("Отменить")
+            .setTitleText(getString(R.string.choose_period))
+            .setPositiveButtonText(getString(R.string.correct))
+            .setNegativeButtonText(getString(R.string.cancel))
             .build()
 
         dateRangePicker.addOnPositiveButtonClickListener {
@@ -144,6 +144,5 @@ class FilterViewModel @Inject constructor(
                 )
             }
         }
-
     }
 }

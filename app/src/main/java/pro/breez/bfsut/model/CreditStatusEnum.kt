@@ -12,7 +12,7 @@ enum class CreditStatusEnum(
 ) :
     Serializable {
     ALL(null, 0, "Все"),
-    SENT("sent", R.drawable.ic_status_all, "Отправлено"),
+    SENT("sent", R.drawable.ic_status_sent, "Отправлено"),
     COMMIT("committee", R.drawable.ic_status_commit, "Коммитет"),
     ACCEPTED("approved", R.drawable.ic_status_accepted, "Одобрено"),
     DENIED("declined", R.drawable.selector_credit_status_denied, "Отказ");

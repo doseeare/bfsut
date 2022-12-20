@@ -41,6 +41,7 @@ class ProfileTextView(context: Context, attributeSet: AttributeSet?, defStyle: I
             attr.getString(R.styleable.ProfileTextView_sub_title).let {
                 binding.subTitle.text = it
             }
+            attr.recycle()
         }
     }
 

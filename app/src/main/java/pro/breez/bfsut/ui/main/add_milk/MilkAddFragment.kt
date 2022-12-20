@@ -18,19 +18,21 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
     private var isNameNotEmpty = false
     private var isMorningNotEmpty = false
     private var isEveningNotEmpty = false
-
+    private var morningLiters: String? = null
+    private var eveningLiters: String? = null
     private lateinit var fieldsValidate: () -> Unit
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
-        initValidate()
         initObservers()
+        initValidate()
+        binding.morningEt.isEnabled = true
     }
 
     private fun initValidate() {
         fieldsValidate = {
-            binding.createBtn.isEnabled = (isMorningNotEmpty || isEveningNotEmpty) && isNameNotEmpty
+            validateCreateBtn()
             var totalSum = 0L
             viewModel.farmerLV.value?.let {
                 val morning = binding.morningEt.text.toString().filter { it.isDigit() }
@@ -90,6 +92,8 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
         }
         viewModel.farmerLV.observe(viewLifecycleOwner) {
             binding.nameEt.text = it.full_name
+            morningLiters = "${it.morning}л"
+            eveningLiters = "${it.evening}л"
             binding.morningEt.setText("${it.morning}л")
             binding.eveningEt.setText("${it.evening}л")
             binding.morningEt.isEnabled = true
@@ -101,6 +105,14 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
         viewModel.eveningStatusLV.observe(viewLifecycleOwner) {
             binding.eveningEt.isEnabled = it
         }
+    }
+
+    private fun validateCreateBtn() {
+        val enabled = (isMorningNotEmpty || isEveningNotEmpty && isNameNotEmpty)
+                && morningLiters != binding.morningEt.text.toString()
+                || eveningLiters != binding.eveningEt.text.toString()
+        binding.createBtn.isEnabled = enabled
+        print("")
     }
 
     private fun initViews() = with(binding) {

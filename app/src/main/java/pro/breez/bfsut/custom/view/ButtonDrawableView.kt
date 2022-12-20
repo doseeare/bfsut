@@ -38,13 +38,10 @@ class ButtonDrawableView(context: Context, attributeSet: AttributeSet?, defStyle
             attr.getResourceId(R.styleable.ButtonDrawableView_drawable_start, 0).let {
                 binding.drawableStartImg.setImageResource(it)
             }
-/*
-            attr.getResourceId(R.styleable.ButtonDrawableView_text_color, R.color.text_bold_color)
-                .let {
-                    binding.titleTv.setTextColor(it)
-                }
-*/
-
+            /*attr.getResourceId(R.styleable.ButtonDrawableView_text_color, R.color.text_bold_color)
+               .let {
+                                binding.titleTv.setTextColor(it)
+            }*/
             attr.getInt(R.styleable.ButtonDrawableView_text_style, 0).let {
                 when (it) {
                     0 -> binding.titleTv.setTypeface(null, Typeface.NORMAL)
@@ -59,6 +56,7 @@ class ButtonDrawableView(context: Context, attributeSet: AttributeSet?, defStyle
             attr.getFloat(R.styleable.ButtonDrawableView_text_size, 0f).let {
                 binding.titleTv.setTextSize(TypedValue.COMPLEX_UNIT_SP, it)
             }
+            attr.recycle()
         }
     }
 

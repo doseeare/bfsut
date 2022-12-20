@@ -7,6 +7,7 @@ import pro.breez.bfsut.adapter.CreditsAdapter
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentCreditStatusBinding
 import pro.breez.bfsut.model.CreditStatusEnum
+import pro.breez.bfsut.util.visibility
 
 @AndroidEntryPoint
 class CreditStatusFragment : BaseFragment<FragmentCreditStatusBinding, CreditStatusViewModel>() {
@@ -21,9 +22,14 @@ class CreditStatusFragment : BaseFragment<FragmentCreditStatusBinding, CreditSta
         viewModel.getCredits()
         viewModel.creditsLV.observe(viewLifecycleOwner) {
             val isAllCredits = viewModel.creditStatus == CreditStatusEnum.ALL
-            binding.rv.adapter = CreditsAdapter(it, isAllCredits){
+            binding.rv.adapter = CreditsAdapter(it, isAllCredits) {
                 viewModel.creditItemClicked(it)
             }
+        }
+
+        viewModel.notFoundLV.observe(viewLifecycleOwner) {
+            binding.notFoundView.visibility(it)
+            binding.rv.visibility(!it)
         }
     }
 

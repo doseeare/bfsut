@@ -13,7 +13,7 @@ abstract class BaseRecyclerAdapter<VB : ViewBinding, M>(var items: ArrayList<M>)
     private val classVB = type.actualTypeArguments[0] as Class<VB>
     private lateinit var binding: VB
 
-    abstract fun bind(item: M, binding : VB, position: Int)
+    abstract fun bind(item: M, binding: VB, position: Int)
 
     fun update(items: ArrayList<M>) {
         this.items = items
@@ -23,7 +23,8 @@ abstract class BaseRecyclerAdapter<VB : ViewBinding, M>(var items: ArrayList<M>)
     override fun getItemCount(): Int = items.count()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<VB> {
-        binding = inflateMethod.invoke(null, LayoutInflater.from(parent.context), parent, false) as VB
+        binding =
+            inflateMethod.invoke(null, LayoutInflater.from(parent.context), parent, false) as VB
         return BaseViewHolder(binding)
     }
 
@@ -41,7 +42,9 @@ abstract class BaseRecyclerAdapter<VB : ViewBinding, M>(var items: ArrayList<M>)
         ViewGroup::class.java,
         Boolean::class.java
     )
-    class BaseViewHolder<VB : ViewBinding>(val binding: VB) : RecyclerView.ViewHolder(binding.root) {
+
+    class BaseViewHolder<VB : ViewBinding>(val binding: VB) :
+        RecyclerView.ViewHolder(binding.root) {
 
     }
 

@@ -11,10 +11,12 @@ import pro.breez.bfsut.util.DateUtil
 import pro.breez.bfsut.util.alert.MilkPriceDialog
 import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
+import pro.breez.bfsut.util.alert.dialog.SearchItemDialog
 import pro.breez.data.cache.DataPreference
 import pro.breez.data.cache.SettingsPreference
 import pro.breez.domain.interactor.*
 import pro.breez.domain.model.output.FarmerCheckModel
+import pro.breez.domain.model.output.MfSysFarmerModel
 import pro.breez.domain.model.output.MilkPriceModel
 import pro.breez.domain.model.output.TotalMilkModel
 import javax.inject.Inject
@@ -27,6 +29,7 @@ class HomeViewModel @Inject constructor(
     private val changeMilkPrice: ChangeMilkPriceUseCase,
     private val unreadCreditCountUseCase: UnreadCreditCountUseCase,
     private val settingsPreference: SettingsPreference,
+    private val searchFarmer: SearchFarmerUseCase,
     val dataPreference: DataPreference
 ) : BaseViewModel() {
 
@@ -155,9 +158,6 @@ class HomeViewModel @Inject constructor(
 
     fun addMilkToFarmer(farmer: FarmerCheckModel) {
         when (farmer.is_picked) {
-            "paid" -> {
-
-            }
             "active" -> {
                 val args = HomeFragmentDirections.homeFragmentToEditMilk(farmer).arguments
                 val transaction = FragmentTransaction(R.id.home_fragment_to_edit_milk, args)
@@ -169,5 +169,53 @@ class HomeViewModel @Inject constructor(
                 navigateToFragment.startEvent(transaction)
             }
         }
+    }
+
+    private fun showSearchDialog(isCancelable: Boolean) {
+        val dialog =
+            SearchItemDialog<MfSysFarmerModel>(
+                valueName = arrayOf(
+                    MfSysFarmerModel::firstName.name,
+                    MfSysFarmerModel::fatherName.name,
+                    MfSysFarmerModel::lastName.name
+                )
+            )
+        dialog.onKeyChanged {
+            searchFarmersInSystem(dialog, it)
+        }
+        dialog.isCancelable = isCancelable
+        dialog.notFoundBtnText = "Создать фермера"
+        dialog.isHomeBtnGone = false
+        dialog.homeBtnText = "Вернуться назад"
+        dialog.onNotFoundBtnClicked {
+            navigateToAddFarmer(null)
+        }
+        dialog.onHomeBtnClicked {
+            popBackStack.trigger()
+        }
+        dialog.onPositiveBtnClicked {
+            navigateToAddFarmer(it)
+        }
+        showDialogFragment.startEvent(dialog)
+    }
+
+    private fun navigateToAddFarmer(farmer: MfSysFarmerModel?) {
+        val args = HomeFragmentDirections.fragmentHomeToAddFarmer(farmer).arguments
+        navigateToFragment.startEvent(FragmentTransaction(R.id.navigation_farmer_add, args))
+    }
+
+    private fun searchFarmersInSystem(
+        dialog: SearchItemDialog<MfSysFarmerModel>,
+        searchKey: String
+    ) {
+        searchFarmer.execute(viewModelScope, searchKey) {
+            handleResult(it) {
+                dialog.updateList(it)
+            }
+        }
+    }
+
+    fun navigateToCreditAdd() {
+        showSearchDialog(true)
     }
 }

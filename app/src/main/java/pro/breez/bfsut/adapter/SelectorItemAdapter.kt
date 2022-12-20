@@ -52,7 +52,9 @@ class SelectorItemAdapter<T>(
                 valueName.forEach {
                     val value = item!!::class.java.getDeclaredField(it)
                     value.isAccessible = true
-                    strBuilder.append("${value.get(item) as String?} ")
+                    value.get(item)?.let {
+                        strBuilder.append("${it as String?}")
+                    }
                     value.isAccessible = false
                 }
                 nameTv.text = strBuilder.toString()

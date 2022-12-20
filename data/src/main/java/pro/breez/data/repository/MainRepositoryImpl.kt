@@ -108,4 +108,8 @@ class MainRepositoryImpl(
     override fun getUnreadCount(): Result<UnreadCountModel> {
         return restClient.mainApi.getUnreadCreditCount(dataPreference.token)
     }
+
+    override fun creditSearchFarmer(queries: Map<String, String>): Result<List<CreditSearchFarmerModel>> {
+        return restClient.mainApi.creditSearchFarmer(dataPreference.token, queries)
+    }
 }

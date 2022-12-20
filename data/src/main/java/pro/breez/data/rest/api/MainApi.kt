@@ -189,13 +189,19 @@ interface MainApi {
         @QueryMap queries: Map<String, String>
     ): Result<List<MfSysFarmerModel>>
 
+    @GET("v1/credit/search")
+    fun creditSearchFarmer(
+        @Header("Authorization") token: String,
+        @QueryMap queries: Map<String, String>
+    ): Result<List<CreditSearchFarmerModel>>
+
     @POST("v1/credit/detailed")
     fun creditDetail(
         @Header("Authorization") token: String,
         @Query("credit_id") creditId: String
     ): Result<CreditDetailModel>
 
-    @POST("v1/credit/detailed")
+    @POST("v1/credit/issued")
     fun issuedDetail(
         @Header("Authorization") token: String,
         @Query("credit_id") creditId: String

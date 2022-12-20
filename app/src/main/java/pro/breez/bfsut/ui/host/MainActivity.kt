@@ -1,18 +1,23 @@
-package pro.breez.bfsut
+package pro.breez.bfsut.ui.host
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseActivity
 import pro.breez.bfsut.databinding.ActivityMainBinding
 import pro.breez.bfsut.model.navigation.FragmentTransaction
+import pro.breez.bfsut.ui.main.credit.CreditsFragment
+import pro.breez.bfsut.ui.main.home.HomeFragment
+import pro.breez.bfsut.ui.main.log.LogFragment
 import pro.breez.bfsut.util.setOnClickOnceListener
 
 
@@ -63,7 +68,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         binding.addFarmer.setOnClickOnceListener {
             fabSelected = false
-            navigateToFragment(FragmentTransaction(R.id.navigation_farmer_add))
+            creditAddFarmerSearch()
         }
 
         binding.addCredit.setOnClickOnceListener {
@@ -73,6 +78,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         binding.shadow.setOnClickOnceListener {
             fabSelected = !fabSelected
+        }
+    }
+
+    private fun creditAddFarmerSearch() {
+        supportFragmentManager.findFragmentById(R.id.nav_host)?.childFragmentManager?.let {
+            it.fragments.first().apply {
+                when (this) {
+                    is HomeFragment -> this.creditAdd()
+                    is LogFragment -> this.creditAdd()
+                    is CreditsFragment -> this.creditAdd()
+                }
+            }
         }
     }
 
@@ -86,7 +103,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 badgeTextColor = getColor(R.color.white)
             }
         }
-        Log.d("BADGE", "setBadge: $count")
     }
 
     override fun inflateLayout(layoutInflater: LayoutInflater) =

@@ -1,5 +1,6 @@
 package pro.breez.bfsut.util.validator
 
+import androidx.core.widget.doOnTextChanged
 import pro.breez.bfsut.databinding.FragmentCreditAddBinding
 import pro.breez.bfsut.util.ifFalse
 import pro.breez.bfsut.util.ifTrue
@@ -17,6 +18,12 @@ class CreditAddFieldValidator(val binding: FragmentCreditAddBinding) {
         binding.sum
     )
 
+    private fun validateSendBtn() {
+        val allNotNull = importantFields.all { it.textOrNull() != null }
+        binding.sendBtn.isEnabled = allNotNull
+
+    }
+
     fun validateFields(): Boolean {
         var result = false
         for (field in importantFields) {
@@ -28,5 +35,15 @@ class CreditAddFieldValidator(val binding: FragmentCreditAddBinding) {
             }
         }
         return !result
+    }
+
+    fun enableSendBtnOnEdit() {
+        for (field in importantFields) {
+            field.editText.doOnTextChanged { text, _, _, _ ->
+                if (text.toString().isNotBlank()) {
+                    validateSendBtn()
+                }
+            }
+        }
     }
 }

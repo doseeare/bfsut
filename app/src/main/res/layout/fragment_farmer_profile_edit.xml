@@ -9,9 +9,9 @@
     <pro.breez.bfsut.custom.view.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        app:toolbarLabel="@string/edit_farmer"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:toolbarLabel="@string/edit_farmer" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -688,6 +688,7 @@
         android:layout_marginHorizontal="@dimen/large_margin"
         android:layout_marginBottom="@dimen/default_margins"
         android:background="@drawable/selector_default_button"
+        android:enabled="false"
         android:text="@string/save_changes"
         android:textAllCaps="false"
         android:textColor="@color/white"

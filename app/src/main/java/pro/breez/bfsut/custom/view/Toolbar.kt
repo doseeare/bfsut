@@ -47,6 +47,7 @@ class Toolbar(context: Context, attributeSet: AttributeSet?, defStyle: Int) :
                     }
                 }
             }
+            attr.recycle()
         }
     }
 

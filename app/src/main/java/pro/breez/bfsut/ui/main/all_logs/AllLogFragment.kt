@@ -9,6 +9,7 @@ import pro.breez.bfsut.databinding.FragmentAllLogBinding
 import pro.breez.bfsut.model.FilterResult
 import pro.breez.bfsut.ui.main.filter_result.log.LogFilterResultFragment
 import pro.breez.bfsut.util.alert.OnPageSelectedListener
+import pro.breez.bfsut.util.ifNotNull
 import pro.breez.domain.model.output.LogsModel
 
 @AndroidEntryPoint
@@ -22,10 +23,10 @@ class AllLogFragment : BaseFragment<FragmentAllLogBinding, AllLogViewModel>(),
     }
 
     private fun initArgs() {
-        val arg = requireArguments().getSerializable(LogFilterResultFragment.BUNDLE_KEY)
-        if (arg != null) {
-            viewModel.filterResult = arg as FilterResult
-        }
+        requireArguments().getSerializable(LogFilterResultFragment.BUNDLE_KEY)
+            .ifNotNull {
+                viewModel.filterResult = it as FilterResult
+            }
     }
 
     private fun initViews() {

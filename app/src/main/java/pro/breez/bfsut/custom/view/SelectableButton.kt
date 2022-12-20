@@ -79,7 +79,7 @@ class SelectableButton(context: Context, attributeSet: AttributeSet?, defStyle: 
             attr.getResourceId(R.styleable.SelectableButton_button_image, 0).let {
                 binding.iconImg.setImageResource(it)
             }
-
+            attr.recycle()
         }
     }
 

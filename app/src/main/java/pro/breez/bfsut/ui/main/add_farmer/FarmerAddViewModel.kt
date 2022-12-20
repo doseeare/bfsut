@@ -16,6 +16,7 @@ import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
 import pro.breez.bfsut.util.alert.dialog.SearchItemDialog
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilderImpl
+import pro.breez.bfsut.util.ifNotNull
 import pro.breez.domain.interactor.*
 import pro.breez.domain.model.input.FarmerBody
 import pro.breez.domain.model.output.MfSysFarmerModel
@@ -50,6 +51,7 @@ class FarmerAddViewModel @Inject constructor(
     val regionLV = MutableLiveData<MfSysModel>()
     val educationLV = MutableLiveData<MfSysModel>()
     val jobPurposeLV = MutableLiveData<MfSysModel>()
+    val farmerFoundLV = MutableLiveData<MfSysFarmerModel>()
 
     //Поля field
     var name: String? = null
@@ -86,11 +88,17 @@ class FarmerAddViewModel @Inject constructor(
     var maritalStatus: MaritalStatusEnum? = null
     var gender: GenderEnum? = null
 
-    val farmerFoundLV = MutableLiveData<MfSysFarmerModel>()
-
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
-        showSearchDialog(false)
+        initArgs()
+    }
+
+    private fun initArgs() {
+        FarmerAddFragmentArgs.fromBundle(requiredArguments()).farmer.ifNotNull {
+            customerId = it.customerID
+
+            farmerFoundLV.postValue(it)
+        }
     }
 
     fun birthDayClicked() {
@@ -400,7 +408,6 @@ class FarmerAddViewModel @Inject constructor(
     private fun getId(lv: MutableLiveData<MfSysModel>): Int? {
         return lv.value?.id
     }
-
 
     fun onFailValidate() {
         showErrorSnackbar("Заполните все обязательные поля")

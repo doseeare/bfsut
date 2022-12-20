@@ -46,7 +46,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:stl_customTabTextLayoutId="@layout/custom_tab_layout"
+            app:stl_customTabTextLayoutId="@layout/custom_tab_layout_center"
             app:stl_customTabTextViewId="@id/textView_title"
             app:stl_defaultTabTextAllCaps="false"
             app:stl_distributeEvenly="true"

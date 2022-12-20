@@ -24,29 +24,34 @@ class DigitMask(val editText: EditText, private val suffix: String) : TextWatche
     }
 
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-        editText.filters = emptyFilter
         if (editText.selectionStart == editText.length() && !editText.text.isNullOrBlank()) {
             moveBackCursor()
         }
     }
 
-    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        editText.filters = filter
-    }
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
     override fun afterTextChanged(s: Editable?) {
         editText.removeTextChangedListener(this)
+        s?.filters = emptyFilter
         val text = s.toString()
         val suffixPosition = text.indexOf(suffix, 0)
         if (!text.contains(suffix)) {
-            editText.setText("$text$suffix")
+            s?.clear()
+            s?.append("$text$suffix")
             moveBackCursor()
-        }
-        else if (suffixPosition != text.length - 1 && suffixPosition != -1) {
-            s?.delete(suffixPosition + 1, text.length)
+        } else if (suffixPosition != text.length - 1 && suffixPosition != -1) {
+            val addedChar = s?.get(suffixPosition + 1).toString()
+            s?.delete(suffixPosition, text.length)
+            s?.append("$addedChar$suffix")
         } else if (editText.text.toString() == suffix) {
             s?.clear()
         }
+        if (s?.length != 0)
+            if (s?.get(0) == '0' && text.length - 1 > 1) {
+                s.delete(0, 1)
+            }
+        s?.filters = filter
         editText.addTextChangedListener(this)
     }
 
@@ -55,7 +60,6 @@ class DigitMask(val editText: EditText, private val suffix: String) : TextWatche
             setSelection(length() - 1)
         }
     }
-
 }
 
 fun EditText.addDigitMask(suffix: String) {

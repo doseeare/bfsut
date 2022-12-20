@@ -20,13 +20,15 @@ class CreditStatusViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     var creditStatus: CreditStatusEnum? = null
-
+    val notFoundLV = MutableLiveData<Boolean>()
     val creditsLV = MutableLiveData<List<CreditStatusModel>>()
 
     fun getCredits() {
         creditsUseCase.execute(viewModelScope, null to creditStatus?.key) {
             handleResult(it) {
-                creditsLV.postValue(it)
+                if (it.isNotEmpty())
+                    creditsLV.postValue(it)
+                notFoundLV.postValue(it.isEmpty())
                 setBadge(it, creditStatus?.key)
             }
         }
@@ -40,6 +42,7 @@ class CreditStatusViewModel @Inject constructor(
             cancel()
         }
     }
+
 
     fun creditItemClicked(creditId: String) {
         val args = CreditsFragmentDirections.creditToCreditsDetail(creditId).arguments

@@ -7,9 +7,11 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
+import androidx.core.widget.doOnTextChanged
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.LayoutRegistrationEdittextBinding
-import pro.breez.bfsut.util.setGoneIfFalse
+import pro.breez.bfsut.util.visibility
 import pro.breez.bfsut.util.setOnClickOnceListener
 
 class RegistrationEditText(context: Context, attributeSet: AttributeSet?, defStyle: Int) :
@@ -54,10 +56,21 @@ class RegistrationEditText(context: Context, attributeSet: AttributeSet?, defSty
                 if (value) R.drawable.bg_shape_red_corners
                 else R.drawable.bg_shape_gray_corners
             binding.border.setBackgroundResource(errorBorderBg)
-            binding.error.setGoneIfFalse(value)
+            binding.error.visibility(value)
         }
 
     init {
+        editText.doOnTextChanged { text, _, _, _ ->
+            if (text.toString().isNotBlank())
+                binding.titleTv.setTextColor(ContextCompat.getColor(context, R.color.gray_text))
+            else
+                binding.titleTv.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.text_bold_color
+                    )
+                )
+        }
         attributeSet?.let {
             val attr =
                 context.obtainStyledAttributes(attributeSet, R.styleable.RegistrationEditText)
@@ -84,7 +97,7 @@ class RegistrationEditText(context: Context, attributeSet: AttributeSet?, defSty
                     }
                 }
             }
-
+            attr.recycle()
         }
     }
 

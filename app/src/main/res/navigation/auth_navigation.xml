@@ -33,7 +33,7 @@
 
     <activity
         android:id="@+id/nav_main_activity"
-        android:name="pro.breez.bfsut.MainActivity"
+        android:name="pro.breez.bfsut.ui.host.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
 
