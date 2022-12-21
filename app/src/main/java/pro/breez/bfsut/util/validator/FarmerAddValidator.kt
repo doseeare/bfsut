@@ -11,6 +11,7 @@ class FarmerAddValidator(
     val binding: FragmentAddFarmerBinding,
     val viewModel: FarmerAddViewModel
 ) {
+
     private val importantFields = arrayListOf(
         binding.nameEt, binding.lastNameEt, binding.birthdayEt,
         binding.nationEt, binding.citizenEt,
@@ -56,6 +57,13 @@ class FarmerAddValidator(
 
     private fun setCustomConditionsError() {
         binding.phoneNumberEt.setCustomConditionError {
+            binding.phoneNumberEt.text.length == 16
+        }
+        binding.phoneNumberMoreEt.setCustomConditionError {
+            binding.phoneNumberEt.text.length == 16
+        }
+
+        binding.phoneNumberComfortEt.setCustomConditionError {
             binding.phoneNumberEt.text.length == 16
         }
 

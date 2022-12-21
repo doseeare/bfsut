@@ -99,8 +99,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:icon_end="@drawable/ic_drop"
                 app:hint="Выберите продукт"
+                app:icon_end="@drawable/ic_drop"
                 app:title="Продукт"
                 app:type="drop" />
 
@@ -116,24 +116,13 @@
                 app:type="drop" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
-                android:id="@+id/date"
+                android:id="@+id/date_disburse_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:icon_end="@drawable/ic_drop"
-                app:hint="Выберите срок кредита"
-                app:title="Срок"
-                app:type="drop" />
-
-            <pro.breez.bfsut.custom.view.CustomDropDownEditText
-                android:id="@+id/date_of_payment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:helper="Дата ежемесячной оплаты"
-                app:icon_end="@drawable/ic_arrow_down"
-                app:hint="Введите число для оплаты"
-                app:title="День для выплат"
+                app:hint="Выберите дату"
+                app:icon_end="@drawable/ic_calendar"
+                app:title="Желаемая дата получение кредита"
                 app:type="drop" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
@@ -146,6 +135,26 @@
                 app:title="Сумма"
                 app:type="field" />
 
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/period"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:hint="Выберите срок кредита"
+                app:icon_end="@drawable/ic_drop"
+                app:title="Срок"
+                app:type="drop" />
+
+            <pro.breez.bfsut.custom.view.CustomDropDownEditText
+                android:id="@+id/date_of_payment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:helper="Дата ежемесячной оплаты"
+                app:hint="Введите число для оплаты"
+                app:icon_end="@drawable/ic_arrow_down"
+                app:title="День для выплат"
+                app:type="drop" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
@@ -154,11 +163,11 @@
         android:id="@+id/send_btn"
         android:layout_width="match_parent"
         android:layout_height="66dp"
-        android:enabled="false"
         android:layout_marginHorizontal="@dimen/large_margin"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="@dimen/default_margins"
         android:background="@drawable/selector_default_button"
+        android:enabled="false"
         android:text="@string/send"
         android:textAllCaps="false"
         android:textColor="@color/white"

@@ -13,15 +13,16 @@ class CreditAddFieldValidator(val binding: FragmentCreditAddBinding) {
         binding.commentsOfGoal,
         binding.product,
         binding.category,
-        binding.date,
+        binding.dateDisburseEt,
+        binding.period,
         binding.dateOfPayment,
-        binding.sum
+        binding.sum,
+        binding.period,
     )
 
     private fun validateSendBtn() {
         val allNotNull = importantFields.all { it.textOrNull() != null }
         binding.sendBtn.isEnabled = allNotNull
-
     }
 
     fun validateFields(): Boolean {

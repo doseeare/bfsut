@@ -1,11 +1,10 @@
 package pro.breez.bfsut.ui.host
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.badge.BadgeDrawable
@@ -103,6 +102,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 badgeTextColor = getColor(R.color.white)
             }
         }
+    }
+
+    fun showDivider(show: Boolean) {
+        binding.divider.isVisible = show
     }
 
     override fun inflateLayout(layoutInflater: LayoutInflater) =

@@ -8,10 +8,12 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentLogBinding
+import pro.breez.bfsut.ui.host.MainActivity
 import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
 import pro.breez.bfsut.ui.main.all_logs.AllLogFragment
 import pro.breez.bfsut.ui.main.paid_logs.PaidLogsFragment
 import pro.breez.bfsut.util.alert.OnPageSelectedListener
+import pro.breez.bfsut.util.ifNotNull
 import pro.breez.bfsut.util.setOnClickOnceListener
 
 @AndroidEntryPoint
@@ -37,6 +39,7 @@ class LogFragment : BaseFragment<FragmentLogBinding, LogViewModel>() {
         binding.viewPager.offscreenPageLimit = pagerAdapter.count
         binding.tabLayout.setViewPager(binding.viewPager)
         binding.tabLayout.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            val parentActivity = (requireActivity() as MainActivity)
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
@@ -45,11 +48,10 @@ class LogFragment : BaseFragment<FragmentLogBinding, LogViewModel>() {
             }
 
             override fun onPageSelected(position: Int) {
-                val fragment =
-                    pagerAdapter.getPage(position)
-                if (fragment != null) {
-                    (fragment as OnPageSelectedListener).onPageSelected()
+                pagerAdapter.getPage(position).ifNotNull {
+                    (it as OnPageSelectedListener).onPageSelected()
                 }
+                parentActivity.showDivider(position != 0)
             }
 
             override fun onPageScrollStateChanged(state: Int) {

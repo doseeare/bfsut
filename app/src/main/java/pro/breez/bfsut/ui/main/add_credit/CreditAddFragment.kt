@@ -6,6 +6,7 @@ import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentCreditAddBinding
+import pro.breez.bfsut.util.ifNotNull
 import pro.breez.bfsut.util.ifTrue
 import pro.breez.bfsut.util.setOnClickOnceListener
 import pro.breez.bfsut.util.validator.CreditAddFieldValidator
@@ -23,24 +24,30 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
 
     private fun initObserver() = with(viewModel) {
         farmerLV.observe(viewLifecycleOwner) {
-            binding.farmer.text =
-                "${it.first_name} ${it.father_name} ${it.last_name}"
-                    .replace("  ", " ")
+            binding.farmer.text = buildString {
+                it.father_name.ifNotNull { append("$it ") }
+                it.first_name.ifNotNull { append("$it ") }
+                it.last_name.ifNotNull { append("$it ") }
+            }
         }
         productLV.observe(viewLifecycleOwner) {
-            binding.product.text = it.name
+            it?.let { binding.product.text = it.name }
         }
         categoryLV.observe(viewLifecycleOwner) {
             binding.category.text = it.name
         }
         goalLV.observe(viewLifecycleOwner) {
             binding.goal.text = it.name
+            binding.product.reset()
         }
         periodLV.observe(viewLifecycleOwner) {
-            binding.date.text = it
+            binding.period.text = it.period
         }
         dateOfPaymentLV.observe(viewLifecycleOwner) {
             binding.dateOfPayment.text = it
+        }
+        dateDisburseLV.observe(viewLifecycleOwner) {
+            binding.dateDisburseEt.text = it
         }
     }
 
@@ -61,7 +68,7 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
         category.setOnClickListener {
             viewModel.categoryClicked()
         }
-        date.setOnClickListener {
+        period.setOnClickListener {
             viewModel.periodClicked()
         }
         sendBtn.setOnClickOnceListener {
@@ -73,10 +80,13 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
         dateOfPayment.setOnClickListener {
             viewModel.dateOfPaymentClicked()
         }
+        dateDisburseEt.setOnClickListener {
+            viewModel.dateDisburseClicked()
+        }
         sum.editText.inputType = InputType.TYPE_CLASS_NUMBER
         sum.onTextChanged = {
             it.isNotBlank().ifTrue {
-                viewModel.sum.postEvent(it.toFloat().toString())
+                viewModel.sumLV.postEvent(it.toFloat().toString())
             }
         }
     }

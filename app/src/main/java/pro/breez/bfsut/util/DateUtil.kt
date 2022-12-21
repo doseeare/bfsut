@@ -72,4 +72,10 @@ object DateUtil {
         val dateFormat = SimpleDateFormat("dd.MM.yyyy")
         return dateFormat.format(Date(millis))
     }
+
+    @SuppressLint("SimpleDateFormat")
+    fun toDay(millis: Long): String {
+        val dateFormat = SimpleDateFormat("dd")
+        return dateFormat.format(Date(millis))
+    }
 }

@@ -15,7 +15,6 @@
         android:paddingVertical="4dp"
         android:textSize="21sp"
         android:textColor="@color/text_bold_color"
-        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -112,4 +112,8 @@ class MainRepositoryImpl(
     override fun creditSearchFarmer(queries: Map<String, String>): Result<List<CreditSearchFarmerModel>> {
         return restClient.mainApi.creditSearchFarmer(dataPreference.token, queries)
     }
+
+    override fun getPeriod(queries: Map<String, String>): Result<CreditPeriodModel> {
+        return restClient.mainApi.creditPeriod(dataPreference.token, queries)
+    }
 }

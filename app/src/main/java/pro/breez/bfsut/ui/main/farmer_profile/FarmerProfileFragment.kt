@@ -7,7 +7,7 @@ import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentFarmerProfileBinding
 import pro.breez.bfsut.util.ifFalse
-import pro.breez.bfsut.util.ifTrue
+import pro.breez.bfsut.util.ifNotNull
 import pro.breez.bfsut.util.setOnClickOnceListener
 
 @AndroidEntryPoint
@@ -34,7 +34,11 @@ class FarmerProfileFragment : BaseFragment<FragmentFarmerProfileBinding, FarmerP
     private fun initObservers() = with(viewModel) {
         farmerProfileLV.observe(viewLifecycleOwner) {
             binding.apply {
-                nameTv.text = "${it.first_name} ${it.father_name} ${it.last_name}"
+                nameTv.text = buildString {
+                    it.father_name.ifNotNull { append("$it ") }
+                    it.first_name.ifNotNull { append("$it ") }
+                    it.last_name.ifNotNull { append("$it ") }
+                }
                 staticsPerTv.text = getString(R.string.static_per_month, 6)
                 lastNameTv.text = it.father_name
                 firstNameTv.text = it.first_name

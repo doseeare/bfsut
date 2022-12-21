@@ -220,6 +220,13 @@ interface MainApi {
         @QueryMap queries: Map<String, String>
     ): Result<CreditIssuedModel>
 
+
+    @GET("v1/credit/period")
+    fun creditPeriod(
+        @Header("Authorization") token: String,
+        @QueryMap queries: Map<String, String>
+    ): Result<CreditPeriodModel>
+
     @GET("v1/journal/evening-fill-status")
     fun getEveningStatus(
         @Header("Authorization") token: String,

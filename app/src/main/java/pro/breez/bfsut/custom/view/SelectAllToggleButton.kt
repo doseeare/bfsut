@@ -19,7 +19,7 @@ class SelectAllToggleButton(context: Context, attributeSet: AttributeSet?, defSt
    private var selectAll = false
 
     fun setToggleCheckedListener(block: (checked: Boolean) -> Unit) {
-        binding.invisibleBtn.setOnClickOnceListener {
+        binding.container.setOnClickOnceListener {
             setChanges(selectAll)
             block.invoke(selectAll)
         }
@@ -29,11 +29,11 @@ class SelectAllToggleButton(context: Context, attributeSet: AttributeSet?, defSt
         if (!selectAll) {
             binding.container.setBackgroundResource(R.drawable.bg_choose_all_off)
             binding.leftImg.setImageResource(R.drawable.ic_close_custom)
-            binding.titleTv.text = "Сбросить все"
+            binding.titleTv.text = context.getString(R.string.unselect_all)
         } else {
             binding.container.setBackgroundResource(R.drawable.bg_choose_all_on)
             binding.leftImg.setImageResource(R.drawable.ic_checkbox_custom)
-            binding.titleTv.text = "Выбрать все"
+            binding.titleTv.text = context.getString(R.string.select_all)
         }
         this.selectAll = !selectAll
     }

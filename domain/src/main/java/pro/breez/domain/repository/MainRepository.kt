@@ -30,5 +30,6 @@ interface MainRepository {
     fun getEveningStatus(): Result<EveningModel>
     fun deleteLog(id: String): Result<DefaultSuccessModel>
     fun getUnreadCount(): Result<UnreadCountModel>
-    fun creditSearchFarmer(queries: Map<String, String>) : Result<List<CreditSearchFarmerModel>>
+    fun creditSearchFarmer(queries: Map<String, String>): Result<List<CreditSearchFarmerModel>>
+    fun getPeriod(queries: Map<String, String>): Result<CreditPeriodModel>
 }

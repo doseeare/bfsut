@@ -1,11 +1,9 @@
 package pro.breez.bfsut.util.alert.dialog
 
 import android.os.Bundle
-import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.DialogFragment
 import pro.breez.bfsut.R
 import pro.breez.bfsut.adapter.SelectorItemAdapter
@@ -73,10 +71,10 @@ class SearchItemDialog<T>(
     }
 
     private fun onEditTextFilled() {
-        binding.search.doOnTextChanged { text, _, _, _ ->
+        binding.search.setOnDebounceTextWatcher(lifecycle) {
             binding.selectBtn.isEnabled = false
-            if (text.toString().isNotBlank()) {
-                onKeyChanged?.invoke(text.toString())
+            if (it.isNotBlank()) {
+                onKeyChanged?.invoke(it)
             } else {
                 setDefaultView()
             }

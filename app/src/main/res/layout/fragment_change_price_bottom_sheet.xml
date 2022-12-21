@@ -11,22 +11,23 @@
         android:id="@+id/fields_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margins"
+        android:layout_marginHorizontal="@dimen/default_margins"
+        android:layout_marginBottom="@dimen/default_margins"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
         <View
+            android:layout_width="46dp"
+            android:layout_height="10dp"
             android:layout_gravity="center"
-            android:background="@drawable/bg_handler_shape"
-            android:layout_width="56dp"
-            android:layout_height="10dp"/>
+            android:background="@drawable/bg_handler_shape" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/change_price_title"
             android:layout_marginTop="@dimen/default_margins"
+            android:text="@string/change_price_title"
             android:textColor="@color/text_bold_color"
             android:textSize="30sp"
             android:textStyle="normal" />
@@ -35,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:lineSpacingExtra="5sp"
             android:text="@string/change_price_content"
             android:textColor="@color/gray_text"
             android:textSize="20sp" />
@@ -44,10 +46,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_margins"
-            android:textStyle="bold"
             android:text="Текущая цена: 100 сом за литр"
             android:textColor="@color/text_bold_color"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/price_et"
@@ -56,9 +58,9 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/bg_rounded_shape_black"
             android:gravity="center"
-            android:textStyle="bold"
             android:inputType="number"
             android:textSize="21sp"
+            android:textStyle="bold"
             tools:hint="100 сом" />
 
     </LinearLayout>
@@ -79,12 +81,12 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/edit_btn"
         android:layout_width="match_parent"
-        android:elevation="0dp"
         android:layout_height="66dp"
         android:layout_marginHorizontal="@dimen/default_margins"
-        android:stateListAnimator="@null"
         android:layout_marginVertical="@dimen/default_margins"
         android:background="@drawable/bg_rounded_shape_darker"
+        android:elevation="0dp"
+        android:stateListAnimator="@null"
         android:text="@string/edit"
         android:textAllCaps="false"
         android:textColor="@color/text_bold_color"

@@ -85,6 +85,11 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
         }
     }
 
+    fun reset() {
+        binding.edittext.setText("")
+        binding.titleTv.setTextColor(ContextCompat.getColor(context, R.color.text_bold_color))
+    }
+
     fun ifEmptyError(): Boolean = if (text.isBlank()) {
         error = true
         /*isEmpty = */ true

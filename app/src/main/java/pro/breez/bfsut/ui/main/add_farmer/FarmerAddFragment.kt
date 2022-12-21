@@ -22,6 +22,7 @@ import pro.breez.bfsut.util.validator.FarmerAddValidator
 
 @AndroidEntryPoint
 class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewModel>() {
+    private lateinit var validator : FarmerAddValidator
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,6 +39,7 @@ class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewMo
     }
 
     private fun initViews() = with(binding) {
+        validator = FarmerAddValidator(binding, viewModel)
         toolbar.setOnBackClickListener {
             viewModel.backBtnClicked()
         }
@@ -101,7 +103,6 @@ class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewMo
     }
 
     private fun initAcceptBtn() {
-        val validator = FarmerAddValidator(binding, viewModel)
         binding.acceptBtn.setOnClickListener {
             validator.validateImportantFields()
         }

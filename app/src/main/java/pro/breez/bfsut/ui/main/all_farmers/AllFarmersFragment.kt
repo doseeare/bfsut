@@ -7,7 +7,6 @@ import pro.breez.bfsut.adapter.AllFarmerAdapter
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentAllFarmersBinding
 
-
 @AndroidEntryPoint
 class AllFarmersFragment : BaseFragment<FragmentAllFarmersBinding, AllFarmersViewModel>() {
 

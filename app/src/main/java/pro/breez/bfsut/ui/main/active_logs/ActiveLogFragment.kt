@@ -8,8 +8,10 @@ import pro.breez.bfsut.adapter.ActiveLogAdapter
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentActiveLogBinding
 import pro.breez.bfsut.model.FilterResult
+import pro.breez.bfsut.ui.host.MainActivity
 import pro.breez.bfsut.ui.main.filter_result.log.LogFilterResultFragment
 import pro.breez.bfsut.util.alert.OnPageSelectedListener
+import pro.breez.bfsut.util.ifNotNull
 import pro.breez.bfsut.util.setOnClickOnceListener
 import pro.breez.domain.model.output.LogsModel
 
@@ -26,13 +28,14 @@ class ActiveLogFragment : BaseFragment<FragmentActiveLogBinding, ActiveLogViewMo
     }
 
     private fun initArgs() {
-        val arg = requireArguments().getSerializable(LogFilterResultFragment.BUNDLE_KEY)
-        if (arg != null) {
-            viewModel.filterResult = arg as FilterResult
-        }
+        requireArguments().getSerializable(LogFilterResultFragment.BUNDLE_KEY)
+            .ifNotNull {
+                viewModel.filterResult = it as FilterResult
+            }
     }
 
     private fun initViews() {
+        (requireActivity() as MainActivity).showDivider(false)
         viewModel.activeLogsLV.observe(viewLifecycleOwner) {
             val adapter = ActiveLogAdapter(it,
                 itemClicked = { item ->

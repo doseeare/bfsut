@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="wrap_content"
-    android:layout_height="43dp"
+    android:layout_height="wrap_content"
     android:background="@drawable/bg_choose_all_on">
 
     <ImageView
         android:id="@+id/left_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginVertical="12dp"
+        android:layout_marginStart="@dimen/default_margins"
         android:src="@drawable/ic_checkbox_custom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,21 +23,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="@dimen/default_margins"
+        android:textColor="@color/gray"
         android:text="@string/select_all"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/left_img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/left_img"
         app:layout_constraintTop_toTopOf="@id/left_img" />
-
-    <Button
-        android:id="@+id/invisible_btn"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:alpha="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

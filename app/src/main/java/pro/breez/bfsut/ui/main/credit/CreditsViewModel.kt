@@ -66,8 +66,8 @@ class CreditsViewModel @Inject constructor(
         val dialog =
             SearchItemDialog<MfSysFarmerModel>(
                 valueName = arrayOf(
-                    MfSysFarmerModel::firstName.name,
                     MfSysFarmerModel::fatherName.name,
+                    MfSysFarmerModel::firstName.name,
                     MfSysFarmerModel::lastName.name
                 )
             )

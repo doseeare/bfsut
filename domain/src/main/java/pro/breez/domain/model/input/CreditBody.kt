@@ -9,7 +9,7 @@ data class CreditBody(
     val period: Int,
     val product_bank: Int,
     val purpose: Int,
-    val purpose_comment: String,
+    val purpose_comment: String?,
     val office: String?,
     val credit_officer: String?
 )

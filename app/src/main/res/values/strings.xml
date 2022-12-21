@@ -103,4 +103,5 @@
     <string name="log_filter">Отчет сбора молока</string>
     <string name="choose_period">Выберите период</string>
     <string name="correct">Подвердить</string>
+    <string name="unselect_all">Сбросить все</string>
 </resources>

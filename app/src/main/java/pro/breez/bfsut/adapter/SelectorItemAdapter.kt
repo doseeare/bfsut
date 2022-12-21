@@ -1,12 +1,9 @@
 package pro.breez.bfsut.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.ItemSelectorBinding
 import pro.breez.bfsut.util.setOnClickOnceListener
 
@@ -53,7 +50,7 @@ class SelectorItemAdapter<T>(
                     val value = item!!::class.java.getDeclaredField(it)
                     value.isAccessible = true
                     value.get(item)?.let {
-                        strBuilder.append("${it as String?}")
+                        strBuilder.append("${it as String?} ")
                     }
                     value.isAccessible = false
                 }
@@ -69,9 +66,8 @@ class SelectorItemAdapter<T>(
         }
 
         private fun setSelect(isSelected: Boolean, position: Int) {
-            if (isSelected) {
+            if (isSelected)
                 selectedItem = itemList[position]
-            }
             binding.indicatorImg.isVisible = isSelected
         }
     }

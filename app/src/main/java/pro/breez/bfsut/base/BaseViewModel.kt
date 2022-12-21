@@ -22,6 +22,7 @@ import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilder
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilder
 import pro.breez.bfsut.util.alert.snackbar.SnackbarNotificationBuilder
 import pro.breez.bfsut.util.alert.snackbar.SnackbarNotificationBuilderInterface
+import pro.breez.bfsut.util.ifNotNull
 import pro.breez.bfsut.util.permission.PermissionCheckerBuilder
 import pro.breez.domain.exception.ConnectionLostException
 import pro.breez.domain.interactor.base.CompletableResult
@@ -70,7 +71,7 @@ open class BaseViewModel : ViewModel(), DefaultLifecycleObserver {
     fun showErrorSnackbar(message: String, @DrawableRes icon: Int? = null) {
         val snackbar = SnackbarNotificationBuilder().apply {
             setBackground(R.drawable.bg_error_shape)
-            if (icon != null) setLeftIcon(icon)
+            icon.ifNotNull { setLeftIcon(it) }
             setMessage(message)
             setMessageColor(R.color.white)
         }
