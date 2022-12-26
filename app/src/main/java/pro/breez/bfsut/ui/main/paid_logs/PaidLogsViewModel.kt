@@ -9,6 +9,7 @@ import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.model.FilterResult
 import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.ui.main.log.LogFragmentDirections
+import pro.breez.bfsut.util.ifNull
 import pro.breez.domain.interactor.PaidLogsUseCase
 import pro.breez.domain.model.output.PaidLogModel
 import javax.inject.Inject
@@ -19,11 +20,13 @@ class PaidLogsViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     val paidLogsLV = MutableLiveData<ArrayList<PaidLogModel>>()
-    var filterResult : FilterResult? = null
+    var filterResult: FilterResult? = null
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
-        getPaidLogs()
+        filterResult.ifNull {
+            getPaidLogs()
+        }
     }
 
     fun getPaidLogs() {

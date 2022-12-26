@@ -4,18 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.credit_status.CreditStatusFragment">
+    tools:context=".ui.main.paid_logs_farmer.PaidLogsByFarmerFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="@dimen/default_margins"
+        android:layout_marginVertical="@dimen/small_margin"
         android:clipToPadding="false"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/small_margin"
+        android:paddingVertical="@dimen/small_margin"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_credit_status" />
+        tools:listitem="@layout/item_paid_logs_farmer" />
 
     <LinearLayout
         android:id="@+id/not_found_view"
@@ -41,4 +41,6 @@
             android:textColor="@color/text_bold_color"
             android:textSize="21sp" />
     </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

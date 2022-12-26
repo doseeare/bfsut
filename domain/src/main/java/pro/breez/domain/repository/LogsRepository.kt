@@ -7,6 +7,7 @@ import pro.breez.domain.model.output.*
 
 interface LogsRepository {
     fun getActiveLogs(queries: Map<String, String>): Result<List<LogsModel>>
+    fun getPaidLogByFarmer(queries: Map<String, String>): Result<List<PaidLogsByFarmer>>
     fun getPaidLogs(queries: Map<String, String>): Result<List<PaidLogModel>>
     fun getPaidLogDetail(id: String): Result<List<PaidLogsDetailModel>>
     fun getAllLogs(queries: Map<String, String>): Result<List<LogsModel>>

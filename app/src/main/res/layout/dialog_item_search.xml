@@ -10,7 +10,6 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="426dp"
-
         android:layout_marginBottom="8dp"
         app:cardCornerRadius="@dimen/default_margins"
         app:layout_constraintTop_toTopOf="parent">

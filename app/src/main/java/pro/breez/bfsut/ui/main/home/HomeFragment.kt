@@ -13,8 +13,8 @@ import pro.breez.domain.model.output.FarmerCheckModel
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
-    var showMore = false
 
+    private var showMore = true
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
@@ -43,18 +43,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     private fun initObservers() {
+        val adapter =
+            FarmersAdapter(
+                itemList = arrayListOf(),
+                addClicked = {
+                    viewModel.addMilkToFarmer(it)
+                },
+                itemClicked = {
+                    viewModel.farmerClicked(it)
+                })
         viewModel.farmersCheckLV.observe(viewLifecycleOwner) { farmers ->
-            val adapter =
-                FarmersAdapter(
-                    itemList = arrayListOf(),
-                    addClicked = {
-                        viewModel.addMilkToFarmer(it)
-                    },
-                    itemClicked = {
-                        viewModel.farmerClicked(it)
-                    })
-
             binding.showMoreBtn.setOnClickOnceListener {
+                showMore = !showMore
                 showOrHideFarmers(farmers, adapter)
             }
             binding.farmersRv.adapter = adapter
@@ -78,16 +78,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         }
     }
 
-    private fun showOrHideFarmers(farmers: ArrayList<FarmerCheckModel>, adapter: FarmersAdapter) {
+    private fun showOrHideFarmers(
+        farmers: ArrayList<FarmerCheckModel>,
+        adapter: FarmersAdapter,
+    ) {
         if (farmers.size > 5) {
             if (showMore) {
-                binding.showMoreBtn.text = "Скрыть"
-                adapter.update(farmers.take(farmers.size) as ArrayList)
-            } else {
                 binding.showMoreBtn.text = "Показать еще"
                 adapter.update(farmers.take(farmers.size / 2) as ArrayList)
+            } else {
+                binding.showMoreBtn.text = "Скрыть"
+                adapter.update(farmers.take(farmers.size) as ArrayList)
             }
-            showMore = !showMore
         } else {
             adapter.update(farmers)
             binding.showMoreBtn.isEnabled = false

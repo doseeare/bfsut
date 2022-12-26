@@ -96,6 +96,7 @@
         android:id="@+id/fields_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/name_tv">
 
@@ -244,7 +245,8 @@
         android:id="@+id/milk_price_container_evening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margins"
+        android:layout_marginStart="@dimen/default_margins"
+        android:layout_marginTop="@dimen/small_margin"
         android:background="@drawable/bg_price_of_liter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/milk_price_container_morning">
@@ -279,13 +281,13 @@
         android:id="@+id/total_amount_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margins"
+        android:layout_marginBottom="@dimen/default_margins"
         android:text="@string/total_default_som"
         android:textColor="@color/text_bold_color"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/calculate_btn"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/save_changes_btn"
+        app:layout_constraintStart_toStartOf="@id/save_changes_btn" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/calculate_btn"
@@ -307,8 +309,8 @@
         android:layout_height="66dp"
         android:layout_marginHorizontal="@dimen/default_margins"
         android:layout_marginBottom="@dimen/default_margins"
-        android:enabled="false"
         android:background="@drawable/selector_default_button"
+        android:enabled="false"
         android:text="@string/save_changes"
         android:textAllCaps="false"
         android:textColor="@color/white"

@@ -17,6 +17,10 @@ class LogsRepositoryImpl(
         return restClient.mainApi.getActiveLogs(dataPreference.token, queries)
     }
 
+    override fun getPaidLogByFarmer(queries: Map<String, String>): Result<List<PaidLogsByFarmer>> {
+        return restClient.mainApi.getPaidLogsByFarmer(dataPreference.token, queries)
+    }
+
     override fun getPaidLogs(queries: Map<String, String>): Result<List<PaidLogModel>> {
         return restClient.mainApi.getPaidLogs(dataPreference.token, queries)
     }

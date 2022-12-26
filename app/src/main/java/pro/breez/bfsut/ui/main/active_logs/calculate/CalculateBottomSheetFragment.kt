@@ -33,7 +33,7 @@ class CalculateBottomSheetFragment :
             dayLitersTv.text = "${log.morning}л"
             eveningLitersTv.text = "${log.evening}л"
             totalSumTv.text = "${log.overall}с"
-            milkPriceTv.text = "цена за утро ${log.morning_price} сом\n" +
+            milkPriceTv.text = "цена за утро ${log.morning_price} сом" +
                     "\nцена за вечер ${log.evening_price} сом"
 
             var statusTitle = ""
@@ -47,7 +47,7 @@ class CalculateBottomSheetFragment :
                     calcDateTv.visibility = View.INVISIBLE
                 }
                 "paid" -> {
-                    statusTitle = "рассчитан"
+                    statusTitle = "рассчитано"
                     statusBg = pro.breez.bfsut.R.drawable.bg_paid_span
                     totalTv.visibility = View.INVISIBLE
                     calcBtn.visibility = View.GONE

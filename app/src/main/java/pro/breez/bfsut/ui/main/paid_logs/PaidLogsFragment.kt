@@ -26,6 +26,7 @@ class PaidLogsFragment : BaseFragment<FragmentPaidLogBinding, PaidLogsViewModel>
         val arg = requireArguments().getSerializable(LogFilterResultFragment.BUNDLE_KEY)
         if (arg != null) {
             viewModel.filterResult = arg as FilterResult
+            viewModel.getPaidLogs()
         }
     }
 

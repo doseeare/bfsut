@@ -10,8 +10,9 @@
         android:id="@+id/paid_log_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/default_margins"
+        android:clipToPadding="false"
+        android:orientation="vertical"
         android:paddingVertical="@dimen/default_margins"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_paid_logs" />

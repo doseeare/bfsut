@@ -20,8 +20,8 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
     private var isEveningNotEmpty = false
     private var morningLiters: String? = null
     private var eveningLiters: String? = null
-    private lateinit var fieldsValidate: () -> Unit
 
+    private var defaultText = "0л"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
@@ -30,59 +30,57 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
         binding.morningEt.isEnabled = true
     }
 
-    private fun initValidate() {
-        fieldsValidate = {
-            validateCreateBtn()
-            var totalSum = 0L
-            viewModel.farmerLV.value?.let {
-                val morning = binding.morningEt.text.toString().filter { it.isDigit() }
-                if (morning.isNotBlank()) {
-                    totalSum += morning.toInt() * it.morning_price
-                }
-                val evening = binding.eveningEt.text.toString()
-                    .filter { it.isDigit() }
-                if (evening.isNotBlank()) {
-                    totalSum += evening.toInt() * it.evening_price
-                }
-                binding.totalSumTv.text = "Итого: $totalSum сом"
+    private fun validateFields(){
+        validateCreateBtn()
+        var totalSum = 0L
+        viewModel.farmerLV.value?.let {
+            val morning = binding.morningEt.text.toString().filter { it.isDigit() }
+            if (morning.isNotBlank()) {
+                totalSum += morning.toInt() * it.morning_price
             }
+            val evening = binding.eveningEt.text.toString()
+                .filter { it.isDigit() }
+            if (evening.isNotBlank()) {
+                totalSum += evening.toInt() * it.evening_price
+            }
+            binding.totalSumTv.text = "Итого: $totalSum сом"
         }
+
+    }
+
+    private fun initValidate() {
         var morningTitleColor: Int
         binding.morningEt.doOnTextChanged { text, _, _, _ ->
             isMorningNotEmpty = !text.isNullOrBlank()
-            morningTitleColor = if (isEveningNotEmpty) {
-                R.color.gray_text
-            } else {
-                R.color.text_bold_color
-            }
+            morningTitleColor = if (isMorningNotEmpty) R.color.gray_text
+            else R.color.text_bold_color
+
             binding.morningTitleTv.setTextColor(
                 ContextCompat.getColor(
                     requireContext(),
                     morningTitleColor
                 )
             )
-            fieldsValidate.invoke()
+            validateFields()
         }
 
         var eveningTitleColor: Int
         binding.eveningEt.doOnTextChanged { text, _, _, _ ->
             isEveningNotEmpty = !text.isNullOrBlank()
-            eveningTitleColor = if (isEveningNotEmpty) {
-                R.color.gray_text
-            } else {
-                R.color.text_bold_color
-            }
+            eveningTitleColor = if (isEveningNotEmpty) R.color.gray_text
+            else R.color.text_bold_color
+
             binding.eveningTitleTv.setTextColor(
                 ContextCompat.getColor(
                     requireContext(),
                     eveningTitleColor
                 )
             )
-            fieldsValidate.invoke()
+            validateFields()
         }
         binding.nameEt.editText.doOnTextChanged { text, _, _, _ ->
             isNameNotEmpty = !text.isNullOrBlank()
-            fieldsValidate.invoke()
+            validateFields()
         }
     }
 
@@ -94,9 +92,13 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
             binding.nameEt.text = it.full_name
             morningLiters = "${it.morning}л"
             eveningLiters = "${it.evening}л"
-            binding.morningEt.setText("${it.morning}л")
-            binding.eveningEt.setText("${it.evening}л")
+
+            if (morningLiters != defaultText)
+                binding.morningEt.setText(morningLiters)
+            if (eveningLiters != defaultText)
+                binding.eveningEt.setText(eveningLiters)
             binding.morningEt.isEnabled = true
+
             viewModel.isSelectedFarmer.ifTrue {
                 binding.nameEt.visibility = View.GONE
                 binding.title.text = "Сбор молока\nу ${it.full_name}"
@@ -108,11 +110,13 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
     }
 
     private fun validateCreateBtn() {
+        val morningText = binding.morningEt.text.toString()
+        val eveningText = binding.eveningEt.text.toString()
+
         val enabled = (isMorningNotEmpty || isEveningNotEmpty && isNameNotEmpty)
-                && morningLiters != binding.morningEt.text.toString()
-                || eveningLiters != binding.eveningEt.text.toString()
+                && (morningLiters != morningText || eveningLiters != eveningText)
+                && (morningText != defaultText || eveningText != defaultText)
         binding.createBtn.isEnabled = enabled
-        print("")
     }
 
     private fun initViews() = with(binding) {

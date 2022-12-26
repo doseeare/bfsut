@@ -13,7 +13,7 @@ class CreditPeriodUseCase @Inject constructor(
     override suspend fun doOnBackground(params: PeriodBody?): Result<ArrayList<PeriodModel>> {
         val map = HashMap<String, String>()
         val arrayOfPeriod = arrayListOf<PeriodModel>()
-        map["amount"] = params!!.amount
+        map["amount"] = params!!.amount.toString()
         map["product_bank_id"] = params.productId
         return mainRepository.getPeriod(map).map {
             for (i in it.period_min..it.period_max) {

@@ -9,6 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentCreditsBinding
+import pro.breez.bfsut.ui.host.MainActivity
 import pro.breez.bfsut.util.setOnClickOnceListener
 
 @AndroidEntryPoint
@@ -26,6 +27,7 @@ class CreditsFragment : BaseFragment<FragmentCreditsBinding, CreditsViewModel>()
         binding.viewPager.adapter = pagerAdapter
         binding.tabLayout.setViewPager(binding.viewPager)
         binding.tabLayout.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            val parentActivity = (requireActivity() as MainActivity)
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
@@ -38,10 +40,12 @@ class CreditsFragment : BaseFragment<FragmentCreditsBinding, CreditsViewModel>()
                     0 -> {
                         binding.filterBtn.setImageResource(R.drawable.ic_credit_search)
                         viewModel.isCredit = true
+                        parentActivity.showDivider(true)
                     }
                     1 -> {
                         binding.filterBtn.setImageResource(R.drawable.ic_credit_filter)
                         viewModel.isCredit = false
+                        parentActivity.showDivider(false)
                     }
                 }
             }
@@ -54,6 +58,10 @@ class CreditsFragment : BaseFragment<FragmentCreditsBinding, CreditsViewModel>()
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        (requireActivity() as MainActivity).showDivider(true)
+    }
     private fun createTabs(): FragmentPagerItems {
         val creator = FragmentPagerItems.with(requireContext())
         creator.add("Кредиты", CreditStatusTabFragment::class.java)

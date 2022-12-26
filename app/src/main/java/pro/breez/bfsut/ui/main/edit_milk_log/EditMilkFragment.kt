@@ -24,7 +24,7 @@ class EditMilkFragment : BaseFragment<FragmentEditMilkBinding, EditMilkViewModel
         viewModel.foundLogLV.observe(viewLifecycleOwner) {
             binding.dayLitersTv.text = "${it.morning}л"
             binding.eveningLitersTv.text = "${it.evening}л"
-            binding.totalSumTv.text = "Итого: ${it.overall} сом"
+            binding.totalSumTv.text = "${it.overall}с"
             binding.editBtn.isEnabled = true
         }
         binding.editBtn.setOnClickOnceListener {

@@ -311,8 +311,8 @@ class EditProfileViewModel @Inject constructor(
     fun onSuccessValidate() {
         val body = FarmerBody(
             first_name = name,
-            father_name = lastname,
-            last_name = surname,
+            father_name = surname,
+            last_name = lastname,
             gender = gender?.key,
             document_series = docSeriesLV.value?.name,
             document_number = docNumber,

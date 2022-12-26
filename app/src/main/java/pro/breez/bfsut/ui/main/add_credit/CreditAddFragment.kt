@@ -86,7 +86,7 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
         sum.editText.inputType = InputType.TYPE_CLASS_NUMBER
         sum.onTextChanged = {
             it.isNotBlank().ifTrue {
-                viewModel.sumLV.postEvent(it.toFloat().toString())
+                viewModel.sumLV.postEvent(it.toInt().toString())
             }
         }
     }

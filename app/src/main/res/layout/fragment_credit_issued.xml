@@ -10,8 +10,8 @@
         android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/default_margins"
+        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/bottom_panel"
         app:layout_constraintTop_toTopOf="parent"
@@ -45,9 +45,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottom_panel"
         android:layout_width="match_parent"
-        android:paddingHorizontal="@dimen/default_margins"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="-6dp"
         android:background="@drawable/bg_shape_rounded_top"
+        android:paddingHorizontal="@dimen/default_margins"
+        android:paddingBottom="6dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
@@ -56,9 +58,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_margins"
             android:text="@string/total"
-            android:textStyle="bold"
             android:textColor="@color/gray_text"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/overall_tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/overall_tv" />
@@ -68,9 +70,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margins"
-            android:text="0 с"
+            android:text="@string/default_som"
             android:textColor="@color/text_bold_color"
             android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -80,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_margins"
             android:layout_marginBottom="3dp"
-            android:text="0 кредитов"
+            android:text="@string/default_credit"
             android:textColor="@color/gray"
             app:layout_constraintBottom_toTopOf="@id/overall_tv"
             app:layout_constraintEnd_toEndOf="@id/overall_tv"

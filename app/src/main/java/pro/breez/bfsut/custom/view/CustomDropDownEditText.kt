@@ -197,10 +197,4 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
             }
         }
     }
-
-    companion object {
-        const val FIELD = 0
-        const val DROP = 1
-        const val NONE = 2
-    }
 }

@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:paddingHorizontal="@dimen/default_margins"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/default_margins">
 
     <TextView
         android:id="@+id/date_tv"
@@ -19,41 +19,27 @@
         tools:text="29.09.2001" />
 
     <TextView
-        android:id="@+id/name_tv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="@dimen/default_margins"
-        android:textColor="@color/black"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/date_tv"
-        app:layout_constraintTop_toBottomOf="@id/date_tv"
-        tools:text="Акыл Акылов" />
-
-    <TextView
         android:id="@+id/day_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/default_margins"
         android:text="@string/morning"
         android:textColor="@color/error_color"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@id/name_tv"
-        app:layout_constraintTop_toBottomOf="@id/name_tv" />
+        app:layout_constraintStart_toStartOf="@id/date_tv"
+        app:layout_constraintTop_toBottomOf="@id/date_tv" />
 
     <TextView
         android:id="@+id/night_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/default_margins"
         android:text="@string/evening"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/day_title_tv"
-        app:layout_constraintTop_toBottomOf="@id/name_tv" />
+        app:layout_constraintTop_toBottomOf="@id/date_tv" />
 
     <TextView
         android:id="@+id/day_liters_tv"

@@ -57,6 +57,7 @@ class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewMo
         }
         phoneNumberEt.editText.setNumberMask()
         phoneNumberMoreEt.editText.setNumberMask()
+        phoneNumberComfortEt.editText.setNumberMask()
 
         initButtons(actualLocationYes, actualLocationNo)
         initButtons(actualLocationNo, actualLocationYes)

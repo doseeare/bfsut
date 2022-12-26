@@ -13,6 +13,7 @@ import pro.breez.bfsut.databinding.FragmentLogFilterResultBinding
 import pro.breez.bfsut.ui.main.active_logs.ActiveLogFragment
 import pro.breez.bfsut.ui.main.all_logs.AllLogFragment
 import pro.breez.bfsut.ui.main.paid_logs.PaidLogsFragment
+import pro.breez.bfsut.ui.main.paid_logs_farmer.PaidLogsByFarmerFragment
 import pro.breez.bfsut.util.alert.OnPageSelectedListener
 import pro.breez.bfsut.util.ifNotNull
 
@@ -28,7 +29,7 @@ class LogFilterResultFragment :
     private fun initViews() {
         binding.toolbar.setTitle("Результаты по:")
 
-        viewModel.filterTitleLV.observe(viewLifecycleOwner){
+        viewModel.filterTitleLV.observe(viewLifecycleOwner) {
             binding.resultTitleTv.text = it
         }
         binding.toolbar.setOnBackClickListener {
@@ -75,9 +76,17 @@ class LogFilterResultFragment :
             Bundle().apply { putSerializable(BUNDLE_KEY, viewModel.filterResult) }
         val creator = FragmentPagerItems.with(requireContext())
         creator.add("Активные", ActiveLogFragment::class.java, bundle)
-        creator.add("Рассчитано", PaidLogsFragment::class.java, bundle)
+        creator.addPaidFragment(bundle)
         creator.add("Все", AllLogFragment::class.java, bundle)
         return creator.create()
+    }
+
+    private fun FragmentPagerItems.Creator.addPaidFragment(bundle: Bundle) {
+        if (viewModel.filterResult.farmerId == null) {
+            add("Рассчитано", PaidLogsFragment::class.java, bundle)
+        } else {
+            add("Рассчитано", PaidLogsByFarmerFragment::class.java, bundle)
+        }
     }
 
     companion object {

@@ -11,6 +11,7 @@ import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.bfsut.databinding.FragmentCreditIssuedTabBinding
 import pro.breez.bfsut.model.CreditIssueEnum
+import pro.breez.bfsut.ui.host.MainActivity
 import pro.breez.bfsut.ui.main.credit_issued.CreditIssuedFragment
 import javax.inject.Inject
 
@@ -25,24 +26,8 @@ class CreditIssuedTabFragment :
 
     private fun initViews() {
         val pagerAdapter = FragmentPagerItemAdapter(childFragmentManager, createTabs())
-
         binding.viewPager.adapter = pagerAdapter
         binding.tabLayout.setViewPager(binding.viewPager)
-        binding.tabLayout.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-            }
-
-            override fun onPageSelected(position: Int) {
-
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {
-            }
-        })
     }
 
     private fun createTabs(): FragmentPagerItems {

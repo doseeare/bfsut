@@ -34,15 +34,11 @@ class FarmerProfileFragment : BaseFragment<FragmentFarmerProfileBinding, FarmerP
     private fun initObservers() = with(viewModel) {
         farmerProfileLV.observe(viewLifecycleOwner) {
             binding.apply {
-                nameTv.text = buildString {
-                    it.father_name.ifNotNull { append("$it ") }
-                    it.first_name.ifNotNull { append("$it ") }
-                    it.last_name.ifNotNull { append("$it ") }
-                }
+                nameTv.text = it.full_name
                 staticsPerTv.text = getString(R.string.static_per_month, 6)
-                lastNameTv.text = it.father_name
+                lastNameTv.text = it.last_name
                 firstNameTv.text = it.first_name
-                surnameTv.text = it.last_name
+                surnameTv.text = it.father_name
                 birthdayTv.text = it.birth_date
                 nationTv.text = it.nationality.toString()
                 citizenTv.text = it.resident.toString()

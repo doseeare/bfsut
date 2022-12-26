@@ -10,7 +10,6 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="426dp"
-
         android:layout_marginBottom="8dp"
         app:cardCornerRadius="@dimen/default_margins"
         app:layout_constraintTop_toTopOf="parent">
@@ -33,6 +32,13 @@
                 app:layout_constraintEnd_toStartOf="@id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#C7CCD8"
+                app:layout_constraintTop_toBottomOf="@id/search" />
+
 
             <ImageView
                 android:id="@+id/imageView"

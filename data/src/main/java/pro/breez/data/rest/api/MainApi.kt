@@ -69,6 +69,13 @@ interface MainApi {
         @QueryMap queries: Map<String, String>
     ): Result<List<LogsModel>>
 
+
+    @GET("v1/journal/paid-by-farmer")
+    fun getPaidLogsByFarmer(
+        @Header("Authorization") token: String,
+        @QueryMap queries: Map<String, String>
+    ): Result<List<PaidLogsByFarmer>>
+
     @GET("v1/journal/")
     fun getAllLogs(
         @Header("Authorization") token: String,

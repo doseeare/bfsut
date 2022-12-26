@@ -71,6 +71,13 @@
     </fragment>
 
     <fragment
+        android:id="@+id/navigation_paid_logs_farmer"
+        android:name="pro.breez.bfsut.ui.main.paid_logs_farmer.PaidLogsByFarmerFragment"
+        android:label="Рассчитанные"
+        tools:layout="@layout/fragment_paid_logs_farmer">
+    </fragment>
+
+    <fragment
         android:id="@+id/navigation_credits"
         android:name="pro.breez.bfsut.ui.main.credit.CreditsFragment"
         android:label="@string/title_credits"
@@ -148,8 +155,8 @@
         tools:layout="@layout/fragment_add_farmer">
         <argument
             android:name="farmer"
-            app:argType="pro.breez.domain.model.output.MfSysFarmerModel"
             android:defaultValue="@null"
+            app:argType="pro.breez.domain.model.output.MfSysFarmerModel"
             app:nullable="true" />
     </fragment>
 

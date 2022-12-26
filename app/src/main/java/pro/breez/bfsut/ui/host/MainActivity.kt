@@ -19,7 +19,6 @@ import pro.breez.bfsut.ui.main.home.HomeFragment
 import pro.breez.bfsut.ui.main.log.LogFragment
 import pro.breez.bfsut.util.setOnClickOnceListener
 
-
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 

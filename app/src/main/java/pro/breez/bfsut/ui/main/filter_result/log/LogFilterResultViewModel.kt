@@ -29,7 +29,7 @@ class LogFilterResultViewModel @Inject constructor() : BaseViewModel() {
                 filterResult.farmerName.ifNotNull { append("\n\n") }
                 append("${it.start} - ${it.end}")
             }
-            if (filterResult.filterSpan != FilterSpan.NONE) {
+            if (filterResult.filterSpan != FilterSpan.NONE ) {
                 filterResult.farmerName.ifNotNull { append("\n\n") }
                 append(filterResult.filterSpan?.title)
             }

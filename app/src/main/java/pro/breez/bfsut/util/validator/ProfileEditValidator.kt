@@ -167,7 +167,7 @@ class ProfileEditValidator(
         viewModel.apply {
             name = nameEt.textOrNull()
             lastname = lastNameEt.textOrNull()
-            surname = lastNameEt.textOrNull()
+            surname = surnameEt.textOrNull()
             phoneNumber = phoneNumberEt.textOrNull()
             phoneNumberMore = phoneNumberMoreEt.textOrNull()
             phoneNumberComfort = phoneNumberComfortEt.textOrNull()

@@ -9,8 +9,8 @@
 
     <View
         android:id="@+id/handler"
-        android:layout_width="56dp"
-        android:layout_height="10dp"
+        android:layout_width="66dp"
+        android:layout_height="8dp"
         android:layout_gravity="center"
         android:background="@drawable/bg_handler_shape"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
         android:layout_marginTop="6dp"
         android:paddingHorizontal="@dimen/default_margins"
         android:textColor="@color/text_bold_color"
-        android:textSize="26sp"
+        android:textSize="31sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/post_date_tv"
         tools:text="Акылбек Асанов" />
@@ -70,7 +70,7 @@
         android:id="@+id/time_info_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/large_margin"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/name_tv">
 
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/text_bold_color"
             android:textSize="56sp"
-            android:textStyle="normal"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/day"
             app:layout_constraintTop_toBottomOf="@id/day"
             tools:text="6л" />
@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/text_bold_color"
             android:textSize="56sp"
-            android:textStyle="normal"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/evening"
             app:layout_constraintTop_toBottomOf="@id/evening"
             tools:text="6л" />
@@ -146,6 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:lineSpacingExtra="8sp"
             android:textColor="@color/dark_blue"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -162,7 +163,7 @@
         android:layout_height="2dp"
         android:layout_marginHorizontal="@dimen/default_margins"
         android:layout_marginTop="@dimen/default_margins"
-        android:background="@color/gray_selected"
+        android:background="@color/light_divider"
         app:layout_constraintBottom_toTopOf="@id/total_tv"
         app:layout_constraintTop_toBottomOf="@id/time_info_container" />
 
@@ -174,7 +175,7 @@
         android:text="Итого:"
         android:textColor="@color/gray"
         android:textSize="22sp"
-        android:textStyle="normal"
+        android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/total_sum_tv"
         app:layout_constraintStart_toStartOf="@id/total_sum_tv"
@@ -184,8 +185,9 @@
         android:id="@+id/calc_date_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/text_bold_color"
-        android:textSize="16sp"
+        android:textColor="@color/gray"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/total_sum_tv"
         app:layout_constraintStart_toStartOf="@id/total_sum_tv"
         tools:text="Рассчитано 20.20.2022" />
@@ -198,7 +200,7 @@
         android:layout_marginBottom="24dp"
         android:textColor="@color/text_bold_color"
         android:textSize="56sp"
-        android:textStyle="normal"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/calc_btn"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="600л" />

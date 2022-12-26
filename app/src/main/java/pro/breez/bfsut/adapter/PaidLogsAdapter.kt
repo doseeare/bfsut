@@ -16,8 +16,8 @@ class PaidLogsAdapter(
         val dateTitle =
             if (DateUtil.isToday(item.paid_date)) "Рассчитано на сегодня" else "Рассчитано за ${item.paid_date}"
         binding.dateTv.text = dateTitle
-        binding.litersTv.text = "${item.total_milk} л"
-        binding.totalPriceTv.text = "${item.total_sum} с"
+        binding.litersTv.text = "${item.total_milk}л"
+        binding.totalPriceTv.text = "${item.total_sum}с"
         binding.root.setOnClickOnceListener {
             itemClicked.invoke(item)
         }

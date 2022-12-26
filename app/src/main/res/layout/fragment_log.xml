@@ -21,12 +21,11 @@
         android:id="@+id/filter_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/large_margin"
-        android:layout_marginTop="@dimen/default_margins"
+        android:paddingHorizontal="@dimen/large_margin"
+        android:paddingTop="@dimen/default_margins"
         android:src="@drawable/ic_filter"
-        app:layout_constraintBottom_toBottomOf="@id/title_tv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/title_tv" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tab_container"
