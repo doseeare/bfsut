@@ -52,7 +52,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,13 +59,13 @@
                 android:text="@string/personal_data"
                 android:textColor="@color/text_bold_color"
                 android:textSize="28sp"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/name_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/large_margin"
+                android:layout_marginTop="12dp"
                 app:hint="Введите имя"
                 app:important="true"
                 app:title="Имя"
@@ -134,6 +133,7 @@
                     android:text="@string/sex"
                     android:textColor="@color/text_bold_color"
                     android:textSize="18sp"
+                    android:textStyle="normal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -142,6 +142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
                     android:src="@drawable/ic_important"
+                    app:layout_constraintBottom_toBottomOf="@id/text1"
                     app:layout_constraintStart_toEndOf="@id/text1"
                     app:layout_constraintTop_toTopOf="@id/text1" />
 
@@ -150,14 +151,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margins"
+                android:layout_marginTop="12dp"
                 android:orientation="horizontal">
 
                 <pro.breez.bfsut.custom.view.SelectableButton
                     android:id="@+id/gender_male"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_weight="1"
                     app:button_image="@drawable/ic_gender_male"
                     app:button_text="Мужской" />
@@ -166,7 +167,7 @@
                     android:id="@+id/gender_female"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="4dp"
                     android:layout_weight="1"
                     app:button_image="@drawable/ic_gender_female"
                     app:button_text="Женский" />
@@ -177,7 +178,7 @@
                 android:id="@+id/phone_number_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margins"
+                android:layout_marginTop="@dimen/small_margin"
                 app:hint="+996 ___ ___ ___"
                 app:important="true"
                 app:title="Моб. телефон"
@@ -204,17 +205,17 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/large_margin"
+                android:layout_marginTop="26dp"
                 android:text="@string/passport_data"
                 android:textColor="@color/text_bold_color"
                 android:textSize="28sp"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/inn_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/large_margin"
+                android:layout_marginTop="12dp"
                 app:hint="Введите ИНН"
                 app:important="true"
                 app:title="ИНН"
@@ -286,17 +287,17 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/large_margin"
+                android:layout_marginTop="26dp"
                 android:text="@string/location_on_doc"
                 android:textColor="@color/text_bold_color"
                 android:textSize="28sp"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/country_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/large_margin"
+                android:layout_marginTop="12dp"
                 app:hint="Страна нахождение"
                 app:important="true"
                 app:title="Страна"
@@ -340,7 +341,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/small_margin"
                 app:hint="Выберите улицу"
-                app:important="true"
                 app:title="Улица"
                 app:type="field" />
 
@@ -417,7 +417,7 @@
                     android:background="@drawable/selector_selectable_button"
                     android:text="@string/no"
                     android:textAllCaps="false"
-                    android:textColor="@color/text_bold_color"
+                    android:textColor="@color/selector_btn_text_color"
                     android:textSize="16sp" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -429,8 +429,9 @@
                     android:background="@drawable/selector_selectable_button"
                     android:text="@string/yes"
                     android:textAllCaps="false"
-                    android:textColor="@color/text_bold_color"
+                    android:textColor="@color/selector_btn_text_color"
                     android:textSize="16sp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -439,7 +440,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margins"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -448,13 +450,13 @@
                     android:text="@string/fact_location"
                     android:textColor="@color/text_bold_color"
                     android:textSize="28sp"
-                    android:textStyle="normal" />
+                    android:textStyle="bold" />
 
                 <pro.breez.bfsut.custom.view.CustomDropDownEditText
                     android:id="@+id/actual_country_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margins"
+                    android:layout_marginTop="12dp"
                     app:hint="Страна нахождение"
                     app:important="true"
                     app:title="Страна"
@@ -480,7 +482,6 @@
                     app:important="true"
                     app:title="Регион/Город"
                     app:type="drop" />
-
 
                 <pro.breez.bfsut.custom.view.CustomDropDownEditText
                     android:id="@+id/actual_village_et"
@@ -526,11 +527,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/large_margin"
+                android:layout_marginTop="26dp"
                 android:text="@string/family"
                 android:textColor="@color/text_bold_color"
                 android:textSize="28sp"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
@@ -540,11 +541,10 @@
                     android:id="@id/text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margins"
+                    android:layout_marginTop="12dp"
                     android:text="@string/family_status"
                     android:textColor="@color/text_bold_color"
                     android:textSize="18sp"
-                    android:textStyle="normal"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -570,7 +570,7 @@
                     android:id="@+id/married_btn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_weight="1"
                     app:button_image="@drawable/ic_married"
                     app:button_text="Замужем/Женат" />
@@ -579,7 +579,7 @@
                     android:id="@+id/single_btn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="4dp"
                     android:layout_weight="1"
                     app:button_image="@drawable/ic_not_married"
                     app:button_text="Не состою в браке" />
@@ -589,14 +589,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margins"
+                android:layout_marginTop="@dimen/small_margin"
                 android:orientation="horizontal">
 
                 <pro.breez.bfsut.custom.view.SelectableButton
                     android:id="@+id/widower_btn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_weight="1"
                     app:button_image="@drawable/ic_widower"
                     app:button_text="Вдовец/Вдова" />
@@ -605,7 +605,7 @@
                     android:id="@+id/divorced_btn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="4dp"
                     android:layout_weight="1"
                     app:button_image="@drawable/ic_divorced"
                     app:button_text="В разводе" />
@@ -637,17 +637,17 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/large_margin"
+                android:layout_marginTop="26dp"
                 android:text="@string/education"
                 android:textColor="@color/text_bold_color"
                 android:textSize="28sp"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/education_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/large_margin"
+                android:layout_marginTop="12dp"
                 app:hint="Степень образования"
                 app:important="true"
                 app:title="Степень"
@@ -656,17 +656,17 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/large_margin"
+                android:layout_marginTop="26dp"
                 android:text="@string/job"
                 android:textColor="@color/text_bold_color"
                 android:textSize="28sp"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <pro.breez.bfsut.custom.view.CustomDropDownEditText
                 android:id="@+id/job_company_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/large_margin"
+                android:layout_marginTop="12dp"
                 app:hint="Название места работы"
                 app:important="true"
                 app:title="Место работы"

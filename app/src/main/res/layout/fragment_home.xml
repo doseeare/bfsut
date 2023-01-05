@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/default_margins"
     android:background="@color/bg_milky_color"
     android:orientation="vertical"
+    android:padding="@dimen/default_margins"
     tools:context=".ui.main.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,12 +40,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Доброе утро!"
             android:textColor="@color/text_bold_color"
             android:textSize="18sp"
             android:textStyle="normal"
             app:layout_constraintStart_toStartOf="@id/name_tv"
-            app:layout_constraintTop_toBottomOf="@id/name_tv" />
+            app:layout_constraintTop_toBottomOf="@id/name_tv"
+            tools:text="Доброе утро!" />
 
         <LinearLayout
             android:id="@+id/info_panel"

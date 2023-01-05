@@ -97,7 +97,6 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
                 binding.morningEt.setText(morningLiters)
             if (eveningLiters != defaultText)
                 binding.eveningEt.setText(eveningLiters)
-            binding.morningEt.isEnabled = true
 
             viewModel.isSelectedFarmer.ifTrue {
                 binding.nameEt.visibility = View.GONE
@@ -106,6 +105,7 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
         }
         viewModel.eveningStatusLV.observe(viewLifecycleOwner) {
             binding.eveningEt.isEnabled = it
+            binding.morningEt.isEnabled = !it
         }
     }
 

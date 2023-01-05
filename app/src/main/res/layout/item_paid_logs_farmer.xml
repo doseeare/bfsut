@@ -48,12 +48,12 @@
         android:id="@+id/amount_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="@dimen/default_margins"
         android:textColor="@color/text_bold_color"
         android:textSize="33sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/overall_tv"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/logs_container"
         tools:text="2200с" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

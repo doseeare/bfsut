@@ -1,8 +1,8 @@
 package pro.breez.bfsut.util
 
 import android.os.SystemClock
+import android.view.MotionEvent
 import android.view.View
-import androidx.fragment.app.Fragment
 
 fun View.visibility(b: Boolean?) {
     if (b != null)
@@ -19,4 +19,15 @@ fun View.setOnClickOnceListener(clickInterval: Long = 500L, action: (View) -> Un
         action.invoke(it)
     }
 }
+
+fun View.setOnDisableClickListener(block: () -> Unit) {
+    this.setOnTouchListener { v, event ->
+        if (!isEnabled && event?.action == MotionEvent.ACTION_DOWN) {
+            block.invoke()
+        }
+        performClick()
+        return@setOnTouchListener false
+    }
+}
+
 

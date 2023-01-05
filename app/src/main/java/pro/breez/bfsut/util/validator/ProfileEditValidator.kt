@@ -1,5 +1,6 @@
 package pro.breez.bfsut.util.validator
 
+import android.util.ArraySet
 import androidx.core.widget.doOnTextChanged
 import pro.breez.bfsut.R
 import pro.breez.bfsut.databinding.FragmentFarmerProfileEditBinding
@@ -7,12 +8,14 @@ import pro.breez.bfsut.ui.main.farmer_profile_edit.EditProfileViewModel
 import pro.breez.bfsut.util.ifFalse
 import pro.breez.bfsut.util.ifTrue
 import pro.breez.bfsut.util.isNull
-import pro.breez.bfsut.util.setOnClickOnceListener
 
 class ProfileEditValidator(
     val binding: FragmentFarmerProfileEditBinding,
     val viewModel: EditProfileViewModel
 ) {
+
+    private val checkedFields = ArraySet<Int>()
+
     private val importantFields = arrayListOf(
         binding.nameEt, binding.lastNameEt, binding.birthdayEt,
         binding.nationEt, binding.citizenEt,
@@ -58,23 +61,17 @@ class ProfileEditValidator(
 
     fun enableAcceptBtnOnEdit() {
         for (field in allFields) {
-            field.editText.doOnTextChanged { text, start, before, count ->
+            field.editText.doOnTextChanged { text, _, _, _ ->
                 if (text.toString().isNotBlank())
-                    binding.acceptBtn.isEnabled = true
+                    binding.acceptBtn.isActive = true
             }
         }
 
         for (radioButton in allRadioButtons) {
             radioButton.setResultListener {
-                binding.acceptBtn.isEnabled = true
+                binding.acceptBtn.isActive = true
             }
         }
-        for (btn in allBtn) {
-            btn.setOnClickOnceListener {
-                binding.acceptBtn.isEnabled = true
-            }
-        }
-
     }
 
     fun validateImportantFields() {

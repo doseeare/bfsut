@@ -71,7 +71,7 @@ class CreditAddFragment : BaseFragment<FragmentCreditAddBinding, CreditAddViewMo
         period.setOnClickListener {
             viewModel.periodClicked()
         }
-        sendBtn.setOnClickOnceListener {
+        sendBtn.setOnClickListener {
             viewModel.sendBtnClicked(validator.validateFields())
         }
         commentsOfGoal.onTextChanged = {

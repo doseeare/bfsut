@@ -30,6 +30,7 @@ class SearchItemDialog<T>(
     var helperText: String? = null
     var homeBtnText: String? = null
 
+    private var helperIsClickable = false
     private lateinit var adapter: SelectorItemAdapter<T>
 
     override fun onCreateView(
@@ -38,7 +39,28 @@ class SearchItemDialog<T>(
     ): View {
         binding = DialogItemSearchBinding.inflate(inflater, container, false)
         requireDialog().window?.setBackgroundDrawableResource(android.R.color.transparent)
+        initValues()
+        initViews()
+        onEditTextFilled()
+        return binding.root
+    }
 
+    private fun onEditTextFilled() {
+        binding.search.setOnDebounceTextWatcher(lifecycle) {
+            binding.selectBtn.isEnabled = false
+            if (it.isNotBlank()) {
+                onKeyChanged?.invoke(it)
+                binding.helperImg.setImageResource(R.drawable.ic_clear)
+                helperIsClickable = true
+            } else {
+                binding.helperImg.setImageResource(R.drawable.ic_search)
+                helperIsClickable = false
+                setDefaultView()
+            }
+        }
+    }
+
+    private fun initValues() {
         notFoundBtnText.ifNull {
             notFoundBtnText = getString(R.string.create)
         }
@@ -57,7 +79,9 @@ class SearchItemDialog<T>(
         homeBtnText.ifNotNull {
             binding.homeBtn.text = it
         }
+    }
 
+    private fun initViews() {
         adapter = SelectorItemAdapter(arrayListOf(), valueName, activeBtn = {
             binding.selectBtn.isEnabled = true
             binding.selectBtn.text = "Применить"
@@ -66,20 +90,14 @@ class SearchItemDialog<T>(
         binding.selectBtn.setOnClickListener(onPositiveClick)
         binding.homeBtn.setOnClickListener(onHomeClicked)
         binding.helperTv.text = helperText
-        onEditTextFilled()
-        return binding.root
-    }
-
-    private fun onEditTextFilled() {
-        binding.search.setOnDebounceTextWatcher(lifecycle) {
-            binding.selectBtn.isEnabled = false
-            if (it.isNotBlank()) {
-                onKeyChanged?.invoke(it)
-            } else {
-                setDefaultView()
-            }
+        binding.helperImg.setOnClickListener {
+            if (!helperIsClickable) return@setOnClickListener
+            binding.search.clearFocus()
+            binding.search.setText("")
+            binding.helperImg.clearFocus()
         }
     }
+
 
     fun onKeyChanged(block: (String) -> Unit) {
         onKeyChanged = block

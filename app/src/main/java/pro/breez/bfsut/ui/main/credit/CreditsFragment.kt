@@ -62,9 +62,10 @@ class CreditsFragment : BaseFragment<FragmentCreditsBinding, CreditsViewModel>()
         super.onPause()
         (requireActivity() as MainActivity).showDivider(true)
     }
+
     private fun createTabs(): FragmentPagerItems {
         val creator = FragmentPagerItems.with(requireContext())
-        creator.add("Кредиты", CreditStatusTabFragment::class.java)
+        creator.add("Заявки", CreditStatusTabFragment::class.java)
         creator.add("Выдано ", CreditIssuedTabFragment::class.java)
         return creator.create()
     }

@@ -5,6 +5,7 @@ import androidx.core.view.isVisible
 import pro.breez.bfsut.base.BaseRecyclerAdapter
 import pro.breez.bfsut.databinding.ItemPaidLogsFarmerBinding
 import pro.breez.bfsut.databinding.ItemPaidLogsReceiptBinding
+import pro.breez.bfsut.util.DateUtil
 import pro.breez.domain.model.output.PaidLogsByFarmer
 
 class PaidLogsFarmerAdapter(val itemList: List<PaidLogsByFarmer>) :

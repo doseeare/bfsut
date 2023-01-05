@@ -173,8 +173,6 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> :
         }
     }
 
-
-
     private fun navigateToActivity(activityTransaction: ActivityTransaction) {
         if (activity is BaseActivity<*>) {
             (activity as BaseActivity<*>).navigateToActivity(activityTransaction)

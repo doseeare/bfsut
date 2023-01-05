@@ -8,6 +8,7 @@ import pro.breez.bfsut.adapter.FarmersAdapter
 import pro.breez.bfsut.base.BaseFragment
 import pro.breez.bfsut.databinding.FragmentHomeBinding
 import pro.breez.bfsut.ui.auth.activity.AuthActivity
+import pro.breez.bfsut.util.DateUtil
 import pro.breez.bfsut.util.setOnClickOnceListener
 import pro.breez.domain.model.output.FarmerCheckModel
 
@@ -36,6 +37,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
             viewModel.navigateToChangePrice()
         }
         binding.nameTv.text = viewModel.dataPreference.userName
+        binding.welcomeTv.text = DateUtil.getGreetingTitle()
     }
 
     fun refreshInfo() {

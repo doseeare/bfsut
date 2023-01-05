@@ -1,6 +1,7 @@
 package pro.breez.bfsut.util
 
 import android.annotation.SuppressLint
+import android.util.Log
 import pro.breez.bfsut.model.DateRange
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -23,13 +24,25 @@ object DateUtil {
         }
     }
 
-
     fun reformat(date: String?): String? {
-        return if (date.isNull()) null
-        else {
-            val format = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-            val mDate = LocalDate.parse(date, format)
-            return mDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        try {
+            return if (date.isNull()) null
+            else {
+                val format = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                val mDate = LocalDate.parse(date, format)
+                return mDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+            }
+        } catch (e: Exception) {
+            return date
+        }
+    }
+
+    fun getGreetingTitle(): String {
+        return when (SimpleDateFormat("HH", Locale.getDefault()).format(Date()).toInt()) {
+            in 5..11 -> "Доброе утро"
+            in 11..17 -> "Добрый день"
+            in 17..23 -> "Добрый вечер"
+            else -> "Добро пожаловать"
         }
     }
 

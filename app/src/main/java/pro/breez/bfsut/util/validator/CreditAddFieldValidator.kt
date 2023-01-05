@@ -22,7 +22,7 @@ class CreditAddFieldValidator(val binding: FragmentCreditAddBinding) {
 
     private fun validateSendBtn() {
         val allNotNull = importantFields.all { it.textOrNull() != null }
-        binding.sendBtn.isEnabled = allNotNull
+        binding.sendBtn.isActive = allNotNull
     }
 
     fun validateFields(): Boolean {

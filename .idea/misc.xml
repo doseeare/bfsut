@@ -79,6 +79,7 @@
         <entry key="app/src/main/res/drawable/ic_add_farmer.xml" value="0.1325" />
         <entry key="app/src/main/res/drawable/ic_add_milk.xml" value="0.197" />
         <entry key="app/src/main/res/drawable/ic_alert.xml" value="0.2" />
+        <entry key="app/src/main/res/drawable/ic_app.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/ic_app_title.xml" value="0.126" />
         <entry key="app/src/main/res/drawable/ic_change_password_lock.xml" value="0.1115" />
         <entry key="app/src/main/res/drawable/ic_checkbox_custom.xml" value="0.228" />
@@ -98,6 +99,8 @@
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/ic_home_selected.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/ic_important.xml" value="0.228" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1705" />
+        <entry key="app/src/main/res/drawable/ic_log.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/ic_logout.xml" value="0.1115" />
         <entry key="app/src/main/res/drawable/ic_milk.xml" value="0.1145" />
         <entry key="app/src/main/res/drawable/ic_milk_icon.xml" value="0.197" />
@@ -138,11 +141,11 @@
         <entry key="app/src/main/res/layout/custom_snackbar.xml" value="0.2" />
         <entry key="app/src/main/res/layout/custom_tab_layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/custom_tab_layout_center.xml" value="0.2975630611372381" />
-        <entry key="app/src/main/res/layout/dialog_item_search.xml" value="0.44377811094452774" />
+        <entry key="app/src/main/res/layout/dialog_item_search.xml" value="0.44677661169415295" />
         <entry key="app/src/main/res/layout/dialog_item_selector.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dialog_milk_price.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_active_log.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_add_farmer.xml" value="0.22018348623853212" />
+        <entry key="app/src/main/res/layout/fragment_add_farmer.xml" value="0.2078232308151687" />
         <entry key="app/src/main/res/layout/fragment_add_milk.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_all_farmers.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_all_log.xml" value="0.2984181274048739" />
@@ -164,7 +167,7 @@
         <entry key="app/src/main/res/layout/fragment_dialog_milk_price.xml" value="0.15391192817443353" />
         <entry key="app/src/main/res/layout/fragment_edit_milk.xml" value="0.2984181274048739" />
         <entry key="app/src/main/res/layout/fragment_farmer_profile.xml" value="0.24593639575971732" />
-        <entry key="app/src/main/res/layout/fragment_farmer_profile_edit.xml" value="0.18441971383147854" />
+        <entry key="app/src/main/res/layout/fragment_farmer_profile_edit.xml" value="0.1822943949711891" />
         <entry key="app/src/main/res/layout/fragment_filter.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_filter_logs.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_filter_result.xml" value="0.2984181274048739" />
@@ -195,9 +198,10 @@
         <entry key="app/src/main/res/layout/item_paid_logs_farmer.xml" value="0.2967079948696024" />
         <entry key="app/src/main/res/layout/item_paid_logs_receipt.xml" value="0.2975630611372381" />
         <entry key="app/src/main/res/layout/item_selector.xml" value="0.5698478561549101" />
+        <entry key="app/src/main/res/layout/layout_accept_btn.xml" value="0.2967079948696024" />
         <entry key="app/src/main/res/layout/layout_add_credit_edittext.xml" value="0.33" />
         <entry key="app/src/main/res/layout/layout_add_menu.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/layout_alert_dialog.xml" value="0.5532503457814661" />
+        <entry key="app/src/main/res/layout/layout_alert_dialog.xml" value="0.22" />
         <entry key="app/src/main/res/layout/layout_button_drawable.xml" value="0.3625" />
         <entry key="app/src/main/res/layout/layout_credit_status_tab.xml" value="0.5" />
         <entry key="app/src/main/res/layout/layout_custom_credit_tab.xml" value="0.2984181274048739" />
@@ -212,6 +216,8 @@
         <entry key="app/src/main/res/layout/view_progress.xml" value="0.22554347826086957" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.36354166666666665" />
         <entry key="app/src/main/res/menu/menu_main_add.xml" value="0.2" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1705" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1705" />
       </map>
     </option>
   </component>

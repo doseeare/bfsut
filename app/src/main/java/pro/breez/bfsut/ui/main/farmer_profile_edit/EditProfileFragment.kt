@@ -16,6 +16,7 @@ import pro.breez.bfsut.model.MaritalStatusEnum
 import pro.breez.bfsut.util.Utils.setNumberMask
 import pro.breez.bfsut.util.ifNotNull
 import pro.breez.bfsut.util.setOnClickOnceListener
+import pro.breez.bfsut.util.setOnDisableClickListener
 import pro.breez.bfsut.util.validator.ProfileEditValidator
 import pro.breez.bfsut.util.visibility
 
@@ -72,7 +73,7 @@ class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditP
 
                 it.is_actual_address_match.ifNotNull {
                     viewModel.isActualLocation = it
-                    binding.actualLocationContainer.visibility(it)
+                    binding.actualLocationContainer.visibility(!it)
                     if (it) {
                         actualLocationYes.isSelected = true
                     } else {
@@ -216,7 +217,7 @@ class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditP
         actualRegionEt.setOnClickListener {
             viewModel.regionClicked(true)
         }
-        acceptBtn.setOnClickOnceListener {
+        acceptBtn.setOnClickListener {
             validator.validateImportantFields()
         }
     }
@@ -246,6 +247,7 @@ class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditP
                         viewModel.isActualLocation = false
                     }
                 }
+                binding.acceptBtn.isEnabled = true
             }
         }
     }

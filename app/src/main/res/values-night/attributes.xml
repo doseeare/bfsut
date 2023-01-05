@@ -6,6 +6,11 @@
         <attr name="hint" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="AcceptButton">
+        <attr name="setText" format="string" />
+        <attr name="isActive" format="boolean" />
+    </declare-styleable>
+
     <declare-styleable name="RegistrationEditText" parent="CustomEditText">
         <attr name="title" />
         <attr name="hint" />

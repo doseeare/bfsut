@@ -40,7 +40,7 @@
                 android:id="@+id/name_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="12dp"
                 app:hint="Введите имя"
                 app:important="true"
                 app:title="Имя"
@@ -123,18 +123,17 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margins"
+                android:layout_marginTop="12dp"
                 android:orientation="horizontal">
 
                 <pro.breez.bfsut.custom.view.SelectableButton
                     android:id="@+id/gender_male"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_weight="1"
                     app:button_image="@drawable/ic_gender_male"
                     app:button_text="Мужской" />
@@ -143,7 +142,7 @@
                     android:id="@+id/gender_female"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="4dp"
                     android:layout_weight="1"
                     app:button_image="@drawable/ic_gender_female"
                     app:button_text="Женский" />
@@ -191,7 +190,7 @@
                 android:id="@+id/inn_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="12dp"
                 app:hint="Введите ИНН"
                 app:important="true"
                 app:title="ИНН"
@@ -273,7 +272,7 @@
                 android:id="@+id/country_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="12dp"
                 app:hint="Страна нахождение"
                 app:important="true"
                 app:title="Страна"
@@ -407,6 +406,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/selector_btn_text_color"
                     android:textSize="16sp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -431,7 +431,7 @@
                     android:id="@+id/actual_country_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="26dp"
+                    android:layout_marginTop="12dp"
                     app:hint="Страна нахождение"
                     app:important="true"
                     app:title="Страна"
@@ -516,7 +516,7 @@
                     android:id="@id/text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margins"
+                    android:layout_marginTop="12dp"
                     android:text="@string/family_status"
                     android:textColor="@color/text_bold_color"
                     android:textSize="18sp"
@@ -538,14 +538,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="@dimen/default_margins"
                 android:orientation="horizontal">
 
                 <pro.breez.bfsut.custom.view.SelectableButton
                     android:id="@+id/married_btn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_weight="1"
                     app:button_image="@drawable/ic_married"
                     app:button_text="Замужем/Женат" />
@@ -554,7 +554,7 @@
                     android:id="@+id/single_btn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="4dp"
                     android:layout_weight="1"
                     app:button_image="@drawable/ic_not_married"
                     app:button_text="Не состою в браке" />
@@ -564,14 +564,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margins"
+                android:layout_marginTop="@dimen/small_margin"
                 android:orientation="horizontal">
 
                 <pro.breez.bfsut.custom.view.SelectableButton
                     android:id="@+id/widower_btn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_weight="1"
                     app:button_image="@drawable/ic_widower"
                     app:button_text="Вдовец/Вдова" />
@@ -580,7 +580,7 @@
                     android:id="@+id/divorced_btn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginStart="4dp"
                     android:layout_weight="1"
                     app:button_image="@drawable/ic_divorced"
                     app:button_text="В разводе" />
@@ -622,7 +622,7 @@
                 android:id="@+id/education_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="12dp"
                 app:hint="Степень образования"
                 app:important="true"
                 app:title="Степень"
@@ -641,7 +641,7 @@
                 android:id="@+id/job_company_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="12dp"
                 app:hint="Название места работы"
                 app:important="true"
                 app:title="Место работы"
@@ -681,18 +681,14 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <pro.breez.bfsut.custom.view.AcceptButton
         android:id="@+id/accept_btn"
         android:layout_width="match_parent"
         android:layout_height="66dp"
         android:layout_marginHorizontal="@dimen/large_margin"
         android:layout_marginBottom="@dimen/default_margins"
-        android:background="@drawable/selector_default_button"
-        android:enabled="false"
         android:text="@string/save_changes"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="18sp"
+        app:isActive="false"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
