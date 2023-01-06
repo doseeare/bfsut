@@ -74,15 +74,21 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
             return binding.dropImg
         }
 
-    val isFieldEmpty: Boolean
-        get() = binding.edittext.text.isNullOrEmpty()
+    val isEmpty: Boolean
+        get() = binding.edittext.text.isNullOrBlank()
 
-    var onTextChanged: (String) -> Unit = { }
+    var onTextChanged: ((String) -> Unit)? = null
+
+    var isSuccessFilled = false
 
     fun setOnClickListener(block: () -> Unit) {
         binding.rootButton.setOnClickOnceListener {
             block.invoke()
         }
+    }
+
+    fun onTextChanged(block: (String) -> Unit) {
+        onTextChanged = block
     }
 
     fun reset() {
@@ -114,8 +120,10 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
             if (conditionClearError.isNull()) {
                 if (filledText.isNotEmpty() && filledText.isNotBlank()) {
                     binding.titleTv.setTextColor(ContextCompat.getColor(context, R.color.gray_text))
+                    isSuccessFilled = true
                     error = false
                 } else {
+                    isSuccessFilled = false
                     binding.titleTv.setTextColor(
                         ContextCompat.getColor(
                             context,
@@ -123,13 +131,14 @@ class CustomDropDownEditText(context: Context, attributeSet: AttributeSet?, defS
                         )
                     )
                 }
-
             } else {
-                conditionClearError?.invoke()?.ifTrue {
+                val customCondition = conditionClearError?.invoke()
+                customCondition?.ifTrue {
                     error = false
                 }
+                isSuccessFilled = customCondition!!
             }
-            onTextChanged.invoke(filledText)
+            onTextChanged?.invoke(filledText)
         }
 
         attributeSet?.let {

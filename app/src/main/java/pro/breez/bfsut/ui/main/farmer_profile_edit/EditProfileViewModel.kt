@@ -15,6 +15,7 @@ import pro.breez.bfsut.util.DateUtil
 import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
 import pro.breez.bfsut.util.alert.dialog.SelectorDialogBuilderImpl
+import pro.breez.bfsut.util.ifNotNull
 import pro.breez.domain.interactor.*
 import pro.breez.domain.model.input.FarmerBody
 import pro.breez.domain.model.output.FarmerProfileModel
@@ -96,6 +97,9 @@ class EditProfileViewModel @Inject constructor(
 
     override fun onCreate(owner: LifecycleOwner) {
         super.onCreate(owner)
+        farmer.is_actual_address_match.ifNotNull {
+            isActualLocation = it
+        }
         farmerProfileLV.postValue(farmer)
     }
 

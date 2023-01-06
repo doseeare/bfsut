@@ -105,4 +105,5 @@
     <string name="correct">Подвердить</string>
     <string name="unselect_all">Сбросить все</string>
     <string name="default_credit">0 кредитов</string>
+    <string name="change_some">Внесите изменения</string>
 </resources>

@@ -1,22 +1,27 @@
 package pro.breez.bfsut.util.validator
 
 import android.util.ArraySet
-import androidx.core.widget.doOnTextChanged
+import android.util.Log
+import androidx.collection.arraySetOf
 import pro.breez.bfsut.R
+import pro.breez.bfsut.custom.view.SelectableButton
 import pro.breez.bfsut.databinding.FragmentFarmerProfileEditBinding
 import pro.breez.bfsut.ui.main.farmer_profile_edit.EditProfileViewModel
 import pro.breez.bfsut.util.ifFalse
 import pro.breez.bfsut.util.ifTrue
 import pro.breez.bfsut.util.isNull
+import pro.breez.bfsut.util.setOnClickOnceListener
 
 class ProfileEditValidator(
     val binding: FragmentFarmerProfileEditBinding,
     val viewModel: EditProfileViewModel
 ) {
+    private val rec = binding.root.context.resources
 
-    private val checkedFields = ArraySet<Int>()
+    private val checkedFields = ArraySet<String>()
+    var fieldsEdited = false
 
-    private val importantFields = arrayListOf(
+    private val importantFields = arraySetOf(
         binding.nameEt, binding.lastNameEt, binding.birthdayEt,
         binding.nationEt, binding.citizenEt,
         binding.phoneNumberEt, binding.innEt,
@@ -31,62 +36,32 @@ class ProfileEditValidator(
         binding.jobPurposeEt
     )
 
-    private val allFields = arrayOf(
-        binding.nameEt, binding.lastNameEt, binding.birthdayEt,
-        binding.nationEt, binding.citizenEt,
-        binding.phoneNumberEt, binding.innEt,
-        binding.typeDocEt, binding.seriesDocEt,
-        binding.whenDocEt, binding.numberDocEt,
-        binding.issueDocEt, binding.countryEt,
-        binding.villageEt, binding.streetEt,
-        binding.areaEt, binding.regionEt, binding.houseEt,
-        binding.educationEt, binding.jobEt,
-        binding.jobCompanyEt, binding.jobAddressEt,
-        binding.issueNumberDocEt, binding.placeOfBirthEt,
-        binding.jobPurposeEt, binding.surnameEt, binding.phoneNumberMoreEt,
-        binding.phoneNumberComfortEt, binding.streetEt, binding.apartmentEt,
+    private val otherFields = arrayOf(
+        binding.surnameEt, binding.phoneNumberMoreEt,
+        binding.phoneNumberComfortEt, binding.apartmentEt,
         binding.actualApartmentEt, binding.actualStreetEt,
         binding.actualVillageEt
     )
 
-    private val allRadioButtons = arrayOf(
+    private val maritalBtn = arrayOf(
         binding.marriedBtn, binding.singleBtn,
         binding.widowerBtn, binding.divorcedBtn,
+    )
+
+    private val genderBtn = arrayOf(
         binding.genderMale, binding.genderFemale
     )
 
-    private val allBtn = arrayOf(
+    private val locationBtn = arrayOf(
         binding.actualLocationYes, binding.actualLocationNo
     )
 
-    fun enableAcceptBtnOnEdit() {
-        for (field in allFields) {
-            field.editText.doOnTextChanged { text, _, _, _ ->
-                if (text.toString().isNotBlank())
-                    binding.acceptBtn.isActive = true
-            }
+    private fun validateImportantFields() {
+        if (!fieldsEdited) {
+            viewModel.showErrorSnackbar(binding.root.context.getString(R.string.change_some))
+            return
         }
-
-        for (radioButton in allRadioButtons) {
-            radioButton.setResultListener {
-                binding.acceptBtn.isActive = true
-            }
-        }
-    }
-
-    fun validateImportantFields() {
         var hasEmptyField = false
-        viewModel.isActualLocation?.let {
-            it.ifFalse {
-                importantFields.addAll(
-                    arrayOf(
-                        binding.actualCountryEt, binding.actualAreaEt,
-                        binding.actualRegionEt, binding.actualHouseEt
-                    )
-                )
-            }
-        }
-        setCustomConditionsError()
         hasEmptyField = validateFields(hasEmptyField)
         hasEmptyField = validateGender(hasEmptyField)
         hasEmptyField = validateMarital(hasEmptyField)
@@ -94,11 +69,11 @@ class ProfileEditValidator(
 
         if (hasEmptyField) {
             viewModel.onFailValidate()
-            return
         } else {
-            validateAndProvideValues()
-            viewModel.onSuccessValidate()
-            return
+            if (binding.acceptBtn.isActive) {
+                validateAndProvideValues()
+                viewModel.onSuccessValidate()
+            }
         }
     }
 
@@ -116,6 +91,22 @@ class ProfileEditValidator(
         }
     }
 
+    fun initValidateListeners() {
+        setCustomConditionsError()
+        initActualAddress()
+        initFieldsListener()
+        initOtherFieldsListener()
+        initSelectableBtnListener(genderBtn, "GENDER")
+        initSelectableBtnListener(maritalBtn, "MARITAL")
+        initAcceptBtn()
+    }
+
+    private fun initAcceptBtn() {
+        binding.acceptBtn.setOnClickListener {
+            validateImportantFields()
+        }
+    }
+
     private fun validateFields(hasEmptyField: Boolean): Boolean {
         var result = hasEmptyField
         for (field in importantFields) {
@@ -128,6 +119,64 @@ class ProfileEditValidator(
         }
         return result
     }
+
+    private fun initOtherFieldsListener() {
+        for (field in otherFields) {
+            field.onTextChanged {
+                fieldsEdited = true
+            }
+        }
+    }
+
+    private fun initSelectableBtnListener(array: Array<SelectableButton>, key: String) {
+        for (btn in array) {
+            btn.setResultListener {
+                fieldsEdited = true
+                if (btn.isActive) {
+                    checkedFields.add(key)
+                } else {
+                    checkedFields.remove(key)
+                }
+                checkAcceptBtn()
+            }
+        }
+    }
+
+    private fun initFieldsListener() {
+        for (field in importantFields) {
+            field.onTextChanged {
+                fieldsEdited = true
+                if (field.isSuccessFilled) {
+                    checkedFields.add(rec.getResourceName(field.id))
+                } else {
+                    checkedFields.remove(rec.getResourceName(field.id))
+                }
+                checkAcceptBtn()
+            }
+        }
+    }
+
+    private fun initActualAddress() {
+        viewModel.isActualLocation?.let {
+            it.ifFalse {
+                importantFields.addAll(
+                    arrayOf(
+                        binding.actualCountryEt, binding.actualAreaEt,
+                        binding.actualRegionEt, binding.actualHouseEt
+                    )
+                )
+            }
+        }
+    }
+
+    fun checkAcceptBtn() {
+        val importantSize = importantFields.size + 2
+        if (fieldsEdited)
+            binding.acceptBtn.isActive = checkedFields.size == importantSize
+        else
+            binding.acceptBtn.isActive = false
+    }
+
 
     private fun validateActualLocation(hasEmptyField: Boolean): Boolean {
         var result = hasEmptyField

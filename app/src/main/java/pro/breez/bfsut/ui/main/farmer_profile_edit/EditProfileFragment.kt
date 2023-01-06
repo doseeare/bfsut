@@ -15,8 +15,6 @@ import pro.breez.bfsut.model.GenderEnum
 import pro.breez.bfsut.model.MaritalStatusEnum
 import pro.breez.bfsut.util.Utils.setNumberMask
 import pro.breez.bfsut.util.ifNotNull
-import pro.breez.bfsut.util.setOnClickOnceListener
-import pro.breez.bfsut.util.setOnDisableClickListener
 import pro.breez.bfsut.util.validator.ProfileEditValidator
 import pro.breez.bfsut.util.visibility
 
@@ -71,8 +69,7 @@ class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditP
                 actualHouseEt.editText.setText(it.actual_house)
                 actualApartmentEt.editText.setText(it.actual_apartment)
 
-                it.is_actual_address_match.ifNotNull {
-                    viewModel.isActualLocation = it
+                viewModel.isActualLocation?.ifNotNull {
                     binding.actualLocationContainer.visibility(!it)
                     if (it) {
                         actualLocationYes.isSelected = true
@@ -110,7 +107,8 @@ class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditP
                     }
                 }
             }
-            validator.enableAcceptBtnOnEdit()
+            validator.fieldsEdited = false
+            validator.checkAcceptBtn()
         }
         viewModel.birthdayLV.observe(viewLifecycleOwner) {
             binding.birthdayEt.text = it
@@ -168,11 +166,11 @@ class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditP
         toolbar.setOnBackClickListener {
             viewModel.backBtnClicked()
         }
-        SelectableButton.init(genderMale, genderFemale) {
-            viewModel.genderSelected(GenderEnum.fromId(it.id))
-        }
         SelectableButton.init(marriedBtn, singleBtn, widowerBtn, divorcedBtn) {
             viewModel.maritalSelected(MaritalStatusEnum.fromId(it.id))
+        }
+        SelectableButton.init(genderMale, genderFemale) {
+            viewModel.genderSelected(GenderEnum.fromId(it.id))
         }
         phoneNumberEt.editText.setNumberMask()
         phoneNumberMoreEt.editText.setNumberMask()
@@ -217,9 +215,7 @@ class EditProfileFragment : BaseFragment<FragmentFarmerProfileEditBinding, EditP
         actualRegionEt.setOnClickListener {
             viewModel.regionClicked(true)
         }
-        acceptBtn.setOnClickListener {
-            validator.validateImportantFields()
-        }
+        validator.initValidateListeners()
     }
 
     private fun initButtons(selectedBtn: AppCompatButton, alternativeBtn: AppCompatButton) {

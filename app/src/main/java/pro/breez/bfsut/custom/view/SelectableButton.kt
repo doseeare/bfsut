@@ -19,15 +19,23 @@ class SelectableButton(context: Context, attributeSet: AttributeSet?, defStyle: 
     private var alternativeButtons: ArrayList<SelectableButton>? = null
 
     private var onClicked: ((SelectableButton) -> Unit)? = null
+    private var onResult: ((SelectableButton) -> Unit)? = null
 
     var isActive: Boolean = false
         set(value) {
             if (value) {
+                isActivated = true
                 binding.indicatorImg.setImageResource(R.drawable.ic_chooser_red)
+                binding.indicatorImg.tag = R.drawable.ic_chooser_red
                 disableAlternatives()
-            } else
+            } else {
+                isActivated = false
                 binding.indicatorImg.setImageResource(R.drawable.ic_chooser)
+                binding.indicatorImg.tag = R.drawable.ic_chooser
+            }
             field = value
+            onResult?.invoke(this)
+            onClicked?.invoke(this)
         }
 
     var error: Boolean = false
@@ -59,6 +67,10 @@ class SelectableButton(context: Context, attributeSet: AttributeSet?, defStyle: 
         }
     }
 
+    private fun onResult(block: (SelectableButton) -> Unit) {
+        onResult = block
+    }
+
     fun setResultListener(block: (SelectableButton) -> Unit) {
         onClicked = block
     }
@@ -66,7 +78,6 @@ class SelectableButton(context: Context, attributeSet: AttributeSet?, defStyle: 
     init {
         binding.root.setOnClickOnceListener {
             isActive = !isActive
-            onClicked?.invoke(this)
         }
 
         attributeSet?.let {
@@ -90,7 +101,7 @@ class SelectableButton(context: Context, attributeSet: AttributeSet?, defStyle: 
                     removeAt(i)
                 }
                 btns[i].setAlternatives(filteredBtn)
-                btns[i].setResultListener {
+                btns[i].onResult {
                     activated.invoke(it)
                 }
             }
