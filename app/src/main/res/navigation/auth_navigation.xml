@@ -9,10 +9,10 @@
         android:id="@+id/nav_auth"
         android:name="pro.breez.bfsut.ui.auth.fragment.auth.AuthFragment"
         android:label="@string/title_auth"
-        tools:layout="@layout/fragment_auth" >
+        tools:layout="@layout/fragment_auth">
         <action
             android:id="@+id/auth_fragment_to_main_activity"
-            app:destination="@id/nav_main_activity"/>
+            app:destination="@id/nav_main_activity" />
     </fragment>
 
     <fragment
@@ -28,7 +28,7 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/splash_fragment_to_main_activity"
-            app:destination="@id/nav_main_activity"/>
+            app:destination="@id/nav_main_activity" />
     </fragment>
 
     <activity

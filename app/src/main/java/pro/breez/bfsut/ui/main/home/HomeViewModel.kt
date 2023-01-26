@@ -6,13 +6,13 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.R
 import pro.breez.bfsut.base.BaseViewModel
-import pro.breez.bfsut.helper.SingleLiveEvent
 import pro.breez.bfsut.model.navigation.FragmentTransaction
 import pro.breez.bfsut.util.DateUtil
 import pro.breez.bfsut.util.alert.MilkPriceDialog
 import pro.breez.bfsut.util.alert.QuestionDialog
 import pro.breez.bfsut.util.alert.dialog.AlertDialogBuilderImpl
 import pro.breez.bfsut.util.alert.dialog.SearchItemDialog
+import pro.breez.bfsut.util.alert.snackbar.SnackbarNotificationBuilder
 import pro.breez.data.cache.DataPreference
 import pro.breez.data.cache.SettingsPreference
 import pro.breez.domain.interactor.*
@@ -80,6 +80,14 @@ class HomeViewModel @Inject constructor(
                 milkPriceLV.value ?: 0
             )
             showBottomSheetFragment.startEvent(dialog)
+        } else {
+            val snackbarBuilder =
+                SnackbarNotificationBuilder().setMessageColor(R.color.text_bold_color).setMessage(
+                    "Цену на молоко можно изменять только раз \n" +
+                            "за день. Вы ее уже меняли "
+                ).setBackground(R.drawable.blue_snackbar)
+
+            showSnackBar.startEvent(snackbarBuilder)
         }
     }
 

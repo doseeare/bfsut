@@ -106,4 +106,6 @@
     <string name="unselect_all">Сбросить все</string>
     <string name="default_credit">0 кредитов</string>
     <string name="change_some">Внесите изменения</string>
+    <string name="morning_milk_helper">После 11:00 нельзя вносить за утро</string>
+    <string name="evening_milk_helper">До 11:00 нельзя вносить за вечер</string>
 </resources>

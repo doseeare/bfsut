@@ -202,11 +202,18 @@ interface MainApi {
         @QueryMap queries: Map<String, String>
     ): Result<List<CreditSearchFarmerModel>>
 
-    @POST("v1/credit/detailed")
+    @GET("v1/credit/detailed")
     fun creditDetail(
         @Header("Authorization") token: String,
         @Query("credit_id") creditId: String
     ): Result<CreditDetailModel>
+
+    @PATCH("v1/credit/credit-read-status-update")
+    fun readStatusUpdate(
+        @Header("Authorization") token: String,
+        @Query("credit_id") id: String,
+        @Body readStatusBody: StatusBody
+    ): Result<DefaultSuccessModel>
 
     @POST("v1/credit/issued")
     fun issuedDetail(

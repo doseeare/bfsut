@@ -22,7 +22,7 @@ import pro.breez.bfsut.util.setOnClickOnceListener
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    private val navBagde: BadgeDrawable by lazy {
+    private val navBadge: BadgeDrawable by lazy {
         binding.navView.getOrCreateBadge(R.id.navigation_credits)
     }
 
@@ -95,7 +95,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         if (count == 0) {
             binding.navView.removeBadge(R.id.navigation_credits)
         } else {
-            navBagde.apply {
+            navBadge.apply {
                 number = count
                 backgroundColor = getColor(R.color.error_color)
                 badgeTextColor = getColor(R.color.white)

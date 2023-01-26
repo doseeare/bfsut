@@ -1,6 +1,9 @@
 package pro.breez.bfsut.util.validator
 
+import android.util.ArraySet
+import androidx.collection.arraySetOf
 import pro.breez.bfsut.R
+import pro.breez.bfsut.custom.view.SelectableButton
 import pro.breez.bfsut.databinding.FragmentAddFarmerBinding
 import pro.breez.bfsut.ui.main.add_farmer.FarmerAddViewModel
 import pro.breez.bfsut.util.ifFalse
@@ -11,8 +14,12 @@ class FarmerAddValidator(
     val binding: FragmentAddFarmerBinding,
     val viewModel: FarmerAddViewModel
 ) {
+    private val rec = binding.root.context.resources
 
-    private val importantFields = arrayListOf(
+    private val checkedFields = ArraySet<String>()
+    var fieldsEdited = false
+
+    private val importantFields = arraySetOf(
         binding.nameEt, binding.lastNameEt, binding.birthdayEt,
         binding.nationEt, binding.citizenEt,
         binding.phoneNumberEt, binding.innEt,
@@ -27,19 +34,32 @@ class FarmerAddValidator(
         binding.jobPurposeEt
     )
 
-    fun validateImportantFields() {
-        var hasEmptyField = false
-        viewModel.isActualLocation?.let {
-            it.ifFalse {
-                importantFields.addAll(
-                    arrayOf(
-                        binding.actualCountryEt, binding.actualAreaEt,
-                        binding.actualRegionEt, binding.actualHouseEt
-                    )
-                )
-            }
+    private val otherFields = arrayOf(
+        binding.surnameEt, binding.phoneNumberMoreEt,
+        binding.phoneNumberComfortEt, binding.apartmentEt,
+        binding.actualApartmentEt, binding.actualStreetEt,
+        binding.actualVillageEt
+    )
+
+    private val maritalBtn = arrayOf(
+        binding.marriedBtn, binding.singleBtn,
+        binding.widowerBtn, binding.divorcedBtn,
+    )
+
+    private val genderBtn = arrayOf(
+        binding.genderMale, binding.genderFemale
+    )
+
+    private val locationBtn = arrayOf(
+        binding.actualLocationYes, binding.actualLocationNo
+    )
+
+    private fun validateImportantFields() {
+        if (!fieldsEdited) {
+            viewModel.showErrorSnackbar(binding.root.context.getString(R.string.change_some))
+            return
         }
-        setCustomConditionsError()
+        var hasEmptyField = false
         hasEmptyField = validateFields(hasEmptyField)
         hasEmptyField = validateGender(hasEmptyField)
         hasEmptyField = validateMarital(hasEmptyField)
@@ -47,23 +67,16 @@ class FarmerAddValidator(
 
         if (hasEmptyField) {
             viewModel.onFailValidate()
-            return
         } else {
-            validateAndProvideValues()
-            viewModel.onSuccessValidate()
-            return
+            if (binding.acceptBtn.isActive) {
+                validateAndProvideValues()
+                viewModel.onSuccessValidate()
+            }
         }
     }
 
     private fun setCustomConditionsError() {
         binding.phoneNumberEt.setCustomConditionError {
-            binding.phoneNumberEt.text.length == 16
-        }
-        binding.phoneNumberMoreEt.setCustomConditionError {
-            binding.phoneNumberEt.text.length == 16
-        }
-
-        binding.phoneNumberComfortEt.setCustomConditionError {
             binding.phoneNumberEt.text.length == 16
         }
 
@@ -73,6 +86,22 @@ class FarmerAddValidator(
 
         binding.numberDocEt.setCustomConditionError {
             binding.numberDocEt.text.length == 7
+        }
+    }
+
+    fun initValidateListeners() {
+        setCustomConditionsError()
+        initActualAddress()
+        initFieldsListener()
+        initOtherFieldsListener()
+        initSelectableBtnListener(genderBtn, "GENDER")
+        initSelectableBtnListener(maritalBtn, "MARITAL")
+        initAcceptBtn()
+    }
+
+    private fun initAcceptBtn() {
+        binding.acceptBtn.setOnClickListener {
+            validateImportantFields()
         }
     }
 
@@ -88,6 +117,64 @@ class FarmerAddValidator(
         }
         return result
     }
+
+    private fun initOtherFieldsListener() {
+        for (field in otherFields) {
+            field.onTextChanged {
+                fieldsEdited = true
+            }
+        }
+    }
+
+    private fun initSelectableBtnListener(array: Array<SelectableButton>, key: String) {
+        for (btn in array) {
+            btn.setResultListener {
+                fieldsEdited = true
+                if (btn.isActive) {
+                    checkedFields.add(key)
+                } else {
+                    checkedFields.remove(key)
+                }
+                checkAcceptBtn()
+            }
+        }
+    }
+
+    private fun initFieldsListener() {
+        for (field in importantFields) {
+            field.onTextChanged {
+                fieldsEdited = true
+                if (field.isSuccessFilled) {
+                    checkedFields.add(rec.getResourceName(field.id))
+                } else {
+                    checkedFields.remove(rec.getResourceName(field.id))
+                }
+                checkAcceptBtn()
+            }
+        }
+    }
+
+    private fun initActualAddress() {
+        viewModel.isActualLocation?.let {
+            it.ifFalse {
+                importantFields.addAll(
+                    arrayOf(
+                        binding.actualCountryEt, binding.actualAreaEt,
+                        binding.actualRegionEt, binding.actualHouseEt
+                    )
+                )
+            }
+        }
+    }
+
+    fun checkAcceptBtn() {
+        val importantSize = importantFields.size + 2
+        if (fieldsEdited)
+            binding.acceptBtn.isActive = checkedFields.size == importantSize
+        else
+            binding.acceptBtn.isActive = false
+    }
+
 
     private fun validateActualLocation(hasEmptyField: Boolean): Boolean {
         var result = hasEmptyField
@@ -124,7 +211,7 @@ class FarmerAddValidator(
         viewModel.apply {
             name = nameEt.textOrNull()
             lastname = lastNameEt.textOrNull()
-            surname = lastNameEt.textOrNull()
+            surname = surnameEt.textOrNull()
             phoneNumber = phoneNumberEt.textOrNull()
             phoneNumberMore = phoneNumberMoreEt.textOrNull()
             phoneNumberComfort = phoneNumberComfortEt.textOrNull()

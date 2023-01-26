@@ -96,7 +96,6 @@ class FarmerAddViewModel @Inject constructor(
     private fun initArgs() {
         FarmerAddFragmentArgs.fromBundle(requiredArguments()).farmer.ifNotNull {
             customerId = it.customerID
-
             farmerFoundLV.postValue(it)
         }
     }
@@ -142,8 +141,8 @@ class FarmerAddViewModel @Inject constructor(
 
     fun citizenClicked() {
         val list = listOf(
-            MfSysModel(0, "0", "Гражданин КР", ""),
-            MfSysModel(1, "1", "Не гражданин КР", "")
+            MfSysModel(0, "0", "Иностранец", ""),
+            MfSysModel(1, "1", "Гражданин", "")
         )
         val selector = SelectorDialogBuilderImpl<MfSysModel>()
         selector.setList(list)

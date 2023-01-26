@@ -22,7 +22,7 @@ import pro.breez.bfsut.util.validator.FarmerAddValidator
 
 @AndroidEntryPoint
 class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewModel>() {
-    private lateinit var validator : FarmerAddValidator
+    private lateinit var validator: FarmerAddValidator
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -104,9 +104,7 @@ class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewMo
     }
 
     private fun initAcceptBtn() {
-        binding.acceptBtn.setOnClickListener {
-            validator.validateImportantFields()
-        }
+        validator.initValidateListeners()
     }
 
     private fun initObservers() {
@@ -118,6 +116,7 @@ class FarmerAddFragment : BaseFragment<FragmentAddFarmerBinding, FarmerAddViewMo
         }
         viewModel.citizenLV.observe(viewLifecycleOwner) {
             binding.citizenEt.text = it.name
+            binding.citizenEt.editText.clearFocus()
         }
         viewModel.docTypesLV.observe(viewLifecycleOwner) {
             binding.typeDocEt.text = it.name

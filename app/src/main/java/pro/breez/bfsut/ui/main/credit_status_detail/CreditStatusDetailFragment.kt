@@ -49,8 +49,13 @@ class CreditStatusDetailFragment :
                 }
             }
 
-            closeWarningBtn.setOnClickOnceListener {
+            if (it.read_status) {
                 warningContainer.visibility = View.GONE
+            } else {
+                closeWarningBtn.setOnClickOnceListener {
+                    viewModel.readStatusUpdate()
+                    warningContainer.visibility = View.GONE
+                }
             }
 
             nameTv.text = it.full_name

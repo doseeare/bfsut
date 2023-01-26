@@ -26,6 +26,9 @@ class SnackbarNotificationBuilder :
     @DrawableRes
     private var leftIcon: Int? = null
 
+    @ColorRes
+    private var textColor: Int? = null
+
     @DrawableRes
     private var closeIcon: Int? = null
 
@@ -98,6 +101,7 @@ class SnackbarNotificationBuilder :
         setPaddings(layout)
 
         background?.let { binding.rootLayout.setBackgroundResource(it) }
+        textColor?.let { binding.textViewTitle.setTextColor(it) }
         binding.textViewTitle.text = message
         binding.textViewTitle.setTextColor(
             ContextCompat.getColor(

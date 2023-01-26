@@ -30,7 +30,7 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
         binding.morningEt.isEnabled = true
     }
 
-    private fun validateFields(){
+    private fun validateFields() {
         validateCreateBtn()
         var totalSum = 0L
         viewModel.farmerLV.value?.let {
@@ -104,8 +104,15 @@ class MilkAddFragment : BaseFragment<FragmentAddMilkBinding, MilkAddViewModel>()
             }
         }
         viewModel.eveningStatusLV.observe(viewLifecycleOwner) {
-            binding.eveningEt.isEnabled = it
+            if (it) {
+                binding.morningHelperTv.visibility = View.VISIBLE
+                binding.morningHelperTv.text = getString(R.string.morning_milk_helper)
+            } else {
+                binding.eveningHelperTv.visibility = View.VISIBLE
+                binding.eveningHelperTv.text = getString(R.string.evening_milk_helper)
+            }
             binding.morningEt.isEnabled = !it
+            binding.eveningEt.isEnabled = it
         }
     }
 

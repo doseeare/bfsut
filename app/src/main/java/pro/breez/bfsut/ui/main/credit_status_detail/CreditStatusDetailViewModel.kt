@@ -6,12 +6,16 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import pro.breez.bfsut.base.BaseViewModel
 import pro.breez.domain.interactor.CreditDetailUseCase
+import pro.breez.domain.interactor.ReadStatusUseCase
+import pro.breez.domain.model.input.ReadStatusBody
+import pro.breez.domain.model.input.StatusBody
 import pro.breez.domain.model.output.CreditDetailModel
 import javax.inject.Inject
 
 @HiltViewModel
 class CreditStatusDetailViewModel @Inject constructor(
-    private val creditDetailUseCase: CreditDetailUseCase
+    private val creditDetailUseCase: CreditDetailUseCase,
+    private val readStatusUseCase: ReadStatusUseCase
 ) : BaseViewModel() {
 
     private val creditId: String by lazy {
@@ -30,6 +34,16 @@ class CreditStatusDetailViewModel @Inject constructor(
         creditDetailUseCase.execute(viewModelScope, creditId) {
             handleResult(it) {
                 creditDetailLV.postValue(it)
+            }
+        }
+    }
+
+    fun readStatusUpdate() {
+        showLoadingView()
+        val readStatusBody = ReadStatusBody(creditId, StatusBody(true))
+        readStatusUseCase.execute(viewModelScope, readStatusBody) {
+            handleResult(it) {
+
             }
         }
     }

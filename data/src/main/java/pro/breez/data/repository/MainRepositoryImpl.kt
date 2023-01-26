@@ -6,6 +6,7 @@ import pro.breez.domain.interactor.base.Result
 import pro.breez.domain.model.input.AddMilkBody
 import pro.breez.domain.model.input.CreditBody
 import pro.breez.domain.model.input.FarmerBody
+import pro.breez.domain.model.input.ReadStatusBody
 import pro.breez.domain.model.output.*
 import pro.breez.domain.repository.MainRepository
 import java.io.InputStream
@@ -78,6 +79,10 @@ class MainRepositoryImpl(
 
     override fun getTotalMilk(): Result<TotalMilkModel> {
         return restClient.mainApi.getTotalMilk(dataPreference.token)
+    }
+
+    override fun readStatusUpdate(body: ReadStatusBody): Result<DefaultSuccessModel> {
+        return restClient.mainApi.readStatusUpdate(dataPreference.token, body.id, body.status)
     }
 
     override fun getCreditDetail(creditId: String): Result<CreditDetailModel> {
